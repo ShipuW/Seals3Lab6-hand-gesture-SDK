@@ -96,16 +96,7 @@
 				A6744B1D1B720A2F00E222B0 /* AppDelegate.h */,
 				A6744B1E1B720A2F00E222B0 /* AppDelegate.m */,
 				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
-				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
-				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
-				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
-				A6744B421B720A5400E222B0 /* ThirdViewController.h */,
-				A6744B431B720A5400E222B0 /* ThirdViewController.m */,
-				A6744B451B720A6100E222B0 /* ForthViewController.h */,
-				A6744B461B720A6100E222B0 /* ForthViewController.m */,
-				A6744B4B1B720B5A00E222B0 /* FifthViewController.h */,
-				A6744B4C1B720B5A00E222B0 /* FifthViewController.m */,
-				A6744B261B720A2F00E222B0 /* Main.storyboard */,
+				A6744B4E1B720DFC00E222B0 /* Basic */,
 				A6744B291B720A2F00E222B0 /* Images.xcassets */,
 				A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */,
 				A6744B191B720A2F00E222B0 /* Supporting Files */,
@@ -137,6 +128,23 @@
 				A6744B371B720A2F00E222B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6744B4E1B720DFC00E222B0 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				A6744B261B720A2F00E222B0 /* Main.storyboard */,
+				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
+				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
+				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
+				A6744B421B720A5400E222B0 /* ThirdViewController.h */,
+				A6744B431B720A5400E222B0 /* ThirdViewController.m */,
+				A6744B451B720A6100E222B0 /* ForthViewController.h */,
+				A6744B461B720A6100E222B0 /* ForthViewController.m */,
+				A6744B4B1B720B5A00E222B0 /* FifthViewController.h */,
+				A6744B4C1B720B5A00E222B0 /* FifthViewController.m */,
+			);
+			name = Basic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
