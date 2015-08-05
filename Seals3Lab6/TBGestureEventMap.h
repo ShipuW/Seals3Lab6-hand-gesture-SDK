@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface TBGestureEventMap : NSObject
+
+@property (nonatomic, copy) mapId;
+@property (nonatomic, copy) NSString *gestureId;
+@property (nonatomic, copy) NSString *eventId;
+
 
 @end

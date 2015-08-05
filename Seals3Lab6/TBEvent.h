@@ -10,4 +10,10 @@
 
 @interface TBEvent : NSObject
 
+@property (nonatomic, copy) NSString *objectId;
+@property (nonatomic, copy) NSString *name;
+
+
++ (NSArray *)allEvents;
+
 @end
