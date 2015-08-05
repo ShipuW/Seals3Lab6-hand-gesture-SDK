@@ -15,6 +15,9 @@
 		A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6744B291B720A2F00E222B0 /* Images.xcassets */; };
 		A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */; };
 		A6744B391B720A2F00E222B0 /* Seals3Lab6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */; };
+		A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B431B720A5400E222B0 /* ThirdViewController.m */; };
+		A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B461B720A6100E222B0 /* ForthViewController.m */; };
+		A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B4C1B720B5A00E222B0 /* FifthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,12 @@
 		A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Seals3Lab6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B371B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seals3Lab6Tests.m; sourceTree = "<group>"; };
+		A6744B421B720A5400E222B0 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		A6744B431B720A5400E222B0 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		A6744B451B720A6100E222B0 /* ForthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForthViewController.h; sourceTree = "<group>"; };
+		A6744B461B720A6100E222B0 /* ForthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthViewController.m; sourceTree = "<group>"; };
+		A6744B4B1B720B5A00E222B0 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
+		A6744B4C1B720B5A00E222B0 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +99,12 @@
 				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
 				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
 				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
+				A6744B421B720A5400E222B0 /* ThirdViewController.h */,
+				A6744B431B720A5400E222B0 /* ThirdViewController.m */,
+				A6744B451B720A6100E222B0 /* ForthViewController.h */,
+				A6744B461B720A6100E222B0 /* ForthViewController.m */,
+				A6744B4B1B720B5A00E222B0 /* FifthViewController.h */,
+				A6744B4C1B720B5A00E222B0 /* FifthViewController.m */,
 				A6744B261B720A2F00E222B0 /* Main.storyboard */,
 				A6744B291B720A2F00E222B0 /* Images.xcassets */,
 				A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */,
@@ -225,8 +240,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
+				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
+				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
+				A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
