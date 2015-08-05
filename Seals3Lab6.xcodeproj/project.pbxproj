@@ -18,6 +18,9 @@
 		A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B431B720A5400E222B0 /* ThirdViewController.m */; };
 		A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B461B720A6100E222B0 /* ForthViewController.m */; };
 		A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B4C1B720B5A00E222B0 /* FifthViewController.m */; };
+		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
+		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
+		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,12 @@
 		A6744B461B720A6100E222B0 /* ForthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthViewController.m; sourceTree = "<group>"; };
 		A6744B4B1B720B5A00E222B0 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
 		A6744B4C1B720B5A00E222B0 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
+		A6744B541B7217EE00E222B0 /* TBGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGesture.h; sourceTree = "<group>"; };
+		A6744B551B7217EE00E222B0 /* TBGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGesture.m; sourceTree = "<group>"; };
+		A6744B571B7217FB00E222B0 /* TBEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEvent.h; sourceTree = "<group>"; };
+		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
+		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
+		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +192,12 @@
 			children = (
 				A6744B4B1B720B5A00E222B0 /* FifthViewController.h */,
 				A6744B4C1B720B5A00E222B0 /* FifthViewController.m */,
+				A6744B541B7217EE00E222B0 /* TBGesture.h */,
+				A6744B551B7217EE00E222B0 /* TBGesture.m */,
+				A6744B571B7217FB00E222B0 /* TBEvent.h */,
+				A6744B581B7217FB00E222B0 /* TBEvent.m */,
+				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
+				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
 			);
 			name = "疯隐";
 			sourceTree = "<group>";
@@ -290,6 +305,9 @@
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
+				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
+				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
+				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
 				A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */,
