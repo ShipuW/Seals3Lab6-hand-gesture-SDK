@@ -95,7 +95,6 @@
 			children = (
 				A6744B1D1B720A2F00E222B0 /* AppDelegate.h */,
 				A6744B1E1B720A2F00E222B0 /* AppDelegate.m */,
-				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
 				A6744B4E1B720DFC00E222B0 /* Basic */,
 				A6744B291B720A2F00E222B0 /* Images.xcassets */,
 				A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */,
@@ -133,6 +132,7 @@
 		A6744B4E1B720DFC00E222B0 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
 				A6744B261B720A2F00E222B0 /* Main.storyboard */,
 				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
 				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
@@ -448,6 +448,7 @@
 				A6744B3E1B720A2F00E222B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6744B3F1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6Tests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +457,7 @@
 				A6744B411B720A2F00E222B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
