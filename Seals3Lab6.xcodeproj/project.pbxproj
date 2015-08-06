@@ -28,7 +28,6 @@
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
 		AA680F5F1B7347B10003F79B /* Gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = AA680F5A1B7347B10003F79B /* Gestures.json */; };
-		AA680F611B7347B10003F79B /* GLGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F5E1B7347B10003F79B /* GLGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +81,6 @@
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		AA680F5A1B7347B10003F79B /* Gestures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gestures.json; sourceTree = "<group>"; };
-		AA680F5D1B7347B10003F79B /* GLGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGestureRecognizer.h; sourceTree = "<group>"; };
-		AA680F5E1B7347B10003F79B /* GLGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,8 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				AA680F5A1B7347B10003F79B /* Gestures.json */,
-				AA680F5D1B7347B10003F79B /* GLGestureRecognizer.h */,
-				AA680F5E1B7347B10003F79B /* GLGestureRecognizer.m */,
 				AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */,
 				AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */,
 				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
@@ -352,7 +347,6 @@
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
-				AA680F611B7347B10003F79B /* GLGestureRecognizer.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
