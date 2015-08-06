@@ -9,11 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @class TBEvent;
+@class TBGesture;
 
 typedef NS_ENUM(NSInteger , TBGestureType) {
     TBGestureTypeSystem = 0,
     TBGestureTypeCustom = 1,
 };
+
+
+@protocol TBGestureDelegate
+
+
+- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(UICollectionView *)collectionView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;
+
+@end
 
 @interface TBGesture : NSObject
 
