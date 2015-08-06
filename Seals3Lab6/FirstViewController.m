@@ -7,8 +7,12 @@
 //
 
 #import "FirstViewController.h"
+#import "GLGestureRecognizer.h"
+#import "TBGestureRecognizer.h"
 
-@interface FirstViewController ()
+@interface FirstViewController () {
+    GLGestureRecognizer *recognizer;
+}
 
 @end
 
@@ -16,12 +20,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor blackColor];
+    recognizer = [[GLGestureRecognizer alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [recognizer resetTouches];
+    [recognizer addTouches:touches fromView:self.view];
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [recognizer addTouches:touches fromView:self.view];
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [recognizer addTouches:touches fromView:self.view];
+    [[TBGestureRecognizer shareGestureRecognizer]matchGestureFrom:recognizer.touchPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
+        NSLog(@"%@..", gestureId);
+    }];
 }
 
 @end
