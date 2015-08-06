@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
+		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
 		A6744B1C1B720A2F00E222B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1B1B720A2F00E222B0 /* main.m */; };
 		A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1E1B720A2F00E222B0 /* AppDelegate.m */; };
 		A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B211B720A2F00E222B0 /* FirstViewController.m */; };
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
+		1470D7A353C47CE07842E007 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		1470D8DD710635E99646D0BC /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventDisplayModel.h; sourceTree = "<group>"; };
 		A6744B161B720A2F00E222B0 /* Seals3Lab6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seals3Lab6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B1A1B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B1B1B720A2F00E222B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -198,6 +204,10 @@
 				A6744B581B7217FB00E222B0 /* TBEvent.m */,
 				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
 				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
+				1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */,
+				1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */,
+				1470D8DD710635E99646D0BC /* Aspects.m */,
+				1470D7A353C47CE07842E007 /* Aspects.h */,
 			);
 			name = "疯隐";
 			sourceTree = "<group>";
@@ -312,6 +322,8 @@
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
 				A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
+				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
+				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,4 +11,20 @@
 
 @implementation TBGesture
 
+- (NSArray *)gesturesForEvent:(TBEvent *)event {
+    return [self gesturesForEventId:event.objectId];
+}
+
+- (NSArray *)gesturesForEventId:(NSString *)eventId {
+    if (!eventId) {
+        return nil;
+    }
+
+    UIGestureRecognizer *gr = [[UIGestureRecognizer alloc] init];
+//    [gr addTarget:<#(id)target#> action:<#(SEL)action#>];
+    return gr;
+}
+
+
+
 @end

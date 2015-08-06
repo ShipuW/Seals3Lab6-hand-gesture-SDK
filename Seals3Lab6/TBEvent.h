@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *objectId;
 @property (nonatomic, copy) NSString *name;
 
+@property (nonatomic, assign) BOOL canEditGesture;
 
 + (NSArray *)allEvents;
 

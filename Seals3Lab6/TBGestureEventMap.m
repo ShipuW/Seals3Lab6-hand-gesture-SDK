@@ -7,6 +7,8 @@
 //
 
 #import "TBGestureEventMap.h"
+#import "TBGesture.h"
+#import "TBEvent.h"
 
 @implementation TBGestureEventMap
 

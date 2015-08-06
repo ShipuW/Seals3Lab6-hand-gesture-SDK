@@ -7,17 +7,40 @@
 //
 
 #import "FifthViewController.h"
-
+#import "Aspects.h"
 @interface FifthViewController ()
 
 @end
 
 @implementation FifthViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter usingBlock:^(id info, BOOL animated) {
+        NSLog(@"viewDidAppear:");
+    } error:nil];
+
+//    NSMethodSignature *ms = [[UIControl class] methodSignatureForSelector:@selector(addTarget:action:forControlEvents:)];
+//    NSLog(@"%@", ms);
+
+    [UIButton aspect_hookSelector:@selector(addTarget:action:forControlEvents:) withOptions:AspectPositionAfter usingBlock:^(id info, id target, SEL s, UIControlEvents evt) {
+//        NSLog(@"%@", info);
+//        NSLog(@"%@", target);
+//        NSLog(@"%@", evt);
+        NSLog(@"before button action");
+    } error:nil];
+
+    UIButton *button = [[UIButton alloc] init];
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,4 +57,8 @@
 }
 */
 
+
+- (void)buttonAction:(id)sender {
+    NSLog(@"action.");
+}
 @end

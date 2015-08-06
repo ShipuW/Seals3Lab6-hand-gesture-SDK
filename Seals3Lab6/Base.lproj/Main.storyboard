@@ -37,7 +37,7 @@
         <!--View Controller-->
         <scene sceneID="9dg-Gs-wQb">
             <objects>
-                <viewController id="aE9-hL-MTY" sceneMemberID="viewController">
+                <viewController id="aE9-hL-MTY" sceneMemberID="viewController" customClass="FifthViewController">
                     <view key="view" contentMode="scaleToFill" id="u70-S9-zvA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
