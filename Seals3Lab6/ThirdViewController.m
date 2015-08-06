@@ -26,19 +26,43 @@
 - (void)viewDidAppear:(BOOL)animated{
     
     UICustomGestureRecognizer *customRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
-    
+    customRecognizer.isSimpleGesture = YES;
+    UICustomGestureRecognizer *customRecognizer2 = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
+    customRecognizer2.isSimpleGesture = NO;
     [self.testView addGestureRecognizer:customRecognizer];
+    [self.testView2 addGestureRecognizer:customRecognizer2];
 }
+
 
 - (void)test:(UICustomGestureRecognizer *)recognizer
 {
+
+    switch (recognizer.direction) {
+        case UICustomGestureRecognizerDirectionUp:
+            NSLog(@"up");
+            break;
+        case UICustomGestureRecognizerDirectionDown:
+            NSLog(@"down");
+            break;
+        case UICustomGestureRecognizerDirectionLeft:
+            NSLog(@"left");
+            break;
+        case UICustomGestureRecognizerDirectionRight:
+            NSLog(@"right");
+            break;
+        default:
+            NSLog(@"not complete gesture");
+            break;
+    }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"
-                                                    message:@"message"
+                                                    message:recognizer.gestureId
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"OtherBtn",nil];
     [alert show];
-    NSLog(@"%@",recognizer.trackPoints);
+    
+    //NSLog(@"%@",@(recognizer.direction));
+    //NSLog(@"%@",recognizer.trackPoints);
 }
 
 

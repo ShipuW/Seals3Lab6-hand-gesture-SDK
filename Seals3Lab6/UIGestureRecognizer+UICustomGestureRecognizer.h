@@ -17,7 +17,8 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     UICustomGestureRecognizerDirectionRight = 1 << 0,
     UICustomGestureRecognizerDirectionLeft  = 1 << 1,
     UICustomGestureRecognizerDirectionUp    = 1 << 2,
-    UICustomGestureRecognizerDirectionDown  = 1 << 3
+    UICustomGestureRecognizerDirectionDown  = 1 << 3,
+    UICustomGestureRecognizerDirectionNot   = 1 << 4
 };
 
 
@@ -41,12 +42,13 @@ NS_CLASS_AVAILABLE_IOS(3_2) @interface UICustomGestureRecognizer : UILongPressGe
 }
 @property id target;
 @property SEL action;
-
+@property (nonatomic) NSString *gestureId;
+@property (nonatomic) BOOL isSimpleGesture;
 @property (nonatomic) NSMutableArray *trackPoints;
 @property (nonatomic) NSMutableArray *itemArray;
 //@property (assign, nonatomic) CGMutablePathRef path;
 @property (nonatomic, readwrite) NSArray *touchPoints;
-
+@property (nonatomic) UICustomGestureRecognizerDirection direction;
 
 - (instancetype)initWithTarget:(id)target action:(SEL)action;
 - (void)buttonLongPressed:(UILongPressGestureRecognizer *)sender;
