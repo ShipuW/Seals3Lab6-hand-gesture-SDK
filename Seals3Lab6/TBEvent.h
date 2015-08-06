@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TBGesture;
+
 @interface TBEvent : NSObject
 
 @property (nonatomic, copy) NSString *objectId;
@@ -15,6 +17,11 @@
 
 @property (nonatomic, assign) BOOL canEditGesture;
 
+
 + (NSArray *)allEvents;
+
+- (NSArray *)triggeredGestures;
+
+- (NSArray *)canSelectedGestures;
 
 @end

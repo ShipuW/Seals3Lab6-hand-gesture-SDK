@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 
 // 存储自带的手势
 @property (nonatomic, strong) UIGestureRecognizer *gestureRecognizer;
-// 存储定长的源于 CGPoint 的 NSValue 数组,
+// 存储定长的源于 CGPoint 的 NSValue 数组
 @property (nonatomic, strong) NSArray *path;
 
 - (NSArray *)gesturesForEvent:(TBEvent *)event;

@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *gestureId;
 @property (nonatomic, copy) NSString *eventId;
 
-@property (nonatomic, strong) TBGesture *gesture;
-@property (nonatomic, strong) TBEvent *event;
+- (TBGesture *)gesture;
+- (TBEvent *)event;
 
 @end
