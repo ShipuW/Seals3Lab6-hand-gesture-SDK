@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
 		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
+		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
+		600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05181B735FA9001ACC90 /* MyViewModel.m */; };
+		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
 		A6744B1C1B720A2F00E222B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1B1B720A2F00E222B0 /* main.m */; };
 		A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1E1B720A2F00E222B0 /* AppDelegate.m */; };
 		A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B211B720A2F00E222B0 /* FirstViewController.m */; };
@@ -40,6 +43,12 @@
 		1470D7A353C47CE07842E007 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		1470D8DD710635E99646D0BC /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventDisplayModel.h; sourceTree = "<group>"; };
+		600E05151B735FA9001ACC90 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		600E05161B735FA9001ACC90 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		600E05171B735FA9001ACC90 /* MyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewModel.h; sourceTree = "<group>"; };
+		600E05181B735FA9001ACC90 /* MyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewModel.m; sourceTree = "<group>"; };
+		600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+UICustomGestureRecognizer.h"; sourceTree = "<group>"; };
+		600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+UICustomGestureRecognizer.m"; sourceTree = "<group>"; };
 		A6744B161B720A2F00E222B0 /* Seals3Lab6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seals3Lab6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B1A1B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B1B1B720A2F00E222B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,6 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600E051F1B735FC5001ACC90 /* CGSDK */ = {
+			isa = PBXGroup;
+			children = (
+				600E05151B735FA9001ACC90 /* MyView.h */,
+				600E05161B735FA9001ACC90 /* MyView.m */,
+				600E05171B735FA9001ACC90 /* MyViewModel.h */,
+				600E05181B735FA9001ACC90 /* MyViewModel.m */,
+				600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */,
+				600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */,
+			);
+			name = CGSDK;
+			sourceTree = "<group>";
+		};
 		A6744B0D1B720A2E00E222B0 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +200,7 @@
 		A6744B511B72171300E222B0 /* 决仕 */ = {
 			isa = PBXGroup;
 			children = (
+				600E051F1B735FC5001ACC90 /* CGSDK */,
 				A6744B421B720A5400E222B0 /* ThirdViewController.h */,
 				A6744B431B720A5400E222B0 /* ThirdViewController.m */,
 			);
@@ -319,11 +342,14 @@
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
+				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
+				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
 				A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
 				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
 				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
+				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

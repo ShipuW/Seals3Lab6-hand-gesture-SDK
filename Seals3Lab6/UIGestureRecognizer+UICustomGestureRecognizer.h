@@ -1,0 +1,54 @@
+//
+//  UIGestureRecognizer+UICustomGestureRecognizer.h
+//  LongPressDrag
+//
+//  Created by 王士/Users/wangshipu/Desktop/LongPressDrag/LongPressDrag/AppDelegate.h溥 on 15/8/5.
+//  Copyright (c) 2015年 王士溥. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIGestureRecognizer.h>
+
+#import <Foundation/Foundation.h>
+#import "MyView.h"
+
+typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
+    UICustomGestureRecognizerDirectionRight = 1 << 0,
+    UICustomGestureRecognizerDirectionLeft  = 1 << 1,
+    UICustomGestureRecognizerDirectionUp    = 1 << 2,
+    UICustomGestureRecognizerDirectionDown  = 1 << 3
+};
+
+
+//@interface UIGestureRecognizer (UICustomGestureRecognizer)
+
+NS_CLASS_AVAILABLE_IOS(3_2) @interface UICustomGestureRecognizer : UILongPressGestureRecognizer
+{
+    @package
+    BOOL                _displayPoint;
+    BOOL                _contain;
+    BOOL                _shouldEnd;
+    CGPoint             _startPoint;
+    
+    CGPoint             _originPoint;
+    id                  _gestureTarget;
+    
+    CGPoint             _touchPoint;
+    UIView             *_touchView;
+    UIView             *_baseView;
+    MyView             *_myView;
+}
+@property id target;
+@property SEL action;
+
+@property (nonatomic) NSMutableArray *trackPoints;
+@property (nonatomic) NSMutableArray *itemArray;
+//@property (assign, nonatomic) CGMutablePathRef path;
+@property (nonatomic, readwrite) NSArray *touchPoints;
+
+
+- (instancetype)initWithTarget:(id)target action:(SEL)action;
+- (void)buttonLongPressed:(UILongPressGestureRecognizer *)sender;
+
+@end

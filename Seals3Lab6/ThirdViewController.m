@@ -8,7 +8,11 @@
 
 #import "ThirdViewController.h"
 
+#import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 @interface ThirdViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *testButton;
+@property (weak, nonatomic) IBOutlet UIView *testView;
+@property (weak, nonatomic) IBOutlet UIView *testView2;
 
 @end
 
@@ -18,6 +22,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    UICustomGestureRecognizer *customRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
+    
+    [self.testView addGestureRecognizer:customRecognizer];
+}
+
+- (void)test:(UICustomGestureRecognizer *)recognizer
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"
+                                                    message:@"message"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OtherBtn",nil];
+    [alert show];
+    NSLog(@"%@",recognizer.trackPoints);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

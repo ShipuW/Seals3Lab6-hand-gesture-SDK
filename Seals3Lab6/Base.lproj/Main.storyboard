@@ -19,25 +19,53 @@
             </objects>
             <point key="canvasLocation" x="971" y="-1042"/>
         </scene>
-        <!--View Controller-->
+        <!--Third View Controller-->
         <scene sceneID="tIc-dc-g9k">
             <objects>
-                <viewController id="m03-Cj-oxr" sceneMemberID="viewController">
+                <viewController id="m03-Cj-oxr" customClass="ThirdViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uP6-ND-aD2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WWv-FA-Scy">
+                                <rect key="frame" x="117" y="107" width="87" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.1423050411" blue="0.15651975700000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" id="zJK-RB-0Yw">
+                                <rect key="frame" x="80" y="206" width="160" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="a1z-Yq-U8O">
+                                        <rect key="frame" x="32" y="63" width="97" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.98733178494212526" green="1" blue="0.2439302230890229" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14682319182112813" green="1" blue="0.12254751559805954" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.180633233" green="0.33568701020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="ULx-p0-V6s"/>
+                    <connections>
+                        <outlet property="testButton" destination="WWv-FA-Scy" id="hkz-5z-MHy"/>
+                        <outlet property="testView" destination="zJK-RB-0Yw" id="CM9-nm-PgP"/>
+                        <outlet property="testView2" destination="a1z-Yq-U8O" id="IeA-f7-gcg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bq7-IL-Ms6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971" y="316"/>
         </scene>
-        <!--View Controller-->
+        <!--Fifth View Controller-->
         <scene sceneID="9dg-Gs-wQb">
             <objects>
-                <viewController id="aE9-hL-MTY" sceneMemberID="viewController" customClass="FifthViewController">
+                <viewController id="aE9-hL-MTY" customClass="FifthViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u70-S9-zvA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
