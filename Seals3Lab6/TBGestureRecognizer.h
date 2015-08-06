@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface TBGestureRecognizer : NSObject
+
+// 调用方法：
+// [[TBGestureRecognizer shareGestureRecognizer]matchGestureFrom: completion: {}];
+
+
 +(instancetype) shareGestureRecognizer;
 // points内为NSValue，由CGPoint转化
 -(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion;
