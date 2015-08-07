@@ -11,7 +11,6 @@
 @class TBGesture;
 @class TBEvent;
 
-
 @interface TBGestureEventMap : NSObject
 
 @property (nonatomic, copy) NSString *mapId;
@@ -20,5 +19,6 @@
 
 - (TBGesture *)gesture;
 - (TBEvent *)event;
+
 
 @end

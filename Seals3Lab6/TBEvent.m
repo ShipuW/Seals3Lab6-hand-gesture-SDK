@@ -13,6 +13,19 @@
 
 #pragma mark - Basic Methods
 
+- (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion {
+    NSArray *gestures = [TBGesture gesturesForEvent:self];
+
+}
+
+- (void)removeEvent:(TBEvent *)event completion:(void (^)(NSError *error))completion {
+
+}
+
+- (void)removeEventWithId:(NSString *)eventId completion:(void (^)(NSError *error))completion {
+
+}
+
 + (NSArray *)allEvents {
     TBEvent *evt1 = [self fake_collect];
     TBEvent *evt2 = [self fake_share];
@@ -41,6 +54,14 @@
     gesture2.name = @"手势2";
     gesture2.type = TBGestureTypeCustom;
     return @[gesture1, gesture2];
+}
+
+- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *error))completion {
+
+}
+
+- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
+
 }
 
 
