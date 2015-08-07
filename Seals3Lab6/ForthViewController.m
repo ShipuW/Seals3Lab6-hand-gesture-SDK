@@ -7,8 +7,16 @@
 //
 
 #import "ForthViewController.h"
+#import "Aspects.h"
+#import "TBGesture.h"
+#import "TBTestTableViewCell.h"
 
-@interface ForthViewController ()
+@interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property(nonatomic, strong) NSIndexPath *indexPath;
+@property(nonatomic, strong) UITableViewCell *cell;
 
 @end
 
@@ -16,22 +24,54 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self aspect_hookSelector:@selector(tableView:cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView,NSIndexPath *path) {
+        
+        self.indexPath = path;
+        
+        NSArray *cellArray = [tableView visibleCells];
+        for (UITableViewCell *cell in cellArray) {
+//            NSLog(@"cell.isHidden=%d",cell.isHidden);
+//            NSLog(@"[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
+            
+            
+            if ([path isEqual:[tableView indexPathForCell:cell]]) {
+            
+                self.cell = cell;
+            
+                
+                NSLog(@"haha==%@",[cell valueForKeyPath:@"gesture"]);
+                
+            }
+        }
+        
+    } error:NULL];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
+        
+    TBGesture *gesture = [[TBGesture alloc]init];
+    [gesture setName:[NSString stringWithFormat:@"test--%ld",indexPath.row]];
+    [gesture setObjectId:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [gesture setType:TBGestureTypeCustom];
+    
+    [cell setGesture:gesture];
+    
+    return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
-*/
 
 @end
