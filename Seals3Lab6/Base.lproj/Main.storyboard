@@ -92,16 +92,26 @@
             </objects>
             <point key="canvasLocation" x="971" y="-409"/>
         </scene>
-        <!--View Controller-->
+        <!--Forth View Controller-->
         <scene sceneID="Bor-WB-L6p">
             <objects>
-                <viewController id="vmn-Rj-43I" sceneMemberID="viewController">
+                <viewController id="vmn-Rj-43I" customClass="ForthViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B2H-nx-HR7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6QX-kV-MEc">
+                                <rect key="frame" x="0.0" y="66" width="320" height="450"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="YNh-7F-avM"/>
+                    <connections>
+                        <outlet property="tableView" destination="6QX-kV-MEc" id="pXX-Em-ZQh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDV-VL-jdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
