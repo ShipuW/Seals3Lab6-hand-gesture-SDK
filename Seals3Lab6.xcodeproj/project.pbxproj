@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
 		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
 		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
@@ -41,7 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
 		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
+		1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventManagerViewController.h; sourceTree = "<group>"; };
 		1470D7A353C47CE07842E007 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		1470D8DD710635E99646D0BC /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventDisplayModel.h; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 				1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */,
 				1470D8DD710635E99646D0BC /* Aspects.m */,
 				1470D7A353C47CE07842E007 /* Aspects.h */,
+				1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */,
+				1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */,
 			);
 			name = "疯隐";
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
 				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
 				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
+				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

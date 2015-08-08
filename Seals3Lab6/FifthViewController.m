@@ -8,33 +8,42 @@
 
 #import "FifthViewController.h"
 #import "Aspects.h"
-@interface FifthViewController ()
+#import "TBGestureEventManagerViewController.h"
+
+static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
+
+@interface FifthViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation FifthViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter usingBlock:^(id info, BOOL animated) {
-        NSLog(@"viewDidAppear:");
-    } error:nil];
-
-//    NSMethodSignature *ms = [[UIControl class] methodSignatureForSelector:@selector(addTarget:action:forControlEvents:)];
-//    NSLog(@"%@", ms);
-
-    [UIButton aspect_hookSelector:@selector(addTarget:action:forControlEvents:) withOptions:AspectPositionAfter usingBlock:^(id info, id target, SEL s, UIControlEvents evt) {
+//    [self aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter usingBlock:^(id info, BOOL animated) {
+//        NSLog(@"viewDidAppear:");
+//    } error:nil];
+//
+//    [UIButton aspect_hookSelector:@selector(addTarget:action:forControlEvents:) withOptions:AspectPositionAfter usingBlock:^(id info, id target, SEL s, UIControlEvents evt) {
 //        NSLog(@"%@", info);
 //        NSLog(@"%@", target);
 //        NSLog(@"%@", evt);
-        NSLog(@"before button action");
-    } error:nil];
+//        NSLog(@"before button action");
+//    } error:nil];
+//
+//    UIButton *button = [[UIButton alloc] init];
+//    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
 
-    UIButton *button = [[UIButton alloc] init];
-    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -61,4 +70,41 @@
 - (void)buttonAction:(id)sender {
     NSLog(@"action.");
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
+
+    UITableViewCell *cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
+    if (row == 0) {
+        cell.textLabel.text = @"事件管理";
+    } else {
+        cell.textLabel.text = @"模拟接入";
+    }
+
+
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    if (row == 0) {
+        TBGestureEventManagerViewController *vc = [[TBGestureEventManagerViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+}
+
+
 @end
