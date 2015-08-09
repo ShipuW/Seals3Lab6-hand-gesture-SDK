@@ -47,13 +47,6 @@
         // create it
         self.db = [FMDatabase databaseWithPath:self.dbPath];
         if ([self.db open]) {
-//            NSString * sql = @"CREATE TABLE 'User' ('id' INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , 'name' VARCHAR(30), 'password' VARCHAR(30))";
-//            BOOL res = [db executeUpdate:sql];
-//            if (!res) {
-//                debugLog(@"error when creating db table");
-//            } else {
-//                debugLog(@"succ to creating db table");
-//            }
             if ([self createGestureTable]) {
                 debugLog(@"创建 GestureTable 成功");
             } else {
@@ -67,15 +60,17 @@
             }
 
             if ([self createMapTable]) {
-                debugLog(@"创建 EventTable 成功");
+                debugLog(@"创建 MapTable 成功");
             } else {
-                debugLog(@"创建 EventTable 失败");
+                debugLog(@"创建 MapTable 失败");
             }
 
             [self.db close];
         } else {
             debugLog(@"error when open db");
         }
+    } else {
+        debugLog(@"数据库文件已存在");
     }
 }
 
@@ -85,9 +80,9 @@
                     @"Gesture ("
                     @"id integer primary key,"
                     @"name varchar(20),"
-                    @"type integer"
-                    @"path varchar(1000)"
-                    @"rawPath varchar(1500)"
+                    @"type integer,"
+                    @"path text,"
+                    @"rawPath text"
                     @")";
     return [self.db executeStatements:sql];
 }
@@ -107,8 +102,8 @@
     NSString *sql = @"CREATE TABLE IF NOT EXISTS "
                     @"Map ("
                     @"id integer primary key,"
-                    @"name varchar(20),"
-                    @"path varchar(20)"
+                    @"gestureId varchar(20),"
+                    @"eventId varchar(20)"
                     @")";
     return [self.db executeUpdate:sql];
 }
@@ -137,7 +132,6 @@
             }
         }
         gesture.path = path;
-//        gesture.path = object[@"path"];
         [gestures addObject:gesture];
     }
     !completion ?: completion(gestures, nil);

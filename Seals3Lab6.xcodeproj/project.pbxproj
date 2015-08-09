@@ -285,8 +285,8 @@
 				1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */,
 				1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */,
 				1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */,
-				1470D82D099B2E62DB12EAA4 /* TBDataManager.m */,
 				1470D7B6817F32E80F322A9A /* TBDataManager.h */,
+				1470D82D099B2E62DB12EAA4 /* TBDataManager.m */,
 				1470D3127A457923FF1958B3 /* MacroUtils.h */,
 			);
 			name = "疯隐";

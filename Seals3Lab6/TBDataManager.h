@@ -13,5 +13,5 @@
 + (instancetype)sharedManager;
 
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion;
-
+- (void)createDatabase;
 @end
