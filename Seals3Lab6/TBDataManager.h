@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TBGesture;
+
 #define SharedDataManager [TBDataManager sharedManager]
 
 
@@ -14,4 +16,7 @@
 
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion;
 - (void)createDatabase;
+
+- (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
+
 @end

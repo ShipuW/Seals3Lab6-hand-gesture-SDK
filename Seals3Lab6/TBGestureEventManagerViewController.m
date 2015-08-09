@@ -25,7 +25,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     self.tableView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
-    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
 
     self.eventsList = [TBEvent allEvents];
 

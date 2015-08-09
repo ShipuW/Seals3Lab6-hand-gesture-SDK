@@ -5,3 +5,5 @@
 #define debugLog(...)
 #define debugMethod()
 #endif
+
+#import "RACEXTScope.h"
