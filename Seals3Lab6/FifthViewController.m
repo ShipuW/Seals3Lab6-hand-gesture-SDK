@@ -9,6 +9,8 @@
 #import "FifthViewController.h"
 #import "Aspects.h"
 #import "TBGestureEventManagerViewController.h"
+#import "TBDataManager.h"
+#import "MacroUtils.h"
 
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
@@ -43,7 +45,11 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     [self.view addSubview:self.tableView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-
+    [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
+        if (!error) {
+            debugLog(@"%@", results);
+        }
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

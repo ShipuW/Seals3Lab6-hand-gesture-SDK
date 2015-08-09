@@ -13,7 +13,7 @@
 
 typedef NS_ENUM(NSInteger , TBGestureType) {
     TBGestureTypeSystem = 0,
-    TBGestureTypeCustom = 1,
+    TBGestureTypeCustom = 100,
 };
 
 

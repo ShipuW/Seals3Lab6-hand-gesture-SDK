@@ -8,6 +8,17 @@
 
 #import "TBEvent.h"
 #import "TBGesture.h"
+#import "FMDB.h"
+
+static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
+
+@interface TBEvent ()
+
+@property (nonatomic, strong) FMDatabase *eventDatabase;
+@property (nonatomic, copy, readonly) NSString *dbPath;
+
+
+@end
 
 @implementation TBEvent
 
@@ -56,6 +67,15 @@
     return @[gesture1, gesture2];
 }
 
+- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *error))completion {
+
+}
+
+- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
+
+}
+
+
 - (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *error))completion {
 
 }
@@ -78,5 +98,25 @@
     event.name = @"分享";
     return event;
 }
+
+
+//#pragma mark - 本地存储
+//
+//- (NSString *)dbPath {
+//    NSString * doc = PATH_OF_DOCUMENT;
+//    NSString * path = [doc stringByAppendingPathComponent:@"user.sqlite"];
+//    self.dbPath = path;
+//    return _dbPath;
+//}
+//
+//
+//- (FMDatabase *)eventDatabase {
+//    if (!_eventDatabase) {
+//        _eventDatabase = [FMDatabase databaseWithPath:kEventDatabasePath];
+//    }
+//    return _eventDatabase;
+//}
+
+
 
 @end
