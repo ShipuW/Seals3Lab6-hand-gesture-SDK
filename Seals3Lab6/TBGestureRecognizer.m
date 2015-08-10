@@ -125,7 +125,7 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     for (TBGesture *templateGesture in self.gestureTemplates) {
         CGPoint template[kSamplePoints];
         for (i = 0; i < kSamplePoints; i++) {
-            template[i] = [templateGesture.rawPath[i] CGPointValue];
+            template[i] = [templateGesture.path[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
         
