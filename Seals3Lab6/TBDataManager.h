@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @class TBGesture;
-
+@class TBEvent;
 #define SharedDataManager [TBDataManager sharedManager]
 
 
@@ -15,8 +15,17 @@
 + (instancetype)sharedManager;
 
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion;
+
 - (void)createDatabase;
 
-- (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
+/**
+ *  添加手势
+ *
+ *  @param gesture    <#gesture description#>
+ *  @param completion <#completion description#>
+ */
+- (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(TBGesture *gesture, NSError *error))completion;
+
+- (void)mapEvent:(TBEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
 
 @end
