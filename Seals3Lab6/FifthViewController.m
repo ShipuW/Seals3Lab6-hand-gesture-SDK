@@ -70,14 +70,6 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     vm3.didSelectAction = ^{
         @strongify(self);
 
-//        NSString *jsonString = @"[ [0.00, 0.50], [-0.02, 0.49], [-0.15, 0.45], [-0.36, 0.37], [-0.73, 0.19], [-0.93, 0.10], [-1.09, 0.04], [-1.16, 0.02], [-1.18, 0.02], [-1.03, -0.02], [-0.66, -0.12], [-0.04, -0.29], [0.29, -0.38], [0.52, -0.46], [0.65, -0.50], [0.78, -0.54], [0.81, -0.55], [0.82, -0.54], [0.79, -0.51], [0.72, -0.41], [0.64, -0.30], [0.52, -0.15], [0.35, 0.04], [0.23, 0.15], [0.16, 0.23], [0.11, 0.31], [0.02, 0.41], [-0.01, 0.47], [-0.03, 0.49], [-0.03, 0.50], ]";
-//        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-//        NSError *error;
-//        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-//        if (error) {
-//            debugLog(error);
-//        }
-
         [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
             TBGesture *gesture = results[0];
             [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
@@ -88,15 +80,6 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
                 }
             }];
         }];
-
-
-//        NSError *err;
-//        NSData *rData = [NSJSONSerialization dataWithJSONObject:jsonArray options:NSJSONWritingPrettyPrinted error:&err];
-//        NSString *string = [[NSString alloc] initWithData:rData encoding:NSUTF8StringEncoding];
-//        debugLog(string);
-
-
-
     };
 
     
