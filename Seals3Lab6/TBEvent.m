@@ -37,6 +37,26 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 }
 
+- (instancetype)initWithEventType:(TBEventType)eventType {
+    self = [super init];
+    if (self) {
+//        switch (eventType) {
+//            case TBEventTypeCollect: {
+//                
+//                break;
+//            }
+//            case TBEventTypeShare: {
+////                <#statement#>
+//                break;
+//            }
+//            default: {
+//                break;
+//            }
+//        }
+    }
+    return self;
+}
+
 + (NSArray *)allEvents {
     TBEvent *evt1 = [self fake_collect];
     TBEvent *evt2 = [self fake_share];
