@@ -12,7 +12,7 @@
 #import "MacroUtils.h"
 static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
 
-@interface TBTableViewSimulationViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TBTableViewSimulationViewController () <UITableViewDataSource, UITableViewDelegate, TBGestureDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -36,6 +36,8 @@ static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
     [gesture addToTableView:self.tableView completion:^(NSError *error) {
         debugLog(@"绑定成功.");
     }];
+    gesture.delegate = self;
+    
     
 //    [gesture addToTableView:self.tableView forKeyPath:@"contentView" completion:^(NSError *error) {
 //        
@@ -65,6 +67,10 @@ static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
+    debugLog(@"手势被触发");
 }
 
 /*
