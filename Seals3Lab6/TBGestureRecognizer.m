@@ -7,6 +7,9 @@
 //
 #import <UIKit/UIKit.h>
 #import "TBGestureRecognizer.h"
+#import "TBDataManager.h"
+#import "MacroUtils.h"
+#import "TBGesture.h"
 
 #define kSamplePoints 30
 #define MIN_SCORE 0.5
@@ -24,7 +27,7 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
 
 @interface TBGestureRecognizer()
 
-@property (nonatomic, strong) NSDictionary *gestureDic;
+@property (nonatomic, strong) NSArray *gestureTemplates;
 @property (nonatomic, strong) NSArray *gesture;
 @property (nonatomic, strong) NSMutableArray *resampleGesture;
 
@@ -37,11 +40,13 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     self = [super init];
     if (self) {
         self.resampleGesture = [NSMutableArray array];
-        self.gestureDic = [NSDictionary dictionary];
+        self.gestureTemplates = [NSArray array];
         self.gesture = [NSArray array];
-        NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Gestures" ofType:@"json"]];
-        NSError *error;
-        [self loadTemplatesFromJsonData:jsonData error:&error];
+        @weakify(self);
+        [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
+            @strongify(self);
+            self.gestureTemplates = results;
+        }];
     }
     return self;
 }
@@ -55,28 +60,6 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     });
     return recognizer;
 }
-
-// TO BE DELETED
-- (BOOL)loadTemplatesFromJsonData:(NSData *)jsonData error:(NSError **)errorOut
-{
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:errorOut];
-    if (!dict)
-        return NO;
-    
-    NSMutableDictionary *output = [NSMutableDictionary dictionary];
-    [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *value, BOOL *stop) {
-        NSMutableArray *points = [NSMutableArray arrayWithCapacity:value.count];
-        for (NSArray *pointArray in value)
-        {
-            CGPoint point = CGPointMake([pointArray[0] floatValue], [pointArray[1] floatValue]);
-            [points addObject:[NSValue valueWithCGPoint:point]];
-        }
-        output[key] = [points copy]; // mutable to immutable
-    }];
-    self.gestureDic = [output copy]; // mutable to immuatable
-    return YES;
-}
-
 
 #pragma mark --- callback
 -(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion
@@ -133,18 +116,16 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     Translate(samples, kSamplePoints, -center.x, -center.y);
     
     float best = INFINITY;
-    for (NSString *templateName in [self.gestureDic allKeys]) {
-        NSArray *templateSamples = [self.gestureDic objectForKey:templateName];
+    for (TBGesture *templateGesture in self.gestureTemplates) {
         CGPoint template[kSamplePoints];
-        NSAssert(kSamplePoints == [templateSamples count], @"Template size mismatch");
         for (i = 0; i < kSamplePoints; i++) {
-            template[i] = [[templateSamples objectAtIndex:i] CGPointValue];
+            template[i] = [templateGesture.rawPath[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
-        NSLog(@"%@: %f", templateName, score);
-
+        NSLog(@"%@: %f", templateGesture.name, score);
+        
         if (score < best) {
-            bestTemplateName = [NSString stringWithString:templateName];
+            bestTemplateName = [NSString stringWithString:templateGesture.name];
             best = score;
         }
     }
@@ -154,15 +135,6 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
         CGPoint pt = samples[i];
         [self.resampleGesture addObject:[NSValue valueWithCGPoint:pt]];
     }
-    
-//    NSMutableString *string = [NSMutableString stringWithString:@"\"template_name\": [ "];
-//    for (i = 0; i < kSamplePoints; i++)
-//    {
-//        CGPoint pt = samples[i];
-//        [string appendFormat:@"[%0.2f, %0.2f], ", pt.x, pt.y];
-//    }
-//    [string appendString:@"],\n"];
-//    NSLog(@"Read:\n%@", string);
     
     if (best < MIN_SCORE) {
         return bestTemplateName;

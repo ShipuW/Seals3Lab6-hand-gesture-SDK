@@ -34,6 +34,7 @@
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
 		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
+		AA4E2C2E1B783BDB0009739E /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C2D1B783BDB0009739E /* TBTestTableViewCell.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
 		AA680F5F1B7347B10003F79B /* Gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = AA680F5A1B7347B10003F79B /* Gestures.json */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,8 @@
 		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
 		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
 		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
+		AA4E2C2C1B783BDB0009739E /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
+		AA4E2C2D1B783BDB0009739E /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		AA680F5A1B7347B10003F79B /* Gestures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gestures.json; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 			children = (
 				A6744B451B720A6100E222B0 /* ForthViewController.h */,
 				A6744B461B720A6100E222B0 /* ForthViewController.m */,
+				AA4E2C2C1B783BDB0009739E /* TBTestTableViewCell.h */,
+				AA4E2C2D1B783BDB0009739E /* TBTestTableViewCell.m */,
 			);
 			name = "言杰";
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
+				AA4E2C2E1B783BDB0009739E /* TBTestTableViewCell.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
