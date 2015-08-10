@@ -30,11 +30,6 @@
                 NSLog(@"subview==%@",subView);
             }
         }
-
-//        if (keyPath!=nil && ![keyPath isEqualToString:@""]) {
-//            
-//            NSLog(@"[cell valueForKeyPath:keyPath]==%@",[cell valueForKeyPath:keyPath]);
-//        }
         
         [gesture addToView:cell completion:^(NSError *error) {
             NSLog(@"cell add");
