@@ -80,7 +80,11 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
             TBGesture *gesture = results[0];
             [SharedDataManager addCustomGesture:gesture completion:^(NSError *error) {
-                debugLog(@"%@", error);
+                if (error) {
+                    debugLog(@"%@", error);
+                } else {
+                    debugLog(@"写入成功");
+                }
             }];
         }];
 

@@ -85,9 +85,15 @@
         !completion ?: completion(error);
         return;
     }
-    int id = [@([[NSDate date] timeIntervalSince1970]) intValue];
-    NSError *error = nil;
+//    int objectId = [@([[NSDate date] timeIntervalSince1970]) intValue];
 
+    double ts = [[NSDate date] timeIntervalSince1970];
+    ts = fmod(ts, @(1000000).doubleValue);
+    ts = ts * 1000;
+    int objectId = @(ts).intValue;
+
+    NSError *error = nil;
+    
     NSMutableArray *jsonArray = [NSMutableArray arrayWithCapacity:gesture.path.count];
     for (NSValue *value in gesture.path) {
         CGPoint point = [value CGPointValue];
@@ -124,14 +130,25 @@
 
 
     NSString *sql = @"INSERT INTO Gesture VALUES (?, ?, ?, ?, ?)";
-    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
-    NSError *rsError;
-    if ([db open]) {
-        BOOL rs = [db executeUpdate:sql, @(id), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
-        rsError = rs ? nil : [[NSError alloc] init];
-        [db close];
-    }
-    !completion ?: completion(rsError);
+    
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:self.dbPath];
+    [queue inDatabase:^(FMDatabase *db) {
+        NSError *rsError = nil;
+        if ([db open]) {
+            BOOL rs = [db executeUpdate:sql, @(objectId), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
+            rsError = rs ? nil : [[NSError alloc] init];
+            [db close];
+        }
+        !completion ?: completion(rsError);
+    }];
+//    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+//    NSError *rsError;
+//    if ([db open]) {
+//        BOOL rs = [db executeUpdate:sql, @(objectId), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
+//        rsError = rs ? nil : [[NSError alloc] init];
+//        [db close];
+//    }
+//    !completion ?: completion(rsError);
 }
 
 
