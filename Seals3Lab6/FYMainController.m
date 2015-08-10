@@ -12,7 +12,8 @@
 #import "FYCell.h"
 #import "FYAddEventCtroller.h"
 #import "TBEvent.h"
-
+#import "TBDataManager.h"
+#import "MacroUtils.h"
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,weak) UITableView* tableView;
@@ -29,12 +30,6 @@
 {
     if (_eventArray == nil) {
         _eventArray = [NSMutableArray array];
-        NSArray* array = [TBEvent allEvents];
-        for (TBEvent*event in array) {
-            FYEventData* data = [[FYEventData alloc] init];
-            data.event = event;
-            [_eventArray addObject:data];
-        }
     }
     return _eventArray;
 }
@@ -60,6 +55,19 @@
     
     tableView.delegate = self;
     tableView.dataSource = self;
+    
+    @weakify(self);
+    [SharedDataManager loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        @strongify(self);
+        for (TBEvent*event in results) {
+            FYEventData* data = [[FYEventData alloc] init];
+            data.event = event;
+            [self.eventArray addObject:data];
+        }
+        [self.tableView reloadData];
+        
+    }];
+    
     [self.view addSubview:tableView];
 }
 -(void)addHeadView
