@@ -11,6 +11,7 @@
 #import "FYCreateGesture.h"
 #import "FYCell.h"
 #import "FYAddEventCtroller.h"
+#import "TBEvent.h"
 
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
@@ -28,22 +29,17 @@
 {
     if (_eventArray == nil) {
         _eventArray = [NSMutableArray array];
-        FYEventData* data1 = [[FYEventData alloc] init];
-        data1.icon = @"";
-        data1.event = @"收藏";
-        [_eventArray addObject:data1];
-        
-        FYEventData* data2 = [[FYEventData alloc] init];
-        data2.icon = @"";
-        data2.event = @"分享";
-        [_eventArray addObject:data2];
+        NSArray* array = [TBEvent allEvents];
+        for (TBEvent*event in array) {
+            FYEventData* data = [[FYEventData alloc] init];
+            data.event = event;
+            [_eventArray addObject:data];
+        }
     }
-    
     return _eventArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     self.navigationItem.title = @"设置手势";
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGesture)];
@@ -118,6 +114,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%lu",(unsigned long)self.eventArray.count);
     return self.eventArray.count;
 }
 
@@ -136,24 +133,27 @@
 }
 -(void)shutDown
 {
-    if (self.switchButton.isOn) {//开启手势
-        if (self.eventArray.count == 0) {
-            self.eventArray  = nil;
-        }
-    }else{//关闭手势
-        [self.eventArray removeAllObjects];
-        [self.tableView reloadData];
-    }
+//    if (self.switchButton.isOn) {//开启手势
+//        if (self.eventArray.count == 0) {
+//            self.eventArray  = nil;
+//        }
+//    }else{//关闭手势
+//        [self.eventArray removeAllObjects];
+//        [self.tableView reloadData];
+//    }
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //调出绘画视图
     FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
+    //传入事件和事件ID
     drawView.eventData = self.eventArray[indexPath.row];
+    drawView.objectId = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    
     drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
     drawView.backgroundColor = [UIColor whiteColor];
     drawView.alpha = 0.9;
-    
     [[UIApplication sharedApplication].keyWindow addSubview:drawView];
 }
 

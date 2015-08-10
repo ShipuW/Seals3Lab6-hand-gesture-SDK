@@ -11,7 +11,11 @@
 
 @interface FYCreateGesture : UIView
 
+/**
+ *  事件ID
+ */
 @property(nonatomic,strong)FYEventData* eventData;
+@property(nonatomic,copy) NSString* objectId;
 
 @property (assign, nonatomic) CGFloat lineWidth;
 @property (strong, nonatomic) UIColor *lineColor;

@@ -9,7 +9,8 @@
 #import "FYCreateGesture.h"
 #import "TBGestureRecognizer.h"
 #import "FYEventData.h"
-
+#import "TBGesture.h"
+#import "TBDataManager.h"
 @interface FYCreateGesture()<UIAlertViewDelegate>
 @property(nonatomic,weak) UILabel* createOperation;
 @property(nonatomic,weak) UILabel* operation;
@@ -76,7 +77,7 @@
 -(void)setEventData:(FYEventData *)eventData
 {
     _eventData = eventData;
-    self.operation.text = eventData.event;
+    self.operation.text = eventData.event.name;
 }
 -(void)tap:(UITapGestureRecognizer*)gr
 {
@@ -137,7 +138,24 @@
             
             //调用SDK手势保存接口
             [self clipImage];
+            
+            //调用疯瘾SDK数据存储接口
+            TBGesture *gesture = [[TBGesture alloc] init];
+            gesture.rawPath = self.pointArray;
+            gesture.path = resampledGesture;
+            [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
+                if (error) {
+                    NSLog(@"addCustomGesture===========%@",error);
+                } else {
+                    [SharedDataManager mapEvent:self.eventData.event withGesture:gesture completion:^(NSError *error) {
+                        if (error) {
+                            NSLog(@"mapEvent===========%@",error);
+                        }
+                    }];
+                }
+            }];
             [self.pointArray removeAllObjects];
+        
             [self removeFromSuperview];
         }
     }];
