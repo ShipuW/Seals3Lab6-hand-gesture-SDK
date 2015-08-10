@@ -26,6 +26,15 @@
 }
 
 
++ (instancetype)gestureForEvent:(TBEvent *)event {
+    return [self gestureForEventId:event.objectId];
+}
+
++ (instancetype)gestureForEventId:(NSString *)eventId {
+    TBGesture *gesture = [[TBGesture alloc] init];
+    return gesture;
+}
+
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
     self.gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
     [view addGestureRecognizer:self.gestureRecognizer];
