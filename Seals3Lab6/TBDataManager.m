@@ -187,6 +187,7 @@
             }
         }
         gesture.path = path;
+        gesture.rawPath = path;
         [gestures addObject:gesture];
     }
     !completion ?: completion(gestures, nil);
