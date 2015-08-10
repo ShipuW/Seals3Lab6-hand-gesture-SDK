@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */; };
+		01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */; };
 		1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D81B6F1A4F320A3FE59B /* FifthViewController.m */; };
 		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
-		0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */; };
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
 		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
 		1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */; };
@@ -50,9 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
 		0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
 		0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
+		01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIndexPathCellModel.h; sourceTree = "<group>"; };
+		01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIndexPathCellModel.m; sourceTree = "<group>"; };
+		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
 		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
 		1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventManagerViewController.h; sourceTree = "<group>"; };
 		1470D3127A457923FF1958B3 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 				A6744B461B720A6100E222B0 /* ForthViewController.m */,
 				0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */,
 				0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */,
+				01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */,
+				01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */,
 			);
 			name = "言杰";
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
+				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,

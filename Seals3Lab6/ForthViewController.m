@@ -10,13 +10,13 @@
 #import "Aspects.h"
 #import "TBGesture.h"
 #import "TBTestTableViewCell.h"
+#import "TBIndexPathCellModel.h"
 
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property(nonatomic, strong) NSIndexPath *indexPath;
-@property(nonatomic, strong) UITableViewCell *cell;
+@property(nonatomic, strong) NSArray *indexPathAndCells;
 
 @end
 
@@ -28,45 +28,57 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    [self aspect_hookSelector:@selector(tableView:cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView,NSIndexPath *path) {
-        
-        self.indexPath = path;
-        
-        NSArray *cellArray = [tableView visibleCells];
-        for (UITableViewCell *cell in cellArray) {
-//            NSLog(@"cell.isHidden=%d",cell.isHidden);
-//            NSLog(@"[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
-            
-            
-            if ([path isEqual:[tableView indexPathForCell:cell]]) {
-            
-                self.cell = cell;
-            
-                
-                NSLog(@"haha==%@",[cell valueForKeyPath:@"gesture"]);
-                
-            }
-        }
-        
-    } error:NULL];
+    [self hookViewController:self view:nil tableView:self.tableView];
     
 }
 
 
+//hook
+-(void)hookViewController:(UIViewController *)vc view:(UIView *)view tableView:(UITableView *)tableView {
+    
+    [vc aspect_hookSelector:@selector(tableView: cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView,NSIndexPath *path) {
+        
+        TBIndexPathCellModel *model = [[TBIndexPathCellModel alloc]init];
+        model.indexPath = path;
+        
+        NSArray *cellArray = [tableView visibleCells];
+        
+       
+        for (UITableViewCell *cell in cellArray) {
+            
+            NSLog(@"===============[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
+            if (([tableView indexPathForCell:cell].row-1 == path.row) || ([tableView indexPathForCell:cell].row+1 == path.row)) {
+//                model.cell = cell;
+                
+//                NSLog(@"path.row=%d,[tableView indexPathForCell:cell]=%d",path.row,[tableView indexPathForCell:cell].row-1);
+            }
+        }
+        
+    } error:NULL];
+}
+
+#pragma tableView数据源方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 20;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
-        
-    TBGesture *gesture = [[TBGesture alloc]init];
-    [gesture setName:[NSString stringWithFormat:@"test--%ld",indexPath.row]];
-    [gesture setObjectId:[NSString stringWithFormat:@"%ld",indexPath.row]];
-    [gesture setType:TBGestureTypeCustom];
-    
-    [cell setGesture:gesture];
-    
+//    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
+//        
+//    TBGesture *gesture = [[TBGesture alloc]init];
+//    [gesture setName:[NSString stringWithFormat:@"test--%ld",indexPath.row]];
+//    [gesture setObjectId:[NSString stringWithFormat:@"%ld",indexPath.row]];
+//    [gesture setType:TBGestureTypeCustom];
+//    
+//    [cell setGesture:gesture];
+
+    static NSString *ID=@"test";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"text--%d",indexPath.row];
+
     return cell;
 }
 
