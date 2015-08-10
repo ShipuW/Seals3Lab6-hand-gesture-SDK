@@ -37,23 +37,6 @@
 - (void)test:(UICustomGestureRecognizer *)recognizer
 {
 
-    switch (recognizer.direction) {
-        case UICustomGestureRecognizerDirectionUp:
-            NSLog(@"up");
-            break;
-        case UICustomGestureRecognizerDirectionDown:
-            NSLog(@"down");
-            break;
-        case UICustomGestureRecognizerDirectionLeft:
-            NSLog(@"left");
-            break;
-        case UICustomGestureRecognizerDirectionRight:
-            NSLog(@"right");
-            break;
-        default:
-            NSLog(@"not complete gesture");
-            break;
-    }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"
                                                     message:recognizer.gestureId
                                                    delegate:self

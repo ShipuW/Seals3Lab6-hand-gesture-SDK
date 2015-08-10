@@ -11,6 +11,7 @@
 #import "TBGestureRecognizer.h"
 #import "MyView.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
+#import "PostConnection.h"
 #define Duration 0.5 //长按响应时间
 
 
@@ -60,6 +61,8 @@
                 _direction = UICustomGestureRecognizerDirectionUp;
                 _gestureId = @"simple up";
             }
+        }else {
+            _gestureId = @"gesture failed";
         }
     }
 }
@@ -133,7 +136,7 @@
         }
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
-            
+            //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
             
             if (_isSimpleGesture) {
                 [self simpleDirectionRecognizer];
@@ -144,8 +147,9 @@
                 }];
             }
             
+            [PostConnection PostGestureWithAction:@"1" UsrId:@"123" EventId:@"collection" Points:_trackPoints];
             
-            
+            //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
             
             [UIView animateWithDuration:Duration animations:^{
                 [_myView removeFromSuperview];

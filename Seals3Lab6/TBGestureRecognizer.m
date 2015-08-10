@@ -16,6 +16,21 @@
 #define MIN_SCORE 0.5
 #define PI 3.14
 
+
+#define NSLog(...)
+
+
+// Utility/Math Functions:
+CGPoint Centroid(CGPoint *samples, int samplePoints);
+void Translate(CGPoint *samples, int samplePoints, float x, float y);
+void Rotate(CGPoint *samples, int samplePoints, float radians);
+void Scale(CGPoint *samples, int samplePoints, float xScale, float yScale);
+float Distance(CGPoint p1, CGPoint p2);
+float PathDistance(CGPoint *pts1, CGPoint *pts2, int count);
+float DistanceAtAngle(CGPoint *samples, int samplePoints, CGPoint *template, float theta);
+float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template);
+
+
 @interface TBGestureRecognizer()
 
 @property (nonatomic, strong) NSArray *gestureTemplates;
@@ -63,7 +78,7 @@
 {
     self.gesture = points;
     
-    NSString *bestTemplateName;
+    NSString *bestTemplateId;
     int i;
     CGPoint samples[kSamplePoints];
     
@@ -113,11 +128,11 @@
             template[i] = [templateGesture.rawPath[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
-        NSLog(@"%@: %f", templateGesture.name, score);
         
         if (score < best) {
-            bestTemplateName = [NSString stringWithString:templateGesture.name];
+            bestTemplateId = [NSString stringWithString:templateGesture.objectId];
             best = score;
+            NSLog(@"best: %@: %f", templateGesture.name, score);
         }
     }
     self.resampleGesture = [NSMutableArray arrayWithCapacity:kSamplePoints];
@@ -128,7 +143,7 @@
     }
     
     if (best < MIN_SCORE) {
-        return bestTemplateName;
+        return bestTemplateId;
     } else {
         return nil;
     }

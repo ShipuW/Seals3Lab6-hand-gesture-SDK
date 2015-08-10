@@ -18,6 +18,8 @@
 		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
 		600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05181B735FA9001ACC90 /* MyViewModel.m */; };
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
+		608BEC491B78676B00712359 /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 608BEC481B78676B00712359 /* TBTestTableViewCell.m */; };
+		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
 		A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */ = {isa = PBXBuildFile; fileRef = A63F1AFA1B774E250088B299 /* GestureTemplets.json */; };
 		A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */; };
 		A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */; };
@@ -74,6 +76,10 @@
 		600E05181B735FA9001ACC90 /* MyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewModel.m; sourceTree = "<group>"; };
 		600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+UICustomGestureRecognizer.h"; sourceTree = "<group>"; };
 		600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+UICustomGestureRecognizer.m"; sourceTree = "<group>"; };
+		608BEC471B78676B00712359 /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
+		608BEC481B78676B00712359 /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
+		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
+		60ECA3C11B773721005B27DF /* PostConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostConnection.h; sourceTree = "<group>"; };
 		A63F1AFA1B774E250088B299 /* GestureTemplets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GestureTemplets.json; sourceTree = "<group>"; };
 		A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Utils.h"; sourceTree = "<group>"; };
 		A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Utils.m"; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 				600E05181B735FA9001ACC90 /* MyViewModel.m */,
 				600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */,
 				600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */,
+				60ECA3BF1B773712005B27DF /* PostConnection.m */,
+				60ECA3C11B773721005B27DF /* PostConnection.h */,
 			);
 			name = CGSDK;
 			sourceTree = "<group>";
@@ -337,10 +345,10 @@
 		A6744B521B72171900E222B0 /* 言杰 */ = {
 			isa = PBXGroup;
 			children = (
+				608BEC471B78676B00712359 /* TBTestTableViewCell.h */,
+				608BEC481B78676B00712359 /* TBTestTableViewCell.m */,
 				A6744B451B720A6100E222B0 /* ForthViewController.h */,
 				A6744B461B720A6100E222B0 /* ForthViewController.m */,
-				AA4E2C2C1B783BDB0009739E /* TBTestTableViewCell.h */,
-				AA4E2C2D1B783BDB0009739E /* TBTestTableViewCell.m */,
 			);
 			name = "言杰";
 			sourceTree = "<group>";
@@ -510,13 +518,14 @@
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
-				AA4E2C2E1B783BDB0009739E /* TBTestTableViewCell.m in Sources */,
+				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
 				A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
+				608BEC491B78676B00712359 /* TBTestTableViewCell.m in Sources */,
 				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
 				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
@@ -609,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -646,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -661,7 +670,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -677,7 +686,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
