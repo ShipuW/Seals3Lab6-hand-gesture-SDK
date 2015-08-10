@@ -41,7 +41,6 @@
 		A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */; };
 		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
-		AA680F5F1B7347B10003F79B /* Gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = AA680F5A1B7347B10003F79B /* Gestures.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +122,6 @@
 		AA4E2C301B7853190009739E /* TBGMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGMath.m; sourceTree = "<group>"; };
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
-		AA680F5A1B7347B10003F79B /* Gestures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gestures.json; sourceTree = "<group>"; };
 		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,7 +314,6 @@
 		A6744B4F1B7216F500E222B0 /* 蒙箫 */ = {
 			isa = PBXGroup;
 			children = (
-				AA680F5A1B7347B10003F79B /* Gestures.json */,
 				AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */,
 				AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */,
 				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
@@ -478,7 +475,6 @@
 				A6744B281B720A2F00E222B0 /* Main.storyboard in Resources */,
 				A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */,
 				A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */,
-				AA680F5F1B7347B10003F79B /* Gestures.json in Resources */,
 				A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

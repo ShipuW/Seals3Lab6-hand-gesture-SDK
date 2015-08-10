@@ -22,9 +22,20 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 };
 
 
+@class UICustomGestureRecognizer;
+@protocol TBCustomGestureRecognizerDelegate
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position;
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position;
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position;
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed;
+
+
+@end
 //@interface UIGestureRecognizer (UICustomGestureRecognizer)
 
-NS_CLASS_AVAILABLE_IOS(3_2) @interface UICustomGestureRecognizer : UILongPressGestureRecognizer
+@interface UICustomGestureRecognizer : UILongPressGestureRecognizer
 {
     @package
     BOOL                _displayPoint;
@@ -49,6 +60,8 @@ NS_CLASS_AVAILABLE_IOS(3_2) @interface UICustomGestureRecognizer : UILongPressGe
 //@property (assign, nonatomic) CGMutablePathRef path;
 @property (nonatomic, readwrite) NSArray *touchPoints;
 @property (nonatomic) UICustomGestureRecognizerDirection direction;
+
+@property (nonatomic, weak) id<TBCustomGestureRecognizerDelegate> recognizeDelegate;
 
 - (instancetype)initWithTarget:(id)target action:(SEL)action;
 - (void)buttonLongPressed:(UILongPressGestureRecognizer *)sender;
