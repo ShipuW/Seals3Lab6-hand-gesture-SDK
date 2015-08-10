@@ -12,6 +12,9 @@
 #define MIN_SCORE 0.5
 #define PI 3.14
 
+#define NSLog(...)
+
+
 // Utility/Math Functions:
 CGPoint Centroid(CGPoint *samples, int samplePoints);
 void Translate(CGPoint *samples, int samplePoints, float x, float y);
