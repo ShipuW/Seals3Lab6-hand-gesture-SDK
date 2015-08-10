@@ -152,9 +152,41 @@
 //    !completion ?: completion(rsError);
 }
 
+- (void)fetchGestureWithEvent:(TBEvent *)event completion:(void (^)(TBGesture *gesture))completion {
+    NSString *sql = @"SELECT * FROM Map WHERE eventId = ?";
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:sql, event.objectId];
+        if ([s next]) {
+            TBGesture *gesture = [[TBGesture alloc] init];
+            gesture.objectId = [s stringForColumn:@"gestureId"];
+
+            FMResultSet *gs = [db executeQuery:@"SELECT * FROM Gesture WHERE id = ?", gesture.objectId];
+            if ([gs next]) {
+
+                gesture.name = [gs stringForColumn:@"name"];
+                gesture.type = [@([gs intForColumn:@"type"]) integerValue];
+
+                NSString *path = [gs stringForColumn:@"path"];
+                gesture.path = [self CGPointsArrayFromPointsString:path];
+                NSString *rawPath = [gs stringForColumn:@"rawPath"];
+                gesture.rawPath = [self CGPointsArrayFromPointsString:rawPath];
+                [db close];
+                !completion ?: completion(gesture);
+            }
+        } else {
+            [db close];
+            !completion ?: completion(nil);
+        }
+        [db close];
+    } else {
+        !completion ?: completion(nil);
+    }
+}
+
 
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
-    NSString *sql = @"SELECT * from Event";
+    NSString *sql = @"SELECT * FROM Event";
     FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
     NSMutableArray *results = [NSMutableArray array];
     if ([db open]) {
@@ -164,8 +196,8 @@
             TBEvent *event = [[TBEvent alloc] init];
             event.objectId = [s stringForColumn:@"id"];
             event.name = [s stringForColumn:@"name"];
-            event.enabled = [s intForColumn:@"enable"] == 1 ? YES : NO;
-            event.canEditGesture = [s intForColumn:@"canEditGesture"] == 1 ? YES : NO;
+            event.enabled = [s intForColumn:@"enable"] == 1;
+            event.canEditGesture = [s intForColumn:@"canEditGesture"] == 1;
             [results addObject:event];
         }
         [db close];
@@ -288,5 +320,29 @@
 //    }];
 }
 
+- (NSString *)pointsStringFromCGPointsArray:(NSArray *)pointsArray {
+    NSMutableArray *jsonArray = [NSMutableArray arrayWithCapacity:pointsArray.count];
+    for (NSValue *value in pointsArray) {
+        CGPoint point = [value CGPointValue];
+        NSArray *arr = @[@(point.x), @(point.y)];
+        [jsonArray addObject:arr];
+    }
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonArray options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
 
+- (NSArray *)CGPointsArrayFromPointsString:(NSString *)pointsString {
+    NSData *jsonData = [pointsString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSMutableArray *pointsArray = [NSMutableArray array];
+    for (NSArray *p in jsonArray) {
+        CGPoint point;
+        point = CGPointMake([p[0] CGFloatValue], [p[1] CGFloatValue]);
+        NSValue *value = [NSValue valueWithCGPoint:point];
+        [pointsArray addObject:value];
+    }
+    return [pointsArray copy];
+}
 @end

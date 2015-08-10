@@ -16,7 +16,7 @@
 #import "TBJoinGestureSimulationViewController.h"
 #import "TBTableViewSimulationViewController.h"
 #import "TBGesture.h"
-
+#import "TBAllEventsViewController.h"
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
 @interface FifthViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -68,7 +68,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     TBCellViewModel *vm3 = [[TBCellViewModel alloc] init];
     vm3.text = @"本地写入自定义手势";
     vm3.didSelectAction = ^{
-        @strongify(self);
+//        @strongify(self);
 
         [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
             TBGesture *gesture = results[0];
@@ -92,12 +92,20 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         
     };
     
+    TBCellViewModel *vm5 = [[TBCellViewModel alloc] init];
+    vm5.text = @"全部事件";
+    vm5.didSelectAction = ^{
+        @strongify(self);
+        TBAllEventsViewController *vc = [[TBAllEventsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
     self.cellsList = @[
             vm0,
             vm1,
             vm2,
             vm3,
             vm4,
+            vm5,
     ];
     
     

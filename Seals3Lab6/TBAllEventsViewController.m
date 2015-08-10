@@ -1,47 +1,44 @@
 //
-//  TBTableViewSimulationViewController.m
+//  TBAllEventsViewController.m
 //  Seals3Lab6
 //
 //  Created by Veight Zhou on 8/10/15.
 //  Copyright (c) 2015 Veight Zhou. All rights reserved.
 //
 
-#import "TBTableViewSimulationViewController.h"
-#import "TBGesture.h"
+#import "TBAllEventsViewController.h"
+#import "TBDataManager.h"
 #import "TBEvent.h"
 #import "MacroUtils.h"
-static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
+static NSString * const kTableViewIdentifer = @"kTableViewIdentifer";
 
-@interface TBTableViewSimulationViewController () <UITableViewDataSource, UITableViewDelegate, TBGestureDelegate>
+@interface TBAllEventsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *eventsList;
 
 @end
 
-@implementation TBTableViewSimulationViewController
+@implementation TBAllEventsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
-    TBGesture *gesture = [TBGesture gestureForEvent:event];
-    
-//    [gesture addToTableView:self.tableView dataSource:self completion:^(NSError *error) {
-//        debugLog(@"绑定成功.");
-//    }];
-    gesture.delegate = self;
-    
-    
-//    [gesture addToTableView:self.tableView forKeyPath:@"contentView" completion:^(NSError *error) {
-//        
-//    }];
+    @weakify(self);
+    [SharedDataManager loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        @strongify(self);
+        if (!error) {
+            self.eventsList = results;
+            [self.tableView reloadData];
+        }
+    }];
     
 }
 
@@ -50,29 +47,30 @@ static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.eventsList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewIdentifer];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewIdentifer];
     }
-    
-    cell.textLabel.text = @(indexPath.row).stringValue;
+    TBEvent *event = self.eventsList[indexPath.row];
+    cell.textLabel.text = event.name;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    TBEvent *event = self.eventsList[indexPath.row];
+    [SharedDataManager fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
+        if (gesture) {
+            debugLog(@"map %@", gesture.name);
+        }
+    }];
 }
 
-- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
-    debugLog(@"手势被触发");
-}
 
 /*
 #pragma mark - Navigation
