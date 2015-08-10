@@ -53,7 +53,7 @@
     
     [self setExtraCellLineHidden:tableView]; //隐藏不显示数据分割线
     
-    tableView.delegate = self;
+    tableView.delegate = self;   //设置代理
     tableView.dataSource = self;
     
     @weakify(self);
