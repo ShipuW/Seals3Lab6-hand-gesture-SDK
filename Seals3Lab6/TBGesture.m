@@ -10,6 +10,8 @@
 #import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "UIPinchGestureRecognizer+UIPinchCustomGestureRecognizer.h"
+#import "MacroUtils.h"
+
 @implementation TBGesture
 
 - (NSArray *)gesturesForEvent:(TBEvent *)event {
@@ -37,6 +39,7 @@
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
+
     //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
     if (1==1){//self.type == 99 || self.type == 98) { //pinchGesture
         self.pinchRecognizer.tbGesture = self;
@@ -47,7 +50,27 @@
         self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil];
         [view addGestureRecognizer:self.gestureRecognizer];
     }
-    
+
+    if (!view) {
+        return;
+    }
+    NSArray *gesturesArray = [view gestureRecognizers];
+    if (gesturesArray.count) {
+        for (UIGestureRecognizer *gr in gesturesArray) {
+            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
+                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
+                if ([cgr.tbGesture.objectId isEqualToString:self.objectId]) {
+                    debugLog(@"已添加过");
+                    !completion ?: completion(nil);
+                    return;
+                }
+            }
+        }
+    }
+    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    self.gestureRecognizer.tbGesture = self;
+    [view addGestureRecognizer:self.gestureRecognizer];
+
     !completion ?: completion(nil);
 }
 
