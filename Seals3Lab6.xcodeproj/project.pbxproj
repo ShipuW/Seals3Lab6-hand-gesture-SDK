@@ -7,11 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D81B6F1A4F320A3FE59B /* FifthViewController.m */; };
+		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
 		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
+		1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */; };
+		1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */; };
+		1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D82D099B2E62DB12EAA4 /* TBDataManager.m */; };
+		2961003F75C878C0D86D661A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB3DC487A8EBB882D3A0D3 /* libPods.a */; };
 		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
 		600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05181B735FA9001ACC90 /* MyViewModel.m */; };
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
+		A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */ = {isa = PBXBuildFile; fileRef = A63F1AFA1B774E250088B299 /* GestureTemplets.json */; };
+		A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */; };
+		A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */; };
 		A6744B1C1B720A2F00E222B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1B1B720A2F00E222B0 /* main.m */; };
 		A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1E1B720A2F00E222B0 /* AppDelegate.m */; };
 		A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B211B720A2F00E222B0 /* FirstViewController.m */; };
@@ -22,7 +31,6 @@
 		A6744B391B720A2F00E222B0 /* Seals3Lab6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */; };
 		A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B431B720A5400E222B0 /* ThirdViewController.m */; };
 		A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B461B720A6100E222B0 /* ForthViewController.m */; };
-		A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B4C1B720B5A00E222B0 /* FifthViewController.m */; };
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
 		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
@@ -41,16 +49,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
 		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
+		1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventManagerViewController.h; sourceTree = "<group>"; };
+		1470D3127A457923FF1958B3 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
+		1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCellViewModel.m; sourceTree = "<group>"; };
+		1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureSelectViewController.m; sourceTree = "<group>"; };
+		1470D6AE6C53ED899435DCBF /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
 		1470D7A353C47CE07842E007 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		1470D7B6817F32E80F322A9A /* TBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBDataManager.h; sourceTree = "<group>"; };
+		1470D81B6F1A4F320A3FE59B /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
+		1470D82D099B2E62DB12EAA4 /* TBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBDataManager.m; sourceTree = "<group>"; };
 		1470D8DD710635E99646D0BC /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventDisplayModel.h; sourceTree = "<group>"; };
+		1470DF786FD194FC630FF264 /* TBCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCellViewModel.h; sourceTree = "<group>"; };
+		1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureSelectViewController.h; sourceTree = "<group>"; };
+		39AB3DC487A8EBB882D3A0D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		600E05151B735FA9001ACC90 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		600E05161B735FA9001ACC90 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 		600E05171B735FA9001ACC90 /* MyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewModel.h; sourceTree = "<group>"; };
 		600E05181B735FA9001ACC90 /* MyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewModel.m; sourceTree = "<group>"; };
 		600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+UICustomGestureRecognizer.h"; sourceTree = "<group>"; };
 		600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+UICustomGestureRecognizer.m"; sourceTree = "<group>"; };
+		A63F1AFA1B774E250088B299 /* GestureTemplets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GestureTemplets.json; sourceTree = "<group>"; };
+		A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Utils.h"; sourceTree = "<group>"; };
+		A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Utils.m"; sourceTree = "<group>"; };
+		A63F1AFF1B7787800088B299 /* TBAllGesturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAllGesturesViewController.h; sourceTree = "<group>"; };
+		A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAllGesturesViewController.m; sourceTree = "<group>"; };
+		A63F1B071B778B520088B299 /* RACEXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACEXTScope.h; sourceTree = "<group>"; };
+		A63F1B081B778B520088B299 /* RACmetamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACmetamacros.h; sourceTree = "<group>"; };
 		A6744B161B720A2F00E222B0 /* Seals3Lab6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seals3Lab6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B1A1B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B1B1B720A2F00E222B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,8 +97,6 @@
 		A6744B431B720A5400E222B0 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		A6744B451B720A6100E222B0 /* ForthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForthViewController.h; sourceTree = "<group>"; };
 		A6744B461B720A6100E222B0 /* ForthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthViewController.m; sourceTree = "<group>"; };
-		A6744B4B1B720B5A00E222B0 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
-		A6744B4C1B720B5A00E222B0 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
 		A6744B541B7217EE00E222B0 /* TBGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGesture.h; sourceTree = "<group>"; };
 		A6744B551B7217EE00E222B0 /* TBGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGesture.m; sourceTree = "<group>"; };
 		A6744B571B7217FB00E222B0 /* TBEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEvent.h; sourceTree = "<group>"; };
@@ -81,6 +106,8 @@
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		AA680F5A1B7347B10003F79B /* Gestures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gestures.json; sourceTree = "<group>"; };
+		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2961003F75C878C0D86D661A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C79E93D22DA6071C28761CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39AB3DC487A8EBB882D3A0D3 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		600E051F1B735FC5001ACC90 /* CGSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +150,83 @@
 			name = CGSDK;
 			sourceTree = "<group>";
 		};
+		8CE9BAED14EA71DB4423A2F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */,
+				D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A63F1B021B7787920088B299 /* AOP */ = {
+			isa = PBXGroup;
+			children = (
+				1470D8DD710635E99646D0BC /* Aspects.m */,
+				1470D7A353C47CE07842E007 /* Aspects.h */,
+			);
+			name = AOP;
+			sourceTree = "<group>";
+		};
+		A63F1B031B77879F0088B299 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A63F1B071B778B520088B299 /* RACEXTScope.h */,
+				A63F1B081B778B520088B299 /* RACmetamacros.h */,
+				A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */,
+				A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */,
+				1470D3127A457923FF1958B3 /* MacroUtils.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		A63F1B041B7787B20088B299 /* Base DO */ = {
+			isa = PBXGroup;
+			children = (
+				A6744B541B7217EE00E222B0 /* TBGesture.h */,
+				A6744B551B7217EE00E222B0 /* TBGesture.m */,
+				A6744B571B7217FB00E222B0 /* TBEvent.h */,
+				A6744B581B7217FB00E222B0 /* TBEvent.m */,
+				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
+				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
+			);
+			name = "Base DO";
+			sourceTree = "<group>";
+		};
+		A63F1B051B7787CA0088B299 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				1470D7B6817F32E80F322A9A /* TBDataManager.h */,
+				1470D82D099B2E62DB12EAA4 /* TBDataManager.m */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		A63F1B061B7787E20088B299 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */,
+				1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */,
+				1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */,
+				1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */,
+				A63F1AFF1B7787800088B299 /* TBAllGesturesViewController.h */,
+				A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */,
+				1470D6AE6C53ED899435DCBF /* FifthViewController.h */,
+				1470D81B6F1A4F320A3FE59B /* FifthViewController.m */,
+				1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */,
+				1470DF786FD194FC630FF264 /* TBCellViewModel.h */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		A6744B0D1B720A2E00E222B0 = {
 			isa = PBXGroup;
 			children = (
 				A6744B181B720A2F00E222B0 /* Seals3Lab6 */,
 				A6744B351B720A2F00E222B0 /* Seals3Lab6Tests */,
 				A6744B171B720A2F00E222B0 /* Products */,
+				8CE9BAED14EA71DB4423A2F5 /* Pods */,
+				0C79E93D22DA6071C28761CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,18 +334,14 @@
 		A6744B531B72172400E222B0 /* 疯隐 */ = {
 			isa = PBXGroup;
 			children = (
-				A6744B4B1B720B5A00E222B0 /* FifthViewController.h */,
-				A6744B4C1B720B5A00E222B0 /* FifthViewController.m */,
-				A6744B541B7217EE00E222B0 /* TBGesture.h */,
-				A6744B551B7217EE00E222B0 /* TBGesture.m */,
-				A6744B571B7217FB00E222B0 /* TBEvent.h */,
-				A6744B581B7217FB00E222B0 /* TBEvent.m */,
-				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
-				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
+				A63F1AFA1B774E250088B299 /* GestureTemplets.json */,
+				A63F1B021B7787920088B299 /* AOP */,
+				A63F1B041B7787B20088B299 /* Base DO */,
+				A63F1B051B7787CA0088B299 /* DataManager */,
+				A63F1B031B77879F0088B299 /* Utils */,
+				A63F1B061B7787E20088B299 /* ViewController */,
 				1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */,
 				1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */,
-				1470D8DD710635E99646D0BC /* Aspects.m */,
-				1470D7A353C47CE07842E007 /* Aspects.h */,
 			);
 			name = "疯隐";
 			sourceTree = "<group>";
@@ -250,9 +353,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6744B3C1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6" */;
 			buildPhases = (
+				A8BDE502FC0DB455F634697D /* Check Pods Manifest.lock */,
 				A6744B121B720A2E00E222B0 /* Sources */,
 				A6744B131B720A2E00E222B0 /* Frameworks */,
 				A6744B141B720A2E00E222B0 /* Resources */,
+				7535C3574BB9150DDA93F8BF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,6 +433,7 @@
 				A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */,
 				A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */,
 				AA680F5F1B7347B10003F79B /* Gestures.json in Resources */,
+				A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +446,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7535C3574BB9150DDA93F8BF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8BDE502FC0DB455F634697D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A6744B121B720A2E00E222B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -350,17 +489,23 @@
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
+				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
 				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
 				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
 				AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */,
-				A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
 				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
 				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
+				A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */,
 				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
+				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
+				1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */,
+				1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */,
+				1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */,
+				1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +629,7 @@
 		};
 		A6744B3D1B720A2F00E222B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -493,11 +639,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
 		A6744B3E1B720A2F00E222B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -507,6 +655,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};
