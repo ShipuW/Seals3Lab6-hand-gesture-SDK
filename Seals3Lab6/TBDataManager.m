@@ -150,6 +150,29 @@
 //    !completion ?: completion(rsError);
 }
 
+- (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
+    NSString *sql = @"SELECT * from Event";
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    NSMutableArray *results = [NSMutableArray array];
+    if ([db open]) {
+        
+        FMResultSet *s = [db executeQuery:sql];
+        while ([s next]) {
+            TBEvent *event = [[TBEvent alloc] init];
+            event.objectId = [s stringForColumn:@"id"];
+            event.name = [s stringForColumn:@"name"];
+            event.enabled = [s intForColumn:@"enable"] == 1 ? YES : NO;
+            event.canEditGesture = [s intForColumn:@"canEditGesture"] == 1 ? YES : NO;
+            [results addObject:event];
+        }
+        [db close];
+        !completion ?: completion(results, nil);
+    } else {
+        !completion ?: completion(nil, [[NSError alloc] init]);
+    }
+    
+}
+
 - (BOOL)createGestureTable {
 
     NSString *sql = @"CREATE TABLE IF NOT EXISTS "
@@ -170,7 +193,14 @@
                     @"enable integer,"
                     @"name varchar(20),"
                     @"canEditGesture integer"
-                    @")";
+                    @");"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '收藏', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '分享', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件1', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件2', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件3', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件4', 1);"
+    ;
     return [self.db executeStatements:sql];
 }
 
@@ -233,7 +263,7 @@
                 !completion ?: completion([[NSError alloc] init]);
             }
         } else {
-            if ([db executeUpdate:@"INSERT INTO Map VALUES (?, ?, ?)", event.objectId, event.objectId, gesture.objectId ]) {
+            if ([db executeUpdate:@"INSERT INTO Map VALUES (?, ?, ?)", @([event.objectId intValue]), event.objectId, gesture.objectId ]) {
                 debugLog(@"映射关系写入成功");
                 !completion ?: completion(nil);
             } else {

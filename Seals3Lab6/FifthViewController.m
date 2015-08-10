@@ -80,7 +80,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
         [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
             TBGesture *gesture = results[0];
-            [SharedDataManager addCustomGesture:gesture completion:^(NSError *error) {
+            [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
                 if (error) {
                     debugLog(@"%@", error);
                 } else {
@@ -108,6 +108,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         [self.navigationController pushViewController:vc animated:YES];
         
     };
+    
     self.cellsList = @[
             vm0,
             vm1,
@@ -115,6 +116,11 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
             vm3,
             vm4,
     ];
+    
+    
+    [SharedDataManager loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        debugLog(@"%@", results);
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

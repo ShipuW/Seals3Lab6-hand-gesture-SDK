@@ -9,7 +9,7 @@
 #import "TBEvent.h"
 #import "TBGesture.h"
 #import "FMDB.h"
-
+#import "TBDataManager.h"
 static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 @interface TBEvent ()
@@ -58,9 +58,14 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 }
 
 + (NSArray *)allEvents {
+//    [SharedDataManager loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+//        
+//    }];
+    
     TBEvent *evt1 = [self fake_collect];
     TBEvent *evt2 = [self fake_share];
     return @[evt1, evt2];
+//    return nil;
 }
 
 - (NSArray *)triggeredGestures {
@@ -72,6 +77,7 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 //    gesture2.objectId = @"2";
 //    gesture2.name = @"手势2";
 //    gesture2.type = TBGestureTypeCustom;
+   
     return @[gesture1];
 }
 

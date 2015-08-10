@@ -33,9 +33,9 @@ static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
     TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
     TBGesture *gesture = [TBGesture gestureForEvent:event];
     
-    [gesture addToTableView:self.tableView completion:^(NSError *error) {
-        debugLog(@"绑定成功.");
-    }];
+//    [gesture addToTableView:self.tableView completion:^(NSError *error) {
+//        debugLog(@"绑定成功.");
+//    }];
     gesture.delegate = self;
     
     
