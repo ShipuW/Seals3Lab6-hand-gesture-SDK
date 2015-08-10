@@ -8,7 +8,7 @@
 
 #import "TBGesture.h"
 #import "TBEvent.h"
-
+#import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 @implementation TBGesture
 
 - (NSArray *)gesturesForEvent:(TBEvent *)event {
@@ -36,7 +36,8 @@
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
-    self.gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    self.gestureRecognizer.tbGesture = self;
     [view addGestureRecognizer:self.gestureRecognizer];
 }
 

@@ -116,7 +116,10 @@
             CGPathMoveToPoint(_myView.path, NULL, _startPoint.x, _startPoint.y);
             _displayPoint=YES;
             
-            
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateBeginAtPosition:)]) {
+                [self.recognizeDelegate gestureRecognizer:self stateBeginAtPosition:_startPoint];
+            }
+               
         }
         else if (sender.state == UIGestureRecognizerStateChanged)
         {
@@ -137,7 +140,6 @@
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
             //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
-            
             if (_isSimpleGesture) {
                 [self simpleDirectionRecognizer];
             } else if (!_isSimpleGesture){
