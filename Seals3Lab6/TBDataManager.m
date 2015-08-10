@@ -7,6 +7,7 @@
 #import "MacroUtils.h"
 #import "TBGesture.h"
 #import <FMDB.h>
+#import "TBEvent.h"
 #import "NSNumber+Utils.h"
 #define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
@@ -79,10 +80,10 @@
     }
 }
 
-- (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion {
+- (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(TBGesture *gesture, NSError *error))completion {
     if (!gesture.path) {
         NSError *error = [[NSError alloc] init];
-        !completion ?: completion(error);
+        !completion ?: completion(nil, error);
         return;
     }
 //    int objectId = [@([[NSDate date] timeIntervalSince1970]) intValue];
@@ -103,7 +104,7 @@
 
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonArray options:NSJSONWritingPrettyPrinted error:&error];
     if (error) {
-        !completion ?: completion(error);
+        !completion ?: completion(nil, error);
         return;
     }
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -119,7 +120,7 @@
         }
         NSData *rawJsonData = [NSJSONSerialization dataWithJSONObject:rawJSONArray options:NSJSONWritingPrettyPrinted error:&error];
         if (error) {
-            !completion ?: completion(error);
+            !completion ?: completion(nil, error);
             return;
         }
         rawJSONString = [[NSString alloc] initWithData:rawJsonData encoding:NSUTF8StringEncoding];
@@ -139,7 +140,7 @@
             rsError = rs ? nil : [[NSError alloc] init];
             [db close];
         }
-        !completion ?: completion(rsError);
+        !completion ?: completion(nil, rsError);
     }];
 //    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
 //    NSError *rsError;
@@ -151,6 +152,29 @@
 //    !completion ?: completion(rsError);
 }
 
+
+- (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
+    NSString *sql = @"SELECT * from Event";
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    NSMutableArray *results = [NSMutableArray array];
+    if ([db open]) {
+        
+        FMResultSet *s = [db executeQuery:sql];
+        while ([s next]) {
+            TBEvent *event = [[TBEvent alloc] init];
+            event.objectId = [s stringForColumn:@"id"];
+            event.name = [s stringForColumn:@"name"];
+            event.enabled = [s intForColumn:@"enable"] == 1 ? YES : NO;
+            event.canEditGesture = [s intForColumn:@"canEditGesture"] == 1 ? YES : NO;
+            [results addObject:event];
+        }
+        [db close];
+        !completion ?: completion(results, nil);
+    } else {
+        !completion ?: completion(nil, [[NSError alloc] init]);
+    }
+    
+}
 
 - (BOOL)createGestureTable {
 
@@ -172,7 +196,14 @@
                     @"enable integer,"
                     @"name varchar(20),"
                     @"canEditGesture integer"
-                    @")";
+                    @");"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '收藏', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '分享', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件1', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件2', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件3', 1);"
+                    @"INSERT INTO Event (enable, name, canEditGesture) values(1, '测试事件4', 1);"
+    ;
     return [self.db executeStatements:sql];
 }
 
@@ -214,6 +245,47 @@
         [gestures addObject:gesture];
     }
     !completion ?: completion(gestures, nil);
+}
+
+
+- (void)mapEvent:(TBEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
+    if (!(event.objectId.length > 0 && event.objectId.length > 0)) {
+        !completion ?: completion([[NSError alloc] init]);
+        return;
+    }
+
+    NSString *queryCountSql = @"SELECT COUNT(*) FROM Map WHERE eventId = ?";
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:queryCountSql, event.objectId];
+        if ([s next]) {
+            if ([db executeUpdate:@"UPDATE Map SET gestureId = ? WHERE eventId = ?", gesture.objectId, event.objectId]) {
+                debugLog(@"更新映射关系成功");
+                !completion ?: completion(nil);
+            } else {
+                debugLog(@"更新映射关系失败");
+                !completion ?: completion([[NSError alloc] init]);
+            }
+        } else {
+            if ([db executeUpdate:@"INSERT INTO Map VALUES (?, ?, ?)", @([event.objectId intValue]), event.objectId, gesture.objectId ]) {
+                debugLog(@"映射关系写入成功");
+                !completion ?: completion(nil);
+            } else {
+                debugLog(@"映射关系写入失败");
+                !completion ?: completion([[NSError alloc] init]);
+            }
+        }
+        [db close];
+    }
+    
+    
+//    NSString *sql = @"UPDATE Map SET gestureId = ? WHERE eventId = ?";
+//    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:self.dbPath];
+//    [queue inDatabase:^(FMDatabase *db) {
+//        if ([db open]) {
+//            BOOL rs = [db executeUpdateWithFormat:sql, @]
+//        }
+//    }];
 }
 
 

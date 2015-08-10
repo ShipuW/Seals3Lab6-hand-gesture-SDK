@@ -37,6 +37,9 @@ static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
         self.gestures = results;
         [self.tableView reloadData];
     }];
+    
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
