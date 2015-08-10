@@ -14,6 +14,7 @@
 #import "TBAllGesturesViewController.h"
 #import "TBCellViewModel.h"
 #import "TBJoinGestureSimulationViewController.h"
+#import "TBTableViewSimulationViewController.h"
 #import "TBGesture.h"
 
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
@@ -98,11 +99,21 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
     };
 
+    
+    TBCellViewModel *vm4 = [[TBCellViewModel alloc] init];
+    vm4.text = @"TableView模拟接入";
+    vm4.didSelectAction = ^{
+        @strongify(self);
+        TBTableViewSimulationViewController *vc = [[TBTableViewSimulationViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    };
     self.cellsList = @[
             vm0,
             vm1,
             vm2,
             vm3,
+            vm4,
     ];
 }
 
