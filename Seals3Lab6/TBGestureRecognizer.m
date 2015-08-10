@@ -63,7 +63,7 @@
 {
     self.gesture = points;
     
-    NSString *bestTemplateName;
+    NSString *bestTemplateId;
     int i;
     CGPoint samples[kSamplePoints];
     
@@ -113,11 +113,11 @@
             template[i] = [templateGesture.rawPath[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
-        NSLog(@"%@: %f", templateGesture.name, score);
         
         if (score < best) {
-            bestTemplateName = [NSString stringWithString:templateGesture.name];
+            bestTemplateId = [NSString stringWithString:templateGesture.objectId];
             best = score;
+            NSLog(@"best: %@: %f", templateGesture.name, score);
         }
     }
     self.resampleGesture = [NSMutableArray arrayWithCapacity:kSamplePoints];
@@ -128,7 +128,7 @@
     }
     
     if (best < MIN_SCORE) {
-        return bestTemplateName;
+        return bestTemplateId;
     } else {
         return nil;
     }
