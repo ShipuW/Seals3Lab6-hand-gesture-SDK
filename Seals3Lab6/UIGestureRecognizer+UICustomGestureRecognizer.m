@@ -34,6 +34,15 @@
     
     return self;
 }
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.minimumPressDuration = Duration;
+    }
+    return self;
+}
+
 -(void) simpleDirectionRecognizer{
     CGFloat deltaX = _touchPoint.x - _startPoint.x;
     CGFloat deltaY = _touchPoint.y - _startPoint.y;
@@ -115,7 +124,9 @@
             _myView.isHavePath = YES;
             CGPathMoveToPoint(_myView.path, NULL, _startPoint.x, _startPoint.y);
             _displayPoint=YES;
-            
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateBeginAtPosition:)]) {
+                [self.recognizeDelegate gestureRecognizer:self stateBeginAtPosition:_startPoint];
+            }
             
         }
         else if (sender.state == UIGestureRecognizerStateChanged)
@@ -132,7 +143,9 @@
             }
             CGPathAddLineToPoint(_myView.path, NULL, _touchPoint.x,_touchPoint.y);
             [_myView setNeedsDisplay];
-            
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateChangedAtPosition:)]) {
+                [self.recognizeDelegate gestureRecognizer:sender stateChangedAtPosition:_touchPoint];
+            }
         }
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
@@ -164,6 +177,10 @@
             ///////实现原回调
             if (self.action != nil) {
                 [self.target performSelector:self.action withObject:self afterDelay:0.0];
+            }
+            CGPoint lastPoint = [sender locationInView:_baseView];
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
+                [self.recognizeDelegate gestureRecognizer:sender stateEndAtPosition:lastPoint];
             }
             
         }

@@ -8,6 +8,13 @@
 
 #import "TBGesture.h"
 #import "TBEvent.h"
+#import "UIGestureRecognizer+UICustomGestureRecognizer.h"
+#import "MacroUtils.h"
+
+@interface TBGesture () <TBCustomGestureRecognizerDelegate>
+
+@end
+
 
 @implementation TBGesture
 
@@ -36,7 +43,11 @@
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
-    self.gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+//    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] init];
+    self.gestureRecognizer.recognizeDelegate = self;
+    self.gestureRecognizer.target = self.gestureRecognizer;
+    self.gestureRecognizer.action = @selector(buttonLongPressed:);
     [view addGestureRecognizer:self.gestureRecognizer];
 }
 
@@ -45,20 +56,54 @@
 }
 
 
-- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *))completion {
-    [self addToTableView:tableView forKeyPath:@"" completion:completion];
+//- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *))completion {
+//    [self addToTableView:tableView forKeyPath:@"" completion:completion];
+//}
+//
+//- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
+//
+//}
+//
+//- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *))completion {
+//    [self addToCollectionView:collectionView forKeyPath:@"" completion:completion];
+//}
+//
+//- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
+//
+//}
+
+- (void)addToCollectionView:(UICollectionView *)collectionView dataSource:(id)dataSource completion:(void (^)(NSError *error))completion {
+
 }
 
-- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
-    
+- (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource completion:(void (^)(NSError *error))completion {
+
 }
 
-- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *))completion {
-    [self addToCollectionView:collectionView forKeyPath:@"" completion:completion];
+- (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
+
 }
 
-- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
-    
+- (void)addToCollectionView:(UICollectionView *)collectionView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
+
+}
+
+#pragma mark - Recognizer Delegate
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position {
+    debugMethod();
+}
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position {
+    debugMethod();
+}
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position {
+    debugMethod();
+}
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed {
+    debugMethod();
 }
 
 @end

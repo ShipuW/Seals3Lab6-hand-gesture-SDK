@@ -23,7 +23,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 
 
 @class UICustomGestureRecognizer;
-@protocol TBCustomGestureRecognizerDelegate
+@protocol TBCustomGestureRecognizerDelegate <NSObject>
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position;
@@ -51,7 +51,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     UIView             *_baseView;
     MyView             *_myView;
 }
-@property id target;
+@property (weak) id target;
 @property SEL action;
 @property (nonatomic) NSString *gestureId;
 @property (nonatomic) BOOL isSimpleGesture;
@@ -61,7 +61,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 @property (nonatomic, readwrite) NSArray *touchPoints;
 @property (nonatomic) UICustomGestureRecognizerDirection direction;
 
-@property (nonatomic, weak) id<TBCustomGestureRecognizerDelegate> recognizeDelegate;
+@property (nonatomic) id<TBCustomGestureRecognizerDelegate> recognizeDelegate;
 
 - (instancetype)initWithTarget:(id)target action:(SEL)action;
 - (void)buttonLongPressed:(UILongPressGestureRecognizer *)sender;
