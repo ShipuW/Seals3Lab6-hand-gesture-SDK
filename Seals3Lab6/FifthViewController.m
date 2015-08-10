@@ -108,6 +108,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         [self.navigationController pushViewController:vc animated:YES];
         
     };
+    
     self.cellsList = @[
             vm0,
             vm1,
@@ -115,6 +116,11 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
             vm3,
             vm4,
     ];
+    
+    
+    [SharedDataManager loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        debugLog(@"%@", results);
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
