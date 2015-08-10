@@ -9,7 +9,9 @@
 #import "TBGesture.h"
 #import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
+#import "UIPinchGestureRecognizer+UIPinchCustomGestureRecognizer.h"
 #import "MacroUtils.h"
+
 @implementation TBGesture
 
 - (NSArray *)gesturesForEvent:(TBEvent *)event {
@@ -37,6 +39,18 @@
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
+
+    //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    if (1==1){//self.type == 99 || self.type == 98) { //pinchGesture
+        self.pinchRecognizer.tbGesture = self;
+        self.pinchRecognizer = [[UIPinchCustomGestureRecognizer alloc] initWithTarget:self action:nil];
+        [view addGestureRecognizer:self.pinchRecognizer];
+    }else{
+        self.gestureRecognizer.tbGesture = self;
+        self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil];
+        [view addGestureRecognizer:self.gestureRecognizer];
+    }
+
     if (!view) {
         return;
     }
@@ -60,9 +74,11 @@
     !completion ?: completion(nil);
 }
 
-- (void)xxx:(id)sender {
 
-}
+
+//- (void)xxx:(id)sender {
+//
+//}
 
 
 - (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *))completion {
