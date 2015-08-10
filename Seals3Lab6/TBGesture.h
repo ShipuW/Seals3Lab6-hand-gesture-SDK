@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 
 @protocol TBGestureDelegate
 
-
+@optional
 - (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;
 - (void)collectionView:(UICollectionView *)collectionView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;
 
@@ -31,14 +31,21 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) TBGestureType type;
 
+@property (nonatomic, weak) id<TBGestureDelegate> delegate;
+
 // 存储自带的手势
 @property (nonatomic, strong) UIGestureRecognizer *gestureRecognizer;
 // 存储定长的源于 CGPoint 的 NSValue 数组
 @property (nonatomic, strong) NSArray *path;
 @property (nonatomic, strong) NSArray *rawPath;
 
-+ (NSArray *)gesturesForEvent:(TBEvent *)event;
-+ (NSArray *)gesturesForEventId:(NSString *)eventId;
+
+- (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
+
++ (instancetype)gestureForEvent:(TBEvent *)event;
++ (instancetype)gestureForEventId:(NSString *)eventId;
+//+ (NSArray *)gesturesForEvent:(TBEvent *)event;
+//+ (NSArray *)gesturesForEventId:(NSString *)eventId;
 
 
 

@@ -34,6 +34,7 @@
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
 		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
+		A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */; };
 		AA4E2C2E1B783BDB0009739E /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C2D1B783BDB0009739E /* TBTestTableViewCell.m */; };
 		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
@@ -105,6 +106,8 @@
 		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
 		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
 		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
+		A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBJoinGestureSimulationViewController.h; sourceTree = "<group>"; };
+		A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBJoinGestureSimulationViewController.m; sourceTree = "<group>"; };
 		AA4E2C2C1B783BDB0009739E /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
 		AA4E2C2D1B783BDB0009739E /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
 		AA4E2C2F1B7853190009739E /* TBGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGMath.h; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 				1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */,
 				A63F1AFF1B7787800088B299 /* TBAllGesturesViewController.h */,
 				A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */,
+				A6C3D25C1B785E1100E110C4 /* 模拟接入 */,
 				1470D6AE6C53ED899435DCBF /* FifthViewController.h */,
 				1470D81B6F1A4F320A3FE59B /* FifthViewController.m */,
 				1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */,
@@ -354,6 +358,15 @@
 				1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */,
 			);
 			name = "疯隐";
+			sourceTree = "<group>";
+		};
+		A6C3D25C1B785E1100E110C4 /* 模拟接入 */ = {
+			isa = PBXGroup;
+			children = (
+				A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */,
+				A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */,
+			);
+			name = "模拟接入";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -500,6 +513,7 @@
 				AA4E2C2E1B783BDB0009739E /* TBTestTableViewCell.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
+				A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,

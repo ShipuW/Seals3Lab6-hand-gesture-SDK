@@ -26,5 +26,13 @@
 }
 
 
+- (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
+    self.gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    [view addGestureRecognizer:self.gestureRecognizer];
+}
+
+- (void)xxx:(id)sender {
+    
+}
 
 @end

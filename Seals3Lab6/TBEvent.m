@@ -25,7 +25,7 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 #pragma mark - Basic Methods
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion {
-    NSArray *gestures = [TBGesture gesturesForEvent:self];
+//    NSArray *gestures = [TBGesture gesturesForEvent:self];
 
 }
 

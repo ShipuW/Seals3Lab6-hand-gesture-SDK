@@ -13,6 +13,7 @@
 #import "MacroUtils.h"
 #import "TBAllGesturesViewController.h"
 #import "TBCellViewModel.h"
+#import "TBJoinGestureSimulationViewController.h"
 #import "TBGesture.h"
 
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
@@ -35,7 +36,8 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     [self.view addSubview:self.tableView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
-
+    self.hidesBottomBarWhenPushed = YES;
+    
     @weakify(self);
 
     TBCellViewModel *vm0 = [[TBCellViewModel alloc] init];
@@ -50,6 +52,8 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     vm1.text = @"模拟接入";
     vm1.didSelectAction = ^{
         @strongify(self);
+        TBJoinGestureSimulationViewController *vc = [[TBJoinGestureSimulationViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     };
 
     TBCellViewModel *vm2 = [[TBCellViewModel alloc] init];
@@ -76,7 +80,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
             TBGesture *gesture = results[0];
             [SharedDataManager addCustomGesture:gesture completion:^(NSError *error) {
-                debugLog(error);
+                debugLog(@"%@", error);
             }];
         }];
 

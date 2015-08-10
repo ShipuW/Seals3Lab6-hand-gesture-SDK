@@ -11,12 +11,21 @@
 
 @class TBGesture;
 
+typedef NS_OPTIONS(NSUInteger, TBEventType) {
+    TBEventTypeCollect = 1 << 0,
+    TBEventTypeShare = 1 << 1,
+};
+
+
 @interface TBEvent : NSObject
 
 @property (nonatomic, copy) NSString *objectId;
 @property (nonatomic, assign, getter=isEnabled) BOOL enabled;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) BOOL canEditGesture;
+
+
+- (instancetype)initWithEventType:(TBEventType)eventType;
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
 
