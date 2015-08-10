@@ -28,31 +28,35 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    [self hookViewController:self view:nil tableView:self.tableView];
+    TBGesture *gesture = [[TBGesture alloc]init];
+    gesture.objectId=@"1";
+    gesture.name=@"name1";
+    
+    [self hookViewController:self withTableView:self.tableView withGesture:(TBGesture *)gesture];
     
 }
 
 
 //hook
--(void)hookViewController:(UIViewController *)vc view:(UIView *)view tableView:(UITableView *)tableView {
+-(void)hookViewController:(UIViewController *)vc withTableView:(UITableView *)tableView withGesture:(TBGesture *)gesture{
     
-    [vc aspect_hookSelector:@selector(tableView: cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView,NSIndexPath *path) {
+    [vc aspect_hookSelector:@selector(tableView:cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView1,NSIndexPath *path) {
         
         TBIndexPathCellModel *model = [[TBIndexPathCellModel alloc]init];
         model.indexPath = path;
         
         NSArray *cellArray = [tableView visibleCells];
-        
+        NSLog(@"cellArray.cout=%lu",(unsigned long)cellArray.count);
        
-        for (UITableViewCell *cell in cellArray) {
-            
-            NSLog(@"===============[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
-            if (([tableView indexPathForCell:cell].row-1 == path.row) || ([tableView indexPathForCell:cell].row+1 == path.row)) {
-//                model.cell = cell;
-                
-//                NSLog(@"path.row=%d,[tableView indexPathForCell:cell]=%d",path.row,[tableView indexPathForCell:cell].row-1);
-            }
-        }
+//        for (UITableViewCell *cell in cellArray) {
+//            
+//            NSLog(@"===============[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
+//            if (([tableView indexPathForCell:cell].row-1 == path.row) || ([tableView indexPathForCell:cell].row+1 == path.row)) {
+////                model.cell = cell;
+//                
+////                NSLog(@"path.row=%d,[tableView indexPathForCell:cell]=%d",path.row,[tableView indexPathForCell:cell].row-1);
+//            }
+//        }
         
     } error:NULL];
 }

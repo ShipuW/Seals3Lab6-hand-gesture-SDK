@@ -7,10 +7,18 @@
 //
 #import <UIKit/UIKit.h>
 #import "TBGestureRecognizer.h"
+#import "TBDataManager.h"
+#import "MacroUtils.h"
+#import "TBGesture.h"
+#import "TBGMath.h"
 
 #define kSamplePoints 30
 #define MIN_SCORE 0.5
 #define PI 3.14
+
+
+#define NSLog(...)
+
 
 // Utility/Math Functions:
 CGPoint Centroid(CGPoint *samples, int samplePoints);
@@ -22,9 +30,10 @@ float PathDistance(CGPoint *pts1, CGPoint *pts2, int count);
 float DistanceAtAngle(CGPoint *samples, int samplePoints, CGPoint *template, float theta);
 float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template);
 
+
 @interface TBGestureRecognizer()
 
-@property (nonatomic, strong) NSDictionary *gestureDic;
+@property (nonatomic, strong) NSArray *gestureTemplates;
 @property (nonatomic, strong) NSArray *gesture;
 @property (nonatomic, strong) NSMutableArray *resampleGesture;
 
@@ -37,11 +46,13 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     self = [super init];
     if (self) {
         self.resampleGesture = [NSMutableArray array];
-        self.gestureDic = [NSDictionary dictionary];
+        self.gestureTemplates = [NSArray array];
         self.gesture = [NSArray array];
-        NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Gestures" ofType:@"json"]];
-        NSError *error;
-        [self loadTemplatesFromJsonData:jsonData error:&error];
+        @weakify(self);
+        [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
+            @strongify(self);
+            self.gestureTemplates = results;
+        }];
     }
     return self;
 }
@@ -56,28 +67,6 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     return recognizer;
 }
 
-// TO BE DELETED
-- (BOOL)loadTemplatesFromJsonData:(NSData *)jsonData error:(NSError **)errorOut
-{
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:errorOut];
-    if (!dict)
-        return NO;
-    
-    NSMutableDictionary *output = [NSMutableDictionary dictionary];
-    [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *value, BOOL *stop) {
-        NSMutableArray *points = [NSMutableArray arrayWithCapacity:value.count];
-        for (NSArray *pointArray in value)
-        {
-            CGPoint point = CGPointMake([pointArray[0] floatValue], [pointArray[1] floatValue]);
-            [points addObject:[NSValue valueWithCGPoint:point]];
-        }
-        output[key] = [points copy]; // mutable to immutable
-    }];
-    self.gestureDic = [output copy]; // mutable to immuatable
-    return YES;
-}
-
-
 #pragma mark --- callback
 -(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion
 {
@@ -89,7 +78,7 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
 {
     self.gesture = points;
     
-    NSString *bestTemplateName;
+    NSString *bestTemplateId;
     int i;
     CGPoint samples[kSamplePoints];
     
@@ -133,19 +122,17 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     Translate(samples, kSamplePoints, -center.x, -center.y);
     
     float best = INFINITY;
-    for (NSString *templateName in [self.gestureDic allKeys]) {
-        NSArray *templateSamples = [self.gestureDic objectForKey:templateName];
+    for (TBGesture *templateGesture in self.gestureTemplates) {
         CGPoint template[kSamplePoints];
-        NSAssert(kSamplePoints == [templateSamples count], @"Template size mismatch");
         for (i = 0; i < kSamplePoints; i++) {
-            template[i] = [[templateSamples objectAtIndex:i] CGPointValue];
+            template[i] = [templateGesture.rawPath[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
-        NSLog(@"%@: %f", templateName, score);
-
+        
         if (score < best) {
-            bestTemplateName = [NSString stringWithString:templateName];
+            bestTemplateId = [NSString stringWithString:templateGesture.objectId];
             best = score;
+            NSLog(@"best: %@: %f", templateGesture.name, score);
         }
     }
     self.resampleGesture = [NSMutableArray arrayWithCapacity:kSamplePoints];
@@ -155,116 +142,11 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
         [self.resampleGesture addObject:[NSValue valueWithCGPoint:pt]];
     }
     
-//    NSMutableString *string = [NSMutableString stringWithString:@"\"template_name\": [ "];
-//    for (i = 0; i < kSamplePoints; i++)
-//    {
-//        CGPoint pt = samples[i];
-//        [string appendFormat:@"[%0.2f, %0.2f], ", pt.x, pt.y];
-//    }
-//    [string appendString:@"],\n"];
-//    NSLog(@"Read:\n%@", string);
-    
     if (best < MIN_SCORE) {
-        return bestTemplateName;
+        return bestTemplateId;
     } else {
         return nil;
     }
 }
 
 @end
-
-#pragma mark --- math
-CGPoint Centroid(CGPoint *samples, int samplePoints)
-{
-    CGPoint center = CGPointZero;
-    for (int i = 0; i < samplePoints; i++)
-    {
-        CGPoint pt = samples[i];
-        center.x += pt.x;
-        center.y += pt.y;
-    }
-    center.x /= samplePoints;
-    center.y /= samplePoints;
-    return center;
-}
-void Translate(CGPoint *samples, int samplePoints, float x, float y)
-{
-    for (int i = 0; i < samplePoints; i++)
-    {
-        CGPoint pt = samples[i];
-        samples[i] = CGPointMake(pt.x+x, pt.y+y);
-    }
-}
-void Rotate(CGPoint *samples, int samplePoints, float radians)
-{
-    CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(radians);
-    for (int i = 0; i < samplePoints; i++)
-    {
-        CGPoint pt0 = samples[i];
-        CGPoint pt = CGPointApplyAffineTransform(pt0, rotateTransform);
-        samples[i] = pt;
-    }
-}
-void Scale(CGPoint *samples, int samplePoints, float xScale, float yScale)
-{
-    CGAffineTransform scaleTransform = CGAffineTransformMakeScale(xScale, yScale); //1.0f/(upperRight.x - lowerLeft.x), 1.0f/(upperRight.y - lowerLeft.y));
-    for (int i = 0; i < samplePoints; i++)
-    {
-        CGPoint pt0 = samples[i];
-        CGPoint pt = CGPointApplyAffineTransform(pt0, scaleTransform);
-        samples[i] = pt;
-    }
-}
-float Distance(CGPoint p1, CGPoint p2)
-{
-    float dx = p2.x - p1.x;
-    float dy = p2.y - p1.y;
-    return sqrtf(dx * dx + dy * dy);
-}
-float PathDistance(CGPoint *pts1, CGPoint *pts2, int count)
-{
-    float d = 0.0;
-    for (int i = 0; i < count; i++) // assumes pts1.length == pts2.length
-        d += Distance(pts1[i], pts2[i]);
-    return d / (float)count;
-}
-float DistanceAtAngle(CGPoint *samples, int samplePoints, CGPoint *template, float theta)
-{
-    const int maxPoints = 128;
-    CGPoint newPoints[maxPoints];
-    assert(samplePoints <= maxPoints);
-    memcpy(newPoints, samples, sizeof(CGPoint)*samplePoints);
-    Rotate(newPoints, samplePoints, theta);
-    return PathDistance(newPoints, template, samplePoints);
-}
-float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
-{
-    float a = -0.25f*M_PI;
-    float b = -a;
-    float threshold = 0.1f;
-    float Phi = 0.5 * (-1.0 + sqrtf(5.0)); // Golden Ratio
-    float x1 = Phi * a + (1.0 - Phi) * b;
-    float f1 = DistanceAtAngle(samples, samplePoints, template, x1);
-    float x2 = (1.0 - Phi) * a + Phi * b;
-    float f2 = DistanceAtAngle(samples, samplePoints, template, x2);
-    while (fabs(b - a) > threshold)
-    {
-        if (f1 < f2)
-        {
-            b = x2;
-            x2 = x1;
-            f2 = f1;
-            x1 = Phi * a + (1.0 - Phi) * b;
-            f1 = DistanceAtAngle(samples, samplePoints, template, x1);
-        }
-        else
-        {
-            a = x1;
-            x1 = x2;
-            f1 = f2;
-            x2 = (1.0 - Phi) * a + Phi * b;
-            f2 = DistanceAtAngle(samples, samplePoints, template, x2);
-        }
-    }
-    return MIN(f1, f2);
-}

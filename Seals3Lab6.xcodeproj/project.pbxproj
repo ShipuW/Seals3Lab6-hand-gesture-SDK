@@ -20,6 +20,7 @@
 		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
 		600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05181B735FA9001ACC90 /* MyViewModel.m */; };
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
+		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
 		A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */ = {isa = PBXBuildFile; fileRef = A63F1AFA1B774E250088B299 /* GestureTemplets.json */; };
 		A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */; };
 		A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */; };
@@ -36,6 +37,9 @@
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
 		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
+		A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */; };
+		A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */; };
+		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
 		AA680F5F1B7347B10003F79B /* Gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = AA680F5A1B7347B10003F79B /* Gestures.json */; };
 /* End PBXBuildFile section */
@@ -77,6 +81,8 @@
 		600E05181B735FA9001ACC90 /* MyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewModel.m; sourceTree = "<group>"; };
 		600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+UICustomGestureRecognizer.h"; sourceTree = "<group>"; };
 		600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+UICustomGestureRecognizer.m"; sourceTree = "<group>"; };
+		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
+		60ECA3C11B773721005B27DF /* PostConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostConnection.h; sourceTree = "<group>"; };
 		A63F1AFA1B774E250088B299 /* GestureTemplets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GestureTemplets.json; sourceTree = "<group>"; };
 		A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Utils.h"; sourceTree = "<group>"; };
 		A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Utils.m"; sourceTree = "<group>"; };
@@ -109,6 +115,12 @@
 		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
 		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
 		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
+		A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBJoinGestureSimulationViewController.h; sourceTree = "<group>"; };
+		A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBJoinGestureSimulationViewController.m; sourceTree = "<group>"; };
+		A6C3D25D1B787E0400E110C4 /* TBTableViewSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableViewSimulationViewController.h; sourceTree = "<group>"; };
+		A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableViewSimulationViewController.m; sourceTree = "<group>"; };
+		AA4E2C2F1B7853190009739E /* TBGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGMath.h; sourceTree = "<group>"; };
+		AA4E2C301B7853190009739E /* TBGMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGMath.m; sourceTree = "<group>"; };
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		AA680F5A1B7347B10003F79B /* Gestures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gestures.json; sourceTree = "<group>"; };
@@ -152,6 +164,8 @@
 				600E05181B735FA9001ACC90 /* MyViewModel.m */,
 				600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */,
 				600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */,
+				60ECA3BF1B773712005B27DF /* PostConnection.m */,
+				60ECA3C11B773721005B27DF /* PostConnection.h */,
 			);
 			name = CGSDK;
 			sourceTree = "<group>";
@@ -217,10 +231,12 @@
 				1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */,
 				A63F1AFF1B7787800088B299 /* TBAllGesturesViewController.h */,
 				A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */,
+				A6C3D25C1B785E1100E110C4 /* 模拟接入 */,
 				1470D6AE6C53ED899435DCBF /* FifthViewController.h */,
 				1470D81B6F1A4F320A3FE59B /* FifthViewController.m */,
 				1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */,
 				1470DF786FD194FC630FF264 /* TBCellViewModel.h */,
+				A6C3D2601B787E0800E110C4 /* TableView 模拟接入 */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -305,6 +321,8 @@
 				AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */,
 				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
 				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
+				AA4E2C2F1B7853190009739E /* TBGMath.h */,
+				AA4E2C301B7853190009739E /* TBGMath.m */,
 			);
 			name = "蒙箫";
 			sourceTree = "<group>";
@@ -354,6 +372,24 @@
 				1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */,
 			);
 			name = "疯隐";
+			sourceTree = "<group>";
+		};
+		A6C3D25C1B785E1100E110C4 /* 模拟接入 */ = {
+			isa = PBXGroup;
+			children = (
+				A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */,
+				A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */,
+			);
+			name = "模拟接入";
+			sourceTree = "<group>";
+		};
+		A6C3D2601B787E0800E110C4 /* TableView 模拟接入 */ = {
+			isa = PBXGroup;
+			children = (
+				A6C3D25D1B787E0400E110C4 /* TBTableViewSimulationViewController.h */,
+				A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */,
+			);
+			name = "TableView 模拟接入";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,13 +534,16 @@
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
+				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
+				A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
 				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
+				A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */,
 				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
 				AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */,
@@ -514,6 +553,7 @@
 				A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */,
 				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
 				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
+				AA4E2C311B7853190009739E /* TBGMath.m in Sources */,
 				1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */,
 				1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */,
 				1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */,
@@ -595,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -632,7 +672,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -647,7 +687,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -663,7 +703,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

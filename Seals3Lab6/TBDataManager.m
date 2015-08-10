@@ -85,9 +85,15 @@
         !completion ?: completion(error);
         return;
     }
-    int id = [@([[NSDate date] timeIntervalSince1970]) intValue];
-    NSError *error = nil;
+//    int objectId = [@([[NSDate date] timeIntervalSince1970]) intValue];
 
+    double ts = [[NSDate date] timeIntervalSince1970];
+    ts = fmod(ts, @(1000000).doubleValue);
+    ts = ts * 1000;
+    int objectId = @(ts).intValue;
+
+    NSError *error = nil;
+    
     NSMutableArray *jsonArray = [NSMutableArray arrayWithCapacity:gesture.path.count];
     for (NSValue *value in gesture.path) {
         CGPoint point = [value CGPointValue];
@@ -103,29 +109,46 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
 
-    NSString *rawJsonString;
-    if (gesture.rawPath.count) {
-        NSData *rawJsonData = [NSJSONSerialization dataWithJSONObject:gesture.rawPath options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *rawJSONString;
+    if (gesture.rawPath.count && (gesture.rawPath.count != gesture.path.count)) {
+        NSMutableArray *rawJSONArray = [NSMutableArray arrayWithCapacity:gesture.rawPath.count];
+        for (NSValue *value in gesture.rawPath) {
+            CGPoint point = [value CGPointValue];
+            NSArray *arr = @[@(point.x), @(point.y)];
+            [rawJSONArray addObject:arr];
+        }
+        NSData *rawJsonData = [NSJSONSerialization dataWithJSONObject:rawJSONArray options:NSJSONWritingPrettyPrinted error:&error];
         if (error) {
             !completion ?: completion(error);
             return;
         }
-        rawJsonString = [[NSString alloc] initWithData:rawJsonData encoding:NSUTF8StringEncoding];
+        rawJSONString = [[NSString alloc] initWithData:rawJsonData encoding:NSUTF8StringEncoding];
     } else {
-        rawJsonString = jsonString;
+        rawJSONString = jsonString;
     }
 
 
 
     NSString *sql = @"INSERT INTO Gesture VALUES (?, ?, ?, ?, ?)";
-    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
-    NSError *rsError;
-    if ([db open]) {
-        BOOL rs = [db executeUpdate:sql, @(id), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJsonString];
-        rsError = rs ? nil : [[NSError alloc] init];
-        [db close];
-    }
-    !completion ?: completion(rsError);
+    
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:self.dbPath];
+    [queue inDatabase:^(FMDatabase *db) {
+        NSError *rsError = nil;
+        if ([db open]) {
+            BOOL rs = [db executeUpdate:sql, @(objectId), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
+            rsError = rs ? nil : [[NSError alloc] init];
+            [db close];
+        }
+        !completion ?: completion(rsError);
+    }];
+//    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+//    NSError *rsError;
+//    if ([db open]) {
+//        BOOL rs = [db executeUpdate:sql, @(objectId), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
+//        rsError = rs ? nil : [[NSError alloc] init];
+//        [db close];
+//    }
+//    !completion ?: completion(rsError);
 }
 
 
@@ -173,7 +196,7 @@
     NSMutableArray *gestures = [NSMutableArray array];
     for (NSDictionary *object in templets) {
         TBGesture *gesture = [[TBGesture alloc] init];
-        gesture.objectId = object[@"id"];
+        gesture.objectId = [object[@"id"] stringValue];
         gesture.name = object[@"name"];
         gesture.type = TBGestureTypeCustom;
         
@@ -187,6 +210,7 @@
             }
         }
         gesture.path = path;
+        gesture.rawPath = path;
         [gestures addObject:gesture];
     }
     !completion ?: completion(gestures, nil);

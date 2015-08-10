@@ -13,6 +13,8 @@
 #import "MacroUtils.h"
 #import "TBAllGesturesViewController.h"
 #import "TBCellViewModel.h"
+#import "TBJoinGestureSimulationViewController.h"
+#import "TBTableViewSimulationViewController.h"
 #import "TBGesture.h"
 
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
@@ -35,7 +37,8 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     [self.view addSubview:self.tableView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
-
+    self.hidesBottomBarWhenPushed = YES;
+    
     @weakify(self);
 
     TBCellViewModel *vm0 = [[TBCellViewModel alloc] init];
@@ -50,6 +53,8 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     vm1.text = @"模拟接入";
     vm1.didSelectAction = ^{
         @strongify(self);
+        TBJoinGestureSimulationViewController *vc = [[TBJoinGestureSimulationViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     };
 
     TBCellViewModel *vm2 = [[TBCellViewModel alloc] init];
@@ -76,7 +81,11 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
             TBGesture *gesture = results[0];
             [SharedDataManager addCustomGesture:gesture completion:^(NSError *error) {
-                debugLog(error);
+                if (error) {
+                    debugLog(@"%@", error);
+                } else {
+                    debugLog(@"写入成功");
+                }
             }];
         }];
 
@@ -90,11 +99,21 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
     };
 
+    
+    TBCellViewModel *vm4 = [[TBCellViewModel alloc] init];
+    vm4.text = @"TableView模拟接入";
+    vm4.didSelectAction = ^{
+        @strongify(self);
+        TBTableViewSimulationViewController *vc = [[TBTableViewSimulationViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    };
     self.cellsList = @[
             vm0,
             vm1,
             vm2,
             vm3,
+            vm4,
     ];
 }
 

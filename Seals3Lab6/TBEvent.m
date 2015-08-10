@@ -25,7 +25,7 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 #pragma mark - Basic Methods
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion {
-    NSArray *gestures = [TBGesture gesturesForEvent:self];
+//    NSArray *gestures = [TBGesture gesturesForEvent:self];
 
 }
 
@@ -35,6 +35,26 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 - (void)removeEventWithId:(NSString *)eventId completion:(void (^)(NSError *error))completion {
 
+}
+
+- (instancetype)initWithEventType:(TBEventType)eventType {
+    self = [super init];
+    if (self) {
+//        switch (eventType) {
+//            case TBEventTypeCollect: {
+//                
+//                break;
+//            }
+//            case TBEventTypeShare: {
+////                <#statement#>
+//                break;
+//            }
+//            default: {
+//                break;
+//            }
+//        }
+    }
+    return self;
 }
 
 + (NSArray *)allEvents {
