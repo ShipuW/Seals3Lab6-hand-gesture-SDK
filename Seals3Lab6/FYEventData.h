@@ -7,12 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TBEvent.h"
 
-@interface FYEventData : TBEvent
-
-@property(nonatomic,strong) TBEvent* event;
+@interface FYEventData : NSObject
 
 @property(nonatomic,copy) NSString* icon;
+@property(nonatomic,copy) NSString* event;
 
 @end

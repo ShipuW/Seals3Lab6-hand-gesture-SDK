@@ -15,8 +15,9 @@
     TBTestTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:ID];
     if (cell==nil) {
         cell = [[TBTestTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     cell.textLabel.text = [NSString stringWithFormat:@"text--"];
 
     return cell;

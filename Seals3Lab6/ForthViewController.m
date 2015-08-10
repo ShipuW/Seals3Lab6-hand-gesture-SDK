@@ -10,13 +10,15 @@
 #import "Aspects.h"
 #import "TBGesture.h"
 #import "TBTestTableViewCell.h"
+#import "TBIndexPathCellModel.h"
+#import "TBIndexPathCellModelArray.h"
+#import "TBHookOperation.h"
 
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property(nonatomic, strong) NSIndexPath *indexPath;
-@property(nonatomic, strong) UITableViewCell *cell;
+@property(nonatomic, strong) NSArray *indexPathAndCells;
 
 @end
 
@@ -28,31 +30,16 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    [self aspect_hookSelector:@selector(tableView:cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView,NSIndexPath *path) {
-        
-        self.indexPath = path;
-        
-        NSArray *cellArray = [tableView visibleCells];
-        for (UITableViewCell *cell in cellArray) {
-//            NSLog(@"cell.isHidden=%d",cell.isHidden);
-//            NSLog(@"[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
-            
-            
-            if ([path isEqual:[tableView indexPathForCell:cell]]) {
-            
-                self.cell = cell;
-            
-                
-                NSLog(@"haha==%@",[cell valueForKeyPath:@"gesture"]);
-                
-            }
-        }
-        
-    } error:NULL];
+    TBGesture *gesture = [[TBGesture alloc]init];
+    gesture.objectId=@"1";
+    gesture.name=@"name1";
+    
+    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:(TBGesture *)gesture forKeyPath:@"textLabel"];
     
 }
 
 
+#pragma tableView数据源方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 20;
 }
@@ -66,12 +53,30 @@
     [gesture setType:TBGestureTypeCustom];
     
     [cell setGesture:gesture];
+
+//    static NSString *ID=@"test";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//    if (cell==nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+//    }
+//    cell.textLabel.text = [NSString stringWithFormat:@"text--%d",indexPath.row];
     
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row==5) {
+        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
+        NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
+    }
 }
 
 @end
