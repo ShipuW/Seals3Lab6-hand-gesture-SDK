@@ -38,11 +38,14 @@
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
     self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
     self.gestureRecognizer.tbGesture = self;
+    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil];
     [view addGestureRecognizer:self.gestureRecognizer];
+
+    !completion ?: completion(nil);
 }
 
 - (void)xxx:(id)sender {
-    
+
 }
 
 
@@ -51,7 +54,7 @@
 }
 
 - (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
-    
+
 }
 
 - (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *))completion {
@@ -59,7 +62,7 @@
 }
 
 - (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
-    
+
 }
 
 @end

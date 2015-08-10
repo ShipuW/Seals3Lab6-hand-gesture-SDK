@@ -40,13 +40,13 @@
     TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
     TBGesture *gesture = [TBGesture gestureForEvent:event];
     [gesture addToView:self.testView completion:^(NSError *error) {
-        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"
                                                         message:@"11"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"OtherBtn",nil];
         [alert show];
+        
         
     }];
 }
