@@ -7,7 +7,8 @@
 //
 
 #import "ThirdViewController.h"
-
+#import "TBGesture.h"
+#import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 @interface ThirdViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
@@ -25,12 +26,29 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-    UICustomGestureRecognizer *customRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
-    customRecognizer.isSimpleGesture = YES;
-    UICustomGestureRecognizer *customRecognizer2 = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
-    customRecognizer2.isSimpleGesture = NO;
-    [self.testView addGestureRecognizer:customRecognizer];
-    [self.testView2 addGestureRecognizer:customRecognizer2];
+    //UICustomGestureRecognizer *customRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
+    //customRecognizer.isSimpleGesture = YES;
+    //UICustomGestureRecognizer *customRecognizer2 = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
+    //customRecognizer2.isSimpleGesture = NO;
+    //[self.testView addGestureRecognizer:customRecognizer];
+    //[self.testView2 addGestureRecognizer:customRecognizer2];
+    
+    
+    
+    
+    
+    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGesture *gesture = [TBGesture gestureForEvent:event];
+    [gesture addToView:self.testView completion:^(NSError *error) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"
+                                                        message:@"11"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OtherBtn",nil];
+        [alert show];
+        
+    }];
 }
 
 
