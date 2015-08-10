@@ -173,8 +173,8 @@
     NSMutableArray *gestures = [NSMutableArray array];
     for (NSDictionary *object in templets) {
         TBGesture *gesture = [[TBGesture alloc] init];
-        gesture.objectId = object[@"id"];
-        gesture.name = object[@"name"];
+        gesture.objectId = [object[@"id"] stringValue];
+        gesture.name = [object[@"name"] stringValue];
         gesture.type = TBGestureTypeCustom;
         
         NSArray *pointsArray = object[@"path"];
