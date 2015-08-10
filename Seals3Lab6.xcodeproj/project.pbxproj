@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D81B6F1A4F320A3FE59B /* FifthViewController.m */; };
 		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
+		0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */; };
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
 		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
 		1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
+		0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
+		0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
 		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
 		1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventManagerViewController.h; sourceTree = "<group>"; };
 		1470D3127A457923FF1958B3 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 			children = (
 				A6744B451B720A6100E222B0 /* ForthViewController.h */,
 				A6744B461B720A6100E222B0 /* ForthViewController.m */,
+				0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */,
+				0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */,
 			);
 			name = "言杰";
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
@@ -635,7 +641,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -651,7 +657,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
