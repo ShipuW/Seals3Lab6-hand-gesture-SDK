@@ -103,16 +103,22 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
 
-    NSString *rawJsonString;
-    if (gesture.rawPath.count) {
-        NSData *rawJsonData = [NSJSONSerialization dataWithJSONObject:gesture.rawPath options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *rawJSONString;
+    if (gesture.rawPath.count && (gesture.rawPath.count != gesture.path.count)) {
+        NSMutableArray *rawJSONArray = [NSMutableArray arrayWithCapacity:gesture.rawPath.count];
+        for (NSValue *value in gesture.rawPath) {
+            CGPoint point = [value CGPointValue];
+            NSArray *arr = @[@(point.x), @(point.y)];
+            [rawJSONArray addObject:arr];
+        }
+        NSData *rawJsonData = [NSJSONSerialization dataWithJSONObject:rawJSONArray options:NSJSONWritingPrettyPrinted error:&error];
         if (error) {
             !completion ?: completion(error);
             return;
         }
-        rawJsonString = [[NSString alloc] initWithData:rawJsonData encoding:NSUTF8StringEncoding];
+        rawJSONString = [[NSString alloc] initWithData:rawJsonData encoding:NSUTF8StringEncoding];
     } else {
-        rawJsonString = jsonString;
+        rawJSONString = jsonString;
     }
 
 
@@ -121,7 +127,7 @@
     FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
     NSError *rsError;
     if ([db open]) {
-        BOOL rs = [db executeUpdate:sql, @(id), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJsonString];
+        BOOL rs = [db executeUpdate:sql, @(id), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
         rsError = rs ? nil : [[NSError alloc] init];
         [db close];
     }
@@ -174,7 +180,7 @@
     for (NSDictionary *object in templets) {
         TBGesture *gesture = [[TBGesture alloc] init];
         gesture.objectId = [object[@"id"] stringValue];
-        gesture.name = [object[@"name"] stringValue];
+        gesture.name = object[@"name"];
         gesture.type = TBGestureTypeCustom;
         
         NSArray *pointsArray = object[@"path"];
