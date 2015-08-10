@@ -35,4 +35,21 @@
     
 }
 
+
+- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *))completion {
+    [self addToTableView:tableView forKeyPath:@"" completion:completion];
+}
+
+- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
+    
+}
+
+- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *))completion {
+    [self addToCollectionView:collectionView forKeyPath:@"" completion:completion];
+}
+
+- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
+    
+}
+
 @end

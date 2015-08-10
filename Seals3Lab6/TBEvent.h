@@ -37,11 +37,6 @@ typedef NS_OPTIONS(NSUInteger, TBEventType) {
 - (NSArray *)triggeredGestures;
 - (NSArray *)canSelectedGestures;
 
-- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *error))completion;
-- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
 
-
-- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *error))completion;
-- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
 
 @end

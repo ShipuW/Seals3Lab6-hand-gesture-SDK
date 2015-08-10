@@ -46,7 +46,12 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 + (instancetype)gestureForEventId:(NSString *)eventId;
 //+ (NSArray *)gesturesForEvent:(TBEvent *)event;
 //+ (NSArray *)gesturesForEventId:(NSString *)eventId;
+- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *error))completion;
+- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
 
+
+- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *error))completion;
+- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
 
 
 @end
