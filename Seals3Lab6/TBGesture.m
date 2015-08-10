@@ -22,7 +22,7 @@
 
     UIGestureRecognizer *gr = [[UIGestureRecognizer alloc] init];
 //    [gr addTarget:<#(id)target#> action:<#(SEL)action#>];
-    return gr;
+    return @[gr];
 }
 
 

@@ -7,21 +7,32 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TBGesture.h"
 
 @class TBGesture;
 
 @interface TBEvent : NSObject
 
 @property (nonatomic, copy) NSString *objectId;
+@property (nonatomic, assign, getter=isEnabled) BOOL enabled;
 @property (nonatomic, copy) NSString *name;
-
 @property (nonatomic, assign) BOOL canEditGesture;
 
+- (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
+
+- (void)removeEvent:(TBEvent *)event completion:(void (^)(NSError *error))completion;;
+- (void)removeEventWithId:(NSString *)eventId completion:(void (^)(NSError *error))completion;;
 
 + (NSArray *)allEvents;
 
 - (NSArray *)triggeredGestures;
-
 - (NSArray *)canSelectedGestures;
+
+- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *error))completion;
+- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
+
+
+- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *error))completion;
+- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
 
 @end

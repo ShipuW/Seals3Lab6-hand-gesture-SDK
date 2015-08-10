@@ -8,10 +8,34 @@
 
 #import "TBEvent.h"
 #import "TBGesture.h"
+#import "FMDB.h"
+
+static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
+
+@interface TBEvent ()
+
+@property (nonatomic, strong) FMDatabase *eventDatabase;
+@property (nonatomic, copy, readonly) NSString *dbPath;
+
+
+@end
 
 @implementation TBEvent
 
 #pragma mark - Basic Methods
+
+- (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion {
+    NSArray *gestures = [TBGesture gesturesForEvent:self];
+
+}
+
+- (void)removeEvent:(TBEvent *)event completion:(void (^)(NSError *error))completion {
+
+}
+
+- (void)removeEventWithId:(NSString *)eventId completion:(void (^)(NSError *error))completion {
+
+}
 
 + (NSArray *)allEvents {
     TBEvent *evt1 = [self fake_collect];
@@ -43,6 +67,23 @@
     return @[gesture1, gesture2];
 }
 
+- (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *error))completion {
+
+}
+
+- (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
+
+}
+
+
+- (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *error))completion {
+
+}
+
+- (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
+
+}
+
 
 + (instancetype)fake_collect {
     TBEvent *event = [[TBEvent alloc] init];
@@ -57,5 +98,25 @@
     event.name = @"分享";
     return event;
 }
+
+
+//#pragma mark - 本地存储
+//
+//- (NSString *)dbPath {
+//    NSString * doc = PATH_OF_DOCUMENT;
+//    NSString * path = [doc stringByAppendingPathComponent:@"user.sqlite"];
+//    self.dbPath = path;
+//    return _dbPath;
+//}
+//
+//
+//- (FMDatabase *)eventDatabase {
+//    if (!_eventDatabase) {
+//        _eventDatabase = [FMDatabase databaseWithPath:kEventDatabasePath];
+//    }
+//    return _eventDatabase;
+//}
+
+
 
 @end
