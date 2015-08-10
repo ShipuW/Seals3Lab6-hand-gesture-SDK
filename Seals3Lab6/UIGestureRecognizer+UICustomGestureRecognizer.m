@@ -12,6 +12,7 @@
 #import "MyView.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "PostConnection.h"
+#import "TBGesture.h"
 #define Duration 0.5 //长按响应时间
 
 
@@ -26,10 +27,17 @@
     _isSimpleGesture = YES;
     _target = target;
     _action = action;
+    _isMatch = NO;
     
     self = [super initWithTarget:self action:@selector(buttonLongPressed:)];
     if (self) {
         self.minimumPressDuration = Duration;
+    }
+    
+    if (_tbGesture.type < 100) {
+        _isSimpleGesture = YES;
+    }else{
+        _isSimpleGesture = NO;
     }
     
     return self;

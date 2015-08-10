@@ -51,6 +51,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     UIView             *_touchView;
     UIView             *_baseView;
     MyView             *_myView;
+    BOOL                _isMatch;
 }
 @property id target;
 @property SEL action;
