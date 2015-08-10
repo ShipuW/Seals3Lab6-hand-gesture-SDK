@@ -11,6 +11,8 @@
 #import "TBGesture.h"
 #import "TBTestTableViewCell.h"
 #import "TBIndexPathCellModel.h"
+#import "TBIndexPathCellModelArray.h"
+#import "TBHookOperation.h"
 
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -32,34 +34,10 @@
     gesture.objectId=@"1";
     gesture.name=@"name1";
     
-    [self hookViewController:self withTableView:self.tableView withGesture:(TBGesture *)gesture];
+    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:(TBGesture *)gesture forKeyPath:@"textLabel"];
     
 }
 
-
-//hook
--(void)hookViewController:(UIViewController *)vc withTableView:(UITableView *)tableView withGesture:(TBGesture *)gesture{
-    
-    [vc aspect_hookSelector:@selector(tableView:cellForRowAtIndexPath:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tableView1,NSIndexPath *path) {
-        
-        TBIndexPathCellModel *model = [[TBIndexPathCellModel alloc]init];
-        model.indexPath = path;
-        
-        NSArray *cellArray = [tableView visibleCells];
-        NSLog(@"cellArray.cout=%lu",(unsigned long)cellArray.count);
-       
-//        for (UITableViewCell *cell in cellArray) {
-//            
-//            NSLog(@"===============[tableView indexPathForCell:cell]=%@",[tableView indexPathForCell:cell]);
-//            if (([tableView indexPathForCell:cell].row-1 == path.row) || ([tableView indexPathForCell:cell].row+1 == path.row)) {
-////                model.cell = cell;
-//                
-////                NSLog(@"path.row=%d,[tableView indexPathForCell:cell]=%d",path.row,[tableView indexPathForCell:cell].row-1);
-//            }
-//        }
-        
-    } error:NULL];
-}
 
 #pragma tableView数据源方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,27 +45,38 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
-//        
-//    TBGesture *gesture = [[TBGesture alloc]init];
-//    [gesture setName:[NSString stringWithFormat:@"test--%ld",indexPath.row]];
-//    [gesture setObjectId:[NSString stringWithFormat:@"%ld",indexPath.row]];
-//    [gesture setType:TBGestureTypeCustom];
-//    
-//    [cell setGesture:gesture];
+    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
+        
+    TBGesture *gesture = [[TBGesture alloc]init];
+    [gesture setName:[NSString stringWithFormat:@"test--%ld",indexPath.row]];
+    [gesture setObjectId:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [gesture setType:TBGestureTypeCustom];
+    
+    [cell setGesture:gesture];
 
-    static NSString *ID=@"test";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell==nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"text--%d",indexPath.row];
-
+//    static NSString *ID=@"test";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//    if (cell==nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+//    }
+//    cell.textLabel.text = [NSString stringWithFormat:@"text--%d",indexPath.row];
+    
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row==5) {
+        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
+        NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
+    }
 }
 
 @end

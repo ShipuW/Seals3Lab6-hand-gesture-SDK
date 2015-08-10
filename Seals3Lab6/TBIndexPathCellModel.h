@@ -12,5 +12,6 @@
 
 @property(nonatomic, strong) NSIndexPath *indexPath;
 @property(nonatomic, strong) UITableViewCell *cell;
+@property(nonatomic, strong) NSMutableArray *subViews;
 
 @end

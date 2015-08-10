@@ -10,4 +10,11 @@
 
 @implementation TBIndexPathCellModel
 
+-(NSMutableArray *)subViews {
+    if (_subViews==nil) {
+        _subViews = [[NSMutableArray alloc]init];
+    }
+    return _subViews;
+}
+
 @end

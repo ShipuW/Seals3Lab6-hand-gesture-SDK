@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */; };
 		01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */; };
+		01DE24BE1B78A6B200279FA9 /* TBIndexPathCellModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24BD1B78A6B200279FA9 /* TBIndexPathCellModelArray.m */; };
+		01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24C01B78A9E800279FA9 /* TBHookOperation.m */; };
 		1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D81B6F1A4F320A3FE59B /* FifthViewController.m */; };
 		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
@@ -58,6 +60,10 @@
 		0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
 		01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIndexPathCellModel.h; sourceTree = "<group>"; };
 		01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIndexPathCellModel.m; sourceTree = "<group>"; };
+		01DE24BC1B78A6B200279FA9 /* TBIndexPathCellModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIndexPathCellModelArray.h; sourceTree = "<group>"; };
+		01DE24BD1B78A6B200279FA9 /* TBIndexPathCellModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIndexPathCellModelArray.m; sourceTree = "<group>"; };
+		01DE24BF1B78A9E800279FA9 /* TBHookOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBHookOperation.h; sourceTree = "<group>"; };
+		01DE24C01B78A9E800279FA9 /* TBHookOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBHookOperation.m; sourceTree = "<group>"; };
 		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
 		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
 		1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventManagerViewController.h; sourceTree = "<group>"; };
@@ -145,6 +151,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01DE24C21B78AA7A00279FA9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */,
+				01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */,
+				01DE24BC1B78A6B200279FA9 /* TBIndexPathCellModelArray.h */,
+				01DE24BD1B78A6B200279FA9 /* TBIndexPathCellModelArray.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		01DE24C31B78AA8E00279FA9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6744B451B720A6100E222B0 /* ForthViewController.h */,
+				A6744B461B720A6100E222B0 /* ForthViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		01DE24C41B78AA9C00279FA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */,
+				0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		01DE24C51B78AAAE00279FA9 /* Utlis */ = {
+			isa = PBXGroup;
+			children = (
+				01DE24BF1B78A9E800279FA9 /* TBHookOperation.h */,
+				01DE24C01B78A9E800279FA9 /* TBHookOperation.m */,
+			);
+			name = Utlis;
+			sourceTree = "<group>";
+		};
 		0C79E93D22DA6071C28761CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,12 +390,10 @@
 		A6744B521B72171900E222B0 /* 言杰 */ = {
 			isa = PBXGroup;
 			children = (
-				A6744B451B720A6100E222B0 /* ForthViewController.h */,
-				A6744B461B720A6100E222B0 /* ForthViewController.m */,
-				0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */,
-				0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */,
-				01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */,
-				01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */,
+				01DE24C31B78AA8E00279FA9 /* ViewController */,
+				01DE24C51B78AAAE00279FA9 /* Utlis */,
+				01DE24C41B78AA9C00279FA9 /* View */,
+				01DE24C21B78AA7A00279FA9 /* model */,
 			);
 			name = "言杰";
 			sourceTree = "<group>";
@@ -526,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */,
 				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
@@ -548,6 +591,7 @@
 				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
 				A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */,
 				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
+				01DE24BE1B78A6B200279FA9 /* TBIndexPathCellModelArray.m in Sources */,
 				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
 				AA4E2C311B7853190009739E /* TBGMath.m in Sources */,
 				1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */,
