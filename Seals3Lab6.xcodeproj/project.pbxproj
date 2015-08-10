@@ -26,7 +26,6 @@
 		A6744B1C1B720A2F00E222B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1B1B720A2F00E222B0 /* main.m */; };
 		A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1E1B720A2F00E222B0 /* AppDelegate.m */; };
 		A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B211B720A2F00E222B0 /* FirstViewController.m */; };
-		A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B241B720A2F00E222B0 /* SecondViewController.m */; };
 		A6744B281B720A2F00E222B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6744B261B720A2F00E222B0 /* Main.storyboard */; };
 		A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6744B291B720A2F00E222B0 /* Images.xcassets */; };
 		A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */; };
@@ -40,6 +39,11 @@
 		A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */; };
 		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
+		D96EB9C61B789C23007AF88D /* FYEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = D96EB9C51B789C23007AF88D /* FYEventData.m */; };
+		D96EB9D71B789F68007AF88D /* FYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D96EB9D41B789F68007AF88D /* FYCell.m */; };
+		D96EB9D81B789F68007AF88D /* FYCreateGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = D96EB9D61B789F68007AF88D /* FYCreateGesture.m */; };
+		D96EB9DD1B789F70007AF88D /* FYMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96EB9DA1B789F70007AF88D /* FYMainController.m */; };
+		D96EB9DE1B789F70007AF88D /* FYAddEventCtroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96EB9DC1B789F70007AF88D /* FYAddEventCtroller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +97,6 @@
 		A6744B1E1B720A2F00E222B0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A6744B201B720A2F00E222B0 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		A6744B211B720A2F00E222B0 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		A6744B231B720A2F00E222B0 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		A6744B241B720A2F00E222B0 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		A6744B271B720A2F00E222B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6744B291B720A2F00E222B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6744B2C1B720A2F00E222B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -120,6 +122,16 @@
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D96EB9C41B789C1D007AF88D /* FYEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYEventData.h; sourceTree = "<group>"; };
+		D96EB9C51B789C23007AF88D /* FYEventData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYEventData.m; sourceTree = "<group>"; };
+		D96EB9D31B789F68007AF88D /* FYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYCell.h; sourceTree = "<group>"; };
+		D96EB9D41B789F68007AF88D /* FYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYCell.m; sourceTree = "<group>"; };
+		D96EB9D51B789F68007AF88D /* FYCreateGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYCreateGesture.h; sourceTree = "<group>"; };
+		D96EB9D61B789F68007AF88D /* FYCreateGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYCreateGesture.m; sourceTree = "<group>"; };
+		D96EB9D91B789F70007AF88D /* FYMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYMainController.h; sourceTree = "<group>"; };
+		D96EB9DA1B789F70007AF88D /* FYMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYMainController.m; sourceTree = "<group>"; };
+		D96EB9DB1B789F70007AF88D /* FYAddEventCtroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYAddEventCtroller.h; sourceTree = "<group>"; };
+		D96EB9DC1B789F70007AF88D /* FYAddEventCtroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYAddEventCtroller.m; sourceTree = "<group>"; };
 		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,8 +336,9 @@
 		A6744B501B72170100E222B0 /* 竹阳 */ = {
 			isa = PBXGroup;
 			children = (
-				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
-				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
+				D96EB9C31B789C0A007AF88D /* View */,
+				D96EB9C21B789C00007AF88D /* Controller */,
+				D96EB9C11B789BEC007AF88D /* Model */,
 			);
 			name = "竹阳";
 			sourceTree = "<group>";
@@ -382,6 +395,37 @@
 				A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */,
 			);
 			name = "TableView 模拟接入";
+			sourceTree = "<group>";
+		};
+		D96EB9C11B789BEC007AF88D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D96EB9C41B789C1D007AF88D /* FYEventData.h */,
+				D96EB9C51B789C23007AF88D /* FYEventData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D96EB9C21B789C00007AF88D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D96EB9D91B789F70007AF88D /* FYMainController.h */,
+				D96EB9DA1B789F70007AF88D /* FYMainController.m */,
+				D96EB9DB1B789F70007AF88D /* FYAddEventCtroller.h */,
+				D96EB9DC1B789F70007AF88D /* FYAddEventCtroller.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D96EB9C31B789C0A007AF88D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D96EB9D31B789F68007AF88D /* FYCell.h */,
+				D96EB9D41B789F68007AF88D /* FYCell.m */,
+				D96EB9D51B789F68007AF88D /* FYCreateGesture.h */,
+				D96EB9D61B789F68007AF88D /* FYCreateGesture.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,7 +565,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
@@ -537,16 +580,21 @@
 				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
 				AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */,
+				D96EB9C61B789C23007AF88D /* FYEventData.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
 				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
 				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
 				A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */,
 				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
+				D96EB9DD1B789F70007AF88D /* FYMainController.m in Sources */,
 				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
+				D96EB9D81B789F68007AF88D /* FYCreateGesture.m in Sources */,
 				AA4E2C311B7853190009739E /* TBGMath.m in Sources */,
 				1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */,
 				1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */,
 				1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */,
+				D96EB9D71B789F68007AF88D /* FYCell.m in Sources */,
+				D96EB9DE1B789F70007AF88D /* FYAddEventCtroller.m in Sources */,
 				1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
