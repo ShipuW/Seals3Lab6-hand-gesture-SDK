@@ -36,27 +36,14 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"设置手势";
-    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGesture)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGesture)];
+//    self.navigationItem.rightBarButtonItem = addButton;
     
     //添加headView
     [self addHeadView];
     
     //从疯瘾数据库加载数据
-   [[TBDataManager sharedManager] loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
-        if (!error) {
-            NSLog(@"no error");
-            for (TBEvent*event in results) {
-                FYEventData* data = [[FYEventData alloc] init];
-                data.event = event;
-                [self.eventArray addObject:data];
-                
-                [self.tableView reloadData];
-            }
-        }else{
-            NSLog(@"====%@",error);
-        }
-    }];
+    [self loadData];
     
     //添加tableView
     CGFloat tableX = 0;
@@ -72,6 +59,23 @@
     //设置代理
     tableView.delegate = self;
     tableView.dataSource = self;
+}
+-(void)loadData
+{
+    [[TBDataManager sharedManager] loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        if (!error) {
+            NSLog(@"no error");
+            for (TBEvent*event in results) {
+                FYEventData* data = [[FYEventData alloc] init];
+                data.event = event;
+                [self.eventArray addObject:data];
+                
+                [self.tableView reloadData];
+            }
+        }else{
+            NSLog(@"====%@",error);
+        }
+    }];
 }
 
 -(void)addHeadView
@@ -102,11 +106,11 @@
 /**
  *  添加一个手势列表
  */
--(void)addGesture
-{
-    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
-    [self.navigationController pushViewController:ctl animated:YES];
-}
+//-(void)addGesture
+//{
+//    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
+//    [self.navigationController pushViewController:ctl animated:YES];
+//}
 /**
  *  隐藏不显示数据分割线
  */
@@ -140,12 +144,14 @@
 -(void)shutDown
 {
     if (self.switchButton.isOn) {//开启手势
-        if (self.eventArray.count == 0) {
-            self.eventArray  = nil;
-        }
+//        if (self.eventArray.count == 0) {
+//            self.eventArray  = nil;
+//        }
+        [self loadData];
     }else{//关闭手势
         [self.eventArray removeAllObjects];
         [self.tableView reloadData];
+        self.eventArray=nil;
     }
 
 }
