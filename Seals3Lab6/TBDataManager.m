@@ -6,8 +6,8 @@
 #import "TBDataManager.h"
 #import "MacroUtils.h"
 #import "TBGesture.h"
-#import "TBEvent.h"
 #import <FMDB.h>
+#import "TBEvent.h"
 #import "NSNumber+Utils.h"
 #define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
@@ -40,6 +40,11 @@
     }
     return _dbPath;
 }
+
+//- (FMDatabase *)db {
+//    return _db;
+//}
+
 
 - (void)createDatabase {
     debugMethod();
@@ -81,6 +86,7 @@
         !completion ?: completion(nil, error);
         return;
     }
+//    int objectId = [@([[NSDate date] timeIntervalSince1970]) intValue];
 
     double ts = [[NSDate date] timeIntervalSince1970];
     ts = fmod(ts, @(1000000).doubleValue);
@@ -128,17 +134,13 @@
     
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:self.dbPath];
     [queue inDatabase:^(FMDatabase *db) {
+        NSError *rsError = nil;
         if ([db open]) {
             BOOL rs = [db executeUpdate:sql, @(objectId), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
+            rsError = rs ? nil : [[NSError alloc] init];
             [db close];
-            if (rs) {
-                gesture.objectId = @(objectId).stringValue;
-                !completion ?: completion(gesture, nil);
-            } else {
-                NSError *rsError = [[NSError alloc] init];
-                !completion ?: completion(nil, rsError);
-            }
         }
+        !completion ?: completion(nil, rsError);
     }];
 //    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
 //    NSError *rsError;
@@ -149,6 +151,7 @@
 //    }
 //    !completion ?: completion(rsError);
 }
+
 
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
     NSString *sql = @"SELECT * from Event";
@@ -207,7 +210,7 @@
 - (BOOL)createMapTable {
     NSString *sql = @"CREATE TABLE IF NOT EXISTS "
                     @"Map ("
-                    @"id integer primary key AUTOINCREMENT,"
+                    @"id integer primary key,"
                     @"gestureId varchar(20),"
                     @"eventId varchar(20)"
                     @")";
@@ -243,6 +246,7 @@
     }
     !completion ?: completion(gestures, nil);
 }
+
 
 - (void)mapEvent:(TBEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
     if (!(event.objectId.length > 0 && event.objectId.length > 0)) {

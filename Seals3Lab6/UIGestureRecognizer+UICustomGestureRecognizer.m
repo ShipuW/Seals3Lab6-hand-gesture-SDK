@@ -12,7 +12,6 @@
 #import "MyView.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "PostConnection.h"
-#import "TBGesture.h"
 #define Duration 0.5 //长按响应时间
 
 
@@ -27,17 +26,10 @@
     _isSimpleGesture = YES;
     _target = target;
     _action = action;
-    _isMatch = NO;
     
     self = [super initWithTarget:self action:@selector(buttonLongPressed:)];
     if (self) {
         self.minimumPressDuration = Duration;
-    }
-    
-    if (_tbGesture.type < 100) {
-        _isSimpleGesture = YES;
-    }else{
-        _isSimpleGesture = NO;
     }
     
     return self;
@@ -124,10 +116,7 @@
             CGPathMoveToPoint(_myView.path, NULL, _startPoint.x, _startPoint.y);
             _displayPoint=YES;
             
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateBeginAtPosition:)]) {
-                [self.recognizeDelegate gestureRecognizer:self stateBeginAtPosition:_startPoint];
-            }
-               
+            
         }
         else if (sender.state == UIGestureRecognizerStateChanged)
         {
@@ -148,6 +137,7 @@
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
             //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
+            
             if (_isSimpleGesture) {
                 [self simpleDirectionRecognizer];
             } else if (!_isSimpleGesture){

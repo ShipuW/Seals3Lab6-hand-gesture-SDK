@@ -10,8 +10,7 @@
 
 @class TBEvent;
 @class TBGesture;
-@class UICustomGestureRecognizer;
-@class UIPinchCustomGestureRecognizer;
+
 typedef NS_ENUM(NSInteger , TBGestureType) {
     TBGestureTypeSystem = 0,
     TBGestureTypeCustom = 100,
@@ -35,8 +34,7 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 @property (nonatomic, weak) id<TBGestureDelegate> delegate;
 
 // 存储自带的手势
-@property (nonatomic, strong) UICustomGestureRecognizer *gestureRecognizer;
-@property (nonatomic, strong) UIPinchCustomGestureRecognizer *pinchRecognizer;
+@property (nonatomic, strong) UIGestureRecognizer *gestureRecognizer;
 // 存储定长的源于 CGPoint 的 NSValue 数组
 @property (nonatomic, strong) NSArray *path;
 @property (nonatomic, strong) NSArray *rawPath;

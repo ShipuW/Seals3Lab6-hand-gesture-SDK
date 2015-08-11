@@ -8,9 +8,6 @@
 
 #import "TBGesture.h"
 #import "TBEvent.h"
-#import "UIGestureRecognizer+UICustomGestureRecognizer.h"
-#import "UIPinchGestureRecognizer+UIPinchCustomGestureRecognizer.h"
-#import "MacroUtils.h"
 
 @implementation TBGesture
 
@@ -39,46 +36,13 @@
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
-
-    //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
-    if (1==1){//self.type == 99 || self.type == 98) { //pinchGesture
-        self.pinchRecognizer.tbGesture = self;
-        self.pinchRecognizer = [[UIPinchCustomGestureRecognizer alloc] initWithTarget:self action:nil];
-        [view addGestureRecognizer:self.pinchRecognizer];
-    }else{
-        self.gestureRecognizer.tbGesture = self;
-        self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil];
-        [view addGestureRecognizer:self.gestureRecognizer];
-    }
-
-    if (!view) {
-        return;
-    }
-    NSArray *gesturesArray = [view gestureRecognizers];
-    if (gesturesArray.count) {
-        for (UIGestureRecognizer *gr in gesturesArray) {
-            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
-                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
-                if ([cgr.tbGesture.objectId isEqualToString:self.objectId]) {
-                    debugLog(@"已添加过");
-                    !completion ?: completion(nil);
-                    return;
-                }
-            }
-        }
-    }
-    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
-    self.gestureRecognizer.tbGesture = self;
+    self.gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
     [view addGestureRecognizer:self.gestureRecognizer];
-
-    !completion ?: completion(nil);
 }
 
-
-
-//- (void)xxx:(id)sender {
-//
-//}
+- (void)xxx:(id)sender {
+    
+}
 
 
 - (void)addToTableView:(UITableView *)tableView completion:(void (^)(NSError *))completion {
@@ -86,7 +50,7 @@
 }
 
 - (void)addToTableView:(UITableView *)tableView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
-
+    
 }
 
 - (void)addToCollectionView:(UICollectionView *)collectionView completion:(void (^)(NSError *))completion {
@@ -94,7 +58,7 @@
 }
 
 - (void)addToCollectionView:(UICollectionView *)collectionView forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *))completion {
-
+    
 }
 
 @end
