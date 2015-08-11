@@ -189,11 +189,12 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1、修改数据模型
         [self.eventArray removeObjectAtIndex:indexPath.row];
-        //- (void)deteleGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
+        FYEventData* data = self.eventArray[indexPath.row];
+        TBEvent* event = data.event;
         
-//        FYEventData* data = self.eventArray[indexPath.row];
-//        TBEvent* event = data.event;
-//        [TBDataManager sharedManager] deteleGesture:self.eventArray[indexPath.row] completion:<#^(NSError *error)completion#>
+        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
         //2、重新加载数据
          [self.tableView reloadData];
     }
