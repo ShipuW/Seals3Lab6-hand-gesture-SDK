@@ -54,7 +54,24 @@
 //    self.gestureRecognizer.action = @selector(buttonLongPressed:);
 //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
     
-    
+  
+    if (!view) {
+        return;
+    }
+    NSArray *gesturesArray = [view gestureRecognizers];
+    if (gesturesArray.count) {
+        for (UIGestureRecognizer *gr in gesturesArray) {
+            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
+                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
+                TBGesture *gesture = (TBGesture *)cgr.recognizeDelegate;
+                if ([gesture.objectId isEqualToString:self.objectId]) {
+                    debugLog(@"该视图已经添加过这个手势");
+                    !completion ?: completion(nil);
+                    return;
+                }
+            }
+        }
+    }
     
         if (self.type == TBGestureTypeSimplePinchOUT || self.type == TBGestureTypeSimplePinchIN) { //pinchGesture
             
