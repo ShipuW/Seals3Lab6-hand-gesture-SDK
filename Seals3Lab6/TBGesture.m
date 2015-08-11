@@ -53,11 +53,11 @@
 //    self.gestureRecognizer.target = self.gestureRecognizer;
 //    self.gestureRecognizer.action = @selector(buttonLongPressed:);
 //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
-    
   
     if (!view) {
         return;
     }
+    
     NSArray *gesturesArray = [view gestureRecognizers];
     if (gesturesArray.count) {
         for (UIGestureRecognizer *gr in gesturesArray) {
@@ -88,10 +88,6 @@
     
 
     !completion ?: completion(nil);
-}
-
-- (void)xxx:(id)sender {
-    
 }
 
 
@@ -144,7 +140,7 @@
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position {
-//    debugMethod();
+    debugMethod();
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints {
