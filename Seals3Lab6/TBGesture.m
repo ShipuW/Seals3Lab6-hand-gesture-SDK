@@ -107,8 +107,7 @@
     
     self.tableView = tableView;
     [TBHookOperation hookDataSource:dataSource withTableView:tableView withGesture:self forKeyPath:keyPath];
-    
-//    completion;
+    !completion ?: completion(nil);
 }
 
 - (void)addToCollectionView:(UICollectionView *)collectionView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
@@ -124,15 +123,15 @@
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position {
-    debugMethod();
+//    debugMethod();
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position {
-    debugMethod();
+//    debugMethod();
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints {
-    debugMethod();
+//    debugMethod();
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed {
