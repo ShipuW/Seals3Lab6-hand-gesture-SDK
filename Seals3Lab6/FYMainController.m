@@ -167,17 +167,17 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
-//    drawView.eventData = self.eventArray[indexPath.row];
-//    drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
-//    drawView.backgroundColor = [UIColor whiteColor];
-//    drawView.alpha = 0.9;
-//    [[UIApplication sharedApplication].keyWindow addSubview:drawView];
+    FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
+    drawView.eventData = self.eventArray[indexPath.row];
+    drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
+    drawView.backgroundColor = [UIColor whiteColor];
+    drawView.alpha = 0.9;
+    [[UIApplication sharedApplication].keyWindow addSubview:drawView];
     
-    //跳转到FYAddEventCtroller
-    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
-    ctl.eventData = self.eventArray[indexPath.row];
-    [self.navigationController pushViewController:ctl animated:YES];
+//    //跳转到FYAddEventCtroller
+//    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
+//    ctl.eventData = self.eventArray[indexPath.row];
+//    [self.navigationController pushViewController:ctl animated:YES];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,11 +192,14 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1、修改数据模型
-        [self.eventArray removeObjectAtIndex:indexPath.row];
         FYEventData* data = self.eventArray[indexPath.row];
         TBEvent* event = data.event;
+
         
         //传入事件Id，删除手势
+
+        [self.eventArray removeObjectAtIndex:indexPath.row];
+
         [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
             NSLog(@"deleteGestureWithEvent=====%@",error);
         }];
