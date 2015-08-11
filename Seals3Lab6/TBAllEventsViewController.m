@@ -67,6 +67,8 @@ static NSString * const kTableViewIdentifer = @"kTableViewIdentifer";
     [SharedDataManager fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
         if (gesture) {
             debugLog(@"map %@", gesture.name);
+        } else {
+            debugLog(@"%@事件没有对应的手势", event.name);
         }
     }];
 }
