@@ -20,12 +20,19 @@
 @implementation UICustomGestureRecognizer:UILongPressGestureRecognizer
 
 
-- (instancetype)initWithTarget:(id)target action:(SEL)action{
+- (instancetype)initWithTarget:(id)target action:(SEL)action type:(TBGestureType)type{
     _displayPoint = NO;
     _shouldEnd = NO;
     _isSimpleGesture = YES;
     _target = target;
     _action = action;
+    _targetType = type;
+    if (_targetType == TBGestureTypeCustom) {
+        _isSimpleGesture = NO;
+    }else{
+        _isSimpleGesture = YES;
+    }
+    
     
     self = [super initWithTarget:self action:@selector(buttonLongPressed:)];
     if (self) {
@@ -72,6 +79,12 @@
             }
         }else {
             _gestureId = @"gesture failed";
+        }
+    }
+    if ([@(_direction) intValue] == [@(_targetType) intValue]) {
+        NSLog(@"内部成功");
+        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:recognized:)]) {
+            [self.recognizeDelegate gestureRecognizer:self recognized:YES];
         }
     }
 }
@@ -144,7 +157,7 @@
             CGPathAddLineToPoint(_myView.path, NULL, _touchPoint.x,_touchPoint.y);
             [_myView setNeedsDisplay];
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateChangedAtPosition:)]) {
-                [self.recognizeDelegate gestureRecognizer:sender stateChangedAtPosition:_touchPoint];
+                [self.recognizeDelegate gestureRecognizer:self stateChangedAtPosition:_touchPoint];
             }
         }
         else if (sender.state == UIGestureRecognizerStateEnded)
@@ -156,11 +169,22 @@
             } else if (!_isSimpleGesture){
                 [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
                     _gestureId = gestureId;
-                    //NSLog(@"%@",_gestureId);
                 }];
             }
             
-            [PostConnection PostGestureWithAction:@"1" UsrId:@"123" EventId:@"collection" Points:_trackPoints];
+            _lastPoint = [sender locationInView:_baseView];
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
+                [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
+            }
+            
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
+                [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];
+            }
+            
+            
+            
+            
+            //[PostConnection PostGestureWithAction:@"1" UsrId:@"123" EventId:@"collection" Points:_trackPoints];//post连接
             
             //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
             
@@ -178,10 +202,7 @@
             if (self.action != nil) {
                 [self.target performSelector:self.action withObject:self afterDelay:0.0];
             }
-            CGPoint lastPoint = [sender locationInView:_baseView];
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
-                [self.recognizeDelegate gestureRecognizer:sender stateEndAtPosition:lastPoint];
-            }
+            
             
         }
     }

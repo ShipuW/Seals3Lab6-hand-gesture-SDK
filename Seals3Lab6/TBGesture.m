@@ -9,6 +9,7 @@
 #import "TBGesture.h"
 #import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
+#import "UICustomPinchGestureRecognizer.h"
 #import "MacroUtils.h"
 
 @interface TBGesture () <TBCustomGestureRecognizerDelegate>
@@ -44,11 +45,29 @@
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
 //    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
-    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] init];
-    self.gestureRecognizer.recognizeDelegate = self;
-    self.gestureRecognizer.target = self.gestureRecognizer;
-    self.gestureRecognizer.action = @selector(buttonLongPressed:);
-    [view addGestureRecognizer:self.gestureRecognizer];
+//    self.gestureRecognizer = [[UICustomGestureRecognizer alloc] init];
+//    self.gestureRecognizer.recognizeDelegate = self;
+//    self.gestureRecognizer.target = self.gestureRecognizer;
+//    self.gestureRecognizer.action = @selector(buttonLongPressed:);
+//self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
+    
+    
+    
+        if (self.type == TBGestureTypeSimplePinchOUT || self.type == TBGestureTypeSimplePinchIN) { //pinchGesture
+            
+            self.pinchRecognizer = [[UICustomPinchGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
+            //self.pinchRecognizer.tbGesture = self;
+            self.gestureRecognizer.recognizeDelegate = self;
+            [view addGestureRecognizer:self.pinchRecognizer];
+        }else{
+            
+            self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
+            self.gestureRecognizer.recognizeDelegate = self;
+            [view addGestureRecognizer:self.gestureRecognizer];
+        }
+    
+
+    !completion ?: completion(nil);
 }
 
 - (void)xxx:(id)sender {
@@ -102,7 +121,16 @@
     debugMethod();
 }
 
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints {
+    debugMethod();
+}
+
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed {
+    if (succeed) {
+        NSLog(@"配对成功");
+    }else{
+        NSLog(@"配对失败");
+    }
     debugMethod();
 }
 
