@@ -86,6 +86,11 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
         RLMGesture *gesture = self.gestures[indexPath.row];
         cell.textLabel.text = gesture.name;
     }
+    if (indexPath.section == 1) {
+        if (self.event.gestureId < 100) {
+            cell.textLabel.text = @"点击绘制自定义手势";
+        }
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

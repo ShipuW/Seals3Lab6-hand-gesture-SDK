@@ -25,7 +25,10 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 };
 
 
-@protocol TBGestureDelegate
+@protocol TBGestureDelegate <NSObject>
+
+// 测试打通
+- (void)recogizedEvent:(TBEvent *)event;
 
 @optional
 - (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;

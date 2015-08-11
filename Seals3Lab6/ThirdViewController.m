@@ -10,7 +10,7 @@
 #import "TBGesture.h"
 #import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
-@interface ThirdViewController ()
+@interface ThirdViewController () <TBGestureDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
 @property (weak, nonatomic) IBOutlet UIView *testView;
 @property (weak, nonatomic) IBOutlet UIView *testView2;
@@ -39,7 +39,8 @@
     
     TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
     TBGesture *gesture = [TBGesture gestureForEvent:event];
-    gesture.type = TBGestureTypeSimpleUP;
+//    gesture.type = TBGestureTypeSimpleUP;
+    gesture.delegate = self;
     [gesture addToView:self.testView completion:^(NSError *error) {
         
 //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"
@@ -82,5 +83,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void)recogizedEvent:(TBEvent *)event {
+    NSLog(@"%@", event.name);
+    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [av show];
+}
 
 @end

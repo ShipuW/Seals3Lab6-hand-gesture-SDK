@@ -11,9 +11,9 @@
 
 @class TBGesture;
 
-typedef NS_OPTIONS(NSUInteger, TBEventType) {
-    TBEventTypeCollect = 1 << 0,
-    TBEventTypeShare = 1 << 1,
+typedef NS_OPTIONS(NSInteger, TBEventType) {
+    TBEventTypeCollect = 1,
+    TBEventTypeShare = 2,
 };
 
 

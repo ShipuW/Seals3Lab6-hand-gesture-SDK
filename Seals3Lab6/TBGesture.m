@@ -12,6 +12,8 @@
 #import "UICustomPinchGestureRecognizer.h"
 #import "MacroUtils.h"
 #import "TBHookOperation.h"
+#import "RLMGesture.h"
+#import "RLMEvent.h"
 
 @interface TBGesture () <TBCustomGestureRecognizerDelegate>
 
@@ -42,8 +44,16 @@
 }
 
 + (instancetype)gestureForEventId:(NSString *)eventId {
-    TBGesture *gesture = [[TBGesture alloc] init];
-    return gesture;
+    return [[self alloc] initForEventId:eventId];
+}
+
+- (instancetype)initForEventId:(NSString *)eventId {
+    self = [super init];
+    RLMEvent *event = [RLMEvent objectForPrimaryKey:@([eventId intValue])];
+    self.type = event.gestureId;
+    self.name = event.name;
+    self.objectId = [@(event.objectId) stringValue];
+    return self;
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
@@ -58,20 +68,20 @@
     if (!view) {
         return;
     }
-    NSArray *gesturesArray = [view gestureRecognizers];
-    if (gesturesArray.count) {
-        for (UIGestureRecognizer *gr in gesturesArray) {
-            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
-                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
-                TBGesture *gesture = (TBGesture *)cgr.recognizeDelegate;
-                if ([gesture.objectId isEqualToString:self.objectId]) {
-                    debugLog(@"该视图已经添加过这个手势");
-                    !completion ?: completion(nil);
-                    return;
-                }
-            }
-        }
-    }
+//    NSArray *gesturesArray = [view gestureRecognizers];
+//    if (gesturesArray.count) {
+//        for (UIGestureRecognizer *gr in gesturesArray) {
+//            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
+//                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
+//                TBGesture *gesture = (TBGesture *)cgr.recognizeDelegate;
+//                if ([gesture.objectId isEqualToString:self.objectId]) {
+//                    debugLog(@"该视图已经添加过这个手势");
+//                    !completion ?: completion(nil);
+//                    return;
+//                }
+//            }
+//        }
+//    }
     
         if (self.type == TBGestureTypeSimplePinchOUT || self.type == TBGestureTypeSimplePinchIN) { //pinchGesture
             
@@ -154,6 +164,9 @@
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed {
     if (succeed) {
         NSLog(@"配对成功");
+        if ([self.delegate respondsToSelector:@selector(recogizedEvent:)]) {
+            [self.delegate recogizedEvent:self];
+        }
     }else{
         NSLog(@"配对失败");
     }
