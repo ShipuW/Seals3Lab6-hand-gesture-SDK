@@ -90,7 +90,7 @@
     } else {
         debugLog(@"内部失败");
         if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:recognized:)]) {
-         [self.recognizeDelegate gestureRecognizer:self recognized:YES];
+         [self.recognizeDelegate gestureRecognizer:self recognized:NO];
         }
     }
 }
