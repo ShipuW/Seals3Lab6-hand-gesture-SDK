@@ -152,7 +152,37 @@
 //    !completion ?: completion(rsError);
 }
 
-
+- (void)fetchGestureWithEvent:(TBEvent *)event completion:(void (^)(TBGesture *gesture))completion {
+    NSString *sql = @"SELECT * FROM Map WHERE eventId = ?";
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:sql, event.objectId];
+        if ([s next]) {
+            TBGesture *gesture = [[TBGesture alloc] init];
+            gesture.objectId = [s stringForColumn:@"gestureId"];
+            
+            FMResultSet *gs = [db executeQuery:@"SELECT * FROM Gesture WHERE id = ?", gesture.objectId];
+            if ([gs next]) {
+                
+                gesture.name = [gs stringForColumn:@"name"];
+                gesture.type = [@([gs intForColumn:@"type"]) integerValue];
+                
+                NSString *path = [gs stringForColumn:@"path"];
+                gesture.path = [self CGPointsArrayFromPointsString:path];
+                NSString *rawPath = [gs stringForColumn:@"rawPath"];
+                gesture.rawPath = [self CGPointsArrayFromPointsString:rawPath];
+                [db close];
+                !completion ?: completion(gesture);
+            }
+        } else {
+            [db close];
+            !completion ?: completion(nil);
+        }
+        [db close];
+    } else {
+        !completion ?: completion(nil);
+    }
+}
 
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
     NSString *sql = @"SELECT * from Event";
@@ -238,7 +268,7 @@
     return [self.db executeUpdate:sql];
 }
 
-- (void)deteleGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
+- (void)deleteGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
     if (!gesture.objectId) {
         !completion ?: completion([[NSError alloc] init]);
         return;
@@ -355,4 +385,17 @@
     }
     return [pointsArray copy];
 }
+
+- (void)deleteGestureWithEvent:(TBEvent *)event completion:(void (^)(NSError *))completion {
+    [self fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
+        if (gesture) {
+            [self deleteGesture:gesture completion:^(NSError *error) {
+                !completion ?: completion(error);
+            }];
+        } else {
+            !completion ?: completion([[NSError alloc] init]);
+        }
+    }];
+}
+
 @end

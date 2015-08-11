@@ -18,7 +18,7 @@
 
 - (void)loadAllGesturesFromDatabase:(void (^)(NSArray *, NSError *))completion;
 
-- (void)deteleGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
+- (void)deleteGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
 
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion;
 
@@ -27,5 +27,7 @@
 - (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(TBGesture *gesture, NSError *error))completion;
 
 - (void)mapEvent:(TBEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
+
+- (void)deleteGestureWithEvent:(TBEvent *)event completion:(void (^)(NSError *))completion;
 
 @end
