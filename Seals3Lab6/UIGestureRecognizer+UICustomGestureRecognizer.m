@@ -12,6 +12,7 @@
 #import "MyView.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "PostConnection.h"
+#import "MacroUtils.h"
 #define Duration 0.5 //长按响应时间
 
 
@@ -82,9 +83,14 @@
         }
     }
     if ([@(_direction) intValue] == [@(_targetType) intValue]) {
-        NSLog(@"内部成功");
+        debugLog(@"内部成功");
         if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:recognized:)]) {
             [self.recognizeDelegate gestureRecognizer:self recognized:YES];
+        }
+    } else {
+        debugLog(@"内部失败");
+        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:recognized:)]) {
+         [self.recognizeDelegate gestureRecognizer:self recognized:YES];
         }
     }
 }
@@ -164,6 +170,9 @@
         {
             //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
             
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
+                [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
+            }
             if (_isSimpleGesture) {
                 [self simpleDirectionRecognizer];
             } else if (!_isSimpleGesture){
@@ -173,9 +182,6 @@
             }
             
             _lastPoint = [sender locationInView:_baseView];
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
-                [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
-            }
             
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
                 [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];
@@ -199,10 +205,12 @@
             }];
             _displayPoint=NO;
             ///////实现原回调
-            if (self.action != nil) {
+            
+            
+            if (self.action && self.target) {
                 [self.target performSelector:self.action withObject:self afterDelay:0.0];
             }
-            
+    
             
         }
     }
