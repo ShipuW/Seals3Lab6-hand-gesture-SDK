@@ -198,10 +198,14 @@
         
         //传入事件Id，删除手势
 
-        [self.eventArray removeObjectAtIndex:indexPath.row];
+//        [self.eventArray removeObjectAtIndex:indexPath.row];
 
         [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
-            NSLog(@"deleteGestureWithEvent=====%@",error);
+            if (!error) {
+                NSLog(@"%@",event.name);
+            }else{
+                NSLog(@"deleteGestureWithEvent=====%@",error);
+            }
         }];
         //2、重新加载数据
          [self.tableView reloadData];
