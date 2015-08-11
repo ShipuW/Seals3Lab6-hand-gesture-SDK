@@ -73,10 +73,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row==5) {
         TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
         NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
     }
 }
+
+
 
 @end
