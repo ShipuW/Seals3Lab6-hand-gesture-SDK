@@ -155,6 +155,10 @@
             }];
 
             [self.pointArray removeAllObjects];
+            //通知代理，已经完成绘图
+            if ([self.delegate respondsToSelector:@selector(createGestureDidFinishedDrawPath)]) {
+                [self.delegate createGestureDidFinishedDrawPath];
+            }
             [self removeFromSuperview];
         }
     }];
@@ -236,5 +240,8 @@
         CGContextDrawPath(context, kCGPathStroke);
     }
 }
-
+-(void)dealloc
+{
+    NSLog(@"FYCreateGesture释放了");
+}
 @end

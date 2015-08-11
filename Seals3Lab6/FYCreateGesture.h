@@ -9,7 +9,16 @@
 #import <UIKit/UIKit.h>
 @class FYEventData;
 
+@protocol FYCreateGestureDelegate<NSObject>
+
+@optional
+-(void)createGestureDidFinishedDrawPath;
+@end
+
 @interface FYCreateGesture : UIView
+
+//设置代理，通知已经完成绘图
+@property(nonatomic,weak) id<FYCreateGestureDelegate> delegate;
 
 @property(nonatomic,strong)FYEventData* eventData;
 
