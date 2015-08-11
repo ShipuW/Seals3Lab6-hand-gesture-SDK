@@ -48,6 +48,7 @@
 		AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30E1B798EE900A975CE /* FYMainController.m */; };
 		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
+		D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E164E71B79F94E003FA975 /* UISwitch+tag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,8 @@
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D9E164E61B79F94E003FA975 /* UISwitch+tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+tag.h"; sourceTree = "<group>"; };
+		D9E164E71B79F94E003FA975 /* UISwitch+tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+tag.m"; sourceTree = "<group>"; };
 		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -386,6 +389,8 @@
 		A6744B501B72170100E222B0 /* 竹阳 */ = {
 			isa = PBXGroup;
 			children = (
+				D9E164E61B79F94E003FA975 /* UISwitch+tag.h */,
+				D9E164E71B79F94E003FA975 /* UISwitch+tag.m */,
 				AA1CA3051B798EE900A975CE /* FYAddEventCtroller.h */,
 				AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */,
 				AA1CA3071B798EE900A975CE /* FYCell.h */,
@@ -601,6 +606,7 @@
 				AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
+				D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
