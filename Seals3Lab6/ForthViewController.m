@@ -13,8 +13,8 @@
 #import "TBIndexPathCellModel.h"
 #import "TBIndexPathCellModelArray.h"
 #import "TBHookOperation.h"
-
-@interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "TBGesture.h"
+@interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate, TBGestureDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -34,10 +34,18 @@
     gesture.objectId=@"1";
     gesture.name=@"name1";
     
-    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:(TBGesture *)gesture forKeyPath:@"textLabel"];
+    gesture.delegate = self;
+    
+    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:gesture forKeyPath:@"textLabel"];
+    
     
 }
 
+#pragma TBGestureDelegate方法
+- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"indexpath=%@",indexPath);
+}
 
 #pragma tableView数据源方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -73,10 +81,18 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row==5) {
-        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
-        NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
-    }
+//    if (indexPath.row==5) {
+//        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
+//        NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
+//        
+//        for (TBIndexPathCellModel *model in array.modelArray) {
+//            NSLog(@"cell=%@,,indexpath=%@",model.cell,model.indexPath);
+//            for (UIView *view in model.subViews) {
+//                NSLog(@"view=%@",view);
+//            }
+//        }
+//    }
+    
 }
 
 @end

@@ -27,12 +27,11 @@
             UIView *subView = [cell valueForKeyPath:keyPath];
             if (subView != nil) {
                 [model.subViews addObject:subView];
-                NSLog(@"subview==%@",subView);
             }
         }
         
         [gesture addToView:cell completion:^(NSError *error) {
-            NSLog(@"cell add");
+//            NSLog(@"cell add");
         }];
         
         TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
