@@ -13,6 +13,7 @@
 #import "FYAddEventCtroller.h"
 #import "TBEvent.h"
 #import "TBDataManager.h"
+#import "TBGesture.h"
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,weak) UITableView* tableView;
@@ -21,10 +22,22 @@
 @property(nonatomic,weak) UILabel* label;
 @property(nonatomic,weak) UIView* footView;
 
+/**
+ *  暂时存放的手势数组
+ */
+@property(nonatomic,strong) NSMutableArray* guestureArray;
+
 @end
 
 @implementation FYMainController
 
+-(NSMutableArray *)guestureArray
+{
+    if (_guestureArray == nil) {
+        _guestureArray = [NSMutableArray array];
+    }
+    return _guestureArray;
+}
 -(NSMutableArray *)eventArray
 {
     if (_eventArray == nil) {
@@ -144,9 +157,6 @@
 -(void)shutDown
 {
     if (self.switchButton.isOn) {//开启手势
-//        if (self.eventArray.count == 0) {
-//            self.eventArray  = nil;
-//        }
         [self loadData];
     }else{//关闭手势
         [self.eventArray removeAllObjects];
@@ -179,8 +189,14 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1、修改数据模型
         [self.eventArray removeObjectAtIndex:indexPath.row];
+        FYEventData* data = self.eventArray[indexPath.row];
+        TBEvent* event = data.event;
+        
+        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
         //2、重新加载数据
-        [self.tableView reloadData];
+         [self.tableView reloadData];
     }
 }
 

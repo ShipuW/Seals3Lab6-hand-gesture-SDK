@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class FYEventData;
+
 @interface FYAddEventCtroller : UITableViewController
 
+@property(nonatomic,strong)FYEventData* eventData;
 
 @end
