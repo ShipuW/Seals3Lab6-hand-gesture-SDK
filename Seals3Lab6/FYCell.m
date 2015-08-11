@@ -68,10 +68,10 @@
 
 -(void)setData:(FYEventData *)data
 {
-    NSLog(@"---%@",data.event.name);
     _data = data;
     [data addObserver:self forKeyPath:@"icon" options:0 context:nil];
     [data addObserver:self forKeyPath:@"event" options:0 context:nil];
+    [data addObserver:self forKeyPath:@"isCustom" options:0 context:nil];
    
     //第一次设置值的时候，默认不会调用，所以需要手动调用
     [self observeValueForKeyPath:nil ofObject:nil change:nil context:nil];
@@ -80,7 +80,7 @@
 {
     [self.data removeObserver:self forKeyPath:@"icon"];
     [self.data removeObserver:self forKeyPath:@"event"];
-    
+    [self.data removeObserver:self forKeyPath:@"isCustom"];
 }
 //监听某个对象的属性值改变了，就会调用
 //keyPath:哪个属性改变了
@@ -90,7 +90,11 @@
 {
     FYEventData* data = self.data;
     self.eventName.text = data.event.name;
-    self.icon.image = [UIImage imageWithContentsOfFile:data.icon];
+    if (data.isCustom) {//自定义手势，直接加载
+        self.icon.image = [UIImage imageNamed:@"long_gusture"];
+    }else{//自定义手势，从文件加载
+        self.icon.image = [UIImage imageWithContentsOfFile:data.icon];
+    }
     self.icon.backgroundColor = [UIColor clearColor];
     self.icon.contentMode = UIViewContentModeScaleToFill;
 }

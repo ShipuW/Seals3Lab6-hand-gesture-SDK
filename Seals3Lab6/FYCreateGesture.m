@@ -206,7 +206,6 @@
             label.alpha = 0.0;
         }];
     }];
-//    self.label.text = nil;
     self.label = nil;
 }
 
@@ -239,9 +238,5 @@
         CGContextSetLineCap(context, kCGLineCapRound);
         CGContextDrawPath(context, kCGPathStroke);
     }
-}
--(void)dealloc
-{
-    NSLog(@"FYCreateGesture释放了");
 }
 @end
