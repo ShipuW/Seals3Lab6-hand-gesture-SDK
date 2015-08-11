@@ -188,10 +188,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1、修改数据模型
-        [self.eventArray removeObjectAtIndex:indexPath.row];
         FYEventData* data = self.eventArray[indexPath.row];
         TBEvent* event = data.event;
-        
+        [self.eventArray removeObjectAtIndex:indexPath.row];
         [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
             NSLog(@"%@",error);
         }];
