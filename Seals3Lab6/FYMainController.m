@@ -11,7 +11,7 @@
 #import "FYCreateGesture.h"
 #import "FYCell.h"
 #import "FYAddEventCtroller.h"
-
+#import "TBEvent.h"
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,weak) UITableView* tableView;
@@ -28,22 +28,18 @@
 {
     if (_eventArray == nil) {
         _eventArray = [NSMutableArray array];
-        FYEventData* data1 = [[FYEventData alloc] init];
-        data1.icon = @"";
-        data1.event = @"收藏";
-        [_eventArray addObject:data1];
-        
-        FYEventData* data2 = [[FYEventData alloc] init];
-        data2.icon = @"";
-        data2.event = @"分享";
-        [_eventArray addObject:data2];
+        NSArray* array = [TBEvent allEvents];
+        for (TBEvent*event in array) {
+            FYEventData* data = [[FYEventData alloc] init];
+            data.event = event;
+            [_eventArray addObject:data];
+        }
     }
     
     return _eventArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     self.navigationItem.title = @"设置手势";
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGesture)];

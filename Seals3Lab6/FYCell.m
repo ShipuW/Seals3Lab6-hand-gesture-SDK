@@ -9,11 +9,10 @@
 #import "FYEventData.h"
 #import "FYCreateGesture.h"
 #import "FYCell.h"
+#import "TBEvent.h"
 @interface FYCell()
 @property(nonatomic,weak) UIImageView* icon;
-@property(nonatomic,weak) UILabel* event;
-@property(nonatomic,weak) UIButton* delete;
-@property(nonatomic,weak) UIButton* edit;
+@property(nonatomic,weak) UILabel* eventName;
 @end
 
 @implementation FYCell
@@ -37,7 +36,7 @@
         [self.contentView addSubview:icon];
         
         UILabel* event = [[UILabel alloc] init];
-        self.event = event;
+         self.eventName = event;
         [self.contentView addSubview:event];
       
     }
@@ -63,12 +62,13 @@
     CGFloat eventH = buttonH;
     CGFloat eventY = (size.height-eventH)*0.5;
     CGFloat eventW = size.width-CGRectGetMaxX(self.icon.frame)-2*merge;
-    self.event.frame = CGRectMake(eventX, eventY, eventW, eventH);
+    self.eventName.frame = CGRectMake(eventX, eventY, eventW, eventH);
     
 }
 
 -(void)setData:(FYEventData *)data
 {
+    NSLog(@"---%@",data.event.name);
     _data = data;
     [data addObserver:self forKeyPath:@"icon" options:0 context:nil];
     [data addObserver:self forKeyPath:@"event" options:0 context:nil];
@@ -89,7 +89,7 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     FYEventData* data = self.data;
-    self.event.text = data.event;
+    self.eventName.text = data.event.name;
     self.icon.image = [UIImage imageWithContentsOfFile:data.icon];
     self.icon.backgroundColor = [UIColor clearColor];
     self.icon.contentMode = UIViewContentModeScaleToFill;
