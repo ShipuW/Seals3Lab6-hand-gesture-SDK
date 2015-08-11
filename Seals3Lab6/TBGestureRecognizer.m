@@ -102,7 +102,8 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     }
     Rotate(samples, kSamplePoints, -firstPointAngle);
     
-    CGPoint lowerLeft, upperRight;
+    CGPoint lowerLeft = CGPointMake(0, 0);
+    CGPoint upperRight = CGPointMake(0, 0);
     for (i = 0; i < kSamplePoints; i++) {
         CGPoint pt = samples[i];
         if (pt.x < lowerLeft.x)
