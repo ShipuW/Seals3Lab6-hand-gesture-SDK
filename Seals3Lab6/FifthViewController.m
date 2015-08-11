@@ -37,7 +37,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     [self.view addSubview:self.tableView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
-    self.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
     
     @weakify(self);
 
