@@ -23,8 +23,8 @@
     // Override point for customization after application launch.
     [SharedDataManager createDatabase];
 
-//    NSUInteger eventCount = [RLMEvent allObjects].count;
-//    if (eventCount == 0) {
+    NSUInteger eventCount = [RLMEvent allObjects].count;
+    if (eventCount == 0) {
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm transactionWithBlock:^{
             NSArray *events = @[
@@ -46,18 +46,12 @@
                                   [[RLMGesture alloc] initWithValue:@[@(98), @"合", @(98)]],
                                   [[RLMGesture alloc] initWithValue:@[@(99), @"张", @(99)]],
                                   ];
-//            [realm addObjects:gestures];
-//            [realm addObjects:events];
-//            debugLog(@"导入新版事件");
-//            RLMGesture *gesture = [[RLMGesture alloc] initWithType:2];
-//            RLMGesture *gesture = [[RLMGesture alloc] init];
-//            gesture.objectId = 1;
-//            gesture.name = @"123";
+
             [realm addObjects:gestures];
             [realm addObjects:events];
             
         }];
-//    }
+    }
 
 //    if ([RLMGesture allObjects].count <= eventCount) {
 //        RLMRealm *realm = [RLMRealm defaultRealm];

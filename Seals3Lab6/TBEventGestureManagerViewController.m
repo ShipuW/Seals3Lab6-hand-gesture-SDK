@@ -8,6 +8,7 @@
 
 #import "TBEventGestureManagerViewController.h"
 #import "RLMEvent.h"
+#import "RLMGesture.h"
 #import "TBGestureSelectViewController.h"
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
@@ -87,16 +88,17 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         return;
     }
 
-//    if (indexPath.section == 1) {
-//        RLMEvent *event = self.events[indexPath.row];
-//        cell.textLabel.text = event.name;
-//        if (event.gesture.name.length) {
-//            cell.detailTextLabel.text = event.gesture.name;
-//        } else {
-//            cell.detailTextLabel.text = @"暂无手势";
-//        }
-//        return;
-//    }
+    if (indexPath.section == 1) {
+        RLMEvent *event = self.events[indexPath.row];
+        cell.textLabel.text = event.name;
+        if (event.gestureId > 0) {
+            RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@(event.gestureId)];
+            cell.detailTextLabel.text = gesture.name;
+        } else {
+            cell.detailTextLabel.text = @"暂无手势";
+        }
+        return;
+    }
 }
 
 - (void)refreshEvents {

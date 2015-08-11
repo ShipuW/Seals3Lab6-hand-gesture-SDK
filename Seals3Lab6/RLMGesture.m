@@ -17,6 +17,10 @@
 //    return @{};
 //}
 
++ (nullable NSString *)primaryKey {
+    return @"objectId";
+}
+
 // Specify properties to ignore (Realm won't persist these)
 
 //+ (NSArray *)ignoredProperties

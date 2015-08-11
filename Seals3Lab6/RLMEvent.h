@@ -13,9 +13,10 @@
 
 @interface RLMEvent : RLMObject
 
-@property NSInteger objectId;
+@property int objectId;
 @property NSString *name;
-@property RLMGesture *gesture;
+//@property RLMGesture *gesture;
+@property int gestureId;
 
 //+ (instancetype)eventForName:(NSString *)name;
 - (instancetype)initWithName:(NSString *)name;

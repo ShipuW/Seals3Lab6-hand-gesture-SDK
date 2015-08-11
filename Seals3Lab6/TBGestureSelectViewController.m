@@ -8,6 +8,7 @@
 #import "TBEvent.h"
 #import "RLMGesture.h"
 #import "RLMEvent.h"
+#import "MacroUtils.h"
 
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
@@ -15,7 +16,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 @interface TBGestureSelectViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) RLMEvent *event;
 @property (nonatomic, strong) RLMResults *events;
 @property (nonatomic, strong) RLMResults *gestures;
 
@@ -23,6 +24,14 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 
 @implementation TBGestureSelectViewController {
 
+}
+
+
+- (RLMEvent *)event {
+    if (!_event) {
+        _event = [RLMEvent objectForPrimaryKey:@(self.eventId)];
+    }
+    return _event;
 }
 
 - (void)viewDidLoad {
@@ -34,7 +43,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 
-    self.events = [RLMEvent allObjects];
+    self.events = [RLMEvent objectsWhere:@"gestureId > 0"];
     self.gestures = [RLMGesture objectsWhere:@"objectId > 0"];
     
 }
@@ -54,7 +63,6 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
 
     if (section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewIdentifier];
@@ -68,7 +76,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCustomGestureIdentifier];
             }
-        return cell;
+            return cell;
 //        }
     }
 }
@@ -76,7 +84,37 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         RLMGesture *gesture = self.gestures[indexPath.row];
-//        cell.textLabel.text = gesture.name;
+        cell.textLabel.text = gesture.name;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        RLMGesture *gesture = self.gestures[indexPath.row];
+        int gestureId = gesture.objectId;
+        RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
+        if (results.count) {
+            RLMEvent *event = results[0];
+//            debugLog(@"和事件%@的手势冲突", event.name);
+            if (event.objectId == self.event.objectId) {
+//                NSString *warning = [NSString stringWithFormat:@"和事件%@的手势冲突", event.name];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已经绑定啦" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alert show];
+            } else {
+                NSString *warning = [NSString stringWithFormat:@"和事件%@的手势冲突", event.name];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"冲突" message:warning delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alert show];
+            }
+            
+        } else {
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            self.event.gestureId = gestureId;
+            [realm commitWriteTransaction];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
     }
 }
 

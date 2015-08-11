@@ -40,10 +40,15 @@ static NSInteger cid = 1;
 - (instancetype)initWithName:(NSString *)name {
     RLMEvent *event = [[RLMEvent alloc] init];
     event.objectId = cid++;
-    event.gesture = [[RLMGesture alloc] init];
-//    event.gesture.objectId = 0;
-    event.gesture.name = @"";
-//    event.gesture.type = 0;
+//    event.gesture = [RLMGesture objectForPrimaryKey:@(1000)];
+//    if (!event.gesture) {
+//        event.gesture = [[RLMGesture alloc] init];
+//        event.gesture.objectId = 1000;
+//        event.gesture.name = @"";
+//        event.gesture.type = 0;  
+//    }
+
+    event.gestureId = 0;
     event.name = name;
     
     return event;

@@ -9,9 +9,9 @@
 #import <Realm/Realm.h>
 
 @interface RLMGesture : RLMObject
-@property NSInteger objectId;
+@property int objectId;
 @property NSString *name;
-@property NSInteger type;
+@property int type;
 @end
 
 // This protocol enables typed collections. i.e.:
