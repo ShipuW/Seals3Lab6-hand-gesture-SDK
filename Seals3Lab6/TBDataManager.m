@@ -238,6 +238,27 @@
     return [self.db executeUpdate:sql];
 }
 
+- (void)deteleGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
+    if (!gesture.objectId) {
+        !completion ?: completion([[NSError alloc] init]);
+        return;
+    }
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    if ([db open]) {
+        BOOL rs = [db executeUpdate:@"DELETE FROM Gesture WHERE id = ?", gesture.objectId];
+        if (rs) {
+            !completion ?: completion(nil);
+        } else {
+            !completion ?: completion([[NSError alloc] init]);
+        }
+        [db close];
+    } else {
+        !completion ?: completion([[NSError alloc] init]);
+    }
+    
+}
+
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion {
     NSData *templetsData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GestureTemplets" ofType:@"json"]];
     NSError *error = nil;
