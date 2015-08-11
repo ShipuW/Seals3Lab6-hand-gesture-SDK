@@ -37,7 +37,7 @@
         self.gestureTemplates = [NSArray array];
         self.gesture = [NSArray array];
         @weakify(self);
-        [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
+        [SharedDataManager loadAllGesturesFromDatabase:^(NSArray *results, NSError *error) {
             @strongify(self);
             self.gestureTemplates = results;
         }];
@@ -114,7 +114,7 @@
     for (TBGesture *templateGesture in self.gestureTemplates) {
         CGPoint template[kSamplePoints];
         for (i = 0; i < kSamplePoints; i++) {
-            template[i] = [templateGesture.rawPath[i] CGPointValue];
+            template[i] = [templateGesture.path[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
         
