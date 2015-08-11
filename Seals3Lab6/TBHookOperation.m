@@ -37,7 +37,7 @@
         TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
         [array.modelArray addObject:model];
         
-    } error:NULL];
+    } error:nil];
 }
 
 @end

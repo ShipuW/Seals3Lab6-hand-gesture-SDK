@@ -10,8 +10,11 @@
 #import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "MacroUtils.h"
+#import "TBHookOperation.h"
 
 @interface TBGesture () <TBCustomGestureRecognizerDelegate>
+
+@property(nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -78,10 +81,15 @@
 
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource completion:(void (^)(NSError *error))completion {
 
+    [self addToTableView:tableView dataSource:dataSource forKeyPath:@"" completion:completion];
 }
 
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
-
+    
+    self.tableView = tableView;
+    [TBHookOperation hookDataSource:dataSource withTableView:tableView withGesture:self forKeyPath:keyPath];
+    
+//    completion;
 }
 
 - (void)addToCollectionView:(UICollectionView *)collectionView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
@@ -91,7 +99,9 @@
 #pragma mark - Recognizer Delegate
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position {
-    debugMethod();
+//    debugMethod();
+    
+    NSLog(@"[self.tableView indexPathForCell:customGestureRecognizer.view]=%@",[self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view]);
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position {

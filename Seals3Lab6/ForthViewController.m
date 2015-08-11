@@ -14,6 +14,7 @@
 #import "TBIndexPathCellModelArray.h"
 #import "TBHookOperation.h"
 #import "TBGesture.h"
+
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate, TBGestureDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -69,6 +70,11 @@
 //    }
 //    cell.textLabel.text = [NSString stringWithFormat:@"text--%d",indexPath.row];
     
+    [gesture addToTableView:tableView dataSource:self completion:^(NSError *error) {
+        
+        NSLog(@"gesture addToTableView");
+    }];
+    
     return cell;
 }
 
@@ -81,6 +87,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
 //    if (indexPath.row==5) {
 //        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
 //        NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
@@ -94,5 +101,7 @@
 //    }
     
 }
+
+
 
 @end
