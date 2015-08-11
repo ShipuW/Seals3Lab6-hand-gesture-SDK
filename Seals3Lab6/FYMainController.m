@@ -12,6 +12,7 @@
 #import "FYCell.h"
 #import "FYAddEventCtroller.h"
 #import "TBEvent.h"
+#import "TBDataManager.h"
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,weak) UITableView* tableView;
@@ -28,14 +29,7 @@
 {
     if (_eventArray == nil) {
         _eventArray = [NSMutableArray array];
-        NSArray* array = [TBEvent allEvents];
-        for (TBEvent*event in array) {
-            FYEventData* data = [[FYEventData alloc] init];
-            data.event = event;
-            [_eventArray addObject:data];
         }
-    }
-    
     return _eventArray;
 }
 - (void)viewDidLoad {
@@ -48,6 +42,22 @@
     //添加headView
     [self addHeadView];
     
+    //从疯瘾数据库加载数据
+   [[TBDataManager sharedManager] loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        if (!error) {
+            NSLog(@"no error");
+            for (TBEvent*event in results) {
+                FYEventData* data = [[FYEventData alloc] init];
+                data.event = event;
+                [self.eventArray addObject:data];
+                
+                [self.tableView reloadData];
+            }
+        }else{
+            NSLog(@"====%@",error);
+        }
+    }];
+    
     //添加tableView
     CGFloat tableX = 0;
     CGFloat tableY = 50+64;
@@ -55,13 +65,15 @@
     CGFloat tableH = self.view.frame.size.height-tableY;
     UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectMake(tableX, tableY, tableW, tableH)];
     self.tableView = tableView;
-    
-    [self setExtraCellLineHidden:tableView]; //隐藏不显示数据分割线
-    
+    [self.view addSubview:tableView];
+
+    //隐藏不显示数据分割线
+    [self setExtraCellLineHidden:tableView];
+    //设置代理
     tableView.delegate = self;
     tableView.dataSource = self;
-    [self.view addSubview:tableView];
 }
+
 -(void)addHeadView
 {
     UIView* headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 50)];
@@ -99,15 +111,10 @@
  *  隐藏不显示数据分割线
  */
 - (void)setExtraCellLineHidden: (UITableView *)tableView
-
 {
-    
     UIView *view = [UIView new];
-    
     view.backgroundColor = [UIColor clearColor];
-    
     [tableView setTableFooterView:view];
-    
 }
 
 #pragma mark - Table view data source
