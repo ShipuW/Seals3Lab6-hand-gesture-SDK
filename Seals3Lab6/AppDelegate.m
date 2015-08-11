@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "TBDataManager.h"
+#import "RLMTestObject.h"
+#import "RLMEvent.h"
+#import "RLMGesture.h"
+#import "MacroUtils.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +22,50 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [SharedDataManager createDatabase];
+
+//    NSUInteger eventCount = [RLMEvent allObjects].count;
+//    if (eventCount == 0) {
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm transactionWithBlock:^{
+            NSArray *events = @[
+                                [[RLMEvent alloc] initWithName:@"收藏"],
+                                [[RLMEvent alloc] initWithName:@"分享"],
+                                [[RLMEvent alloc] initWithName:@"事件0"],
+                                [[RLMEvent alloc] initWithName:@"事件1"],
+                                [[RLMEvent alloc] initWithName:@"事件2"],
+                                [[RLMEvent alloc] initWithName:@"事件3"],
+                                [[RLMEvent alloc] initWithName:@"事件4"],
+                                [[RLMEvent alloc] initWithName:@"事件5"],
+                                [[RLMEvent alloc] initWithName:@"事件6"],
+                                ];
+            NSArray *gestures = @[
+                                  [[RLMGesture alloc] initWithValue:@[@(1), @"上", @(1)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(2), @"下", @(2)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(3), @"左", @(3)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(4), @"右", @(4)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(98), @"合", @(98)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(99), @"张", @(99)]],
+                                  ];
+//            [realm addObjects:gestures];
+//            [realm addObjects:events];
+//            debugLog(@"导入新版事件");
+//            RLMGesture *gesture = [[RLMGesture alloc] initWithType:2];
+//            RLMGesture *gesture = [[RLMGesture alloc] init];
+//            gesture.objectId = 1;
+//            gesture.name = @"123";
+            [realm addObjects:gestures];
+            [realm addObjects:events];
+            
+        }];
+//    }
+
+//    if ([RLMGesture allObjects].count <= eventCount) {
+//        RLMRealm *realm = [RLMRealm defaultRealm];
+//        [realm transactionWithBlock:^{
+//
+//            debugLog(@"导入自带事件成功");
+//        }];
+//    }
     
     return YES;
 }
@@ -43,5 +91,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

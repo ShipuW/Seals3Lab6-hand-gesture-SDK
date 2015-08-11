@@ -10,12 +10,15 @@
 
 #define SharedDataManager [TBDataManager sharedManager]
 
-
 @interface TBDataManager : NSObject
 
 + (instancetype)sharedManager;
 
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion;
+
+- (void)loadAllGesturesFromDatabase:(void (^)(NSArray *, NSError *))completion;
+
+- (void)deleteGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
 
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion;
 
@@ -24,6 +27,8 @@
 - (void)addCustomGesture:(TBGesture *)gesture completion:(void (^)(TBGesture *gesture, NSError *error))completion;
 
 - (void)mapEvent:(TBEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *error))completion;
+
+- (void)deleteGestureWithEvent:(TBEvent *)event completion:(void (^)(NSError *))completion;
 
 - (void)fetchGestureWithEvent:(TBEvent *)event completion:(void (^)(TBGesture *gesture))completion;
 

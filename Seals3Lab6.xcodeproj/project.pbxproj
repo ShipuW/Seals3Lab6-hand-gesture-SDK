@@ -24,6 +24,12 @@
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
 		60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */; };
 		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
+		A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5461B7A37910048F67F /* Realm.framework */; };
+		A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5481B7A37E40048F67F /* libc++.dylib */; };
+		A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA54B1B7A38060048F67F /* RLMTestObject.m */; };
+		A63EA54F1B7A39800048F67F /* RLMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA54E1B7A39800048F67F /* RLMEvent.m */; };
+		A63EA5551B7A41950048F67F /* TBEventGestureManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */; };
+		A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA5571B7A5E940048F67F /* RLMGesture.m */; };
 		A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */ = {isa = PBXBuildFile; fileRef = A63F1AFA1B774E250088B299 /* GestureTemplets.json */; };
 		A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */; };
 		A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */; };
@@ -43,8 +49,14 @@
 		A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */; };
 		A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */; };
 		A6C3D2631B78F7A600E110C4 /* TBAllEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */; };
+		AA1CA30F1B798EE900A975CE /* FYAddEventCtroller.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */; };
+		AA1CA3101B798EE900A975CE /* FYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA3081B798EE900A975CE /* FYCell.m */; };
+		AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30A1B798EE900A975CE /* FYCreateGesture.m */; };
+		AA1CA3121B798EE900A975CE /* FYEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30C1B798EE900A975CE /* FYEventData.m */; };
+		AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30E1B798EE900A975CE /* FYMainController.m */; };
 		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
+		D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E164E71B79F94E003FA975 /* UISwitch+tag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +104,16 @@
 		60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomPinchGestureRecognizer.m; sourceTree = "<group>"; };
 		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
 		60ECA3C11B773721005B27DF /* PostConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostConnection.h; sourceTree = "<group>"; };
+		A63EA5461B7A37910048F67F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		A63EA5481B7A37E40048F67F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A63EA54A1B7A38060048F67F /* RLMTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMTestObject.h; sourceTree = "<group>"; };
+		A63EA54B1B7A38060048F67F /* RLMTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMTestObject.m; sourceTree = "<group>"; };
+		A63EA54D1B7A39800048F67F /* RLMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMEvent.h; sourceTree = "<group>"; };
+		A63EA54E1B7A39800048F67F /* RLMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMEvent.m; sourceTree = "<group>"; };
+		A63EA5531B7A41950048F67F /* TBEventGestureManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventGestureManagerViewController.h; sourceTree = "<group>"; };
+		A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventGestureManagerViewController.m; sourceTree = "<group>"; };
+		A63EA5561B7A5E940048F67F /* RLMGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMGesture.h; sourceTree = "<group>"; };
+		A63EA5571B7A5E940048F67F /* RLMGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMGesture.m; sourceTree = "<group>"; };
 		A63F1AFA1B774E250088B299 /* GestureTemplets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GestureTemplets.json; sourceTree = "<group>"; };
 		A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Utils.h"; sourceTree = "<group>"; };
 		A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Utils.m"; sourceTree = "<group>"; };
@@ -130,11 +152,23 @@
 		A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableViewSimulationViewController.m; sourceTree = "<group>"; };
 		A6C3D2611B78F7A600E110C4 /* TBAllEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAllEventsViewController.h; sourceTree = "<group>"; };
 		A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAllEventsViewController.m; sourceTree = "<group>"; };
+		AA1CA3051B798EE900A975CE /* FYAddEventCtroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYAddEventCtroller.h; sourceTree = "<group>"; };
+		AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYAddEventCtroller.m; sourceTree = "<group>"; };
+		AA1CA3071B798EE900A975CE /* FYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYCell.h; sourceTree = "<group>"; };
+		AA1CA3081B798EE900A975CE /* FYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYCell.m; sourceTree = "<group>"; };
+		AA1CA3091B798EE900A975CE /* FYCreateGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYCreateGesture.h; sourceTree = "<group>"; };
+		AA1CA30A1B798EE900A975CE /* FYCreateGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYCreateGesture.m; sourceTree = "<group>"; };
+		AA1CA30B1B798EE900A975CE /* FYEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYEventData.h; sourceTree = "<group>"; };
+		AA1CA30C1B798EE900A975CE /* FYEventData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYEventData.m; sourceTree = "<group>"; };
+		AA1CA30D1B798EE900A975CE /* FYMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYMainController.h; sourceTree = "<group>"; };
+		AA1CA30E1B798EE900A975CE /* FYMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYMainController.m; sourceTree = "<group>"; };
 		AA4E2C2F1B7853190009739E /* TBGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGMath.h; sourceTree = "<group>"; };
 		AA4E2C301B7853190009739E /* TBGMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGMath.m; sourceTree = "<group>"; };
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D9E164E61B79F94E003FA975 /* UISwitch+tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+tag.h"; sourceTree = "<group>"; };
+		D9E164E71B79F94E003FA975 /* UISwitch+tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+tag.m"; sourceTree = "<group>"; };
 		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */,
+				A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */,
 				2961003F75C878C0D86D661A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +234,7 @@
 		0C79E93D22DA6071C28761CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A63EA5481B7A37E40048F67F /* libc++.dylib */,
 				39AB3DC487A8EBB882D3A0D3 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -259,6 +296,12 @@
 				A6744B581B7217FB00E222B0 /* TBEvent.m */,
 				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
 				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
+				A63EA54A1B7A38060048F67F /* RLMTestObject.h */,
+				A63EA54B1B7A38060048F67F /* RLMTestObject.m */,
+				A63EA54D1B7A39800048F67F /* RLMEvent.h */,
+				A63EA54E1B7A39800048F67F /* RLMEvent.m */,
+				A63EA5561B7A5E940048F67F /* RLMGesture.h */,
+				A63EA5571B7A5E940048F67F /* RLMGesture.m */,
 			);
 			name = "Base DO";
 			sourceTree = "<group>";
@@ -283,6 +326,8 @@
 				A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */,
 				A6C3D2611B78F7A600E110C4 /* TBAllEventsViewController.h */,
 				A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */,
+				A63EA5531B7A41950048F67F /* TBEventGestureManagerViewController.h */,
+				A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */,
 				A6C3D25C1B785E1100E110C4 /* 模拟接入 */,
 				1470D6AE6C53ED899435DCBF /* FifthViewController.h */,
 				1470D81B6F1A4F320A3FE59B /* FifthViewController.m */,
@@ -316,6 +361,7 @@
 		A6744B181B720A2F00E222B0 /* Seals3Lab6 */ = {
 			isa = PBXGroup;
 			children = (
+				A63EA5461B7A37910048F67F /* Realm.framework */,
 				A6744B1D1B720A2F00E222B0 /* AppDelegate.h */,
 				A6744B1E1B720A2F00E222B0 /* AppDelegate.m */,
 				A6744B4E1B720DFC00E222B0 /* Basic */,
@@ -381,6 +427,18 @@
 		A6744B501B72170100E222B0 /* 竹阳 */ = {
 			isa = PBXGroup;
 			children = (
+				D9E164E61B79F94E003FA975 /* UISwitch+tag.h */,
+				D9E164E71B79F94E003FA975 /* UISwitch+tag.m */,
+				AA1CA3051B798EE900A975CE /* FYAddEventCtroller.h */,
+				AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */,
+				AA1CA3071B798EE900A975CE /* FYCell.h */,
+				AA1CA3081B798EE900A975CE /* FYCell.m */,
+				AA1CA3091B798EE900A975CE /* FYCreateGesture.h */,
+				AA1CA30A1B798EE900A975CE /* FYCreateGesture.m */,
+				AA1CA30B1B798EE900A975CE /* FYEventData.h */,
+				AA1CA30C1B798EE900A975CE /* FYEventData.m */,
+				AA1CA30D1B798EE900A975CE /* FYMainController.h */,
+				AA1CA30E1B798EE900A975CE /* FYMainController.m */,
 				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
 				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
 			);
@@ -580,10 +638,14 @@
 			files = (
 				01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */,
 				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
+				AA1CA3101B798EE900A975CE /* FYCell.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
+				AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
+				A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */,
+				D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
@@ -592,9 +654,12 @@
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
 				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
+				AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */,
 				A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */,
 				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
+				A63EA5551B7A41950048F67F /* TBEventGestureManagerViewController.m in Sources */,
+				AA1CA3121B798EE900A975CE /* FYEventData.m in Sources */,
 				AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
 				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
@@ -606,9 +671,12 @@
 				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
 				60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */,
 				AA4E2C311B7853190009739E /* TBGMath.m in Sources */,
+				A63EA54F1B7A39800048F67F /* RLMEvent.m in Sources */,
 				1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */,
 				1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */,
 				1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */,
+				A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */,
+				AA1CA30F1B798EE900A975CE /* FYAddEventCtroller.m in Sources */,
 				1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,6 +806,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Seals3Lab6",
+				);
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -754,6 +826,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Seals3Lab6",
+				);
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

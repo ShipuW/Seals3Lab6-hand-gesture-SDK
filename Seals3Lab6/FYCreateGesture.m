@@ -9,7 +9,9 @@
 #import "FYCreateGesture.h"
 #import "TBGestureRecognizer.h"
 #import "FYEventData.h"
-
+#import "TBGesture.h"
+#import "TBDataManager.h"
+#import "TBEvent.h"
 @interface FYCreateGesture()<UIAlertViewDelegate>
 @property(nonatomic,weak) UILabel* createOperation;
 @property(nonatomic,weak) UILabel* operation;
@@ -76,15 +78,11 @@
 -(void)setEventData:(FYEventData *)eventData
 {
     _eventData = eventData;
-    self.operation.text = eventData.event;
+   self.operation.text = eventData.event.name;
 }
 -(void)tap:(UITapGestureRecognizer*)gr
 {
     [self removeFromSuperview];
-}
--(void)dealloc
-{
-    NSLog(@"画板视图释放了");
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -109,7 +107,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];
     CGPathAddLineToPoint(_path, NULL, location.x, location.y);
-    NSLog(@"%@",NSStringFromCGPoint(location));
+//    NSLog(@"%@",NSStringFromCGPoint(location));
     
     [self.pointArray addObject:[NSValue valueWithCGPoint:location]];
     
@@ -135,9 +133,32 @@
             [self.pointArray removeAllObjects];
         }else{//手势没有被占用，可以试用
             
-            //调用SDK手势保存接口
-            [self clipImage];
+            //保存path
+            TBGesture *gesture = [[TBGesture alloc] init];
+            gesture.rawPath = [self.pointArray copy];
+            gesture.path = [resampledGesture copy];
+            [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
+                if (error) {
+                    NSLog(@"addCustomGesture===========%@",error);
+                } else {
+                    //手势添加成功，开始截图保存图片：objectId.png
+                    NSLog(@"gesture====%@",gesture.objectId);
+                     [self clipImage:gesture.objectId];
+                    
+                    //手势和事件对应接口
+                    [SharedDataManager mapEvent:self.eventData.event withGesture:gesture completion:^(NSError *error) {
+                        if (error) {
+                            NSLog(@"mapEvent===========%@",error);
+                        }
+                    }];
+                }
+            }];
+
             [self.pointArray removeAllObjects];
+            //通知代理，已经完成绘图
+            if ([self.delegate respondsToSelector:@selector(createGestureDidFinishedDrawPath)]) {
+                [self.delegate createGestureDidFinishedDrawPath];
+            }
             [self removeFromSuperview];
         }
     }];
@@ -146,7 +167,7 @@
 }
 
 //截图
--(void)clipImage
+-(void)clipImage:(NSString*)guestureId
 {
     UIGraphicsBeginImageContext(self.frame.size);
     CGRect r = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-30);
@@ -159,7 +180,7 @@
     
     //保存
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"sms.png"]];   // 保存文件的名称
+    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",guestureId]];   // 保存文件的名称
    [UIImagePNGRepresentation(theImage) writeToFile:filePath atomically:YES]; // 保存成功会返回YES
     NSLog(@"%@",filePath);
     
@@ -185,7 +206,6 @@
             label.alpha = 0.0;
         }];
     }];
-//    self.label.text = nil;
     self.label = nil;
 }
 
@@ -219,5 +239,4 @@
         CGContextDrawPath(context, kCGPathStroke);
     }
 }
-
 @end
