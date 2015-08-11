@@ -17,6 +17,8 @@
 
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion;
 
+- (void)loadAllGesturesFromDatabase:(void (^)(NSArray *, NSError *))completion;
+
 - (void)loadLocalGestureTemplets:(void (^)(NSArray *results, NSError *error))completion;
 - (void)createDatabase;
 

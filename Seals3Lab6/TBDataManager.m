@@ -153,6 +153,7 @@
 }
 
 
+
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
     NSString *sql = @"SELECT * from Event";
     FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
@@ -176,6 +177,26 @@
     
 }
 
+- (void)loadAllGesturesFromDatabase:(void (^)(NSArray *, NSError *))completion {
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    NSMutableArray *results = [NSMutableArray array];
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:@"SELECT * FROM Gesture"];
+        while ([s next]) {
+            TBGesture *gesture = [[TBGesture alloc] init];
+            gesture.objectId = [s stringForColumn:@"id"];
+            NSString *path = [s stringForColumn:@"path"];
+            gesture.path = [self CGPointsArrayFromPointsString:path];
+            NSString *rawPath = [s stringForColumn:@"rawPath"];
+            gesture.rawPath = [self CGPointsArrayFromPointsString:rawPath];
+            [results addObject:gesture];
+        }
+        !completion ?: completion([results copy], nil);
+        [db close];
+    } else  {
+        !completion ?: completion(nil, [[NSError alloc] init]);
+    }
+}
 - (BOOL)createGestureTable {
 
     NSString *sql = @"CREATE TABLE IF NOT EXISTS "
@@ -288,5 +309,29 @@
 //    }];
 }
 
+- (NSString *)pointsStringFromCGPointsArray:(NSArray *)pointsArray {
+    NSMutableArray *jsonArray = [NSMutableArray arrayWithCapacity:pointsArray.count];
+    for (NSValue *value in pointsArray) {
+        CGPoint point = [value CGPointValue];
+        NSArray *arr = @[@(point.x), @(point.y)];
+        [jsonArray addObject:arr];
+    }
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonArray options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
 
+- (NSArray *)CGPointsArrayFromPointsString:(NSString *)pointsString {
+    NSData *jsonData = [pointsString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSMutableArray *pointsArray = [NSMutableArray array];
+    for (NSArray *p in jsonArray) {
+        CGPoint point;
+        point = CGPointMake([p[0] CGFloatValue], [p[1] CGFloatValue]);
+        NSValue *value = [NSValue valueWithCGPoint:point];
+        [pointsArray addObject:value];
+    }
+    return [pointsArray copy];
+}
 @end
