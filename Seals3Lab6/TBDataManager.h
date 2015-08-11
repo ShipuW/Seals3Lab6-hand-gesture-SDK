@@ -30,4 +30,6 @@
 
 - (void)deleteGestureWithEvent:(TBEvent *)event completion:(void (^)(NSError *))completion;
 
+- (void)fetchGestureWithEvent:(TBEvent *)event completion:(void (^)(TBGesture *gesture))completion;
+
 @end

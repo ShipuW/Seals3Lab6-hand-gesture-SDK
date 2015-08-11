@@ -14,6 +14,8 @@
 #import "TBEvent.h"
 #import "TBDataManager.h"
 #import "TBGesture.h"
+#import "MacroUtils.h"
+
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,weak) UITableView* tableView;
@@ -188,15 +190,28 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1、修改数据模型
-        [self.eventArray removeObjectAtIndex:indexPath.row];
+//        [self.eventArray removeObjectAtIndex:indexPath.row];
         FYEventData* data = self.eventArray[indexPath.row];
         TBEvent* event = data.event;
         
-        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
-            NSLog(@"%@",error);
+//        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+//            if (error) {
+//                NSLog(@"删除失败");
+//            }
+//        }];
+        [SharedDataManager fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
+            if (gesture) {
+                debugLog(@"found gesture");
+                [SharedDataManager deleteGesture:gesture completion:^(NSError *error) {
+                    if (error) {
+                        debugLog(@"del err");
+                    }
+                }];
+//                [self.tableView reloadData];
+            }
         }];
         //2、重新加载数据
-         [self.tableView reloadData];
+//         [self.tableView reloadData];
     }
 }
 

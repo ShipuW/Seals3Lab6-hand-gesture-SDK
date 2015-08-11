@@ -180,14 +180,20 @@
                 gesture.rawPath = [self CGPointsArrayFromPointsString:rawPath];
                 [db close];
                 !completion ?: completion(gesture);
+                return;
             }
         } else {
             [db close];
             !completion ?: completion(nil);
+            return;
         }
         [db close];
+        !completion ?: completion(nil);
+        return;
+        
     } else {
         !completion ?: completion(nil);
+        return;
     }
 }
 
@@ -285,13 +291,20 @@
     if ([db open]) {
         BOOL rs = [db executeUpdate:@"DELETE FROM Gesture WHERE id = ?", gesture.objectId];
         if (rs) {
+            [db close];
             !completion ?: completion(nil);
+            return;
         } else {
+            [db close];
             !completion ?: completion([[NSError alloc] init]);
+            return;
         }
-        [db close];
+//        [db close];
+//        !completion ?: completion(nil);
+//        return;
     } else {
         !completion ?: completion([[NSError alloc] init]);
+        return;
     }
     
 }
@@ -338,22 +351,31 @@
     if ([db open]) {
         FMResultSet *s = [db executeQuery:queryCountSql, event.objectId];
         if ([s next]) {
-            if ([db executeUpdate:@"UPDATE Map SET gestureId = ? WHERE eventId = ?", gesture.objectId, event.objectId]) {
-                debugLog(@"更新映射关系成功");
-                !completion ?: completion(nil);
+            int totalCount = [s intForColumnIndex:0];
+            if (totalCount > 0) {
+                if ([db executeUpdate:@"UPDATE Map SET gestureId = ? WHERE eventId = ?", gesture.objectId, event.objectId]) {
+                    debugLog(@"更新映射关系成功");
+                    [db close];
+                    !completion ?: completion(nil);
+                    return;
+                } else {
+                    debugLog(@"更新映射关系失败");
+                    !completion ?: completion([[NSError alloc] init]);
+                }
             } else {
-                debugLog(@"更新映射关系失败");
-                !completion ?: completion([[NSError alloc] init]);
-            }
-        } else {
-            if ([db executeUpdate:@"INSERT INTO Map VALUES (?, ?, ?)", @([event.objectId intValue]), event.objectId, gesture.objectId ]) {
-                debugLog(@"映射关系写入成功");
-                !completion ?: completion(nil);
-            } else {
-                debugLog(@"映射关系写入失败");
-                !completion ?: completion([[NSError alloc] init]);
+                if ([db executeUpdate:@"INSERT INTO Map VALUES (?, ?, ?)", @([event.objectId intValue]), gesture.objectId, event.objectId ]) {
+                    debugLog(@"映射关系写入成功");
+                    [db close];
+                    !completion ?: completion(nil);
+                    return;
+                } else {
+                    debugLog(@"映射关系写入失败");
+                    [db close];
+                    !completion ?: completion([[NSError alloc] init]);
+                }
             }
         }
+
         [db close];
     }
     

@@ -135,8 +135,8 @@
             
             //保存path
             TBGesture *gesture = [[TBGesture alloc] init];
-            gesture.rawPath = self.pointArray;
-            gesture.path = resampledGesture;
+            gesture.rawPath = [self.pointArray copy];
+            gesture.path = [resampledGesture copy];
             [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
                 if (error) {
                     NSLog(@"addCustomGesture===========%@",error);
