@@ -36,11 +36,7 @@
         self.resampleGesture = [NSMutableArray array];
         self.gestureTemplates = [NSArray array];
         self.gesture = [NSArray array];
-        @weakify(self);
-        [SharedDataManager loadAllGesturesFromDatabase:^(NSArray *results, NSError *error) {
-            @strongify(self);
-            self.gestureTemplates = results;
-        }];
+        
     }
     return self;
 }
@@ -58,6 +54,11 @@
 #pragma mark --- callback
 -(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion
 {
+    @weakify(self);
+    [SharedDataManager loadAllGesturesFromDatabase:^(NSArray *results, NSError *error) {
+        @strongify(self);
+        self.gestureTemplates = results;
+    }];
     NSString *result = [self recognizeGestureWithPoints:points];
     completion(result, self.resampleGesture);
 }
