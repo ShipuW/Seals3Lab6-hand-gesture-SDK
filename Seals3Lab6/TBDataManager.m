@@ -198,11 +198,10 @@
 }
 
 - (void)loadAllEventsFromDatabase:(void (^)(NSArray *results, NSError *error))completion {
-    NSString *sql = @"SELECT * from Event";
-    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
-    NSMutableArray *results = [NSMutableArray array];
-    if ([db open]) {
-        
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:self.dbPath];
+    [queue inDatabase:^(FMDatabase *db) {
+        NSMutableArray *results = [NSMutableArray array];
+        NSString *sql = @"SELECT * from Event";
         FMResultSet *s = [db executeQuery:sql];
         while ([s next]) {
             TBEvent *event = [[TBEvent alloc] init];
@@ -212,12 +211,8 @@
             event.canEditGesture = [s intForColumn:@"canEditGesture"] == 1 ? YES : NO;
             [results addObject:event];
         }
-        [db close];
         !completion ?: completion(results, nil);
-    } else {
-        !completion ?: completion(nil, [[NSError alloc] init]);
-    }
-    
+    }];
 }
 
 - (void)loadAllGesturesFromDatabase:(void (^)(NSArray *, NSError *))completion {

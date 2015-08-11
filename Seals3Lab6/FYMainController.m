@@ -217,7 +217,7 @@
                         debugLog(@"del err");
                     } else {
                         debugLog(@"del gesture done");
-//                        [self loadData];
+                        [self loadData];
                     }
                 }];
             }
