@@ -12,13 +12,21 @@
 
 #import <Foundation/Foundation.h>
 #import "MyView.h"
+#import "TBGesture.h"
 
-typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
-    UICustomGestureRecognizerDirectionRight = 1 << 0,
-    UICustomGestureRecognizerDirectionLeft  = 1 << 1,
-    UICustomGestureRecognizerDirectionUp    = 1 << 2,
-    UICustomGestureRecognizerDirectionDown  = 1 << 3,
-    UICustomGestureRecognizerDirectionNot   = 1 << 4
+typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
+    //UICustomGestureRecognizerDirectionNot         = 0,
+    UICustomGestureRecognizerDirectionUp       = 1,
+    UICustomGestureRecognizerDirectionDown     = 2,
+    UICustomGestureRecognizerDirectionLeft     = 3,
+    UICustomGestureRecognizerDirectionRight    = 4,
+
+    UICustomGestureRecognizerDirectionNot         = 100,
+//    UICustomGestureRecognizerDirectionRight = 1 << 0,
+//    UICustomGestureRecognizerDirectionLeft  = 1 << 1,
+//    UICustomGestureRecognizerDirectionUp    = 1 << 2,
+//    UICustomGestureRecognizerDirectionDown  = 1 << 3,
+//    UICustomGestureRecognizerDirectionNot   = 1 << 4
 };
 
 
@@ -28,7 +36,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position;
-
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed;
 
 
@@ -42,7 +50,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     BOOL                _contain;
     BOOL                _shouldEnd;
     CGPoint             _startPoint;
-    
+    CGPoint             _lastPoint;
     CGPoint             _originPoint;
     id                  _gestureTarget;
     
@@ -50,6 +58,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     UIView             *_touchView;
     UIView             *_baseView;
     MyView             *_myView;
+    TBGestureType       _targetType;
 }
 @property (weak) id target;
 @property SEL action;
@@ -61,9 +70,10 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 @property (nonatomic, readwrite) NSArray *touchPoints;
 @property (nonatomic) UICustomGestureRecognizerDirection direction;
 
+//@property (nonatomic, weak) TBGesture *tbGesture;
 @property (nonatomic) id<TBCustomGestureRecognizerDelegate> recognizeDelegate;
 
-- (instancetype)initWithTarget:(id)target action:(SEL)action;
+- (instancetype)initWithTarget:(id)target action:(SEL)action type:(TBGestureType)type;
 - (void)buttonLongPressed:(UILongPressGestureRecognizer *)sender;
 
 @end
