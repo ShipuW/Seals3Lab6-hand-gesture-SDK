@@ -13,5 +13,9 @@
 @property(nonatomic,strong) TBEvent *event;
 
 @property(nonatomic,copy) NSString* icon;
+/**
+ *  判断是否是自定义手势，改变加载路径
+ */
+@property(nonatomic,assign) BOOL isCustom;
 
 @end

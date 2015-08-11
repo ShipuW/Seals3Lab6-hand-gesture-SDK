@@ -77,12 +77,16 @@
 }
 -(void)loadData
 {
+    if (self.eventArray.count>0) {
+        [self.eventArray removeAllObjects];
+    }
     [[TBDataManager sharedManager] loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
         if (!error) {
             NSLog(@"no error");
             for (TBEvent*event in results) {
                 FYEventData* data = [[FYEventData alloc] init];
                 data.event = event;
+                data.isCustom = NO;
                 [self.eventArray addObject:data];
                 
                 [self.tableView reloadData];
@@ -91,6 +95,9 @@
             NSLog(@"====%@",error);
         }
     }];
+    
+    //每次从SDK加载完数据，刷新表格
+    [self.tableView reloadData];
 }
 
 -(void)addHeadView
@@ -163,23 +170,22 @@
     }else{//关闭手势
         [self.eventArray removeAllObjects];
         [self.tableView reloadData];
-        self.eventArray=nil;
     }
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
-    drawView.eventData = self.eventArray[indexPath.row];
-    drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
-    drawView.backgroundColor = [UIColor whiteColor];
-    drawView.alpha = 0.9;
-    [[UIApplication sharedApplication].keyWindow addSubview:drawView];
+//    FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
+//    drawView.eventData = self.eventArray[indexPath.row];
+//    drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
+//    drawView.backgroundColor = [UIColor whiteColor];
+//    drawView.alpha = 0.9;
+//    [[UIApplication sharedApplication].keyWindow addSubview:drawView];
     
-//    //跳转到FYAddEventCtroller
-//    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
-//    ctl.eventData = self.eventArray[indexPath.row];
-//    [self.navigationController pushViewController:ctl animated:YES];
+    //跳转到FYAddEventCtroller
+    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
+    ctl.eventData = self.eventArray[indexPath.row];
+    [self.navigationController pushViewController:ctl animated:YES];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -197,7 +203,6 @@
 //        [self.eventArray removeObjectAtIndex:indexPath.row];
         FYEventData* data = self.eventArray[indexPath.row];
         TBEvent* event = data.event;
-
         
 //        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
 //            if (error) {
@@ -212,6 +217,7 @@
                         debugLog(@"del err");
                     } else {
                         debugLog(@"del gesture done");
+//                        [self loadData];
                     }
                 }];
             }
@@ -230,6 +236,14 @@
 //        }];
         //2、重新加载数据
 //         [self.tableView reloadData];
+//        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+//            if (!error) {
+//                NSLog(@"%@",event.name);
+//            }else{
+//                NSLog(@"deleteGestureWithEvent=====%@",error);
+//            }
+//        }];
+        //2、重新加载数据,刷新表格
     }
 }
 
