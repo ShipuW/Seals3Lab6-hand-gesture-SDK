@@ -139,8 +139,15 @@
             BOOL rs = [db executeUpdate:sql, @(objectId), @"自定义手势", @(TBGestureTypeCustom), jsonString, rawJSONString];
             rsError = rs ? nil : [[NSError alloc] init];
             [db close];
+            if (rs) {
+                gesture.objectId = [@(objectId) stringValue];
+                !completion ?: completion(gesture, nil);
+            } else {
+                !completion ?: completion(nil, rsError);
+            }
+        } else {
+            !completion ?: completion(nil, rsError);
         }
-        !completion ?: completion(nil, rsError);
     }];
 //    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
 //    NSError *rsError;
