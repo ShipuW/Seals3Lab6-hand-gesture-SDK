@@ -94,7 +94,7 @@
     RLMGesture * bestGesture = [[RLMGesture alloc]init];
     float bestScore = INFINITY;
     for (RLMGesture *templateGesture in template) {
-        RLMArray *tmpTemplate = [[RLMArray alloc]initWithObjectClassName:@"RLMPoing"];
+        RLMArray *tmpTemplate = [[RLMArray alloc]initWithObjectClassName:@"RLMPoint"];
         [tmpTemplate addObjects:templateGesture.path];
         float score = DistanceAtBestAngle(resampledPoints, kSamplePoints, tmpTemplate);
         if (score < bestScore) {

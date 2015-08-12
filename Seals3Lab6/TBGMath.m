@@ -77,7 +77,14 @@ float PathDistance(RLMArray *pts1, RLMArray *pts2, int count)
 
 float DistanceAtAngle(RLMArray *samples, int samplePoints, RLMArray *template, float theta)
 {
-    RLMArray *tmp = [samples copy];
+//    RLMArray *tmp = [samples copy];
+    RLMArray *tmp = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+    for (RLMPoint *ponit in samples) {
+        RLMPoint *newPoint = [[RLMPoint alloc] init];
+        newPoint.x = ponit.x;
+        newPoint.y = ponit.y;
+        [tmp addObject:newPoint];
+    }
     Rotate(tmp, samplePoints, theta);
     return PathDistance(tmp, template, samplePoints);
 }
