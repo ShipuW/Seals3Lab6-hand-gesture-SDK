@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Veight Zhou. All rights reserved.
 //
 
+#import <Realm/Realm.h>
 #import "TBGesture.h"
 #import "TBEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
@@ -180,15 +181,26 @@
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType)type recognized:(BOOL)succeed {
-    if (succeed) {
-        NSLog(@"配对成功");
-        if ([self.delegate respondsToSelector:@selector(recogizedEvent:)]) {
-            [self.delegate recogizedEvent:self];
-        }
-    }else{
-        NSLog(@"配对失败");
-    }
-    debugMethod();
+//    if (succeed) {
+//        NSLog(@"配对成功");
+//        if ([self.delegate respondsToSelector:@selector(recogizedEvent:)]) {
+//            RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@()]
+//            [self.delegate recogizedEvent:self];
+//        }
+//    }else{
+//        NSLog(@"配对失败");
+//    }
+//    debugMethod();
 }
+
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType)type gestureId:(int)gestureId recognized:(BOOL)succeed {
+    if (succeed) {
+        RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
+        if ([self.delegate respondsToSelector:@selector(recogizedEvent:)] && results.count) {
+            [self.delegate recogizedEvent:results[0]];
+        }
+    }
+}
+
 
 @end

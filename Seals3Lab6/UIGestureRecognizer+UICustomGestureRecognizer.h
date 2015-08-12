@@ -16,10 +16,10 @@
 
 typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
     //UICustomGestureRecognizerDirectionNot         = 0,
-    UICustomGestureRecognizerDirectionUp       = 1 << 1,
-    UICustomGestureRecognizerDirectionDown     = 1 << 2,
-    UICustomGestureRecognizerDirectionLeft     = 1 << 3,
-    UICustomGestureRecognizerDirectionRight    = 1 << 4,
+    UICustomGestureRecognizerDirectionUp       = 1 << 0,
+    UICustomGestureRecognizerDirectionDown     = 1 << 1,
+    UICustomGestureRecognizerDirectionLeft     = 1 << 2,
+    UICustomGestureRecognizerDirectionRight    = 1 << 3,
 
     UICustomGestureRecognizerDirectionNot      = 1 << 20,
 //    UICustomGestureRecognizerDirectionRight = 1 << 0,
@@ -44,6 +44,7 @@ typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType)type recognized:(BOOL)succeed;
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType)type gestureId:(int)gestureId recognized:(BOOL)succeed;
 
 @end
 //@interface UIGestureRecognizer (UICustomGestureRecognizer)

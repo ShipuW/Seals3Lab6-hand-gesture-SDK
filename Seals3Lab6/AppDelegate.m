@@ -39,12 +39,12 @@
                                 [[RLMEvent alloc] initWithName:@"事件6"],
                                 ];
             NSArray *gestures = @[
-                                  [[RLMGesture alloc] initWithValue:@[@(1), @"上", @(1)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(1 << 2), @"下", @(1 << 2)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(1 << 3), @"左", @(1 << 3)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(1 << 4), @"右", @(1 << 4)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(1 << 5), @"合", @(1 << 5)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(1 << 6), @"张", @(1 << 6)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 0), @"上", @(1 << 0)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 1), @"下", @(1 << 1)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 2), @"左", @(1 << 2)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 3), @"右", @(1 << 3)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 4), @"合", @(1 << 4)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 5), @"张", @(1 << 5)]],
                                   ];
 
             [realm addObjects:gestures];
