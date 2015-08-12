@@ -175,13 +175,19 @@
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
             }
-            if (_isSimpleGesture) {
                 [self simpleDirectionRecognizer];
-            } else if (!_isSimpleGesture){
+            if ([_gestureId  isEqual: @"gesture failed"]) {
+                
+            }else{
                 [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
                     _gestureId = gestureId;
                 }];
             }
+            
+            
+            
+            
+            
             
             _lastPoint = [sender locationInView:_baseView];
             
