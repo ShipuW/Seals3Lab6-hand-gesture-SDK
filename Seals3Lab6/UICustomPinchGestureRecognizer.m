@@ -26,11 +26,13 @@
 
 -(void) pinchDirectionRecognizer{
     
-    if (_tureScale>1.5 && _targetType == TBGestureTypeSimplePinchOUT) {
+    if (_tureScale>1.5 && (_targetType & TBGestureTypeSimplePinchOUT) == TBGestureTypeSimplePinchOUT) {
         NSLog(@"放大");
         _isMatch = YES;
-    }else if(_tureScale<0.5 && _targetType == TBGestureTypeSimplePinchIN){
+        [self.recognizePinchDelegate gestureRecognizer:self gestureType:TBGestureTypeSimplePinchOUT  gestureId:(int)TBGestureTypeSimplePinchOUT  recognized:YES];
+    }else if(_tureScale<0.7 && (_targetType & TBGestureTypeSimplePinchIN) == TBGestureTypeSimplePinchIN){
         NSLog(@"缩小");
+        [self.recognizePinchDelegate gestureRecognizer:self gestureType:TBGestureTypeSimplePinchIN  gestureId:(int)TBGestureTypeSimplePinchIN  recognized:YES];
         _isMatch = YES;
     }else{
         NSLog(@"匹配错误");

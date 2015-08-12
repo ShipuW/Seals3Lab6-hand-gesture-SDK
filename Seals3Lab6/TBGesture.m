@@ -16,7 +16,7 @@
 #import "RLMGesture.h"
 #import "RLMEvent.h"
 
-@interface TBGesture () <TBCustomGestureRecognizerDelegate>
+@interface TBGesture () <TBCustomGestureRecognizerDelegate, TBCustomPinchGestureRecognizerDelegate>
 
 @end
 
@@ -81,20 +81,27 @@
 //        }
 //    }
 
+    
+    
+    if ((self.type & TBGestureTypeSimplePinchOUT) == TBGestureTypeSimplePinchOUT || (self.type & TBGestureTypeSimplePinchIN) == TBGestureTypeSimplePinchIN) { //pinchGesture
+        
+        self.pinchRecognizer = [[UICustomPinchGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
+        //self.pinchRecognizer.tbGesture = self;
+        //            self.gestureRecognizer.recognizePinch/Delegate = self;
+        self.pinchRecognizer.recognizePinchDelegate = self;
+        [view addGestureRecognizer:self.pinchRecognizer];
+    }
+    
+    if ((self.type & 0xf) > 0 || (self.type & TBGestureTypeCustom) == TBGestureTypeCustom) {
+        
+        self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
+        self.gestureRecognizer.customGestureIds = [self.customGestureIds copy];
+        self.gestureRecognizer.recognizeDelegate = self;
+        [view addGestureRecognizer:self.gestureRecognizer];
+    }
 
-        if (self.type == TBGestureTypeSimplePinchOUT || self.type == TBGestureTypeSimplePinchIN) { //pinchGesture
 
-            self.pinchRecognizer = [[UICustomPinchGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
-            //self.pinchRecognizer.tbGesture = self;
-            self.gestureRecognizer.recognizeDelegate = self;
-            [view addGestureRecognizer:self.pinchRecognizer];
-        }else{
 
-            self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
-            self.gestureRecognizer.customGestureIds = [self.customGestureIds copy];
-            self.gestureRecognizer.recognizeDelegate = self;
-            [view addGestureRecognizer:self.gestureRecognizer];
-        }
 
 
     !completion ?: completion(nil);
@@ -209,5 +216,15 @@
     }
 }
 
+- (void)pinchRecognizer:(UICustomPinchGestureRecognizer *)customPinchGestureRecognizer gestureType:(TBGestureType)type gestureId:(int)gestureId recognized:(BOOL)succeed{
+
+    if (succeed) {
+    RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
+    if ([self.delegate respondsToSelector:@selector(recogizedEvent:)] && results.count) {
+        [self.delegate recogizedEvent:results[0]];
+    }
+
+    }
+}
 
 @end
