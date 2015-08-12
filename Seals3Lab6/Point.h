@@ -12,6 +12,10 @@
 @property CGFloat x;
 @property CGFloat y;
 
+- (CGPoint)CGPoint;
+
+- (instancetype)initWithCGPoint:(CGPoint)cgp;
+
 @end
 
 RLM_ARRAY_TYPE(RLMPoint)
