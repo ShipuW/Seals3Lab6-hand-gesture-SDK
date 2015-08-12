@@ -14,7 +14,7 @@
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
 
-@interface TBGestureSelectViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TBGestureSelectViewController () <UITableViewDataSource, UITableViewDelegate, TBGestureDrawDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RLMEvent *event;
@@ -120,6 +120,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             [realm commitWriteTransaction];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+            
         }
     }else {
         
@@ -127,8 +128,23 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
         createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
         createGesture.backgroundColor = [UIColor whiteColor];
         createGesture.alpha = 0.9;
+        createGesture.delegate = self;
         [[UIApplication sharedApplication].keyWindow addSubview:createGesture];
     }
 }
+
+- (void)gestureDidDrawAtPosition:(NSArray *)trackPoints {
+    debugLog(@"%@", trackPoints);
+}
+
+
+- (int)randomId {
+    double ts = [[NSDate date] timeIntervalSince1970];
+    ts = fmod(ts, @(1000000).doubleValue);
+    ts = ts * 1000;
+    int objectId = @(ts).intValue;
+    return objectId;
+}
+
 
 @end

@@ -62,20 +62,18 @@
 //    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
 
 //    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
-    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
-    gesture.delegate = self;
 
     static NSString *ID=@"test";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell==nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
 
+    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
+    gesture.delegate = self;
     gesture.tableView = tableView;
-    [gesture addToView:cell completion:^(NSError *error) {
-
-    }];
+    [gesture addToView:cell completion:nil];
 //
 //    [gesture addToTableView:tableView dataSource:self completion:^(NSError *error) {
 //

@@ -8,11 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TBGestureDrawDelegate <NSObject>
+
+- (void)gestureDidDrawAtPosition:(NSArray *)trackPoints;
+
+@end
+
 @interface TBCreateGesture : UIView
 
 @property (assign, nonatomic) CGFloat lineWidth;
 @property (strong, nonatomic) UIColor *lineColor;
 @property (assign, nonatomic) CGMutablePathRef path;
 @property (assign, nonatomic) BOOL isHavePath;
+
+@property (nonatomic, weak) id<TBGestureDrawDelegate> delegate;
 
 @end

@@ -12,11 +12,14 @@
 #import "TBGesture.h"
 #import "TBDataManager.h"
 #import "TBEvent.h"
+#import "Point.h"
 @interface TBCreateGesture()<UIAlertViewDelegate>
 @property(nonatomic,weak) UILabel* createOperation;
 @property(nonatomic,weak) UILabel* operation;
 @property(nonatomic,strong) NSMutableArray* pointArray;
 @property(nonatomic,weak) UILabel* label;
+
+@property (nonatomic, strong) NSMutableArray *points;
 @end
 
 @implementation TBCreateGesture
@@ -27,6 +30,13 @@
         _pointArray = [NSMutableArray array];
     }
     return _pointArray;
+}
+
+- (NSMutableArray *)points {
+    if (_points == nil) {
+        _points = [NSMutableArray array];
+    }
+    return _points;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -56,7 +66,6 @@
         UITapGestureRecognizer* tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [self addGestureRecognizer:tapGr];
         
-        
     }
     return self;
 }
@@ -85,6 +94,9 @@
     if (self.pointArray.count) {
         [self.pointArray removeAllObjects];
     }
+    if (self.points.count) {
+        [self.points removeAllObjects];
+    }
     UITouch *touch = [touches anyObject];
     CGPoint location =[touch locationInView:self];
     
@@ -97,6 +109,7 @@
     
     
     [self.pointArray addObject:[NSValue valueWithCGPoint:location]];
+    [self.points addObject:[[RLMPoint alloc] initWithCGPoint:location]];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -106,7 +119,7 @@
     //    NSLog(@"%@",NSStringFromCGPoint(location));
     
     [self.pointArray addObject:[NSValue valueWithCGPoint:location]];
-    
+    [self.points addObject:[[RLMPoint alloc] initWithCGPoint:location]];
     [self setNeedsDisplay];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -115,11 +128,16 @@
     CGPoint location = [touch locationInView:self];
     CGPathAddLineToPoint(_path, NULL, location.x, location.y);
     
-    NSLog(@"%@",self.pointArray);
+//    NSLog(@"%@",self.pointArray);
     //处理path
     /**
      *
      */
+
+    if ([self.delegate respondsToSelector:@selector(gestureDidDrawAtPosition:)]) {
+        [self.delegate gestureDidDrawAtPosition:[self.points copy]];
+    }
+    
     [self.pointArray removeAllObjects];
     
     [self removeFromSuperview];
