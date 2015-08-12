@@ -179,8 +179,8 @@
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position {
 //    debugMethod();
 
-    self.indexpath = [self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view];
-    NSLog(@"self.tableView indexPathForCell:customGestureRecognizer.view]=%@",[self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view]);
+//    self.indexpath = [self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view];
+//    NSLog(@"self.tableView indexPathForCell:customGestureRecognizer.view]=%@",[self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view]);
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position {
@@ -219,7 +219,7 @@
                 tg.name = g.name;
                 tg.type = g.type;
                 
-                [self.delegate tableView:self.tableView gesture:tg forEvent:results[0] atIndexPath:self.indexpath];
+                [self.delegate tableView:self.tableView gesture:tg forEvent:results[0] atIndexPath:[self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view]];
             }
             
         }else if ([self.delegate respondsToSelector:@selector(recogizedEvent:)] && results.count) {
@@ -231,11 +231,21 @@
 - (void)pinchRecognizer:(UICustomPinchGestureRecognizer *)customPinchGestureRecognizer gestureType:(TBGestureType)type gestureId:(int)gestureId recognized:(BOOL)succeed{
 
     if (succeed) {
-    RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
-    if ([self.delegate respondsToSelector:@selector(recogizedEvent:)] && results.count) {
-        [self.delegate recogizedEvent:results[0]];
-    }
-
+        RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
+        if ([customPinchGestureRecognizer.view isKindOfClass:[UITableViewCell class]]) {
+            if ([self.delegate respondsToSelector:@selector(tableView:gesture:forEvent:atIndexPath:)] && results.count) {
+                RLMGesture *g = [RLMGesture objectForPrimaryKey:@(gestureId)];
+                TBGesture *tg = [[TBGesture alloc] init];
+                tg.objectId = [@(gestureId) stringValue];
+                tg.name = g.name;
+                tg.type = g.type;
+                
+                [self.delegate tableView:self.tableView gesture:tg forEvent:results[0] atIndexPath:[self.tableView indexPathForCell:(UITableViewCell *)customPinchGestureRecognizer.view]];
+            }
+            
+        }else if ([self.delegate respondsToSelector:@selector(recogizedEvent:)] && results.count) {
+            [self.delegate recogizedEvent:results[0]];
+        }
     }
 }
 
