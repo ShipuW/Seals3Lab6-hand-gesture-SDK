@@ -8,4 +8,15 @@
 @implementation RLMPoint {
 
 }
+
+- (CGPoint)CGPoint {
+    return CGPointMake(self.x, self.y);
+}
+
+- (instancetype)initWithCGPoint:(CGPoint)cgp {
+    self = [super init];
+    self.x = cgp.x;
+    self.y = cgp.y;
+    return self;
+}
 @end
