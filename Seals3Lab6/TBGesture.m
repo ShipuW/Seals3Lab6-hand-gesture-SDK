@@ -137,6 +137,12 @@
             for (RLMEvent *event in results) {
                 RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@(event.gestureId)];
                 types |= gesture.type;
+                if (gesture.type == TBGestureTypeCustom) {
+                    if (!_customGestureIds) {
+                        _customGestureIds = [NSMutableArray array];
+                    }
+                    [_customGestureIds addObject:@(event.gestureId).stringValue];
+                }
             }
         }
         self.type = (TBGestureType)types;
