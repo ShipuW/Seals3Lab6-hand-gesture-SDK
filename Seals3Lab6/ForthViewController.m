@@ -37,7 +37,7 @@
     
     gesture.delegate = self;
     
-    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:gesture forKeyPath:@"textLabel"];
+//    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:gesture forKeyPath:@"textLabel"];
     
     
 }
