@@ -13,9 +13,16 @@
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "PostConnection.h"
 #import "MacroUtils.h"
+#import "Point.h"
+#import "RLMGesture.h"
+
 #define Duration 0.5 //长按响应时间
 
+@interface UICustomGestureRecognizer ()
 
+@property NSMutableArray<RLMPoint> *rlmPoints;
+
+@end
 
 
 @implementation UICustomGestureRecognizer:UILongPressGestureRecognizer
@@ -38,6 +45,7 @@
     self = [super initWithTarget:self action:@selector(buttonLongPressed:)];
     if (self) {
         self.minimumPressDuration = Duration;
+        _rlmPoints = (NSMutableArray<RLMPoint> *)[NSMutableArray array];
     }
     
     return self;
@@ -99,7 +107,12 @@
 }
 
 
-
+//- (NSMutableArray<RLMPoint> *)rlmPoints {
+//    if (!_rlmPoints) {
+//        _rlmPoints = (NSMutableArray<RLMPoint> *)[NSMutableArray array];
+//    }
+//    return _rlmPoints;
+//}
 
 - (NSMutableArray *)trackPoints {
     if (!_trackPoints) {
@@ -159,6 +172,7 @@
             view.center = CGPointMake(_originPoint.x + _touchPoint.x - _startPoint.x,_originPoint.y + _touchPoint.y - _startPoint.y);
             if (_displayPoint) {
                 [self.trackPoints addObject:[NSValue valueWithCGPoint:_touchPoint]];
+                [self.rlmPoints addObject:[[RLMPoint alloc] initWithValue:@[@(_touchPoint.x), @(_touchPoint.y)]]];
                 //NSLog(@"CGPointZero=%@",NSStringFromCGPoint(_touchPoint));
             }else{
                 _shouldEnd = YES;
@@ -180,12 +194,18 @@
             if ([_gestureId  isEqual: @"gesture failed"]) {
                 
             }else{
+//                NSMutableArray
+                NSMutableArray *gestures = [NSMutableArray array];
+                if (self.customGestureIds.count) {
+                    for (NSString *gid in self.customGestureIds) {
+                        RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@([gid intValue])];
+                        [gestures addObject:gesture];
+                    }
+                }
                 
-                
-                
-                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
-                    _gestureId = gestureId;
-                }];
+//                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
+//                    _gestureId = gestureId;
+//                }];
             }
             
             

@@ -4,12 +4,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <Realm/Realm.h>
 
 @interface RLMPoint : RLMObject
 
-@property float x;
-@property float y;
+@property CGFloat x;
+@property CGFloat y;
 
 @end
 
