@@ -55,6 +55,7 @@ typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
     BOOL                _displayPoint;
     BOOL                _contain;
     BOOL                _shouldEnd;
+    BOOL                _isMoved;
     CGPoint             _startPoint;
     CGPoint             _lastPoint;
     CGPoint             _originPoint;

@@ -29,6 +29,7 @@
 
 
 - (instancetype)initWithTarget:(id)target action:(SEL)action type:(TBGestureType)type{
+    _direction = UICustomGestureRecognizerDirectionNot;
     _displayPoint = NO;
     _shouldEnd = NO;
     _isSimpleGesture = NO;
@@ -62,13 +63,17 @@
 
 
 -(void) simpleDirectionRecognizer{
-    CGFloat deltaX = _touchPoint.x - _startPoint.x;
-    CGFloat deltaY = _touchPoint.y - _startPoint.y;
+    CGFloat deltaX = _lastPoint.x - _startPoint.x;
+    CGFloat deltaY = _lastPoint.y - _startPoint.y;
     if (deltaY == 0) {
         deltaY = 1;
     }
+    if (deltaX == 0) {
+        deltaX = 1;
+    }
     CGFloat ratioXY = deltaX/deltaY;
     if (fabs(deltaX) < 50 && fabs(deltaY) < 50) {
+        _direction = UICustomGestureRecognizerDirectionNot;
         _gestureId = @"gesture failed";
         _isSimpleGesture = NO;
         return;
@@ -149,6 +154,7 @@
         
         if (sender.state == UIGestureRecognizerStateBegan)
         {
+            _isMoved = NO;
             _direction = UICustomGestureRecognizerDirectionNot;
             if (self.trackPoints.count > 0) {
                 self.trackPoints = [NSMutableArray array];
@@ -177,9 +183,11 @@
         else if (sender.state == UIGestureRecognizerStateChanged)
         {
             
-            
+            _isMoved = YES;
             _touchPoint = [sender locationInView:_baseView];
             view.center = CGPointMake(_originPoint.x + _touchPoint.x - _startPoint.x,_originPoint.y + _touchPoint.y - _startPoint.y);
+
+            
             if (_displayPoint) {
                 [self.trackPoints addObject:[NSValue valueWithCGPoint:_touchPoint]];
                 [self.rlmPoints addObject:[[RLMPoint alloc] initWithValue:@[@(_touchPoint.x), @(_touchPoint.y)]]];
@@ -196,60 +204,58 @@
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
             //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
-            
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
-                [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
-            }
-            [self simpleDirectionRecognizer];
-//            if ([_gestureId  isEqual: @"gesture failed"] || [_gestureId isEqualToString:@""]) {
-//                
-//            }else{
-            if (!_isSimpleGesture) {
+            _touchPoint = [sender locationInView:_baseView];
+            _lastPoint = [sender locationInView:_baseView];
+            if (_isMoved) {
+                
+                
+                if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
+                    [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
+                }
+                [self simpleDirectionRecognizer];
+    //            if ([_gestureId  isEqual: @"gesture failed"] || [_gestureId isEqualToString:@""]) {
+    //                
+    //            }else{
+                if (!_isSimpleGesture) {
 
-//                NSMutableArray
-//                NSMutableArray *gestures = [NSMutableArray array];
-                RLMResults *gestures;
-                if (self.customGestureIds.count) {
-//                    for (NSString *gid in self.customGestureIds) {
-//                        RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@([gid intValue])];
-//                        [gestures addObject:gesture];
-//                    }
-//                    RLMResults *gestu
-                    NSMutableArray *intIds = [NSMutableArray array];
-                    for (NSString *stringId in self.customGestureIds) {
-                        [intIds addObject:@(stringId.intValue)];
+    //                NSMutableArray
+    //                NSMutableArray *gestures = [NSMutableArray array];
+                    RLMResults *gestures;
+                    if (self.customGestureIds.count) {
+    //                    for (NSString *gid in self.customGestureIds) {
+    //                        RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@([gid intValue])];
+    //                        [gestures addObject:gesture];
+    //                    }
+    //                    RLMResults *gestu
+                        NSMutableArray *intIds = [NSMutableArray array];
+                        for (NSString *stringId in self.customGestureIds) {
+                            [intIds addObject:@(stringId.intValue)];
+                        }
+                        gestures = [RLMGesture objectsWhere:@"objectId IN %@", intIds];
                     }
-                    gestures = [RLMGesture objectsWhere:@"objectId IN %@", intIds];
+                    
+    //                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
+    //                    _gestureId = gestureId;
+    //                }];
+                    RLMArray *rlmArr = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+                    [rlmArr addObjects:self.rlmPoints];
+                    [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
+                        if (matchResultId) {
+                            debugLog(@"找到");
+                        } else{
+                            debugLog(@"找不到");
+                        }
+                    }];
+                }
+
+                
+                if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
+                    [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];
                 }
                 
-//                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
-//                    _gestureId = gestureId;
-//                }];
-                RLMArray *rlmArr = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
-                [rlmArr addObjects:self.rlmPoints];
-                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
-                    if (matchResultId) {
-                        debugLog(@"找到");
-                    } else{
-                        debugLog(@"找不到");
-                    }
-                }];
+                
             }
-            
-            
-            
-            
-            
-            
-            _lastPoint = [sender locationInView:_baseView];
-            
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
-                [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];
-            }
-            
-            
-            
-            
+        
             //[PostConnection PostGestureWithAction:@"1" UsrId:@"123" EventId:@"collection" Points:_trackPoints];//post连接
             
             //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
@@ -275,6 +281,7 @@
         }
     }
     _shouldEnd = NO;
+    
 }
 
 
