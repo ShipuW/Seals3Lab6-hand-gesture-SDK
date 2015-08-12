@@ -116,10 +116,12 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 //                NSString *warning = [NSString stringWithFormat:@"和事件%@的手势冲突", event.name];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已经绑定啦" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
+                [self.navigationController popViewControllerAnimated:YES];
             } else {
                 NSString *warning = [NSString stringWithFormat:@"和事件%@的手势冲突", event.name];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"冲突" message:warning delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
+//                [self.navigationController popViewControllerAnimated:YES];
             }
             
         } else {
@@ -129,7 +131,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             [realm commitWriteTransaction];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
-            
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }else {
         
@@ -172,6 +174,8 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             NSString *warning = [NSString stringWithFormat:@"绑定自定义手势成功"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+            [self.navigationController popViewControllerAnimated:YES];
+
         } else {
             NSString *warning = [NSString stringWithFormat:@"和现有手势冲突"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
