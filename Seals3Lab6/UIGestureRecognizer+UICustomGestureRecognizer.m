@@ -51,6 +51,8 @@
     return self;
 }
 
+
+
 -(void) simpleDirectionRecognizer{
     CGFloat deltaX = _touchPoint.x - _startPoint.x;
     CGFloat deltaY = _touchPoint.y - _startPoint.y;
@@ -82,15 +84,15 @@
             _gestureId = @"gesture failed";
         }
     }
-    if ([@(_direction) intValue] == [@(_targetType) intValue]) {
-        debugLog(@"内部成功");
-        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:recognized:)]) {
-            [self.recognizeDelegate gestureRecognizer:self recognized:YES];
-        }
-    } else {
+    
+
+    if ((_targetType & _direction) == _direction) {
+        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
+    }
+    else {
         debugLog(@"内部失败");
-        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:recognized:)]) {
-         [self.recognizeDelegate gestureRecognizer:self recognized:NO];
+        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
+         [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
         }
     }
 }

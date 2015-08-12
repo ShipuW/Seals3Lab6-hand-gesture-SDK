@@ -157,7 +157,7 @@
 //    debugMethod();
 }
 
-- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType) recognized:(BOOL)succeed {
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType)type recognized:(BOOL)succeed {
     if (succeed) {
         NSLog(@"配对成功");
         if ([self.delegate respondsToSelector:@selector(recogizedEvent:)]) {
