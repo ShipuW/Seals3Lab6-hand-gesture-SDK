@@ -242,8 +242,10 @@
                     [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
                         if (matchResultId) {
                             debugLog(@"找到");
+                        [self.rlmPoints removeAllObjects];
                         } else{
                             debugLog(@"找不到");
+                        [self.rlmPoints removeAllObjects];
                         }
                     }];
                 }
@@ -255,21 +257,7 @@
                 
                 
 
-////                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
-////                    _gestureId = gestureId;
-////                }];
-//                RLMArray *rlmArr = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
-//                [rlmArr addObjects:self.rlmPoints];
-//                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
-//                    if (matchResultId) {
-//                        debugLog(@"找到");
-//                        [self.rlmPoints removeAllObjects];
-//                    } else{
-//                        debugLog(@"找不到");
-//                        [self.rlmPoints removeAllObjects];
-//                    }
-//                }];
-//            }
+
 //            
 //            
 //            
