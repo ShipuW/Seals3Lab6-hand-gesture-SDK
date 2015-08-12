@@ -13,7 +13,7 @@
 #import "Point.h"
 
 #define kSamplePoints 40
-#define MIN_SCORE 0.5
+#define MIN_SCORE 0.3
 
 #define NSLog(...)
 
