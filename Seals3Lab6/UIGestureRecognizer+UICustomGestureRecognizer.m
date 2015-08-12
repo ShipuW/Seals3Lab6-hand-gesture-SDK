@@ -230,8 +230,10 @@
                 [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
                     if (matchResultId) {
                         debugLog(@"找到");
+                        [self.rlmPoints removeAllObjects];
                     } else{
                         debugLog(@"找不到");
+                        [self.rlmPoints removeAllObjects];
                     }
                 }];
             }
