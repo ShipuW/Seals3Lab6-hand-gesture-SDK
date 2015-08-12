@@ -109,7 +109,7 @@
     resampledGesture.rawPath = (RLMArray<RLMPoint> *)points;
     
     if (bestScore < MIN_SCORE) {
-        completion(bestGesture.name, resampledPoints);
+        completion([@(bestGesture.objectId) stringValue], resampledPoints);
     } else {
         completion(nil, resampledPoints);
     }

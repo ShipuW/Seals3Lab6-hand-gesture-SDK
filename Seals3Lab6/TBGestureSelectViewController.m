@@ -12,6 +12,9 @@
 #import "TBCreateGesture.h"
 #import "TBGestureRecognizer.h"
 
+
+//typedef NS_ENUM(<#_type#>, <#_name#>) <#new#>;
+
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
 

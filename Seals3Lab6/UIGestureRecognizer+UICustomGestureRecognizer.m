@@ -247,6 +247,12 @@
                             debugLog(@"找不到");
                         [self.rlmPoints removeAllObjects];
                         }
+                        
+                        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:gestureId:recognized:)]) {
+                            [self.recognizeDelegate gestureRecognizer:self gestureType:TBGestureTypeCustom gestureId:[matchResultId intValue] recognized:(matchResultId != nil)];
+                        }
+
+                        
                     }];
                 }
 
