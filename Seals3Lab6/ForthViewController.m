@@ -32,11 +32,15 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    TBGesture *gesture = [[TBGesture alloc]init];
-    gesture.objectId=@"1";
-    gesture.name=@"name1";
+    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏"]];
+//    gesture.objectId=@"1";
+//    gesture.name=@"name1";
     
     gesture.delegate = self;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.frame = [UIScreen mainScreen].bounds;
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
     
 //    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:gesture forKeyPath:@"textLabel"];
     
@@ -57,8 +61,9 @@
     
 //    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
-    TBGesture *gesture = [TBGesture gestureForEvent:event];
+//    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏"]];
+//    TBGesture *gesture = [TBGesture gestureForEvent:event];
     gesture.delegate = self;
 
     static NSString *ID=@"test";
@@ -89,7 +94,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    if (indexPath.row==5) {
 //        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
 //        NSLog(@"count=%lu",(unsigned long)array.modelArray.count);
