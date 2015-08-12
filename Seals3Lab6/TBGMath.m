@@ -10,12 +10,16 @@
 
 @implementation TBGMath
 
-CGPoint Centroid(CGPoint *samples, int samplePoints)
+RLMPoint* Centroid(RLMArray *samples, int samplePoints)
 {
-    CGPoint center = CGPointZero;
-    for (int i = 0; i < samplePoints; i++)
-    {
-        CGPoint pt = samples[i];
+    RLMPoint* center = [[RLMPoint alloc]init];
+    center.x = 0;
+    center.y = 0;
+    if (samplePoints == 0) {
+        return center;
+    }
+    for (int i = 0; i < samplePoints; i++) {
+        RLMPoint* pt = samples[i];
         center.x += pt.x;
         center.y += pt.y;
     }
@@ -23,57 +27,69 @@ CGPoint Centroid(CGPoint *samples, int samplePoints)
     center.y /= samplePoints;
     return center;
 }
-void Translate(CGPoint *samples, int samplePoints, float x, float y)
+
+void Translate(RLMArray *samples, int samplePoints, float x, float y)
 {
-    for (int i = 0; i < samplePoints; i++)
-    {
-        CGPoint pt = samples[i];
-        samples[i] = CGPointMake(pt.x+x, pt.y+y);
+    for (int i = 0; i < samplePoints; i++) {
+        ((RLMPoint*)samples[i]).x += x;
+        ((RLMPoint*)samples[i]).y += y;
     }
 }
-void Rotate(CGPoint *samples, int samplePoints, float radians)
+
+void Rotate(RLMArray *samples, int samplePoints, float radians)
 {
     CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(radians);
     for (int i = 0; i < samplePoints; i++)
     {
-        CGPoint pt0 = samples[i];
+        CGPoint pt0 = [(RLMPoint*)samples[i] CGPoint];
         CGPoint pt = CGPointApplyAffineTransform(pt0, rotateTransform);
-        samples[i] = pt;
+        ((RLMPoint*)samples[i]).x = pt.x;
+        ((RLMPoint*)samples[i]).y = pt.y;
     }
 }
-void Scale(CGPoint *samples, int samplePoints, float xScale, float yScale)
+
+void Scale(RLMArray *samples, int samplePoints, float xScale, float yScale)
 {
     CGAffineTransform scaleTransform = CGAffineTransformMakeScale(xScale, yScale); //1.0f/(upperRight.x - lowerLeft.x), 1.0f/(upperRight.y - lowerLeft.y));
     for (int i = 0; i < samplePoints; i++)
     {
-        CGPoint pt0 = samples[i];
+        CGPoint pt0 = [(RLMPoint*)samples[i] CGPoint];
         CGPoint pt = CGPointApplyAffineTransform(pt0, scaleTransform);
-        samples[i] = pt;
+        ((RLMPoint*)samples[i]).x = pt.x;
+        ((RLMPoint*)samples[i]).y = pt.y;
     }
 }
-float Distance(CGPoint p1, CGPoint p2)
+
+float Distance(RLMPoint *p1, RLMPoint *p2)
 {
     float dx = p2.x - p1.x;
     float dy = p2.y - p1.y;
     return sqrtf(dx * dx + dy * dy);
 }
-float PathDistance(CGPoint *pts1, CGPoint *pts2, int count)
+
+float PathDistance(RLMArray *pts1, RLMArray *pts2, int count)
 {
     float d = 0.0;
     for (int i = 0; i < count; i++) // assumes pts1.length == pts2.length
-        d += Distance(pts1[i], pts2[i]);
+        d += Distance((RLMPoint*)pts1[i], (RLMPoint*)pts2[i]);
     return d / (float)count;
 }
-float DistanceAtAngle(CGPoint *samples, int samplePoints, CGPoint *template, float theta)
+
+float DistanceAtAngle(RLMArray *samples, int samplePoints, RLMArray *template, float theta)
 {
-    const int maxPoints = 128;
-    CGPoint newPoints[maxPoints];
-    assert(samplePoints <= maxPoints);
-    memcpy(newPoints, samples, sizeof(CGPoint)*samplePoints);
-    Rotate(newPoints, samplePoints, theta);
-    return PathDistance(newPoints, template, samplePoints);
+//    RLMArray *tmp = [samples copy];
+    RLMArray *tmp = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+    for (RLMPoint *ponit in samples) {
+        RLMPoint *newPoint = [[RLMPoint alloc] init];
+        newPoint.x = ponit.x;
+        newPoint.y = ponit.y;
+        [tmp addObject:newPoint];
+    }
+    Rotate(tmp, samplePoints, theta);
+    return PathDistance(tmp, template, samplePoints);
 }
-float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
+
+float DistanceAtBestAngle(RLMArray *samples, int samplePoints, RLMArray *template)
 {
     float a = -0.25f*M_PI;
     float b = -a;
@@ -83,18 +99,14 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     float f1 = DistanceAtAngle(samples, samplePoints, template, x1);
     float x2 = (1.0 - Phi) * a + Phi * b;
     float f2 = DistanceAtAngle(samples, samplePoints, template, x2);
-    while (fabs(b - a) > threshold)
-    {
-        if (f1 < f2)
-        {
+    while (fabs(b - a) > threshold) {
+        if (f1 < f2) {
             b = x2;
             x2 = x1;
             f2 = f1;
             x1 = Phi * a + (1.0 - Phi) * b;
             f1 = DistanceAtAngle(samples, samplePoints, template, x1);
-        }
-        else
-        {
+        } else {
             a = x1;
             x1 = x2;
             f1 = f2;

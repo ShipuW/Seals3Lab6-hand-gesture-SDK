@@ -5,25 +5,21 @@
 //  Created by 蒙箫 on 15/8/5.
 //
 //
-#import <UIKit/UIKit.h>
 #import "TBGestureRecognizer.h"
 #import "TBDataManager.h"
 #import "MacroUtils.h"
 #import "TBGesture.h"
 #import "TBGMath.h"
+#import "Point.h"
 
 #define kSamplePoints 40
 #define MIN_SCORE 0.5
-#define PI 3.14
-
 
 #define NSLog(...)
 
 @interface TBGestureRecognizer()
 
-@property (nonatomic, strong) NSArray *gestureTemplates;
-@property (nonatomic, strong) NSArray *gesture;
-@property (nonatomic, strong) NSMutableArray *resampleGesture;
+@property (nonatomic, strong) RLMResults *gestureTemplates;
 
 @end
 
@@ -32,12 +28,6 @@
 -(instancetype)init
 {
     self = [super init];
-    if (self) {
-        self.resampleGesture = [NSMutableArray array];
-        self.gestureTemplates = [NSArray array];
-        self.gesture = [NSArray array];
-        
-    }
     return self;
 }
 
@@ -52,49 +42,38 @@
 }
 
 #pragma mark --- callback
--(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion
+-(void)matchGestureFrom:(RLMArray *)points GesturesToMatch:(RLMResults *)gesturesToMatch completion:(void(^) (NSString *matchResultId, RLMArray *resampledPoints)) completion
 {
-    @weakify(self);
-    [SharedDataManager loadAllGesturesFromDatabase:^(NSArray *results, NSError *error) {
-        @strongify(self);
-        self.gestureTemplates = results;
-    }];
-    NSString *result = [self recognizeGestureWithPoints:points];
-    completion(result, self.resampleGesture);
-}
-
--(NSString *)recognizeGestureWithPoints:(NSArray *)points
-{
-    self.gesture = points;
+    RLMResults *template = gesturesToMatch ? gesturesToMatch : [RLMGesture objectsWhere:@"type = %d", 1 << 20];
+    RLMArray<RLMPoint> *resampledPoints = (RLMArray<RLMPoint> *)[[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
     
-    NSString *bestTemplateId;
-    int i;
-    CGPoint samples[kSamplePoints];
+    // 数量归一化
+    for (int i = 0; i < kSamplePoints; i++)
+        [resampledPoints addObject:points[MAX(0, (points.count-1)*i/(kSamplePoints-1))]];
     
-    for (i = 0; i < kSamplePoints; i++) {
-        samples[i] = [[self.gesture objectAtIndex:MAX(0, (self.gesture.count-1)*i/(kSamplePoints-1))] CGPointValue];
-    }
+    // 位置归一化
+    RLMPoint *center = Centroid(resampledPoints, kSamplePoints);
+    Translate(resampledPoints, kSamplePoints, -center.x, -center.y);
     
-    CGPoint center = Centroid(samples, kSamplePoints);
-    Translate(samples, kSamplePoints, -center.x, -center.y);
-    
-    CGPoint firstPoint = samples[0];
+    // 角度归一化
+    RLMPoint* firstPoint = resampledPoints[0];
     float firstPointAngle = atan2(firstPoint.y, firstPoint.x);
-    if (firstPointAngle >= -0.25 * PI && firstPointAngle <= 0.25 * PI) {
+    if (firstPointAngle >= -0.25 * M_PI && firstPointAngle <= 0.25 * M_PI) {
         firstPointAngle += 0;
-    } else if (firstPointAngle >= 0.25 * PI && firstPointAngle <= 0.75 * PI) {
-        firstPointAngle += 0.5 * PI;
-    } else if (firstPointAngle <= -0.25 * PI && firstPointAngle >= -0.75 * PI) {
-        firstPointAngle += -0.5 * PI;
+    } else if (firstPointAngle >= 0.25 * M_PI && firstPointAngle <= 0.75 * M_PI) {
+        firstPointAngle += 0.5 * M_PI;
+    } else if (firstPointAngle <= -0.25 * M_PI && firstPointAngle >= -0.75 * M_PI) {
+        firstPointAngle += -0.5 * M_PI;
     } else {
-        firstPointAngle += -1 * PI;
+        firstPointAngle += -1 * M_PI;
     }
-    Rotate(samples, kSamplePoints, -firstPointAngle);
+    Rotate(resampledPoints, kSamplePoints, -firstPointAngle);
     
-    CGPoint lowerLeft = CGPointMake(0, 0);
-    CGPoint upperRight = CGPointMake(0, 0);
-    for (i = 0; i < kSamplePoints; i++) {
-        CGPoint pt = samples[i];
+    // 大小归一化
+    RLMPoint* lowerLeft = [[RLMPoint alloc]initWithCGPoint:CGPointMake(0, 0)];
+    RLMPoint* upperRight = [[RLMPoint alloc]initWithCGPoint:CGPointMake(0, 0)];
+    for (int i = 0; i < kSamplePoints; i++) {
+        RLMPoint* pt = resampledPoints[i];
         if (pt.x < lowerLeft.x)
             lowerLeft.x = pt.x;
         if (pt.y < lowerLeft.y)
@@ -104,38 +83,35 @@
         if (pt.y > upperRight.y)
             upperRight.y = pt.y;
     }
-
     float scale = 2.0f/MAX(upperRight.x - lowerLeft.x, upperRight.y - lowerLeft.y);
-    Scale(samples, kSamplePoints, scale, scale);
-
-    center = Centroid(samples, kSamplePoints);
-    Translate(samples, kSamplePoints, -center.x, -center.y);
+    Scale(resampledPoints, kSamplePoints, scale, scale);
     
-    float best = INFINITY;
-    for (TBGesture *templateGesture in self.gestureTemplates) {
-        CGPoint template[kSamplePoints];
-        for (i = 0; i < kSamplePoints; i++) {
-            template[i] = [templateGesture.path[i] CGPointValue];
-        }
-        float score = DistanceAtBestAngle(samples, kSamplePoints, template);
-        
-        if (score < best) {
-            bestTemplateId = [NSString stringWithString:templateGesture.objectId];
-            best = score;
-            NSLog(@"best: %@: %f", templateGesture.name, score);
+    // 位置归一化
+    center = Centroid(resampledPoints, kSamplePoints);
+    Translate(resampledPoints, kSamplePoints, -center.x, -center.y);
+    
+    // 匹配
+    RLMGesture * bestGesture = [[RLMGesture alloc]init];
+    float bestScore = INFINITY;
+    for (RLMGesture *templateGesture in template) {
+        RLMArray *tmpTemplate = [[RLMArray alloc]initWithObjectClassName:@"RLMPoint"];
+        [tmpTemplate addObjects:templateGesture.path];
+        float score = DistanceAtBestAngle(resampledPoints, kSamplePoints, tmpTemplate);
+        if (score < bestScore) {
+            bestGesture = templateGesture;
+            bestScore = score;
+            NSLog(@"best: %@: %f", bestGesture.name, score);
         }
     }
-    self.resampleGesture = [NSMutableArray arrayWithCapacity:kSamplePoints];
-    for (i = 0; i < kSamplePoints; i++)
-    {
-        CGPoint pt = samples[i];
-        [self.resampleGesture addObject:[NSValue valueWithCGPoint:pt]];
-    }
     
-    if (best < MIN_SCORE) {
-        return bestTemplateId;
+    RLMGesture * resampledGesture = [[RLMGesture alloc]init];
+    resampledGesture.path = resampledPoints;
+    resampledGesture.rawPath = (RLMArray<RLMPoint> *)points;
+    
+    if (bestScore < MIN_SCORE) {
+        completion(bestGesture.name, resampledPoints);
     } else {
-        return nil;
+        completion(nil, resampledPoints);
     }
 }
 

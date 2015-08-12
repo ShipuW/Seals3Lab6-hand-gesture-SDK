@@ -10,14 +10,16 @@
 #import "RLMEvent.h"
 #import "MacroUtils.h"
 #import "TBCreateGesture.h"
+#import "TBGestureRecognizer.h"
 
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
 
-@interface TBGestureSelectViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TBGestureSelectViewController () <UITableViewDataSource, UITableViewDelegate, TBGestureDrawDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RLMEvent *event;
+@property (nonatomic, strong) RLMGesture *gesture;
 @property (nonatomic, strong) RLMResults *events;
 @property (nonatomic, strong) RLMResults *gestures;
 
@@ -35,6 +37,13 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
     return _event;
 }
 
+- (RLMGesture *)gesture {
+    if (_gesture) {
+        _gesture = [RLMGesture objectForPrimaryKey:@(self.eventId)];
+    }
+    return _gesture;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
@@ -45,7 +54,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
     self.tableView.delegate = self;
 
     self.events = [RLMEvent objectsWhere:@"gestureId > 0"];
-    self.gestures = [RLMGesture objectsWhere:@"objectId > 0"];
+    self.gestures = [RLMGesture objectsWhere:@"objectId > 0 AND type != %d", TBGestureTypeCustom];
     
 }
 
@@ -120,6 +129,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             [realm commitWriteTransaction];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+            
         }
     }else {
         
@@ -127,8 +137,57 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
         createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
         createGesture.backgroundColor = [UIColor whiteColor];
         createGesture.alpha = 0.9;
+        createGesture.delegate = self;
         [[UIApplication sharedApplication].keyWindow addSubview:createGesture];
     }
 }
+
+- (void)gestureDidDrawAtPosition:(NSArray *)trackPoints {
+    debugLog(@"%@", trackPoints);
+    RLMArray *ra = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+    [ra addObjects:trackPoints];
+    [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:ra GesturesToMatch:nil completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
+        if (!matchResultId) {
+            if (self.gesture.type == TBGestureTypeCustom) {
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                self.gesture.path = (RLMArray<RLMPoint> *)resampledPoints;
+                self.gesture.rawPath = (RLMArray<RLMPoint> *)ra;
+//                [realm addObject:g];
+//                self.event.gestureId = g.objectId;
+                [realm commitWriteTransaction];
+            } else {
+                RLMGesture *g = [[RLMGesture alloc] init];
+                g.objectId = randomId();
+                g.name = @"自定义手势";
+                g.type = TBGestureTypeCustom;
+                g.path = (RLMArray<RLMPoint> *)resampledPoints;
+                g.rawPath = (RLMArray<RLMPoint> *)ra;
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                [realm addObject:g];
+                self.event.gestureId = g.objectId;
+                [realm commitWriteTransaction];
+            }
+            NSString *warning = [NSString stringWithFormat:@"绑定自定义手势成功"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        } else {
+            NSString *warning = [NSString stringWithFormat:@"和现有手势冲突"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
+}
+
+
+int randomId() {
+    double ts = [[NSDate date] timeIntervalSince1970];
+    ts = fmod(ts, @(1000000).doubleValue);
+    ts = ts * 1000;
+    int objectId = @(ts).intValue;
+    return objectId;
+}
+
 
 @end
