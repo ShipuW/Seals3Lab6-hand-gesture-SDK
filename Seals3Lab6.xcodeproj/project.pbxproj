@@ -57,6 +57,7 @@
 		AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30E1B798EE900A975CE /* FYMainController.m */; };
 		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
 		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
+		D91B01851B7B1DF40091524C /* TBCreateGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = D91B01841B7B1DF40091524C /* TBCreateGesture.m */; };
 		D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E164E71B79F94E003FA975 /* UISwitch+tag.m */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +171,8 @@
 		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
 		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
 		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D91B01831B7B1DF40091524C /* TBCreateGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCreateGesture.h; sourceTree = "<group>"; };
+		D91B01841B7B1DF40091524C /* TBCreateGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCreateGesture.m; sourceTree = "<group>"; };
 		D9E164E61B79F94E003FA975 /* UISwitch+tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+tag.h"; sourceTree = "<group>"; };
 		D9E164E71B79F94E003FA975 /* UISwitch+tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+tag.m"; sourceTree = "<group>"; };
 		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -446,6 +449,8 @@
 				AA1CA30E1B798EE900A975CE /* FYMainController.m */,
 				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
 				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
+				D91B01831B7B1DF40091524C /* TBCreateGesture.h */,
+				D91B01841B7B1DF40091524C /* TBCreateGesture.m */,
 			);
 			name = "竹阳";
 			sourceTree = "<group>";
@@ -682,6 +687,7 @@
 				1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */,
 				A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */,
 				AA1CA30F1B798EE900A975CE /* FYAddEventCtroller.m in Sources */,
+				D91B01851B7B1DF40091524C /* TBCreateGesture.m in Sources */,
 				1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */,
 				1470DAFAE4E99A273B5D8384 /* Point.m in Sources */,
 			);
