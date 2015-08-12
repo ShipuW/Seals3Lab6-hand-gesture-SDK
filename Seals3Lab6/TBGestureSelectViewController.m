@@ -9,6 +9,7 @@
 #import "RLMGesture.h"
 #import "RLMEvent.h"
 #import "MacroUtils.h"
+#import "TBCreateGesture.h"
 
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
@@ -120,6 +121,13 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
         }
+    }else {
+        
+        TBCreateGesture* createGesture = [[TBCreateGesture alloc] init];
+        createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
+        createGesture.backgroundColor = [UIColor whiteColor];
+        createGesture.alpha = 0.9;
+        [[UIApplication sharedApplication].keyWindow addSubview:createGesture];
     }
 }
 

@@ -57,8 +57,8 @@
     
 //    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
-    TBGesture *gesture = [TBGesture gestureForEvent:event];
+//    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
     gesture.delegate = self;
 
     static NSString *ID=@"test";
@@ -70,7 +70,7 @@
     
     gesture.tableView = tableView;
     [gesture addToView:cell completion:^(NSError *error) {
-        //                NSLog(@"--------------------------cell add");
+        
     }];
 //    
 //    [gesture addToTableView:tableView dataSource:self completion:^(NSError *error) {
@@ -104,6 +104,12 @@
     
 }
 
-
+#pragma TBGesture代理方法
+- (void)recogizedEvent:(TBEvent *)event {
+    NSLog(@"%@", event.name);
+    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [av show];
+}
 
 @end
