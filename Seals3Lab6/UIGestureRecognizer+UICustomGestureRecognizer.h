@@ -16,17 +16,23 @@
 
 typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
     //UICustomGestureRecognizerDirectionNot         = 0,
-    UICustomGestureRecognizerDirectionUp       = 1,
-    UICustomGestureRecognizerDirectionDown     = 2,
-    UICustomGestureRecognizerDirectionLeft     = 3,
-    UICustomGestureRecognizerDirectionRight    = 4,
+    UICustomGestureRecognizerDirectionUp       = 1 << 1,
+    UICustomGestureRecognizerDirectionDown     = 1 << 2,
+    UICustomGestureRecognizerDirectionLeft     = 1 << 3,
+    UICustomGestureRecognizerDirectionRight    = 1 << 4,
 
-    UICustomGestureRecognizerDirectionNot         = 100,
+    UICustomGestureRecognizerDirectionNot      = 1 << 20,
 //    UICustomGestureRecognizerDirectionRight = 1 << 0,
 //    UICustomGestureRecognizerDirectionLeft  = 1 << 1,
 //    UICustomGestureRecognizerDirectionUp    = 1 << 2,
 //    UICustomGestureRecognizerDirectionDown  = 1 << 3,
 //    UICustomGestureRecognizerDirectionNot   = 1 << 4
+    
+//    TBGestureTypeSystem         = 0,
+//
+//    TBGestureTypeSimplePinchIN  = 1 << 5,
+//    TBGestureTypeSimplePinchOUT = 1 << 6,
+//    TBGestureTypeCustom         = 1 << 20,
 };
 
 
