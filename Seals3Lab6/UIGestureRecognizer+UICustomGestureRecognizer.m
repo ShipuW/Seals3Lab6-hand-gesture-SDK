@@ -112,11 +112,15 @@
        // _isSimpleGesture = YES;
     }
     else {
-        debugLog(@"内部失败");
         
-        if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
-         [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
+        if (_targetType != TBGestureTypeCustom) {
+            debugLog(@"内部失败");
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
+                [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
+            }
         }
+        
+ 
        // _isSimpleGesture = NO;
     }
 }
