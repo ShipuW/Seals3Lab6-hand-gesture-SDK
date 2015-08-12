@@ -32,8 +32,15 @@
     [gesture addToView:self.testView completion:^(NSError *error) {
         
     }];
+    
     gesture.delegate = self;
     
+    TBEvent *e2 = [[TBEvent alloc] initWithEventType:TBEventTypeShare];
+    TBGesture *g2 = [TBGesture gestureForEvent:e2];
+    [g2 addToView:self.testView completion:^(NSError *error) {
+        
+    }];
+    g2.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {

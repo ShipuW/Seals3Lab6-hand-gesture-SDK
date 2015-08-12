@@ -53,6 +53,8 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 @property (nonatomic, strong) NSArray *rawPath;
 
 
+@property(nonatomic, strong) UITableView *tableView;
+
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
 
 + (instancetype)gestureForEvent:(TBEvent *)event;
