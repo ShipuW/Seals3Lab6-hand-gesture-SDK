@@ -12,6 +12,8 @@
 #import "UICustomPinchGestureRecognizer.h"
 #import "MacroUtils.h"
 #import "TBHookOperation.h"
+#import "RLMGesture.h"
+#import "RLMEvent.h"
 
 @interface TBGesture () <TBCustomGestureRecognizerDelegate>
 
@@ -42,8 +44,16 @@
 }
 
 + (instancetype)gestureForEventId:(NSString *)eventId {
-    TBGesture *gesture = [[TBGesture alloc] init];
-    return gesture;
+    return [[self alloc] initForEventId:eventId];
+}
+
+- (instancetype)initForEventId:(NSString *)eventId {
+    self = [super init];
+    RLMEvent *event = [RLMEvent objectForPrimaryKey:@([eventId intValue])];
+    self.type = event.gestureId;
+    self.name = event.name;
+    self.objectId = [@(event.objectId) stringValue];
+    return self;
 }
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *))completion {
@@ -53,39 +63,39 @@
 //    self.gestureRecognizer.target = self.gestureRecognizer;
 //    self.gestureRecognizer.action = @selector(buttonLongPressed:);
 //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
-  
+
     if (!view) {
         return;
     }
-    
-    NSArray *gesturesArray = [view gestureRecognizers];
-    if (gesturesArray.count) {
-        for (UIGestureRecognizer *gr in gesturesArray) {
-            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
-                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
-                TBGesture *gesture = (TBGesture *)cgr.recognizeDelegate;
-                if ([gesture.objectId isEqualToString:self.objectId]) {
-                    debugLog(@"该视图已经添加过这个手势");
-                    !completion ?: completion(nil);
-                    return;
-                }
-            }
-        }
-    }
-    
+//    NSArray *gesturesArray = [view gestureRecognizers];
+//    if (gesturesArray.count) {
+//        for (UIGestureRecognizer *gr in gesturesArray) {
+//            if ([gr isKindOfClass:[UICustomGestureRecognizer class]]) {
+//                UICustomGestureRecognizer *cgr = (UICustomGestureRecognizer *)gr;
+//                TBGesture *gesture = (TBGesture *)cgr.recognizeDelegate;
+//                if ([gesture.objectId isEqualToString:self.objectId]) {
+//                    debugLog(@"该视图已经添加过这个手势");
+//                    !completion ?: completion(nil);
+//                    return;
+//                }
+//            }
+//        }
+//    }
+
+
         if (self.type == TBGestureTypeSimplePinchOUT || self.type == TBGestureTypeSimplePinchIN) { //pinchGesture
-            
+
             self.pinchRecognizer = [[UICustomPinchGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
             //self.pinchRecognizer.tbGesture = self;
             self.gestureRecognizer.recognizeDelegate = self;
             [view addGestureRecognizer:self.pinchRecognizer];
         }else{
-            
+
             self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
             self.gestureRecognizer.recognizeDelegate = self;
             [view addGestureRecognizer:self.gestureRecognizer];
         }
-    
+
 
     !completion ?: completion(nil);
 }
@@ -117,7 +127,7 @@
 }
 
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
-    
+
     self.tableView = tableView;
     [TBHookOperation hookDataSource:dataSource withTableView:tableView withGesture:self forKeyPath:keyPath];
     !completion ?: completion(nil);
@@ -131,7 +141,7 @@
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position {
 //    debugMethod();
-    
+
     NSLog(@"[self.tableView indexPathForCell:customGestureRecognizer.view]=%@",[self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view]);
 }
 
@@ -150,6 +160,9 @@
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed {
     if (succeed) {
         NSLog(@"配对成功");
+        if ([self.delegate respondsToSelector:@selector(recogizedEvent:)]) {
+            [self.delegate recogizedEvent:self];
+        }
     }else{
         NSLog(@"配对失败");
     }

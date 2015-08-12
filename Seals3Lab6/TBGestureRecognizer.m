@@ -19,18 +19,6 @@
 
 #define NSLog(...)
 
-
-// Utility/Math Functions:
-CGPoint Centroid(CGPoint *samples, int samplePoints);
-void Translate(CGPoint *samples, int samplePoints, float x, float y);
-void Rotate(CGPoint *samples, int samplePoints, float radians);
-void Scale(CGPoint *samples, int samplePoints, float xScale, float yScale);
-float Distance(CGPoint p1, CGPoint p2);
-float PathDistance(CGPoint *pts1, CGPoint *pts2, int count);
-float DistanceAtAngle(CGPoint *samples, int samplePoints, CGPoint *template, float theta);
-float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template);
-
-
 @interface TBGestureRecognizer()
 
 @property (nonatomic, strong) NSArray *gestureTemplates;
@@ -48,11 +36,7 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
         self.resampleGesture = [NSMutableArray array];
         self.gestureTemplates = [NSArray array];
         self.gesture = [NSArray array];
-        @weakify(self);
-        [SharedDataManager loadLocalGestureTemplets:^(NSArray *results, NSError *error) {
-            @strongify(self);
-            self.gestureTemplates = results;
-        }];
+        
     }
     return self;
 }
@@ -70,6 +54,11 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
 #pragma mark --- callback
 -(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion
 {
+    @weakify(self);
+    [SharedDataManager loadAllGesturesFromDatabase:^(NSArray *results, NSError *error) {
+        @strongify(self);
+        self.gestureTemplates = results;
+    }];
     NSString *result = [self recognizeGestureWithPoints:points];
     completion(result, self.resampleGesture);
 }
@@ -102,7 +91,8 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     }
     Rotate(samples, kSamplePoints, -firstPointAngle);
     
-    CGPoint lowerLeft, upperRight;
+    CGPoint lowerLeft = CGPointMake(0, 0);
+    CGPoint upperRight = CGPointMake(0, 0);
     for (i = 0; i < kSamplePoints; i++) {
         CGPoint pt = samples[i];
         if (pt.x < lowerLeft.x)
@@ -125,7 +115,7 @@ float DistanceAtBestAngle(CGPoint *samples, int samplePoints, CGPoint *template)
     for (TBGesture *templateGesture in self.gestureTemplates) {
         CGPoint template[kSamplePoints];
         for (i = 0; i < kSamplePoints; i++) {
-            template[i] = [templateGesture.rawPath[i] CGPointValue];
+            template[i] = [templateGesture.path[i] CGPointValue];
         }
         float score = DistanceAtBestAngle(samples, kSamplePoints, template);
         

@@ -4,9 +4,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class RLMEvent;
 @interface TBGestureSelectViewController : UIViewController
 
-@property (nonatomic, strong) NSString *eventId;
+@property (nonatomic) NSInteger eventId;
 
 @end

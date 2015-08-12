@@ -17,6 +17,8 @@
 #import "TBTableViewSimulationViewController.h"
 #import "TBGesture.h"
 #import "TBAllEventsViewController.h"
+#import "TBEventGestureManagerViewController.h"
+#import "ThirdViewController.h"
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
 @interface FifthViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -98,6 +100,22 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         TBAllEventsViewController *vc = [[TBAllEventsViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     };
+
+    TBCellViewModel *vm6 = [[TBCellViewModel alloc] init];
+    vm6.text = @"管理器";
+    vm6.didSelectAction = ^{
+        @strongify(self);
+        TBEventGestureManagerViewController *vc = [[TBEventGestureManagerViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
+
+    TBCellViewModel *vm7 = [[TBCellViewModel alloc] init];
+    vm7.text = @"测试改变";
+    vm7.didSelectAction = ^{
+        @strongify(self);
+        ThirdViewController *vc = [[ThirdViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
     self.cellsList = @[
             vm0,
             vm1,
@@ -105,6 +123,8 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
             vm3,
             vm4,
             vm5,
+            vm6,
+            vm7,
     ];
     
     

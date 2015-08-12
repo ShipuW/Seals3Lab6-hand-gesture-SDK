@@ -11,6 +11,10 @@
 #import "FYCreateGesture.h"
 #import "FYCell.h"
 #import "FYAddEventCtroller.h"
+#import "TBEvent.h"
+#import "TBDataManager.h"
+#import "TBGesture.h"
+#import "MacroUtils.h"
 
 @interface FYMainController()<UITableViewDataSource,UITableViewDelegate>
 
@@ -20,37 +24,41 @@
 @property(nonatomic,weak) UILabel* label;
 @property(nonatomic,weak) UIView* footView;
 
+/**
+ *  暂时存放的手势数组
+ */
+@property(nonatomic,strong) NSMutableArray* guestureArray;
+
 @end
 
 @implementation FYMainController
 
+-(NSMutableArray *)guestureArray
+{
+    if (_guestureArray == nil) {
+        _guestureArray = [NSMutableArray array];
+    }
+    return _guestureArray;
+}
 -(NSMutableArray *)eventArray
 {
     if (_eventArray == nil) {
         _eventArray = [NSMutableArray array];
-        FYEventData* data1 = [[FYEventData alloc] init];
-        data1.icon = @"";
-        data1.event = @"收藏";
-        [_eventArray addObject:data1];
-        
-        FYEventData* data2 = [[FYEventData alloc] init];
-        data2.icon = @"";
-        data2.event = @"分享";
-        [_eventArray addObject:data2];
-    }
-    
+        }
     return _eventArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.navigationItem.title = @"设置手势";
-    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGesture)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGesture)];
+//    self.navigationItem.rightBarButtonItem = addButton;
     
     //添加headView
     [self addHeadView];
+    
+    //从疯瘾数据库加载数据
+    [self loadData];
     
     //添加tableView
     CGFloat tableX = 0;
@@ -59,13 +67,39 @@
     CGFloat tableH = self.view.frame.size.height-tableY;
     UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectMake(tableX, tableY, tableW, tableH)];
     self.tableView = tableView;
-    
-    [self setExtraCellLineHidden:tableView]; //隐藏不显示数据分割线
-    
+    [self.view addSubview:tableView];
+
+    //隐藏不显示数据分割线
+    [self setExtraCellLineHidden:tableView];
+    //设置代理
     tableView.delegate = self;
     tableView.dataSource = self;
-    [self.view addSubview:tableView];
 }
+-(void)loadData
+{
+    if (self.eventArray.count>0) {
+        [self.eventArray removeAllObjects];
+    }
+    [[TBDataManager sharedManager] loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
+        if (!error) {
+            NSLog(@"no error");
+            for (TBEvent*event in results) {
+                FYEventData* data = [[FYEventData alloc] init];
+                data.event = event;
+                data.isCustom = NO;
+                [self.eventArray addObject:data];
+                
+                [self.tableView reloadData];
+            }
+        }else{
+            NSLog(@"====%@",error);
+        }
+    }];
+    
+    //每次从SDK加载完数据，刷新表格
+    [self.tableView reloadData];
+}
+
 -(void)addHeadView
 {
     UIView* headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 50)];
@@ -94,24 +128,19 @@
 /**
  *  添加一个手势列表
  */
--(void)addGesture
-{
-    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
-    [self.navigationController pushViewController:ctl animated:YES];
-}
+//-(void)addGesture
+//{
+//    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
+//    [self.navigationController pushViewController:ctl animated:YES];
+//}
 /**
  *  隐藏不显示数据分割线
  */
 - (void)setExtraCellLineHidden: (UITableView *)tableView
-
 {
-    
     UIView *view = [UIView new];
-    
     view.backgroundColor = [UIColor clearColor];
-    
     [tableView setTableFooterView:view];
-    
 }
 
 #pragma mark - Table view data source
@@ -137,9 +166,7 @@
 -(void)shutDown
 {
     if (self.switchButton.isOn) {//开启手势
-        if (self.eventArray.count == 0) {
-            self.eventArray  = nil;
-        }
+        [self loadData];
     }else{//关闭手势
         [self.eventArray removeAllObjects];
         [self.tableView reloadData];
@@ -148,13 +175,17 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
-    drawView.eventData = self.eventArray[indexPath.row];
-    drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
-    drawView.backgroundColor = [UIColor whiteColor];
-    drawView.alpha = 0.9;
+//    FYCreateGesture* drawView = [[FYCreateGesture alloc] init];
+//    drawView.eventData = self.eventArray[indexPath.row];
+//    drawView.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
+//    drawView.backgroundColor = [UIColor whiteColor];
+//    drawView.alpha = 0.9;
+//    [[UIApplication sharedApplication].keyWindow addSubview:drawView];
     
-    [[UIApplication sharedApplication].keyWindow addSubview:drawView];
+    //跳转到FYAddEventCtroller
+    FYAddEventCtroller* ctl = [[FYAddEventCtroller alloc] init];
+    ctl.eventData = self.eventArray[indexPath.row];
+    [self.navigationController pushViewController:ctl animated:YES];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,9 +200,50 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1、修改数据模型
-        [self.eventArray removeObjectAtIndex:indexPath.row];
+//        [self.eventArray removeObjectAtIndex:indexPath.row];
+        FYEventData* data = self.eventArray[indexPath.row];
+        TBEvent* event = data.event;
+        
+//        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+//            if (error) {
+//                NSLog(@"删除失败");
+//            }
+//        }];
+        [SharedDataManager fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
+            if (gesture) {
+                debugLog(@"found gesture");
+                [SharedDataManager deleteGesture:gesture completion:^(NSError *error) {
+                    if (error) {
+                        debugLog(@"del err");
+                    } else {
+                        debugLog(@"del gesture done");
+                        [self loadData];
+                    }
+                }];
+            }
+        }];
+//                [self.tableView reloadData];
+        //传入事件Id，删除手势
+
+//        [self.eventArray removeObjectAtIndex:indexPath.row];
+
+//        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+//            if (!error) {
+//                NSLog(@"%@",event.name);
+//            }else{
+//                NSLog(@"deleteGestureWithEvent=====%@",error);
+//            }
+//        }];
         //2、重新加载数据
-        [self.tableView reloadData];
+//         [self.tableView reloadData];
+//        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
+//            if (!error) {
+//                NSLog(@"%@",event.name);
+//            }else{
+//                NSLog(@"deleteGestureWithEvent=====%@",error);
+//            }
+//        }];
+        //2、重新加载数据,刷新表格
     }
 }
 

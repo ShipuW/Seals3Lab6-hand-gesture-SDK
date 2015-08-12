@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class TBEvent;
 @interface FYEventData : NSObject
 
+@property(nonatomic,strong) TBEvent *event;
+
 @property(nonatomic,copy) NSString* icon;
-@property(nonatomic,copy) NSString* event;
+/**
+ *  判断是否是自定义手势，改变加载路径
+ */
+@property(nonatomic,assign) BOOL isCustom;
 
 @end

@@ -10,6 +10,8 @@
 #import "TBGesture.h"
 #import "FMDB.h"
 #import "TBDataManager.h"
+#import "RLMEvent.h"
+
 static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 @interface TBEvent ()
@@ -40,6 +42,10 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 - (instancetype)initWithEventType:(TBEventType)eventType {
     self = [super init];
     if (self) {
+        RLMEvent *event = [RLMEvent objectForPrimaryKey:@(eventType)];
+        self.name = event.name;
+        self.objectId = [@(event.objectId) stringValue];
+
 //        switch (eventType) {
 //            case TBEventTypeCollect: {
 //                
