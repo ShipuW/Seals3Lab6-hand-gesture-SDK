@@ -16,6 +16,10 @@
 //hook
 +(void)hookDataSource:(id)dataSource withTableView:(UITableView *)tableView withGesture:(TBGesture *)gesture forKeyPath:(NSString *)keyPath{
     
+    TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
+    if((array.times>8)&&(array.times%5==1 || array.times%5==2 || array.times%5==3 || array.times%5==4)){
+        return;
+    }
     [dataSource aspect_hookSelector:@selector(tableView: willDisplayCell:forRowAtIndexPath:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo,UITableView *tb, UITableViewCell *cell,NSIndexPath *path) {
         
         TBIndexPathCellModel *model = [[TBIndexPathCellModel alloc]init];
@@ -31,11 +35,12 @@
         }
         
         [gesture addToView:cell completion:^(NSError *error) {
-//            NSLog(@"cell add");
+            NSLog(@"--------------------------cell add");
         }];
         
-        TBIndexPathCellModelArray *array = [TBIndexPathCellModelArray sharedManager];
+        
         [array.modelArray addObject:model];
+        NSLog(@"array.times=%d",array.times++);
         
     } error:nil];
 }

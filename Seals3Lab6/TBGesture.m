@@ -63,8 +63,7 @@
 //    self.gestureRecognizer.target = self.gestureRecognizer;
 //    self.gestureRecognizer.action = @selector(buttonLongPressed:);
 //self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:@selector(xxx:)];
-    
-  
+
     if (!view) {
         return;
     }
@@ -82,26 +81,23 @@
 //            }
 //        }
 //    }
-    
+
+
         if (self.type == TBGestureTypeSimplePinchOUT || self.type == TBGestureTypeSimplePinchIN) { //pinchGesture
-            
+
             self.pinchRecognizer = [[UICustomPinchGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
             //self.pinchRecognizer.tbGesture = self;
             self.gestureRecognizer.recognizeDelegate = self;
             [view addGestureRecognizer:self.pinchRecognizer];
         }else{
-            
+
             self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
             self.gestureRecognizer.recognizeDelegate = self;
             [view addGestureRecognizer:self.gestureRecognizer];
         }
-    
+
 
     !completion ?: completion(nil);
-}
-
-- (void)xxx:(id)sender {
-    
 }
 
 
@@ -131,7 +127,7 @@
 }
 
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion {
-    
+
     self.tableView = tableView;
     [TBHookOperation hookDataSource:dataSource withTableView:tableView withGesture:self forKeyPath:keyPath];
     !completion ?: completion(nil);
@@ -145,7 +141,7 @@
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateBeginAtPosition:(CGPoint)position {
 //    debugMethod();
-    
+
     NSLog(@"[self.tableView indexPathForCell:customGestureRecognizer.view]=%@",[self.tableView indexPathForCell:(UITableViewCell *)customGestureRecognizer.view]);
 }
 
@@ -154,7 +150,7 @@
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position {
-//    debugMethod();
+    debugMethod();
 }
 
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints {

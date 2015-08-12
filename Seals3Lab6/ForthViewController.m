@@ -72,7 +72,7 @@
     
     [gesture addToTableView:tableView dataSource:self completion:^(NSError *error) {
         
-        NSLog(@"gesture addToTableView");
+//        NSLog(@"=========================gesture addToTableView");
     }];
     
     return cell;

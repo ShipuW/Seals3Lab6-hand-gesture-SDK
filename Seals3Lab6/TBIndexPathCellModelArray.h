@@ -12,6 +12,8 @@
 
 @property(nonatomic, strong) NSMutableArray *modelArray;
 
+@property(nonatomic) int times;
+
 + (instancetype)sharedManager;
 
 @end
