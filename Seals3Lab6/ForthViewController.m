@@ -57,8 +57,8 @@
     
 //    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
-    TBGesture *gesture = [TBGesture gestureForEvent:event];
+//    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
     gesture.delegate = self;
 
     static NSString *ID=@"test";
