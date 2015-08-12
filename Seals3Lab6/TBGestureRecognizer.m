@@ -12,7 +12,7 @@
 #import "TBGesture.h"
 #import "TBGMath.h"
 
-#define kSamplePoints 30
+#define kSamplePoints 40
 #define MIN_SCORE 0.5
 #define PI 3.14
 

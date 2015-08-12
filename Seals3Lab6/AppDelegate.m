@@ -40,11 +40,11 @@
                                 ];
             NSArray *gestures = @[
                                   [[RLMGesture alloc] initWithValue:@[@(1), @"上", @(1)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(2), @"下", @(2)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(3), @"左", @(3)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(4), @"右", @(4)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(98), @"合", @(98)]],
-                                  [[RLMGesture alloc] initWithValue:@[@(99), @"张", @(99)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 2), @"下", @(1 << 2)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 3), @"左", @(1 << 3)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 4), @"右", @(1 << 4)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 5), @"合", @(1 << 5)]],
+                                  [[RLMGesture alloc] initWithValue:@[@(1 << 6), @"张", @(1 << 6)]],
                                   ];
 
             [realm addObjects:gestures];
