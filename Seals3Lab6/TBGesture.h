@@ -16,12 +16,12 @@
 typedef NS_ENUM(NSInteger , TBGestureType) {
     TBGestureTypeSystem         = 0,
     TBGestureTypeSimpleUP       = 1,
-    TBGestureTypeSimpleDOWN     = 2,
-    TBGestureTypeSimpleLEFT     = 3,
-    TBGestureTypeSimpleRIGHT    = 4,
-    TBGestureTypeSimplePinchIN  = 98,
-    TBGestureTypeSimplePinchOUT = 99,
-    TBGestureTypeCustom         = 100
+    TBGestureTypeSimpleDOWN     = 1 << 2,
+    TBGestureTypeSimpleLEFT     = 1 << 3,
+    TBGestureTypeSimpleRIGHT    = 1 << 4,
+    TBGestureTypeSimplePinchIN  = 1 << 5,
+    TBGestureTypeSimplePinchOUT = 1 << 6,
+    TBGestureTypeCustom         = 1 << 20,
 };
 
 

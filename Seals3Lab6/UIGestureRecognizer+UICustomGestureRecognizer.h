@@ -37,8 +37,7 @@ typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateChangedAtPosition:(CGPoint)position;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer stateEndAtPosition:(CGPoint)position;
 - (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer trackGenerate:(NSArray*)trackPoints;
-- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer recognized:(BOOL)succeed;
-
+- (void)gestureRecognizer:(UICustomGestureRecognizer *)customGestureRecognizer gestureType:(TBGestureType) recognized:(BOOL)succeed;
 
 @end
 //@interface UIGestureRecognizer (UICustomGestureRecognizer)
