@@ -7,11 +7,16 @@
 //
 
 #import <Realm/Realm.h>
+#import "Point.h"
+
 
 @interface RLMGesture : RLMObject
 @property int objectId;
 @property NSString *name;
 @property int type;
+@property RLMArray<RLMPoint> *path;
+@property RLMArray<RLMPoint> *rawPath;
+
 @end
 
 // This protocol enables typed collections. i.e.:

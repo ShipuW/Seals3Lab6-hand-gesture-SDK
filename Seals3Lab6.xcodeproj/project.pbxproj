@@ -15,6 +15,7 @@
 		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
 		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
 		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
+		1470DAFAE4E99A273B5D8384 /* Point.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470DB95A5C5BEA46CD54B20 /* Point.m */; };
 		1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */; };
 		1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */; };
 		1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D82D099B2E62DB12EAA4 /* TBDataManager.m */; };
@@ -30,7 +31,6 @@
 		A63EA54F1B7A39800048F67F /* RLMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA54E1B7A39800048F67F /* RLMEvent.m */; };
 		A63EA5551B7A41950048F67F /* TBEventGestureManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */; };
 		A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA5571B7A5E940048F67F /* RLMGesture.m */; };
-		A63EA55B1B7A714E0048F67F /* RLMPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA55A1B7A714E0048F67F /* RLMPoint.m */; };
 		A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */ = {isa = PBXBuildFile; fileRef = A63F1AFA1B774E250088B299 /* GestureTemplets.json */; };
 		A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */; };
 		A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */; };
@@ -92,8 +92,10 @@
 		1470D82D099B2E62DB12EAA4 /* TBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBDataManager.m; sourceTree = "<group>"; };
 		1470D8DD710635E99646D0BC /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventDisplayModel.h; sourceTree = "<group>"; };
+		1470DB95A5C5BEA46CD54B20 /* Point.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Point.m; sourceTree = "<group>"; };
 		1470DF786FD194FC630FF264 /* TBCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCellViewModel.h; sourceTree = "<group>"; };
 		1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureSelectViewController.h; sourceTree = "<group>"; };
+		1470DFA3F7007F00689163F1 /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point.h; sourceTree = "<group>"; };
 		39AB3DC487A8EBB882D3A0D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		600E05151B735FA9001ACC90 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		600E05161B735FA9001ACC90 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
@@ -115,8 +117,6 @@
 		A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventGestureManagerViewController.m; sourceTree = "<group>"; };
 		A63EA5561B7A5E940048F67F /* RLMGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMGesture.h; sourceTree = "<group>"; };
 		A63EA5571B7A5E940048F67F /* RLMGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMGesture.m; sourceTree = "<group>"; };
-		A63EA5591B7A714E0048F67F /* RLMPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMPoint.h; sourceTree = "<group>"; };
-		A63EA55A1B7A714E0048F67F /* RLMPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMPoint.m; sourceTree = "<group>"; };
 		A63F1AFA1B774E250088B299 /* GestureTemplets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GestureTemplets.json; sourceTree = "<group>"; };
 		A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Utils.h"; sourceTree = "<group>"; };
 		A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Utils.m"; sourceTree = "<group>"; };
@@ -305,8 +305,8 @@
 				A63EA54E1B7A39800048F67F /* RLMEvent.m */,
 				A63EA5561B7A5E940048F67F /* RLMGesture.h */,
 				A63EA5571B7A5E940048F67F /* RLMGesture.m */,
-				A63EA5591B7A714E0048F67F /* RLMPoint.h */,
-				A63EA55A1B7A714E0048F67F /* RLMPoint.m */,
+				1470DB95A5C5BEA46CD54B20 /* Point.m */,
+				1470DFA3F7007F00689163F1 /* Point.h */,
 			);
 			name = "Base DO";
 			sourceTree = "<group>";
@@ -644,7 +644,6 @@
 				01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */,
 				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
 				AA1CA3101B798EE900A975CE /* FYCell.m in Sources */,
-				A63EA55B1B7A714E0048F67F /* RLMPoint.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */,
@@ -684,6 +683,7 @@
 				A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */,
 				AA1CA30F1B798EE900A975CE /* FYAddEventCtroller.m in Sources */,
 				1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */,
+				1470DAFAE4E99A273B5D8384 /* Point.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
