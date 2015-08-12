@@ -91,6 +91,7 @@
         }else{
 
             self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
+            self.gestureRecognizer.customGestureIds = [self.customGestureIds copy];
             self.gestureRecognizer.recognizeDelegate = self;
             [view addGestureRecognizer:self.gestureRecognizer];
         }

@@ -75,7 +75,7 @@ typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
 //@property (assign, nonatomic) CGMutablePathRef path;
 @property (nonatomic, readwrite) NSArray *touchPoints;
 @property (nonatomic) UICustomGestureRecognizerDirection direction;
-
+@property (nonatomic, strong) NSArray *customGestureIds;
 //@property (nonatomic, weak) TBGesture *tbGesture;
 @property (nonatomic) id<TBCustomGestureRecognizerDelegate> recognizeDelegate;
 

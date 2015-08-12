@@ -88,6 +88,7 @@
 
     if ((_targetType & _direction) == _direction) {
         [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
+        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];
     }
     else {
         debugLog(@"内部失败");
@@ -175,10 +176,13 @@
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
             }
-                [self simpleDirectionRecognizer];
+            [self simpleDirectionRecognizer];
             if ([_gestureId  isEqual: @"gesture failed"]) {
                 
             }else{
+                
+                
+                
                 [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
                     _gestureId = gestureId;
                 }];
