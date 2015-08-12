@@ -38,8 +38,8 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 }
 
 - (RLMGesture *)gesture {
-    if (_gesture) {
-        _gesture = [RLMGesture objectForPrimaryKey:@(self.eventId)];
+    if (!_gesture) {
+        _gesture = [RLMGesture objectForPrimaryKey:@(self.event.gestureId)];
     }
     return _gesture;
 }
@@ -111,9 +111,7 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
         RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
         if (results.count) {
             RLMEvent *event = results[0];
-//            debugLog(@"和事件%@的手势冲突", event.name);
             if (event.objectId == self.event.objectId) {
-//                NSString *warning = [NSString stringWithFormat:@"和事件%@的手势冲突", event.name];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已经绑定啦" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
                 [self.navigationController popViewControllerAnimated:YES];
@@ -121,13 +119,19 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
                 NSString *warning = [NSString stringWithFormat:@"和事件%@的手势冲突", event.name];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"冲突" message:warning delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
-//                [self.navigationController popViewControllerAnimated:YES];
             }
             
         } else {
             RLMRealm *realm = [RLMRealm defaultRealm];
             [realm beginWriteTransaction];
+            if (self.event.gestureId >= TBGestureTypeCustom) {
+                RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@(self.event.gestureId)];
+                if (gesture) {
+                    [realm deleteObject:gesture];
+                }
+            }
             self.event.gestureId = gestureId;
+            
             [realm commitWriteTransaction];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
