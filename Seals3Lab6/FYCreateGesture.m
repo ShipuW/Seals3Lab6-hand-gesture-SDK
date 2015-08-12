@@ -122,46 +122,46 @@
     /**
      *  查看手势是否已经存在，如果存在就提示重新画，如果不存在，直接获取路径，返回
      */
-    TBGestureRecognizer* gestureRecognizer = [TBGestureRecognizer shareGestureRecognizer];
-    [gestureRecognizer matchGestureFrom:self.pointArray completion:^(NSString *gestureId, NSArray *resampledGesture) {
-        
-        NSLog(@"%@",gestureId);
-        
-        if (gestureId) {//如果手势已经被占用，重新画手势
-            [self alertFail];
-            [self setNeedsDisplay];
-            [self.pointArray removeAllObjects];
-        }else{//手势没有被占用，可以试用
-            
-            //保存path
-            TBGesture *gesture = [[TBGesture alloc] init];
-            gesture.rawPath = [self.pointArray copy];
-            gesture.path = [resampledGesture copy];
-            [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
-                if (error) {
-                    NSLog(@"addCustomGesture===========%@",error);
-                } else {
-                    //手势添加成功，开始截图保存图片：objectId.png
-                    NSLog(@"gesture====%@",gesture.objectId);
-                     [self clipImage:gesture.objectId];
-                    
-                    //手势和事件对应接口
-                    [SharedDataManager mapEvent:self.eventData.event withGesture:gesture completion:^(NSError *error) {
-                        if (error) {
-                            NSLog(@"mapEvent===========%@",error);
-                        }
-                    }];
-                }
-            }];
-
-            [self.pointArray removeAllObjects];
-            //通知代理，已经完成绘图
-            if ([self.delegate respondsToSelector:@selector(createGestureDidFinishedDrawPath)]) {
-                [self.delegate createGestureDidFinishedDrawPath];
-            }
-            [self removeFromSuperview];
-        }
-    }];
+//    TBGestureRecognizer* gestureRecognizer = [TBGestureRecognizer shareGestureRecognizer];
+//    [gestureRecognizer matchGestureFrom:self.pointArray completion:^(NSString *gestureId, NSArray *resampledGesture) {
+//        
+//        NSLog(@"%@",gestureId);
+//        
+//        if (gestureId) {//如果手势已经被占用，重新画手势
+//            [self alertFail];
+//            [self setNeedsDisplay];
+//            [self.pointArray removeAllObjects];
+//        }else{//手势没有被占用，可以试用
+//            
+//            //保存path
+//            TBGesture *gesture = [[TBGesture alloc] init];
+//            gesture.rawPath = [self.pointArray copy];
+//            gesture.path = [resampledGesture copy];
+//            [SharedDataManager addCustomGesture:gesture completion:^(TBGesture *gesture, NSError *error) {
+//                if (error) {
+//                    NSLog(@"addCustomGesture===========%@",error);
+//                } else {
+//                    //手势添加成功，开始截图保存图片：objectId.png
+//                    NSLog(@"gesture====%@",gesture.objectId);
+//                     [self clipImage:gesture.objectId];
+//                    
+//                    //手势和事件对应接口
+//                    [SharedDataManager mapEvent:self.eventData.event withGesture:gesture completion:^(NSError *error) {
+//                        if (error) {
+//                            NSLog(@"mapEvent===========%@",error);
+//                        }
+//                    }];
+//                }
+//            }];
+//
+//            [self.pointArray removeAllObjects];
+//            //通知代理，已经完成绘图
+//            if ([self.delegate respondsToSelector:@selector(createGestureDidFinishedDrawPath)]) {
+//                [self.delegate createGestureDidFinishedDrawPath];
+//            }
+//            [self removeFromSuperview];
+//        }
+//    }];
     CGPathRelease(_path);
     _isHavePath = NO;
 }

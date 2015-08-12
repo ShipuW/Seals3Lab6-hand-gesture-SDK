@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RLMGesture.h"
 
 @interface TBGestureRecognizer : NSObject
 
 // 调用方法：
-// [[TBGestureRecognizer shareGestureRecognizer]matchGestureFrom: completion: {}];
-
+// [[TBGestureRecognizer shareGestureRecognizer]matchGestureFrom: GesturesToMatch: completion: {}];
 
 +(instancetype) shareGestureRecognizer;
-// points内为NSValue，由CGPoint转化
--(void)matchGestureFrom:(NSArray *)points completion:(void(^) (NSString *gestureId, NSArray *resampledGesture)) completion;
+-(void)matchGestureFrom:(RLMArray *)points GesturesToMatch:(RLMResults *)gesturesToMatch completion:(void(^) (NSString *matchResultId, RLMArray *resampledPoints)) completion;
 @end

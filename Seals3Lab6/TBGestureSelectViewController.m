@@ -10,6 +10,7 @@
 #import "RLMEvent.h"
 #import "MacroUtils.h"
 #import "TBCreateGesture.h"
+#import "TBGestureRecognizer.h"
 
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
@@ -135,6 +136,11 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 
 - (void)gestureDidDrawAtPosition:(NSArray *)trackPoints {
     debugLog(@"%@", trackPoints);
+    RLMArray *ra = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+    [ra addObjects:trackPoints];
+    [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:ra GesturesToMatch:nil completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
+
+    }];
 }
 
 
