@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBEvent.h"
 
 @class TBEvent;
 @class TBGesture;
@@ -59,6 +60,9 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 + (instancetype)gestureForEventId:(NSString *)eventId;
 //+ (NSArray *)gesturesForEvent:(TBEvent *)event;
 //+ (NSArray *)gesturesForEventId:(NSString *)eventId;
+
+//- (instancetype)initWithEventsType:(TBEventType)types;
+- (instancetype)initWithEventNames:(NSArray *)eventNames;
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource completion:(void (^)(NSError *error))completion;
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource forKeyPath:(NSString *)keyPath completion:(void (^)(NSError *error))completion;
 

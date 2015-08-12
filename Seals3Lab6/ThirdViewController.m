@@ -37,8 +37,8 @@
     
     
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
-    TBGesture *gesture = [TBGesture gestureForEvent:event];
+//    TBEvent *event = [[TBEvent alloc] initWithEvent
+    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
 //    gesture.type = TBGestureTypeSimpleUP;
     gesture.delegate = self;
     [gesture addToView:self.testView completion:^(NSError *error) {

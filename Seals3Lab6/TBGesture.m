@@ -121,6 +121,30 @@
 
 }
 
+//- (instancetype)initWithEventsType:(TBEventType)types {
+//    self = [super init];
+//    if (self) {
+//
+//    }
+//    return nil;
+//}
+
+- (instancetype)initWithEventNames:(NSArray *)eventNames {
+    self = [super init];
+    if (self) {
+        RLMResults *results = [RLMEvent objectsWhere:@"name IN %@", eventNames];
+        NSInteger types = 0;
+        if (results.count) {
+            for (RLMEvent *event in results) {
+                RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@(event.gestureId)];
+                types |= gesture.type;
+            }
+        }
+        self.type = (TBGestureType)types;
+    }
+    return self;
+}
+
 - (void)addToTableView:(UITableView *)tableView dataSource:(id)dataSource completion:(void (^)(NSError *error))completion {
 
     [self addToTableView:tableView dataSource:dataSource forKeyPath:@"" completion:completion];
