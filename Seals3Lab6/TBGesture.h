@@ -57,6 +57,7 @@ typedef NS_ENUM(NSInteger , TBGestureType) {
 @property (nonatomic, strong) NSMutableArray *customGestureIds;
 
 @property(nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) NSIndexPath *indexpath;
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
 

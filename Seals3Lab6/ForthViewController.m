@@ -46,7 +46,16 @@
 #pragma TBGestureDelegate方法
 - (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"indexpath=%@",indexPath);
+    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%d行", event.name, indexPath.row];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [av show];
+}
+
+- (void)recogizedEvent:(TBEvent *)event {
+    //    NSLog(@"%@", event.name);
+    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [av show];
 }
 
 #pragma tableView数据源方法
@@ -102,14 +111,6 @@
 //        }
 //    }
     
-}
-
-#pragma TBGesture代理方法
-- (void)recogizedEvent:(TBEvent *)event {
-    NSLog(@"%@", event.name);
-    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [av show];
 }
 
 @end
