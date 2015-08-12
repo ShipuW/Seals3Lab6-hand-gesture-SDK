@@ -14,6 +14,7 @@
 #import "TBIndexPathCellModelArray.h"
 #import "TBHookOperation.h"
 #import "TBGesture.h"
+#import "TBEvent.h"
 
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate, TBGestureDelegate>
 
@@ -54,26 +55,27 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
-        
-    TBGesture *gesture = [[TBGesture alloc]init];
-    [gesture setName:[NSString stringWithFormat:@"test--%ld",indexPath.row]];
-    [gesture setObjectId:[NSString stringWithFormat:@"%ld",indexPath.row]];
-    [gesture setType:TBGestureTypeCustom];
+//    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
     
-    [cell setGesture:gesture];
+    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGesture *gesture = [TBGesture gestureForEvent:event];
+    gesture.delegate = self;
 
-//    static NSString *ID=@"test";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//    if (cell==nil) {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-//    }
-//    cell.textLabel.text = [NSString stringWithFormat:@"text--%d",indexPath.row];
+    static NSString *ID=@"test";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     
-    [gesture addToTableView:tableView dataSource:self completion:^(NSError *error) {
-        
-//        NSLog(@"=========================gesture addToTableView");
+    gesture.tableView = tableView;
+    [gesture addToView:cell completion:^(NSError *error) {
+        //                NSLog(@"--------------------------cell add");
     }];
+//    
+//    [gesture addToTableView:tableView dataSource:self completion:^(NSError *error) {
+//        
+//    }];
     
     return cell;
 }
