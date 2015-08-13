@@ -243,7 +243,15 @@
     //                }];
                     RLMArray *rlmArr = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
                     [rlmArr addObjects:self.rlmPoints];
+//                    double start = [[NSDate date] timeIntervalSince1970];
+//                    NSLog(@"开始%lf",start);
+                    
                     [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
+                    
+//                        double end = [[NSDate date] timeIntervalSince1970];
+                        
+//                        NSLog(@"结束%lf 时间差%lf",end,end-start);
+                        
                         if (matchResultId) {
                             debugLog(@"找到");
                         [self.rlmPoints removeAllObjects];
