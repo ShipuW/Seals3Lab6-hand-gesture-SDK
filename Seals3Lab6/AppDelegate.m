@@ -108,6 +108,18 @@
 //            debugLog(@"导入自带事件成功");
 //        }];
 //    }
+//    double start=[[NSDate date] timeIntervalSince1970];
+//    NSLog(@"start=%lf",start);
+//    [RLMPoint allObjects];
+//    
+//    double end=[[NSDate date] timeIntervalSince1970];
+//    NSLog(@"end=%lf   end-start=%lf",end,end-start);
+//    
+//    [RLMGesture allObjects];
+//    
+//    double end2=[[NSDate date] timeIntervalSince1970];
+//    NSLog(@"end2=%lf   end2-start=%lf end2-end=%lf",end2,end2-start,end2-end);
+    
     
     return YES;
 }

@@ -86,7 +86,8 @@
 
 
 - (void)recogizedEvent:(TBEvent *)event {
-    NSLog(@"%@", event.name);
+//   NSLog(@"end%f",[[NSDate date]timeIntervalSince1970]);
+//    NSLog(@"%@", event.name);
     NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [av show];

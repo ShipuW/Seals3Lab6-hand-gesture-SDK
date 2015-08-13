@@ -207,7 +207,7 @@
         }
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
-            //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
+//            NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
             _touchPoint = [sender locationInView:_baseView];
             _lastPoint = [sender locationInView:_baseView];
             if (_isMoved) {
