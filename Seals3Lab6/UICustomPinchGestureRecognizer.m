@@ -27,15 +27,15 @@
 -(void) pinchDirectionRecognizer{
     
     if (_tureScale>1.5 && (_targetType & TBGestureTypeSimplePinchOUT) == TBGestureTypeSimplePinchOUT) {
-        NSLog(@"放大");
+//        NSLog(@"放大");
         _isMatch = YES;
         [self.recognizePinchDelegate gestureRecognizer:self gestureType:TBGestureTypeSimplePinchOUT  gestureId:(int)TBGestureTypeSimplePinchOUT  recognized:YES];
     }else if(_tureScale<0.7 && (_targetType & TBGestureTypeSimplePinchIN) == TBGestureTypeSimplePinchIN){
-        NSLog(@"缩小");
+//        NSLog(@"缩小");
         [self.recognizePinchDelegate gestureRecognizer:self gestureType:TBGestureTypeSimplePinchIN  gestureId:(int)TBGestureTypeSimplePinchIN  recognized:YES];
         _isMatch = YES;
     }else{
-        NSLog(@"匹配错误");
+//        NSLog(@"匹配错误");
         _isMatch = NO;
     }
 }
@@ -51,7 +51,7 @@
         
         sender.scale=sender.scale-_lastScale+1;
         _tureScale=_tureScale*sender.scale;
-        NSLog(@"Pinch scale: %f", _tureScale);
+//        NSLog(@"Pinch scale: %f", _tureScale);
         sender.view.transform=CGAffineTransformScale(sender.view.transform, sender.scale,sender.scale);
         
         _lastScale=sender.scale;

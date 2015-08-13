@@ -41,7 +41,6 @@
 		A6744B281B720A2F00E222B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6744B261B720A2F00E222B0 /* Main.storyboard */; };
 		A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6744B291B720A2F00E222B0 /* Images.xcassets */; };
 		A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */; };
-		A6744B391B720A2F00E222B0 /* Seals3Lab6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */; };
 		A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B431B720A5400E222B0 /* ThirdViewController.m */; };
 		A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B461B720A6100E222B0 /* ForthViewController.m */; };
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
@@ -65,16 +64,6 @@
 		D91B01851B7B1DF40091524C /* TBCreateGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = D91B01841B7B1DF40091524C /* TBCreateGesture.m */; };
 		D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E164E71B79F94E003FA975 /* UISwitch+tag.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A6744B331B720A2F00E222B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6744B0E1B720A2E00E222B0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6744B151B720A2E00E222B0;
-			remoteInfo = Seals3Lab6;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
@@ -142,7 +131,6 @@
 		A6744B271B720A2F00E222B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6744B291B720A2F00E222B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6744B2C1B720A2F00E222B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Seals3Lab6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B371B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seals3Lab6Tests.m; sourceTree = "<group>"; };
 		A6744B421B720A5400E222B0 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
@@ -201,13 +189,6 @@
 				A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */,
 				A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */,
 				2961003F75C878C0D86D661A /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6744B2F1B720A2F00E222B0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				A6744B161B720A2F00E222B0 /* Seals3Lab6.app */,
-				A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -556,24 +536,6 @@
 			productReference = A6744B161B720A2F00E222B0 /* Seals3Lab6.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A6744B311B720A2F00E222B0 /* Seals3Lab6Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6744B3F1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6Tests" */;
-			buildPhases = (
-				A6744B2E1B720A2F00E222B0 /* Sources */,
-				A6744B2F1B720A2F00E222B0 /* Frameworks */,
-				A6744B301B720A2F00E222B0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A6744B341B720A2F00E222B0 /* PBXTargetDependency */,
-			);
-			name = Seals3Lab6Tests;
-			productName = Seals3Lab6Tests;
-			productReference = A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -586,10 +548,6 @@
 					A6744B151B720A2E00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = TSHQXDE3V5;
-					};
-					A6744B311B720A2F00E222B0 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = A6744B151B720A2E00E222B0;
 					};
 				};
 			};
@@ -607,7 +565,6 @@
 			projectRoot = "";
 			targets = (
 				A6744B151B720A2E00E222B0 /* Seals3Lab6 */,
-				A6744B311B720A2F00E222B0 /* Seals3Lab6Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -621,13 +578,6 @@
 				A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */,
 				A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */,
 				A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6744B301B720A2F00E222B0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,23 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6744B2E1B720A2F00E222B0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6744B391B720A2F00E222B0 /* Seals3Lab6Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A6744B341B720A2F00E222B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6744B151B720A2E00E222B0 /* Seals3Lab6 */;
-			targetProxy = A6744B331B720A2F00E222B0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A6744B261B720A2F00E222B0 /* Main.storyboard */ = {
@@ -850,6 +784,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Seals3Lab6",
@@ -870,6 +805,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Seals3Lab6",
@@ -880,40 +816,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
-			};
-			name = Release;
-		};
-		A6744B401B720A2F00E222B0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Seals3Lab6Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seals3Lab6.app/Seals3Lab6";
-			};
-			name = Debug;
-		};
-		A6744B411B720A2F00E222B0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Seals3Lab6Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seals3Lab6.app/Seals3Lab6";
 			};
 			name = Release;
 		};
@@ -934,15 +836,6 @@
 			buildConfigurations = (
 				A6744B3D1B720A2F00E222B0 /* Debug */,
 				A6744B3E1B720A2F00E222B0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A6744B3F1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6744B401B720A2F00E222B0 /* Debug */,
-				A6744B411B720A2F00E222B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -113,7 +113,7 @@
     }
     else {
         
-        if (_targetType != TBGestureTypeCustom) {
+        if ((_targetType & TBGestureTypeCustom) != TBGestureTypeCustom) {
             debugLog(@"内部失败");
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
                 [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
@@ -243,7 +243,15 @@
     //                }];
                     RLMArray *rlmArr = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
                     [rlmArr addObjects:self.rlmPoints];
+//                    double start = [[NSDate date] timeIntervalSince1970];
+//                    NSLog(@"开始%lf",start);
+                    
                     [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
+                    
+//                        double end = [[NSDate date] timeIntervalSince1970];
+                        
+//                        NSLog(@"结束%lf 时间差%lf",end,end-start);
+                        
                         if (matchResultId) {
                             debugLog(@"找到");
                         [self.rlmPoints removeAllObjects];
