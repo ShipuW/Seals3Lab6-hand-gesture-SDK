@@ -32,18 +32,9 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 
-    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏"]];
-//    gesture.objectId=@"1";
-//    gesture.name=@"name1";
-
-    gesture.delegate = self;
-
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.frame = [UIScreen mainScreen].bounds;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
-
-//    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:gesture forKeyPath:@"textLabel"];
-
 
 }
 
@@ -51,7 +42,7 @@
 - (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
 
     
-    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%d行", event.name, indexPath.row];
+    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%ld行", event.name, (long)indexPath.row];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [av show];
 }
@@ -96,6 +87,10 @@
 //    }];
 
     return cell;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
