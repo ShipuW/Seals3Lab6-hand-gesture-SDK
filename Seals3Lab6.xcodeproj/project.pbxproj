@@ -560,7 +560,7 @@
 				TargetAttributes = {
 					A6744B151B720A2E00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = TSHQXDE3V5;
+						DevelopmentTeam = 87MLRWWWW6;
 					};
 					A6744B311B720A2F00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
@@ -820,6 +820,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Seals3Lab6",
@@ -840,6 +841,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Seals3Lab6",
