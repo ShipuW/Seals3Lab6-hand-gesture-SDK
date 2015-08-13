@@ -109,7 +109,7 @@ static NSInteger kImageViewTag = 1024;
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCustomGestureIdentifier];
             }
-      ou     return cell;
+            return cell;
     }
     
     if (section == kTableViewSectionClear) {
