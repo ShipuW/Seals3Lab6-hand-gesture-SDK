@@ -47,6 +47,10 @@
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
 		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
+		A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */; };
+		A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */; };
+		A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */; };
+		A68CCB141B7C3545007CBDD2 /* MoreOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB131B7C3545007CBDD2 /* MoreOneViewController.m */; };
 		A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */; };
 		A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */; };
 		A6C3D2631B78F7A600E110C4 /* TBAllEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */; };
@@ -150,6 +154,14 @@
 		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
 		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
 		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
+		A68CCB091B7C28F8007CBDD2 /* TestShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowViewController.h; sourceTree = "<group>"; };
+		A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowViewController.m; sourceTree = "<group>"; };
+		A68CCB0C1B7C352F007CBDD2 /* OneOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneOneViewController.h; sourceTree = "<group>"; };
+		A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneOneViewController.m; sourceTree = "<group>"; };
+		A68CCB0F1B7C3538007CBDD2 /* OneMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneMoreViewController.h; sourceTree = "<group>"; };
+		A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneMoreViewController.m; sourceTree = "<group>"; };
+		A68CCB121B7C3545007CBDD2 /* MoreOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreOneViewController.h; sourceTree = "<group>"; };
+		A68CCB131B7C3545007CBDD2 /* MoreOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreOneViewController.m; sourceTree = "<group>"; };
 		A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBJoinGestureSimulationViewController.h; sourceTree = "<group>"; };
 		A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBJoinGestureSimulationViewController.m; sourceTree = "<group>"; };
 		A6C3D25D1B787E0400E110C4 /* TBTableViewSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableViewSimulationViewController.h; sourceTree = "<group>"; };
@@ -426,6 +438,14 @@
 				AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */,
 				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
 				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
+				A68CCB091B7C28F8007CBDD2 /* TestShowViewController.h */,
+				A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */,
+				A68CCB0F1B7C3538007CBDD2 /* OneMoreViewController.h */,
+				A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */,
+				A68CCB0C1B7C352F007CBDD2 /* OneOneViewController.h */,
+				A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */,
+				A68CCB121B7C3545007CBDD2 /* MoreOneViewController.h */,
+				A68CCB131B7C3545007CBDD2 /* MoreOneViewController.m */,
 				AA4E2C2F1B7853190009739E /* TBGMath.h */,
 				AA4E2C301B7853190009739E /* TBGMath.m */,
 			);
@@ -648,6 +668,7 @@
 			files = (
 				01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */,
 				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
+				A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */,
 				AA1CA3101B798EE900A975CE /* FYCell.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
@@ -657,14 +678,17 @@
 				A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */,
 				D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
+				A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */,
 				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
 				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
 				A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */,
+				A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
 				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
 				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
 				AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */,
+				A68CCB141B7C3545007CBDD2 /* MoreOneViewController.m in Sources */,
 				A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */,
 				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
