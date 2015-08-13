@@ -18,7 +18,7 @@
 
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate, TBGestureDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property(nonatomic, strong) NSArray *indexPathAndCells;
 
@@ -29,11 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    
+    [self.view addSubview:self.tableView];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.frame = [UIScreen mainScreen].bounds;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
 
 }
