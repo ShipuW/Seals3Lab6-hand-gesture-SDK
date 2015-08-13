@@ -58,7 +58,7 @@
         
         //设置绘图颜色、透明度、线宽
         self.backgroundColor = [UIColor lightGrayColor];
-        self.alpha = 0.5;
+//        self.alpha = 0.5;
         _lineColor = [UIColor blueColor];
         _lineWidth = 20.0f;
         
@@ -133,6 +133,7 @@
     /**
      *
      */
+    self.capture = [self clipImageOn:self.frame];
 
     if ([self.delegate respondsToSelector:@selector(gestureDidDrawAtPosition:)]) {
         [self.delegate gestureDidDrawAtPosition:[self.points copy]];
@@ -162,6 +163,20 @@
     NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",guestureId]];   // 保存文件的名称
     [UIImagePNGRepresentation(theImage) writeToFile:filePath atomically:YES]; // 保存成功会返回YES
     
+}
+
+
+- (UIImage *)clipImageOn:(CGRect)frame {
+    UIGraphicsBeginImageContext(self.frame.size);
+    CGRect r = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-30);
+    r =  frame;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    UIRectClip(r);
+    [self.layer renderInContext:context];
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 -(void)alertFail

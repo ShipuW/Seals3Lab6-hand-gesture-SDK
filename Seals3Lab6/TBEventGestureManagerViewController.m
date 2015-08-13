@@ -45,7 +45,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 /*
@@ -60,7 +60,8 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? 1 : self.events.count;
+//    return section == 0 ? 1 : self.events.count;
+    return self.events.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,22 +74,22 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1) {
+//    if (indexPath.section == 1) {
         RLMEvent *event = self.events[indexPath.row];
         TBGestureSelectViewController *vc = [[TBGestureSelectViewController alloc] init];
         vc.eventId = event.objectId;
         [self.navigationController pushViewController:vc animated:YES];
-    }
+//    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        cell.textLabel.text = @"手势开关";
-        cell.detailTextLabel.text = @"";
-        return;
-    }
+//    if (indexPath.section == 0) {
+//        cell.textLabel.text = @"手势开关";
+//        cell.detailTextLabel.text = @"";
+//        return;
+//    }
 
-    if (indexPath.section == 1) {
+//    if (indexPath.section == 1) {
         RLMEvent *event = self.events[indexPath.row];
         cell.textLabel.text = event.name;
         if (event.gestureId > 0) {
@@ -98,7 +99,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
             cell.detailTextLabel.text = @"暂无手势";
         }
         return;
-    }
+//    }
 }
 
 - (void)refreshEvents {

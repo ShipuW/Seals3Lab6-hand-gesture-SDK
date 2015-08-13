@@ -47,6 +47,7 @@
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
 		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
+		A68489B21B7C513F00983751 /* RLMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68489B11B7C513F00983751 /* RLMImage.m */; };
 		A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */; };
 		A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */; };
 		A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */; };
@@ -154,6 +155,8 @@
 		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
 		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
 		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
+		A68489B01B7C513F00983751 /* RLMImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMImage.h; sourceTree = "<group>"; };
+		A68489B11B7C513F00983751 /* RLMImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMImage.m; sourceTree = "<group>"; };
 		A68CCB091B7C28F8007CBDD2 /* TestShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowViewController.h; sourceTree = "<group>"; };
 		A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowViewController.m; sourceTree = "<group>"; };
 		A68CCB0C1B7C352F007CBDD2 /* OneOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneOneViewController.h; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				A63EA5571B7A5E940048F67F /* RLMGesture.m */,
 				1470DB95A5C5BEA46CD54B20 /* Point.m */,
 				1470DFA3F7007F00689163F1 /* Point.h */,
+				A68489B01B7C513F00983751 /* RLMImage.h */,
+				A68489B11B7C513F00983751 /* RLMImage.m */,
 			);
 			name = "Base DO";
 			sourceTree = "<group>";
@@ -676,6 +681,7 @@
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
 				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
 				A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */,
+				A68489B21B7C513F00983751 /* RLMImage.m in Sources */,
 				D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */,
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */,

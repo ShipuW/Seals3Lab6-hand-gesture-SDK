@@ -21,6 +21,10 @@
 @property (assign, nonatomic) CGMutablePathRef path;
 @property (assign, nonatomic) BOOL isHavePath;
 
+@property (nonatomic, strong) UIImage *capture;
+
 @property (nonatomic, weak) id<TBGestureDrawDelegate> delegate;
+
+- (UIImage *)clipImageOn:(CGRect)frame;
 
 @end

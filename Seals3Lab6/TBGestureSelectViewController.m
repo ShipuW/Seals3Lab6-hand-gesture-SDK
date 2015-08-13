@@ -11,7 +11,7 @@
 #import "MacroUtils.h"
 #import "TBCreateGesture.h"
 #import "TBGestureRecognizer.h"
-
+#import "RLMImage.h"
 
 typedef NS_ENUM(NSInteger, kTableViewSection) {
     kTableViewSectionGestures = 0,
@@ -31,6 +31,8 @@ static NSInteger kImageViewTag = 1024;
 @property (nonatomic, strong) RLMGesture *gesture;
 @property (nonatomic, strong) RLMResults *events;
 @property (nonatomic, strong) RLMResults *gestures;
+@property (nonatomic, strong) UIImage *capture;
+@property (nonatomic, strong) TBCreateGesture *cg;
 
 @end
 
@@ -38,6 +40,14 @@ static NSInteger kImageViewTag = 1024;
 
 }
 
+
+- (UIImage *)capture {
+    if (!_capture) {
+        RLMImage *rlmImage = [RLMImage objectForPrimaryKey:@(self.gesture.objectId)];
+        _capture = [UIImage imageWithData:rlmImage.imageData];
+    }
+    return _capture;
+}
 
 - (RLMEvent *)event {
     if (!_event) {
@@ -128,15 +138,22 @@ static NSInteger kImageViewTag = 1024;
         cell.textLabel.text = gesture.name;
     }
     if (indexPath.section == kTableViewSectionCustomGesture) {
-        if (self.event.gestureId < 100) {
+        if (self.event.gestureId < TBGestureTypeCustom) {
             cell.textLabel.text = @"点击绘制自定义手势";
             UIImageView *iv = (UIImageView *)[cell.contentView viewWithTag:kImageViewTag];
             [iv removeFromSuperview];
         } else {
             CGRect frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds));
-            UIImageView *iv = [[UIImageView alloc] initWithFrame:frame];
+            UIImageView *iv = (UIImageView *)[cell.contentView viewWithTag:kImageViewTag];
+            if (!iv) {
+                iv = [[UIImageView alloc] initWithFrame:frame];
+            }
             iv.tag = kImageViewTag;
 //            iv.backgroundColor = [UIColor greenColor];
+            if (self.capture) {
+                iv.image = self.capture;
+            }
+            cell.textLabel.text = @"";
             [cell.contentView addSubview:iv];
         }
     }
@@ -183,6 +200,9 @@ static NSInteger kImageViewTag = 1024;
     }
 
     if (section == kTableViewSectionCustomGesture) {
+        if (self.gesture.type == TBGestureTypeCustom) {
+            return;
+        }
         TBCreateGesture* createGesture = [[TBCreateGesture alloc] init];
 //        createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
         createGesture.frame = CGRectMake(0, 20, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds));
@@ -190,6 +210,7 @@ static NSInteger kImageViewTag = 1024;
         createGesture.backgroundColor = [UIColor whiteColor];
         createGesture.alpha = 0.9;
         createGesture.delegate = self;
+        self.cg = createGesture;
         [[UIApplication sharedApplication].keyWindow addSubview:createGesture];
     }
 
@@ -258,12 +279,32 @@ static NSInteger kImageViewTag = 1024;
             NSString *warning = [NSString stringWithFormat:@"绑定自定义手势成功"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+            self.capture = self.cg.capture;
+            self.cg = nil;
+            
+            RLMImage *rlmImage = [RLMImage objectForPrimaryKey:@(self.gesture.objectId)];
+            if (!rlmImage) {
+                rlmImage = [[RLMImage alloc] init];
+                rlmImage.gestureId = self.gesture.objectId;
+            }
+            
+            if (self.capture) {
+                rlmImage.imageData = UIImagePNGRepresentation(self.capture);
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                [realm addOrUpdateObject:rlmImage];
+                [realm commitWriteTransaction];
+            }
+            
+            
+            [self.tableView reloadData];
             [self.navigationController popViewControllerAnimated:YES];
 
         } else {
             NSString *warning = [NSString stringWithFormat:@"和现有手势冲突"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+
         }
     }];
 }
