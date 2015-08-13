@@ -36,9 +36,10 @@
     _target = target;
     _action = action;
     _targetType = type;
-    if (_targetType == TBGestureTypeCustom) {
+    if ((_targetType & TBGestureTypeCustom) == TBGestureTypeCustom) {
         _isSimpleGesture = NO;
     }else{
+        _needSimpleMatch = YES;
         _isSimpleGesture = YES;
     }
     
@@ -216,7 +217,7 @@
                 if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
                     [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
                 }
-                [self simpleDirectionRecognizer];
+                
     //            if ([_gestureId  isEqual: @"gesture failed"] || [_gestureId isEqualToString:@""]) {
     //                
     //            }else{
@@ -254,8 +255,10 @@
                         
                         if (matchResultId) {
                             debugLog(@"找到");
+                            _needSimpleMatch = NO;
                         [self.rlmPoints removeAllObjects];
-                        } else{
+                        } else {
+                            _needSimpleMatch = YES;
                             debugLog(@"找不到");
                         [self.rlmPoints removeAllObjects];
                         }
@@ -267,7 +270,11 @@
                         
                     }];
                 }
+                if (_needSimpleMatch) {
+                    [self simpleDirectionRecognizer];
+                }
 
+               
                 
                 if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
                     [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];

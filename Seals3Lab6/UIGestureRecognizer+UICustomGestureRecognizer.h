@@ -52,6 +52,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 @interface UICustomGestureRecognizer : UILongPressGestureRecognizer
 {
     @package
+    BOOL                _needSimpleMatch;
     BOOL                _displayPoint;
     BOOL                _contain;
     BOOL                _shouldEnd;
