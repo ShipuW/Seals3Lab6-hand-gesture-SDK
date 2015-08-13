@@ -13,10 +13,16 @@
 #import "TBGestureRecognizer.h"
 
 
-//typedef NS_ENUM(<#_type#>, <#_name#>) <#new#>;
+typedef NS_ENUM(NSInteger, kTableViewSection) {
+    kTableViewSectionGestures = 0,
+    kTableViewSectionCustomGesture,
+    kTableViewSectionClear,
+    kTableViewSectionCount
+};
 
 static NSString *const kTableViewIdentifier = @"kTableViewIdentifier";
 static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGestureIdentifier";
+static NSInteger kImageViewTag = 1024;
 
 @interface TBGestureSelectViewController () <UITableViewDataSource, UITableViewDelegate, TBGestureDrawDelegate>
 
@@ -62,53 +68,87 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return kTableViewSectionCount;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 1) {
-        return 1;
+    kTableViewSection tableViewSection = section;
+    switch (tableViewSection) {
+        case kTableViewSectionGestures: {
+            return self.gestures.count;
+            break;
+        }
+        case kTableViewSectionCustomGesture: {
+            return 1;
+            break;
+        }
+        case kTableViewSectionClear: {
+            return 1;
+            break;
+        }
+        case kTableViewSectionCount: {
+            return 1;
+        }
     }
-    return self.gestures.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSInteger section = indexPath.section;
+    kTableViewSection section = indexPath.section;
 
-    if (section == 0) {
+    if (section == kTableViewSectionGestures) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kTableViewIdentifier];
         }
         return cell;
-    } else {
-//        if (section == 1) {
+    }
+    
+    if (section == kTableViewSectionCustomGesture) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCustomGestureIdentifier];
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCustomGestureIdentifier];
             }
-            return cell;
-//        }
+      ou     return cell;
     }
+    
+    if (section == kTableViewSectionClear) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewIdentifier];
+        }
+        return cell;
+    }
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == kTableViewSectionGestures) {
         RLMGesture *gesture = self.gestures[indexPath.row];
         cell.textLabel.text = gesture.name;
     }
-    if (indexPath.section == 1) {
+    if (indexPath.section == kTableViewSectionCustomGesture) {
         if (self.event.gestureId < 100) {
             cell.textLabel.text = @"点击绘制自定义手势";
+            UIImageView *iv = (UIImageView *)[cell.contentView viewWithTag:kImageViewTag];
+            [iv removeFromSuperview];
+        } else {
+            CGRect frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds));
+            UIImageView *iv = [[UIImageView alloc] initWithFrame:frame];
+            iv.tag = kImageViewTag;
+//            iv.backgroundColor = [UIColor greenColor];
+            [cell.contentView addSubview:iv];
         }
+    }
+    if (indexPath.section == kTableViewSectionClear) {
+        cell.textLabel.text = @"解除手势";
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0) {
+    kTableViewSection section = indexPath.section;
+    if (section == kTableViewSectionGestures) {
         RLMGesture *gesture = self.gestures[indexPath.row];
         int gestureId = gesture.objectId;
         RLMResults *results = [RLMEvent objectsWhere:@"gestureId = %d", gestureId];
@@ -140,17 +180,54 @@ static NSString *const kTableViewCustomGestureIdentifier = @"kTableViewCustomGes
             [alert show];
             [self.navigationController popViewControllerAnimated:YES];
         }
-    }else {
-        
+    }
+
+    if (section == kTableViewSectionCustomGesture) {
         TBCreateGesture* createGesture = [[TBCreateGesture alloc] init];
-        createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
+//        createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
+        createGesture.frame = CGRectMake(0, 20, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds));
+//        createGesture.center = self.view.center;
         createGesture.backgroundColor = [UIColor whiteColor];
         createGesture.alpha = 0.9;
         createGesture.delegate = self;
         [[UIApplication sharedApplication].keyWindow addSubview:createGesture];
     }
+
+    if (section == kTableViewSectionClear) {
+        UIAlertView *av;
+        if (self.gesture.type == TBGestureTypeCustom) {
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            [realm deleteObject:self.gesture];
+            self.event.gestureId = 0;
+            [realm commitWriteTransaction];
+            av = [[UIAlertView alloc] initWithTitle:@"解绑自定义手势成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [av show];
+//            [self.tableView reloadData];
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            if (self.gesture.type > 0) {
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                self.event.gestureId = 0;
+                [realm commitWriteTransaction];
+                [self.navigationController popViewControllerAnimated:YES];
+//                [self.tableView reloadData];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"没绑啥" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+            }
+        }
+    }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == kTableViewSectionCustomGesture) {
+        if (self.gesture.type == TBGestureTypeCustom) {
+            return CGRectGetWidth([UIScreen mainScreen].bounds);
+        }
+    }
+    return 44;
+}
 - (void)gestureDidDrawAtPosition:(NSArray *)trackPoints {
     debugLog(@"%@", trackPoints);
     RLMArray *ra = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
