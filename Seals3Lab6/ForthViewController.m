@@ -32,18 +32,9 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 
-    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏"]];
-//    gesture.objectId=@"1";
-//    gesture.name=@"name1";
-
-    gesture.delegate = self;
-
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.frame = [UIScreen mainScreen].bounds;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
-
-//    [TBHookOperation hookDataSource:self withTableView:self.tableView withGesture:gesture forKeyPath:@"textLabel"];
-
 
 }
 
