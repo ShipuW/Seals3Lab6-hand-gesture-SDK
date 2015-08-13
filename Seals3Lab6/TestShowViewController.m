@@ -9,6 +9,7 @@
 #import "TestShowViewController.h"
 #import "OneOneViewController.h"
 #import "OneMoreViewController.h"
+#import "MoreOneViewController.h"
 
 static NSString *const kI = @"kI";
 
@@ -67,7 +68,8 @@ static NSString *const kI = @"kI";
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (row == 2) {
-        
+        MoreOneViewController *vc = [[MoreOneViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 //    if (row == 0) {
 //        

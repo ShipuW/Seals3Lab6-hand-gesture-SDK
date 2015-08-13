@@ -42,7 +42,7 @@
 - (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
 
     
-    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%d行", event.name, indexPath.row];
+    NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%ld行", event.name, (long)indexPath.row];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [av show];
 }
