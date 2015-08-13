@@ -14,7 +14,7 @@
 #import "MyView.h"
 #import "TBGesture.h"
 
-typedef NS_OPTIONS(NSInteger, UICustomGestureRecognizerDirection) {
+typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     //UICustomGestureRecognizerDirectionNot         = 0,
     UICustomGestureRecognizerDirectionUp       = 1 << 0,
     UICustomGestureRecognizerDirectionDown     = 1 << 1,

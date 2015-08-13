@@ -14,7 +14,7 @@
 @class UICustomGestureRecognizer;
 @class UICustomPinchGestureRecognizer;
 
-typedef NS_ENUM(NSInteger , TBGestureType) {
+typedef NS_ENUM(NSUInteger , TBGestureType) {
     TBGestureTypeSystem         = 0,
     TBGestureTypeSimpleUP       = 1 << 0,
     TBGestureTypeSimpleDOWN     = 1 << 1,
