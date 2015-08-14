@@ -275,8 +275,8 @@
                 [self.recognizeDelegate gestureRecognizer:self stateChangedAtPosition:_touchPoint];
             }
         }
-        else if (sender.state == UIGestureRecognizerStateEnded)
-        {
+        else if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateFailed || sender.state == UIGestureRecognizerStateCancelled)
+        {//Failed、Cancelled区别？
             _touchPoint = [sender locationInView:_baseView];
             _lastPoint = [sender locationInView:_baseView];
             if (_isMoved) {
