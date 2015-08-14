@@ -372,7 +372,34 @@
     
 }
 
-
+- (NSArray *)eventsForTypes:(TBGestureType)types {
+    NSMutableArray *eventsArray = [NSMutableArray array];
+    if (types & TBGestureTypeSimpleUP) {
+        RLMEvent *event = [RLMEvent objectForPrimaryKey:@(TBGestureTypeSimpleUP)];
+        if (event) {
+            [eventsArray addObject:event];
+        }
+    }
+    if (types & TBGestureTypeSimpleDOWN) {
+        RLMEvent *event = [RLMEvent objectForPrimaryKey:@(TBGestureTypeSimpleDOWN)];
+        if (event) {
+            [eventsArray addObject:event];
+        }
+    }
+    if (types & TBGestureTypeSimpleLEFT) {
+        RLMEvent *event = [RLMEvent objectForPrimaryKey:@(TBGestureTypeSimpleLEFT)];
+        if (event) {
+            [eventsArray addObject:event];
+        }
+    }
+    if (types & TBGestureTypeSimpleRIGHT) {
+        RLMEvent *event = [RLMEvent objectForPrimaryKey:@(TBGestureTypeSimpleRIGHT)];
+        if (event) {
+            [eventsArray addObject:event];
+        }
+    }
+    return [eventsArray copy];
+}
 
 
 @end
