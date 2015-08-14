@@ -23,6 +23,7 @@
 		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
 		600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05181B735FA9001ACC90 /* MyViewModel.m */; };
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
+		607D6AA71B7DB54F0024E643 /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 607D6AA61B7DB54F0024E643 /* LineView.m */; };
 		60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */; };
 		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
 		A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5461B7A37910048F67F /* Realm.framework */; };
@@ -98,6 +99,8 @@
 		600E05181B735FA9001ACC90 /* MyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewModel.m; sourceTree = "<group>"; };
 		600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+UICustomGestureRecognizer.h"; sourceTree = "<group>"; };
 		600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+UICustomGestureRecognizer.m"; sourceTree = "<group>"; };
+		607D6AA51B7DB54F0024E643 /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
+		607D6AA61B7DB54F0024E643 /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
 		60CBF23F1B79957800B5CC2B /* UICustomPinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomPinchGestureRecognizer.h; sourceTree = "<group>"; };
 		60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomPinchGestureRecognizer.m; sourceTree = "<group>"; };
 		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 		600E051F1B735FC5001ACC90 /* CGSDK */ = {
 			isa = PBXGroup;
 			children = (
+				607D6AA51B7DB54F0024E643 /* LineView.h */,
+				607D6AA61B7DB54F0024E643 /* LineView.m */,
 				600E05151B735FA9001ACC90 /* MyView.h */,
 				600E05161B735FA9001ACC90 /* MyView.m */,
 				600E05171B735FA9001ACC90 /* MyViewModel.h */,
@@ -625,6 +630,7 @@
 				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
 				A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */,
 				AA1CA3101B798EE900A975CE /* FYCell.m in Sources */,
+				607D6AA71B7DB54F0024E643 /* LineView.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
 				AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */,

@@ -35,7 +35,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 //    TBGestureTypeCustom         = 1 << 20,
 };
 
-
+@class LineView;
 @class UICustomGestureRecognizer;
 @protocol TBCustomGestureRecognizerDelegate <NSObject>
 
@@ -67,6 +67,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     UIView             *_touchView;
     UIView             *_baseView;
     MyView             *_myView;
+    LineView           *_lineView;
     TBGestureType       _targetType;
 }
 @property (weak) id target;

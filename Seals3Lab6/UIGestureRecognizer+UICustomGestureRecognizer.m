@@ -10,6 +10,7 @@
 #import <CoreGraphics/CGPath.h>
 #import "TBGestureRecognizer.h"
 #import "MyView.h"
+#import "LineView.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "PostConnection.h"
 #import "MacroUtils.h"
@@ -39,6 +40,7 @@
     _targetType = type;
     if ((_targetType & TBGestureTypeCustom) == TBGestureTypeCustom) {
         _isSimpleGesture = NO;
+        _needSimpleMatch = YES;
     }else{
         _needSimpleMatch = YES;
         _isSimpleGesture = YES;
@@ -71,15 +73,15 @@
         if (_lastPoint.y < _emptySideLenth) {//UP
             _direction = UICustomGestureRecognizerDirectionUp;
             _gestureId = @"simple up";
-            _isSimpleGesture = YES;
+            //_isSimpleGesture = YES;
         }else if (_lastPoint.y > (_baseView.frame.size.height - _emptySideLenth)){//DOWN
             _direction = UICustomGestureRecognizerDirectionDown;
             _gestureId = @"simple down";
-            _isSimpleGesture = YES;
+            //_isSimpleGesture = YES;
         }else{//no
             _direction = UICustomGestureRecognizerDirectionNot;
             _gestureId = @"gesture failed";
-            _isSimpleGesture = NO;
+            //_isSimpleGesture = NO;
         }
         
     }else if((_lastPoint.y > _emptySideLenth) && (_lastPoint.y < (_baseView.frame.size.height - _emptySideLenth))){
@@ -87,21 +89,39 @@
         if (_lastPoint.x < _emptySideLenth) {//LEFT
             _direction = UICustomGestureRecognizerDirectionLeft;
             _gestureId = @"simple left";
-            _isSimpleGesture = YES;
+            //_isSimpleGesture = YES;
         }else if(_lastPoint.x > (_baseView.frame.size.width - _emptySideLenth)){//RIGHT
             _direction = UICustomGestureRecognizerDirectionRight;
             _gestureId = @"simple right";
-            _isSimpleGesture = YES;
+            //_isSimpleGesture = YES;
         }else{//no
             _direction = UICustomGestureRecognizerDirectionNot;
             _gestureId = @"gesture failed";
-            _isSimpleGesture = NO;
+            //_isSimpleGesture = NO;
         }
     
     }else{//no
         _direction = UICustomGestureRecognizerDirectionNot;
         _gestureId = @"gesture failed";
-        _isSimpleGesture = NO;
+        //_isSimpleGesture = NO;
+    }
+    
+    if ((_targetType & _direction) == _direction) {
+        //        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
+        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];
+        // _isSimpleGesture = YES;
+    }
+    else {
+        
+        if ((_targetType & TBGestureTypeCustom) != TBGestureTypeCustom) {
+            debugLog(@"内部失败");
+            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
+                [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
+            }
+        }
+        
+        
+        // _isSimpleGesture = NO;
     }
     return;
 
@@ -121,7 +141,7 @@
     if (fabs(deltaX) < 50 && fabs(deltaY) < 50) {
         _direction = UICustomGestureRecognizerDirectionNot;
         _gestureId = @"gesture failed";
-        _isSimpleGesture = NO;
+        //_isSimpleGesture = NO;
         return;
     }else{
         if (ratioXY > 2 || ratioXY < -2) {
@@ -129,25 +149,25 @@
                 _direction = UICustomGestureRecognizerDirectionRight;
                 //_isSimpleGesture =
                 _gestureId = @"simple right";
-                _isSimpleGesture = YES;
+                //_isSimpleGesture = YES;
             }else if (deltaX < 0){
                 _direction = UICustomGestureRecognizerDirectionLeft;
                 _gestureId = @"simple left";
-                _isSimpleGesture = YES;
+                //_isSimpleGesture = YES;
             }
         }else if (ratioXY < 0.5 && ratioXY > -0.5){
             if (deltaY > 0) {
                 _direction = UICustomGestureRecognizerDirectionDown;
                 _gestureId = @"simple down";
-                _isSimpleGesture = YES;
+                //_isSimpleGesture = YES;
             }else if (deltaY < 0){
                 _direction = UICustomGestureRecognizerDirectionUp;
                 _gestureId = @"simple up";
-                _isSimpleGesture = YES;
+                //_isSimpleGesture = YES;
             }
         }else {
             _gestureId = @"gesture failed";
-            _isSimpleGesture = NO;
+            //_isSimpleGesture = NO;
         }
     }
     
@@ -213,8 +233,9 @@
             }
             _startPoint = [sender locationInView:_baseView];
             _originPoint = view.center;
+            //_myView = [[MyView alloc] initWithTint:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
             _myView = [[MyView alloc] initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) ];
-            [_myView addTint:[self eventsForTypes:_targetType]];
+            _lineView = [_myView addTint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
             [UIView animateWithDuration:Duration animations:^{
                 
                 view.transform = CGAffineTransformMakeScale(1.1, 1.1);
@@ -224,9 +245,9 @@
             //[maskEffect addSpotlightInView:self.view.superview atPoint:CGPointMake(1000, 1000) ];
             
             [_baseView addSubview:_myView];
-            _myView.path = CGPathCreateMutable();
-            _myView.isHavePath = YES;
-            CGPathMoveToPoint(_myView.path, NULL, _startPoint.x, _startPoint.y);
+            _lineView.path = CGPathCreateMutable();
+            _lineView.isHavePath = YES;
+            CGPathMoveToPoint(_lineView.path, NULL, _startPoint.x, _startPoint.y);
             _displayPoint=YES;
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateBeginAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateBeginAtPosition:_startPoint];
@@ -248,15 +269,14 @@
             }else{
                 _shouldEnd = YES;
             }
-            CGPathAddLineToPoint(_myView.path, NULL, _touchPoint.x,_touchPoint.y);
-            [_myView setNeedsDisplay];
+            CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x,_touchPoint.y);
+            [_lineView setNeedsDisplay];
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateChangedAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateChangedAtPosition:_touchPoint];
             }
         }
         else if (sender.state == UIGestureRecognizerStateEnded)
         {
-//            NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
             _touchPoint = [sender locationInView:_baseView];
             _lastPoint = [sender locationInView:_baseView];
             if (_isMoved) {
@@ -265,50 +285,27 @@
                 if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateEndAtPosition:)]) {
                     [self.recognizeDelegate gestureRecognizer:self stateEndAtPosition:_lastPoint];
                 }
-                
-    //            if ([_gestureId  isEqual: @"gesture failed"] || [_gestureId isEqualToString:@""]) {
-    //                
-    //            }else{
                 if (!_isSimpleGesture) {
-
-    //                NSMutableArray
-    //                NSMutableArray *gestures = [NSMutableArray array];
                     RLMResults *gestures;
                     if (self.customGestureIds.count) {
-    //                    for (NSString *gid in self.customGestureIds) {
-    //                        RLMGesture *gesture = [RLMGesture objectForPrimaryKey:@([gid intValue])];
-    //                        [gestures addObject:gesture];
-    //                    }
-    //                    RLMResults *gestu
                         NSMutableArray *intIds = [NSMutableArray array];
                         for (NSString *stringId in self.customGestureIds) {
                             [intIds addObject:@(stringId.intValue)];
                         }
                         gestures = [RLMGesture objectsWhere:@"objectId IN %@", intIds];
                     }
-                    
-    //                [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:_trackPoints completion:^(NSString *gestureId, NSArray *resampledGesture) {
-    //                    _gestureId = gestureId;
-    //                }];
                     RLMArray *rlmArr = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
                     [rlmArr addObjects:self.rlmPoints];
-//                    double start = [[NSDate date] timeIntervalSince1970];
-//                    NSLog(@"开始%lf",start);
-                    
                     [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:rlmArr GesturesToMatch:gestures completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
-                    
-//                        double end = [[NSDate date] timeIntervalSince1970];
-                        
-//                        NSLog(@"结束%lf 时间差%lf",end,end-start);
                         
                         if (matchResultId) {
                             debugLog(@"找到");
                             _needSimpleMatch = NO;
-                        [self.rlmPoints removeAllObjects];
+                            [self.rlmPoints removeAllObjects];
                         } else {
                             _needSimpleMatch = YES;
                             debugLog(@"找不到");
-                        [self.rlmPoints removeAllObjects];
+                            [self.rlmPoints removeAllObjects];
                         }
                         
                         if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:gestureId:recognized:)]) {
@@ -318,35 +315,18 @@
                         
                     }];
                 }
+                
                 if (_needSimpleMatch) {
-                    [self simpleDirectionRecognizer];
+                    _needSimpleMatch = YES;
+                    [self simpleEndLocationRecognizer];
                 }
-
-               
                 
                 if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
                     [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];
                 }
-                
-                
-
-
-//            
-//            
-//            
-//            
-//            
-//            
-//            _lastPoint = [sender locationInView:_baseView];
-//            
-//            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {
-//                [self.recognizeDelegate gestureRecognizer:self trackGenerate:_trackPoints];
-
             }
         
-            //[PostConnection PostGestureWithAction:@"1" UsrId:@"123" EventId:@"collection" Points:_trackPoints];//post连接
-            
-            //NSLog(@"%f",[[NSDate date]timeIntervalSince1970]);
+
             
             [UIView animateWithDuration:Duration animations:^{
                 [_myView removeFromSuperview];
