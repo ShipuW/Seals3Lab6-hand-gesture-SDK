@@ -15,6 +15,7 @@
 #import "MacroUtils.h"
 #import "Point.h"
 #import "RLMGesture.h"
+#import "RLMEvent.h"
 
 #define Duration 0.5 //长按响应时间
 
@@ -61,6 +62,50 @@
     return self;
 }
 
+
+-(void) simpleEndLocationRecognizer{
+
+    
+    if ((_lastPoint.x > _emptySideLenth) && (_lastPoint.x < (_baseView.frame.size.width - _emptySideLenth))){
+        
+        if (_lastPoint.y < _emptySideLenth) {//UP
+            _direction = UICustomGestureRecognizerDirectionUp;
+            _gestureId = @"simple up";
+            _isSimpleGesture = YES;
+        }else if (_lastPoint.y > (_baseView.frame.size.height - _emptySideLenth)){//DOWN
+            _direction = UICustomGestureRecognizerDirectionDown;
+            _gestureId = @"simple down";
+            _isSimpleGesture = YES;
+        }else{//no
+            _direction = UICustomGestureRecognizerDirectionNot;
+            _gestureId = @"gesture failed";
+            _isSimpleGesture = NO;
+        }
+        
+    }else if((_lastPoint.y > _emptySideLenth) && (_lastPoint.y < (_baseView.frame.size.height - _emptySideLenth))){
+    
+        if (_lastPoint.x < _emptySideLenth) {//LEFT
+            _direction = UICustomGestureRecognizerDirectionLeft;
+            _gestureId = @"simple left";
+            _isSimpleGesture = YES;
+        }else if(_lastPoint.x > (_baseView.frame.size.width - _emptySideLenth)){//RIGHT
+            _direction = UICustomGestureRecognizerDirectionRight;
+            _gestureId = @"simple right";
+            _isSimpleGesture = YES;
+        }else{//no
+            _direction = UICustomGestureRecognizerDirectionNot;
+            _gestureId = @"gesture failed";
+            _isSimpleGesture = NO;
+        }
+    
+    }else{//no
+        _direction = UICustomGestureRecognizerDirectionNot;
+        _gestureId = @"gesture failed";
+        _isSimpleGesture = NO;
+    }
+    return;
+
+}
 
 
 -(void) simpleDirectionRecognizer{
@@ -150,6 +195,8 @@
         }
         _baseView = _baseView.superview;
     }
+    _baseViewCenter = _baseView.center;
+    _emptySideLenth = (_baseViewCenter.x - 0)/2;
     
     
     UIView *view = (UIView *)sender.view;
@@ -167,6 +214,7 @@
             _startPoint = [sender locationInView:_baseView];
             _originPoint = view.center;
             _myView = [[MyView alloc] initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) ];
+            [_myView addTint];
             [UIView animateWithDuration:Duration animations:^{
                 
                 view.transform = CGAffineTransformMakeScale(1.1, 1.1);
@@ -323,7 +371,6 @@
     _shouldEnd = NO;
     
 }
-
 
 
 

@@ -54,34 +54,11 @@
         CGContextDrawPath(context, kCGPathStroke);
     }
 }
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [touches anyObject];
-//    CGPoint location =[touch locationInView:self];
-//    _path = CGPathCreateMutable();
-//    _isHavePath = YES;
-//    CGPathMoveToPoint(_path, NULL, location.x, location.y);
-//}
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [touches anyObject];
-//    CGPoint location = [touch locationInView:self];
-//    CGPathAddLineToPoint(_path, NULL, location.x, location.y);
-//    [self setNeedsDisplay];
-//}
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    if (_pathArray == nil) {
-//        _pathArray = [NSMutableArray array];
-//    }
-// 
-//    UIBezierPath *path = [UIBezierPath bezierPathWithCGPath:_path];
-//    MyViewModel *myViewModel = [MyViewModel viewModelWithColor:_lineColor Path:path Width:_lineWidth];
-//    [_pathArray addObject:myViewModel];
-//    
-//    CGPathRelease(_path);
-//    _isHavePath = NO;
-//}
+
+-(void) addTint{
+    
+
+}
 @end
 
 

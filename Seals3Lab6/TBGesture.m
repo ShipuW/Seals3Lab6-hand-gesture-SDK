@@ -83,7 +83,7 @@
 
     
     
-    if ((self.type & TBGestureTypeSimplePinchOUT) == TBGestureTypeSimplePinchOUT || (self.type & TBGestureTypeSimplePinchIN) == TBGestureTypeSimplePinchIN) { //pinchGesture
+    if ((self.type & TBGestureTypeSimplePinchOUT) == TBGestureTypeSimplePinchOUT || (self.type & TBGestureTypeSimplePinchIN) == TBGestureTypeSimplePinchIN) { //pinchGesture，传入双指手势
         
         self.pinchRecognizer = [[UICustomPinchGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
         //self.pinchRecognizer.tbGesture = self;
@@ -92,7 +92,7 @@
         [view addGestureRecognizer:self.pinchRecognizer];
     }
     
-    if ((self.type & 0xf) > 0 || (self.type & TBGestureTypeCustom) == TBGestureTypeCustom) {
+    if ((self.type & 0xf) > 0 || (self.type & TBGestureTypeCustom) == TBGestureTypeCustom) {//传入长按手势
         
         self.gestureRecognizer = [[UICustomGestureRecognizer alloc] initWithTarget:self action:nil type:self.type];
         self.gestureRecognizer.customGestureIds = [self.customGestureIds copy];

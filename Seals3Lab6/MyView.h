@@ -16,5 +16,8 @@
 @property (strong, nonatomic) NSMutableArray *pathArray;
 @property (assign, nonatomic) BOOL isHavePath;
 
+- (void)addTint;
+
+
 @end
 
