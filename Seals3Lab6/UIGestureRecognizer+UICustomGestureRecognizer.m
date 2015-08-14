@@ -214,7 +214,7 @@
             _startPoint = [sender locationInView:_baseView];
             _originPoint = view.center;
             _myView = [[MyView alloc] initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) ];
-            [_myView addTint];
+            [_myView addTint:[self eventsForTypes:_targetType]];
             [UIView animateWithDuration:Duration animations:^{
                 
                 view.transform = CGAffineTransformMakeScale(1.1, 1.1);

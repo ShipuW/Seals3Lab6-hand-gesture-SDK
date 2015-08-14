@@ -8,6 +8,7 @@
 
 #import "MyView.h"
 #import "MyViewModel.h"
+#import "RLMEvent.h"
 
 @interface MyView ()
 
@@ -55,8 +56,9 @@
     }
 }
 
--(void) addTint{
-    
+-(void) addTint:(NSArray*)array
+{
+    NSLog(@"%@",array);
 
 }
 @end
