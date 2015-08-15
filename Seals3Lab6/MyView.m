@@ -17,7 +17,14 @@
 
 @implementation MyView
 
-static MyView * sharedView = nil;
+static MyView *sharedView = nil;
+
++ (instancetype)sharedView {
+    static MyView *sharedInstance = nil;
+    if (!sharedInstance) {
+        sharedInstance = [MyView alloc] initWithFrame:<#(CGRect)#> tint:<#(NSArray *)#> baseViewFrame:<#(CGRect)#> emptySideLength:<#(CGFloat)#>
+    }
+}
 
 - (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength
 {
@@ -80,6 +87,7 @@ static MyView * sharedView = nil;
 //    }else
 
     _lineView = [[LineView alloc] initWithFrame:CGRectMake(0, 0, baseViewFrame.size.width, baseViewFrame.size.height) ];
+
     [self addSubview:_lineView];
     return _lineView;
     

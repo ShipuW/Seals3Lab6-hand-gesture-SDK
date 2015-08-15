@@ -235,7 +235,8 @@
             _originPoint = view.center;
             //_myView = [[MyView alloc] initWithTint:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
             
-            _myView = [[MyView alloc]initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+            _myView = [[MyView alloc]initWithFrame:CGRectfMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+             
             _lineView = [_myView baseViewFrame:_baseView.frame];
             
             [UIView animateWithDuration:Duration animations:^{
