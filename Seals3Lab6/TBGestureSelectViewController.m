@@ -270,6 +270,7 @@ static NSInteger kImageViewTag = 1024;
                 g.type = TBGestureTypeCustom;
                 g.path = (RLMArray<RLMPoint> *)resampledPoints;
                 g.rawPath = (RLMArray<RLMPoint> *)ra;
+                self.gesture = g;  //
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
                 [realm addObject:g];
@@ -289,9 +290,10 @@ static NSInteger kImageViewTag = 1024;
             }
             
             if (self.capture) {
-                rlmImage.imageData = UIImagePNGRepresentation(self.capture);
+//                rlmImage.imageData = UIImagePNGRepresentation(self.capture);
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
+                rlmImage.imageData = UIImagePNGRepresentation(self.capture);
                 [realm addOrUpdateObject:rlmImage];
                 [realm commitWriteTransaction];
             }
