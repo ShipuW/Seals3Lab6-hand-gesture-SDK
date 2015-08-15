@@ -17,89 +17,75 @@
 
 @implementation MyView
 
-- (id)initWithFrame:(CGRect)frame
+static MyView * sharedView = nil;
+
+- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength
 {
-    self = [super initWithFrame:frame];
     
-    if (self) {
-        
+    if (sharedView == nil) {
+        sharedView = [super initWithFrame:frame];
         self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-       
+        for (RLMEvent *tintDetail in array) {
+            switch (tintDetail.gestureId) {
+                case 1: {//UP
+                    //UIView *v_one = [[UIView alloc]initWithFrame:CGone];
+                    UILabel *tintViewUP=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, 0, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
+                    tintViewUP.text = tintDetail.name;
+                    tintViewUP.textAlignment = NSTextAlignmentCenter;
+                    tintViewUP.backgroundColor = [UIColor yellowColor];
+                    [self addSubview:tintViewUP];
+                    break;
+                }
+                case 2:{//DOWN
+                    UILabel *tintViewDOWN=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, baseViewFrame.size.height - emptySideLength, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
+                    tintViewDOWN.text = tintDetail.name;
+                    tintViewDOWN.textAlignment = NSTextAlignmentCenter;
+                    tintViewDOWN.backgroundColor = [UIColor yellowColor];
+                    [self addSubview:tintViewDOWN];
+                    break;
+                }
+                case 4:{//LEFT
+                    UILabel *tintViewLEFT=[[UILabel alloc]initWithFrame:CGRectMake(0, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
+                    tintViewLEFT.text = tintDetail.name;
+                    tintViewLEFT.textAlignment = NSTextAlignmentCenter;
+                    tintViewLEFT.backgroundColor = [UIColor yellowColor];
+                    [self addSubview:tintViewLEFT];
+                    break;
+                }
+                case 8:{//RIGHT
+                    UILabel *tintViewRIGHT=[[UILabel alloc]initWithFrame:CGRectMake(baseViewFrame.size.width - emptySideLength, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
+                    tintViewRIGHT.text = tintDetail.name;
+                    tintViewRIGHT.textAlignment = NSTextAlignmentCenter;
+                    tintViewRIGHT.backgroundColor = [UIColor yellowColor];
+                    [self addSubview:tintViewRIGHT];
+                    break;}
+                default:
+                    continue;
+            }
+        }
+    
     }
-    return self;
+    return sharedView;
+    
 }
 
 
 
-//- (void)drawRect:(CGRect)rect
-//{
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    [self drawView:context];
-//}
-//- (void)drawView:(CGContextRef)context
-//{
-//    for (MyViewModel *myViewModel in _pathArray) {
-//        CGContextAddPath(context, myViewModel.path.CGPath);
-//        [myViewModel.color set];
-//        CGContextSetLineWidth(context, myViewModel.width);
-//        CGContextSetLineCap(context, kCGLineCapRound);
-//        CGContextDrawPath(context, kCGPathStroke);
-//    }
-//    if (_isHavePath) {
-//        CGContextAddPath(context, _path);
-//        [_lineColor set];
-//        CGContextSetLineWidth(context, _lineWidth);
-//        CGContextSetLineCap(context, kCGLineCapRound);
-//        CGContextDrawPath(context, kCGPathStroke);
-//    }
-//}
 
--(LineView*) addTint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength
+- (LineView*) baseViewFrame:(CGRect)baseViewFrame
 {
     //NSLog(@"%@",array);
-    for (RLMEvent *tintDetail in array) {
-        switch (tintDetail.gestureId) {
-            case 1: {//UP
-                //UIView *v_one = [[UIView alloc]initWithFrame:CGone];
-                UILabel *tintViewUP=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, 0, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
-                tintViewUP.text = tintDetail.name;
-                tintViewUP.textAlignment = NSTextAlignmentCenter;
-                tintViewUP.backgroundColor = [UIColor yellowColor];
-                [self addSubview:tintViewUP];
-                break;
-            }
-            case 2:{//DOWN
-                UILabel *tintViewDOWN=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, baseViewFrame.size.height - emptySideLength, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
-                tintViewDOWN.text = tintDetail.name;
-                tintViewDOWN.textAlignment = NSTextAlignmentCenter;
-                tintViewDOWN.backgroundColor = [UIColor yellowColor];
-                [self addSubview:tintViewDOWN];
-                break;
-            }
-            case 4:{//LEFT
-                UILabel *tintViewLEFT=[[UILabel alloc]initWithFrame:CGRectMake(0, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
-                tintViewLEFT.text = tintDetail.name;
-                tintViewLEFT.textAlignment = NSTextAlignmentCenter;
-                tintViewLEFT.backgroundColor = [UIColor yellowColor];
-                [self addSubview:tintViewLEFT];
-                break;
-            }
-            case 8:{//RIGHT
-                UILabel *tintViewRIGHT=[[UILabel alloc]initWithFrame:CGRectMake(baseViewFrame.size.width - emptySideLength, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
-                tintViewRIGHT.text = tintDetail.name;
-                tintViewRIGHT.textAlignment = NSTextAlignmentCenter;
-                tintViewRIGHT.backgroundColor = [UIColor yellowColor];
-                [self addSubview:tintViewRIGHT];
-                break;}
-            default:
-                continue;
-        }
-    }
+//    if ([self viewWithTag:(13579)] != nil) {
+//        
+//    }else
+
     _lineView = [[LineView alloc] initWithFrame:CGRectMake(0, 0, baseViewFrame.size.width, baseViewFrame.size.height) ];
     [self addSubview:_lineView];
     return _lineView;
     
 }
+
+
 @end
 
 

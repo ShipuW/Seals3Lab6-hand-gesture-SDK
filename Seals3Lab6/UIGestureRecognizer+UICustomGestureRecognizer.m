@@ -234,8 +234,10 @@
             _startPoint = [sender locationInView:_baseView];
             _originPoint = view.center;
             //_myView = [[MyView alloc] initWithTint:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
-            _myView = [[MyView alloc] initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) ];
-            _lineView = [_myView addTint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+            
+            _myView = [[MyView alloc]initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+            _lineView = [_myView baseViewFrame:_baseView.frame];
+            
             [UIView animateWithDuration:Duration animations:^{
                 
                 view.transform = CGAffineTransformMakeScale(1.1, 1.1);
@@ -269,8 +271,10 @@
             }else{
                 _shouldEnd = YES;
             }
+            
             CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x,_touchPoint.y);
             [_lineView setNeedsDisplay];
+            
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateChangedAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateChangedAtPosition:_touchPoint];
             }
@@ -326,16 +330,18 @@
                 }
             }
         
-
             
+            //===================================================单例释放问题
             [UIView animateWithDuration:Duration animations:^{
                 [_myView removeFromSuperview];
+                
                 view.transform = CGAffineTransformIdentity;
                 view.alpha = 1.0;
                 if (!_contain)
                 {
                     view.center = _originPoint;
                 }
+                
             }];
             _displayPoint=NO;
             ///////实现原回调

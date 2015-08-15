@@ -11,11 +11,11 @@
 #import "TBGesture.h"
 #import "TBGMath.h"
 #import "Point.h"
-
+#import "SlopeRecognizer.h"
 #define kSamplePoints 40
 #define MIN_SCORE 0.3
 
-#define NSLog(...)
+//#define NSLog(...)
 
 @interface TBGestureRecognizer()
 
@@ -44,9 +44,13 @@
 #pragma mark --- callback
 -(void)matchGestureFrom:(RLMArray *)points GesturesToMatch:(RLMResults *)gesturesToMatch completion:(void(^) (NSString *matchResultId, RLMArray *resampledPoints)) completion
 {
+    
     RLMResults *template = gesturesToMatch ? gesturesToMatch : [RLMGesture objectsWhere:@"type = %d", 1 << 20];
     RLMArray<RLMPoint> *resampledPoints = (RLMArray<RLMPoint> *)[[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+    for (RLMGesture *templateGesture in template) {
+        NSLog(@"斜率匹配相似度：%f",[SlopeRecognizer recognize:points template:templateGesture.rawPath]);
     
+    }
     // 数量归一化
     for (int i = 0; i < kSamplePoints; i++)
         [resampledPoints addObject:points[MAX(0, (points.count-1)*i/(kSamplePoints-1))]];
@@ -94,6 +98,7 @@
     RLMGesture * bestGesture = [[RLMGesture alloc]init];
     float bestScore = INFINITY;
     for (RLMGesture *templateGesture in template) {
+       // NSLog(@"斜率匹配相似度：%f",[SlopeRecognizer recognize:points template:templateGesture.rawPath]);
         RLMArray *tmpTemplate = [[RLMArray alloc]initWithObjectClassName:@"RLMPoint"];
         [tmpTemplate addObjects:templateGesture.path];
         float score = DistanceAtBestAngle(resampledPoints, kSamplePoints, tmpTemplate);
@@ -109,6 +114,9 @@
     resampledGesture.rawPath = (RLMArray<RLMPoint> *)points;
     
     if (bestScore < MIN_SCORE) {
+        //SlopeRecognizer* slopeResult;
+        
+        //NSLog(@"斜率匹配相似度：%f",slopeResult.resultSimilarity);
         completion([@(bestGesture.objectId) stringValue], resampledPoints);
     } else {
         completion(nil, resampledPoints);

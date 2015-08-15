@@ -19,7 +19,9 @@
 //@property (assign, nonatomic) BOOL isHavePath;
 @property (strong, nonatomic) LineView *lineView;
 
-- (LineView*)addTint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;
+
+- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;
+- (LineView*) baseViewFrame:(CGRect)baseViewFrame;
 
 
 

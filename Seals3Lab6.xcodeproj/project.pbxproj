@@ -25,6 +25,7 @@
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
 		607D6AA71B7DB54F0024E643 /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 607D6AA61B7DB54F0024E643 /* LineView.m */; };
 		60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */; };
+		60DE2DEA1B7DE4B8002D17D7 /* SlopeRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */; };
 		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
 		A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5461B7A37910048F67F /* Realm.framework */; };
 		A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5481B7A37E40048F67F /* libc++.dylib */; };
@@ -103,6 +104,8 @@
 		607D6AA61B7DB54F0024E643 /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
 		60CBF23F1B79957800B5CC2B /* UICustomPinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomPinchGestureRecognizer.h; sourceTree = "<group>"; };
 		60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomPinchGestureRecognizer.m; sourceTree = "<group>"; };
+		60DE2DE81B7DE4B8002D17D7 /* SlopeRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlopeRecognizer.h; sourceTree = "<group>"; };
+		60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlopeRecognizer.m; sourceTree = "<group>"; };
 		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
 		60ECA3C11B773721005B27DF /* PostConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostConnection.h; sourceTree = "<group>"; };
 		A63EA5461B7A37910048F67F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 		600E051F1B735FC5001ACC90 /* CGSDK */ = {
 			isa = PBXGroup;
 			children = (
+				60DE2DE81B7DE4B8002D17D7 /* SlopeRecognizer.h */,
+				60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */,
 				607D6AA51B7DB54F0024E643 /* LineView.h */,
 				607D6AA61B7DB54F0024E643 /* LineView.m */,
 				600E05151B735FA9001ACC90 /* MyView.h */,
@@ -552,7 +557,7 @@
 				TargetAttributes = {
 					A6744B151B720A2E00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = TSHQXDE3V5;
+						DevelopmentTeam = 87MLRWWWW6;
 					};
 				};
 			};
@@ -627,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */,
+				60DE2DEA1B7DE4B8002D17D7 /* SlopeRecognizer.m in Sources */,
 				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
 				A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */,
 				AA1CA3101B798EE900A975CE /* FYCell.m in Sources */,
