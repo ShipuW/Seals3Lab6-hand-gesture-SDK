@@ -28,7 +28,6 @@
 		60DE2DEA1B7DE4B8002D17D7 /* SlopeRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */; };
 		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
 		A628DF911B7E2BC5007069DD /* GestureKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A628DF901B7E2BC5007069DD /* GestureKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A628DFA31B7E2BC5007069DD /* GestureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */; };
 		A628DFA41B7E2BC5007069DD /* GestureKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5461B7A37910048F67F /* Realm.framework */; };
 		A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5481B7A37E40048F67F /* libc++.dylib */; };
@@ -234,7 +233,6 @@
 				A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */,
 				A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */,
 				2961003F75C878C0D86D661A /* libPods.a in Frameworks */,
-				A628DFA31B7E2BC5007069DD /* GestureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,7 +663,7 @@
 				TargetAttributes = {
 					A628DF8B1B7E2BC5007069DD = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = TSHQXDE3V5;
+						DevelopmentTeam = 87MLRWWWW6;
 					};
 					A6744B151B720A2E00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
@@ -861,6 +859,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -883,6 +882,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1024,6 +1024,7 @@
 				A628DFA61B7E2BC5007069DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6744B111B720A2E00E222B0 /* Build configuration list for PBXProject "Seals3Lab6" */ = {
 			isa = XCConfigurationList;

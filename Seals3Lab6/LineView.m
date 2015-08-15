@@ -32,18 +32,18 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [self drawView:context];
+    _context = UIGraphicsGetCurrentContext();
+    [self drawView:_context];
 }
 - (void)drawView:(CGContextRef)context
 {
-    for (MyViewModel *myViewModel in _pathArray) {
-        CGContextAddPath(context, myViewModel.path.CGPath);
-        [myViewModel.color set];
-        CGContextSetLineWidth(context, myViewModel.width);
-        CGContextSetLineCap(context, kCGLineCapRound);
-        CGContextDrawPath(context, kCGPathStroke);
-    }
+//    for (MyViewModel *myViewModel in _pathArray) {
+//        CGContextAddPath(context, myViewModel.path.CGPath);
+//        [myViewModel.color set];
+//        CGContextSetLineWidth(context, myViewModel.width);
+//        CGContextSetLineCap(context, kCGLineCapRound);
+//        CGContextDrawPath(context, kCGPathStroke);
+//    }
     if (_isHavePath) {
         CGContextAddPath(context, _path);
         [_lineColor set];
@@ -51,6 +51,10 @@
         CGContextSetLineCap(context, kCGLineCapRound);
         CGContextDrawPath(context, kCGPathStroke);
     }
+}
+- (void)setWidth:(CGFloat)w
+{
+    CGContextSetLineWidth(_context, w);
 }
 
 

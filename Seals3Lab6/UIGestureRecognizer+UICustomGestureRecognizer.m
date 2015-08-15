@@ -17,6 +17,7 @@
 #import "Point.h"
 #import "RLMGesture.h"
 #import "RLMEvent.h"
+#import "MyViewModel.h"
 
 #define Duration 0.5 //长按响应时间
 
@@ -38,6 +39,7 @@
     _target = target;
     _action = action;
     _targetType = type;
+    _DynamicWidth = 1.0f;
     if ((_targetType & TBGestureTypeCustom) == TBGestureTypeCustom) {
         _isSimpleGesture = NO;
         _needSimpleMatch = YES;
@@ -218,7 +220,6 @@
     _baseViewCenter = _baseView.center;
     _emptySideLenth = (_baseViewCenter.x - 0)/2;
     
-    
     UIView *view = (UIView *)sender.view;
     if (_shouldEnd) {
         
@@ -232,6 +233,7 @@
                 self.trackPoints = [NSMutableArray array];
             }
             _startPoint = [sender locationInView:_baseView];
+            [self.rlmPoints addObject:[[RLMPoint alloc] initWithValue:@[@(_startPoint.x), @(_startPoint.y)]]];
             _originPoint = view.center;
             //_myView = [[MyView alloc] initWithTint:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
             
@@ -248,8 +250,10 @@
             
             [_baseView addSubview:_myView];
             _lineView.path = CGPathCreateMutable();
+            
             _lineView.isHavePath = YES;
             CGPathMoveToPoint(_lineView.path, NULL, _startPoint.x, _startPoint.y);
+            
             _displayPoint=YES;
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateBeginAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateBeginAtPosition:_startPoint];
@@ -262,25 +266,63 @@
             _isMoved = YES;
             _touchPoint = [sender locationInView:_baseView];
             view.center = CGPointMake(_originPoint.x + _touchPoint.x - _startPoint.x,_originPoint.y + _touchPoint.y - _startPoint.y);
-
             
+ //           RLMPoint *prePoint = self.rlmPoints.lastObject;
             if (_displayPoint) {
+                
                 [self.trackPoints addObject:[NSValue valueWithCGPoint:_touchPoint]];
+                
                 [self.rlmPoints addObject:[[RLMPoint alloc] initWithValue:@[@(_touchPoint.x), @(_touchPoint.y)]]];
                 //NSLog(@"CGPointZero=%@",NSStringFromCGPoint(_touchPoint));
             }else{
                 _shouldEnd = YES;
             }
+            //[_lineView.pathArray addObject:[[RLMPoint alloc] initWithValue:@[@(_touchPoint.x), @(_touchPoint.y)]]];
+            //[_lineView.pathArray addObject:[MyViewModel viewModelWithColor:[UIColor redColor] Path:_lineView.path Width:_DynamicWidth]];
+            //[_lineView.pathArray addObjectsFromArray:_trackPoints];
             
-            CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x,_touchPoint.y);
+            if ([_rlmPoints count]>10) {
+                _lineView.path = CGPathCreateMutable();
+                _lineView.isHavePath = YES;
+                CGPathMoveToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - 10] x], [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - 10] y]);
+                
+                NSInteger index = 10;
+                while (YES) {
+                    if (index == 0) {
+                        break;
+                    }
+                    CGPathAddLineToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - index] x], [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - index] y]);
+                    index--;
+                }
+
+            }else{
+                CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x, _touchPoint.y);
+            }
+               // CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x, _touchPoint.y);
+//            for ((RLMPoint*)point in _rlmPoints)
+//            {
+//                CGPathAddLineToPoint(_lineView.path, NULL, point.x, point.y);
+//            }
+            //[_lineView setWidth:(width++)];
+            //            _lineView.lineWidth = width++;
+            _DynamicWidth = _DynamicWidth + 0.1;
+//            if (_DynamicWidth > 3) {
+//                CGPathMoveToPoint(_lineView.path, NULL, _touchPoint.x,_touchPoint.y);
+//            }
+            _lineView.lineWidth = 10;
             [_lineView setNeedsDisplay];
-            
+            //_lineView.path = CGPathCreateMutable();
+            //[_lineView.path CGPathRelease];
+            //[_lineView setNeedsDisplayInRect:CGRectMake((_touchPoint.x < prePoint.x)?_touchPoint.x:prePoint.x - 20, (_touchPoint.y < prePoint.y)?_touchPoint.y:prePoint.y - 20, fabs(_touchPoint.x - prePoint.x) + 40, fabs(_touchPoint.y - prePoint.y) + 40)];
+            //====================画图动态区域调整
             if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:stateChangedAtPosition:)]) {
                 [self.recognizeDelegate gestureRecognizer:self stateChangedAtPosition:_touchPoint];
             }
         }
         else if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateFailed || sender.state == UIGestureRecognizerStateCancelled)
         {//Failed、Cancelled区别？
+            //debugLog(@"%@",_rlmPoints);
+            _DynamicWidth = 1.0f;
             _touchPoint = [sender locationInView:_baseView];
             _lastPoint = [sender locationInView:_baseView];
             if (_isMoved) {

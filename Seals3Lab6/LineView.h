@@ -13,8 +13,10 @@
 @property (assign, nonatomic) CGFloat lineWidth;
 @property (strong, nonatomic) UIColor *lineColor;
 @property (assign, nonatomic) CGMutablePathRef path;
-@property (strong, nonatomic) NSMutableArray *pathArray;
+//@property (strong, nonatomic) NSMutableArray *pathArray;
 @property (assign, nonatomic) BOOL isHavePath;
+@property (nonatomic) CGContextRef context;
 
+- (void)setWidth:(CGFloat)w;
 
 @end

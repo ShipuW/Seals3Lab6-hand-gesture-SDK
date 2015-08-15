@@ -62,6 +62,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
     CGPoint             _originPoint;
     id                  _gestureTarget;
     CGPoint             _baseViewCenter;
+    CGFloat             _DynamicWidth;
     CGFloat             _emptySideLenth;
     CGPoint             _touchPoint;
     UIView             *_touchView;
