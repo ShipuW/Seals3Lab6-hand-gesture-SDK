@@ -25,6 +25,9 @@
 		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
 		60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */; };
 		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
+		A628DF911B7E2BC5007069DD /* GestureKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A628DF901B7E2BC5007069DD /* GestureKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A628DFA31B7E2BC5007069DD /* GestureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */; };
+		A628DFA41B7E2BC5007069DD /* GestureKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5461B7A37910048F67F /* Realm.framework */; };
 		A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5481B7A37E40048F67F /* libc++.dylib */; };
 		A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA54B1B7A38060048F67F /* RLMTestObject.m */; };
@@ -65,6 +68,30 @@
 		D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E164E71B79F94E003FA975 /* UISwitch+tag.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A628DFA11B7E2BC5007069DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6744B0E1B720A2E00E222B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A628DF8B1B7E2BC5007069DD;
+			remoteInfo = GestureKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A628DFAA1B7E2BC5007069DD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A628DFA41B7E2BC5007069DD /* GestureKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
 		0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
@@ -102,6 +129,11 @@
 		60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomPinchGestureRecognizer.m; sourceTree = "<group>"; };
 		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
 		60ECA3C11B773721005B27DF /* PostConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostConnection.h; sourceTree = "<group>"; };
+		A628DF8C1B7E2BC5007069DD /* GestureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GestureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A628DF8F1B7E2BC5007069DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A628DF901B7E2BC5007069DD /* GestureKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureKit.h; sourceTree = "<group>"; };
+		A628DF9E1B7E2BC5007069DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A628DF9F1B7E2BC5007069DD /* GestureKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureKitTests.m; sourceTree = "<group>"; };
 		A63EA5461B7A37910048F67F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		A63EA5481B7A37E40048F67F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		A63EA54A1B7A38060048F67F /* RLMTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMTestObject.h; sourceTree = "<group>"; };
@@ -182,6 +214,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A628DF881B7E2BC5007069DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6744B131B720A2E00E222B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,6 +228,7 @@
 				A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */,
 				A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */,
 				2961003F75C878C0D86D661A /* libPods.a in Frameworks */,
+				A628DFA31B7E2BC5007069DD /* GestureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +306,40 @@
 				D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A628DF8D1B7E2BC5007069DD /* GestureKit */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF901B7E2BC5007069DD /* GestureKit.h */,
+				A628DF8E1B7E2BC5007069DD /* Supporting Files */,
+			);
+			path = GestureKit;
+			sourceTree = "<group>";
+		};
+		A628DF8E1B7E2BC5007069DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF8F1B7E2BC5007069DD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A628DF9C1B7E2BC5007069DD /* GestureKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF9F1B7E2BC5007069DD /* GestureKitTests.m */,
+				A628DF9D1B7E2BC5007069DD /* Supporting Files */,
+			);
+			path = GestureKitTests;
+			sourceTree = "<group>";
+		};
+		A628DF9D1B7E2BC5007069DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF9E1B7E2BC5007069DD /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A63F1B021B7787920088B299 /* AOP */ = {
@@ -349,6 +423,8 @@
 			children = (
 				A6744B181B720A2F00E222B0 /* Seals3Lab6 */,
 				A6744B351B720A2F00E222B0 /* Seals3Lab6Tests */,
+				A628DF8D1B7E2BC5007069DD /* GestureKit */,
+				A628DF9C1B7E2BC5007069DD /* GestureKitTests */,
 				A6744B171B720A2F00E222B0 /* Products */,
 				8CE9BAED14EA71DB4423A2F5 /* Pods */,
 				0C79E93D22DA6071C28761CC /* Frameworks */,
@@ -359,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				A6744B161B720A2F00E222B0 /* Seals3Lab6.app */,
+				A628DF8C1B7E2BC5007069DD /* GestureKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -516,7 +593,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A628DF891B7E2BC5007069DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A628DF911B7E2BC5007069DD /* GestureKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		A628DF8B1B7E2BC5007069DD /* GestureKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A628DFA91B7E2BC5007069DD /* Build configuration list for PBXNativeTarget "GestureKit" */;
+			buildPhases = (
+				A628DF871B7E2BC5007069DD /* Sources */,
+				A628DF881B7E2BC5007069DD /* Frameworks */,
+				A628DF891B7E2BC5007069DD /* Headers */,
+				A628DF8A1B7E2BC5007069DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GestureKit;
+			productName = GestureKit;
+			productReference = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		A6744B151B720A2E00E222B0 /* Seals3Lab6 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6744B3C1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6" */;
@@ -526,10 +632,12 @@
 				A6744B131B720A2E00E222B0 /* Frameworks */,
 				A6744B141B720A2E00E222B0 /* Resources */,
 				7535C3574BB9150DDA93F8BF /* Copy Pods Resources */,
+				A628DFAA1B7E2BC5007069DD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A628DFA21B7E2BC5007069DD /* PBXTargetDependency */,
 			);
 			name = Seals3Lab6;
 			productName = Seals3Lab6;
@@ -545,6 +653,10 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Veight Zhou";
 				TargetAttributes = {
+					A628DF8B1B7E2BC5007069DD = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = TSHQXDE3V5;
+					};
 					A6744B151B720A2E00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = TSHQXDE3V5;
@@ -565,11 +677,19 @@
 			projectRoot = "";
 			targets = (
 				A6744B151B720A2E00E222B0 /* Seals3Lab6 */,
+				A628DF8B1B7E2BC5007069DD /* GestureKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A628DF8A1B7E2BC5007069DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6744B141B720A2E00E222B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -617,6 +737,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A628DF871B7E2BC5007069DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6744B121B720A2E00E222B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -675,6 +802,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A628DFA21B7E2BC5007069DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A628DF8B1B7E2BC5007069DD /* GestureKit */;
+			targetProxy = A628DFA11B7E2BC5007069DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		A6744B261B720A2F00E222B0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -695,6 +830,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A628DFA51B7E2BC5007069DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GestureKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A628DFA61B7E2BC5007069DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = GestureKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		A6744B3A1B720A2F00E222B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -822,6 +1005,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A628DFA91B7E2BC5007069DD /* Build configuration list for PBXNativeTarget "GestureKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A628DFA51B7E2BC5007069DD /* Debug */,
+				A628DFA61B7E2BC5007069DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A6744B111B720A2E00E222B0 /* Build configuration list for PBXProject "Seals3Lab6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

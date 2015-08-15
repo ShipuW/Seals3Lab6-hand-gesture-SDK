@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>GestureKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Seals3Lab6.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A628DF8B1B7E2BC5007069DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A628DF951B7E2BC5007069DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A6744B151B720A2E00E222B0</key>
 		<dict>
 			<key>primary</key>
