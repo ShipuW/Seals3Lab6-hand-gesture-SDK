@@ -8,15 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class LineView;
+
 @interface MyView : UIView
 
-@property (assign, nonatomic) CGFloat lineWidth;
-@property (strong, nonatomic) UIColor *lineColor;
-@property (assign, nonatomic) CGMutablePathRef path;
-@property (strong, nonatomic) NSMutableArray *pathArray;
-@property (assign, nonatomic) BOOL isHavePath;
+//@property (assign, nonatomic) CGFloat lineWidth;
+//@property (strong, nonatomic) UIColor *lineColor;
+//@property (assign, nonatomic) CGMutablePathRef path;
+//@property (strong, nonatomic) NSMutableArray *pathArray;
+//@property (assign, nonatomic) BOOL isHavePath;
+@property (strong, nonatomic) LineView *lineView;
 
-- (void)addTint;
+
+- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;
+- (LineView*) baseViewFrame:(CGRect)baseViewFrame;
+
 
 
 @end
