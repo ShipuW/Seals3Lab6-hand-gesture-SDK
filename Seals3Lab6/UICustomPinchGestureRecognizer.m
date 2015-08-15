@@ -7,7 +7,7 @@
 //
 #import "TBGesture.h"
 #import "UICustomPinchGestureRecognizer.h"
-
+#import "MyViewModel.h"
 @implementation UICustomPinchGestureRecognizer:UIPinchGestureRecognizer
 
 
