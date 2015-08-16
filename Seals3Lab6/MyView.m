@@ -84,12 +84,21 @@
 //    }else
 
     LineView *lineView = [[LineView alloc] initWithFrame:CGRectMake(0, 0, baseViewFrame.size.width, baseViewFrame.size.height) ];
-
-    [self addSubview:lineView];
+    [self.lineViews addObject:lineView];
+    for (LineView *lineview in _lineViews) {
+        [self addSubview:lineview];
+    }
+    
     return lineView;
     
 }
 
+- (NSMutableArray *)lineViews {
+    if (!_lineViews) {
+        _lineViews = [NSMutableArray array];
+    }
+    return _lineViews;
+}
 
 - (void) removeAllLineView{
     NSArray *subviews = [self subviews];
@@ -99,9 +108,13 @@
         {
             [tmpView removeFromSuperview];
             tmpView = nil;
+            
         }
     }
-
+    _lineViews = nil;
+    if (!_lineViews) {
+        _lineViews = [NSMutableArray array];
+    }
 }
 
 @end

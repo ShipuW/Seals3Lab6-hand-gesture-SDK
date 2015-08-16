@@ -18,7 +18,7 @@
 //@property (strong, nonatomic) NSMutableArray *pathArray;
 //@property (assign, nonatomic) BOOL isHavePath;
 //@property (strong, nonatomic) LineView *lineView;
-
+@property (strong, nonatomic) NSMutableArray *lineViews;
 
 + (instancetype)sharedView;
 - (void)updateWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;

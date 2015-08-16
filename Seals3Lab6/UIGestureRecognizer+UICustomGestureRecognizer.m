@@ -259,6 +259,7 @@
         
         if (sender.state == UIGestureRecognizerStateBegan)
         {
+            //[_myView removeAllLineView];
             [_rlmPoints removeAllObjects];
             _isMoved = NO;
             _direction = UICustomGestureRecognizerDirectionNot;
