@@ -201,9 +201,9 @@ static NSInteger kImageViewTag = 1024;
     }
 
     if (section == kTableViewSectionCustomGesture) {
-        if (self.gesture.type == TBGestureTypeCustom) {
-            return;
-        }
+//        if (self.gesture.type == TBGestureTypeCustom) {
+//            return;
+//        }
         TBCreateGesture* createGesture = [[TBCreateGesture alloc] init];
 //        createGesture.frame = CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height-40);
         createGesture.frame = CGRectMake(0, 20, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds));
