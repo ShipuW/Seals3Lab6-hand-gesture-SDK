@@ -1,9 +1,9 @@
 //
-//  FYTestView.m
-//  TouchTracker
+//  SmoothLineView.m
+//  Smooth Line View
 //
-//  Created by feiyangzhang on 15/8/7.
-//  Copyright (c) 2015年 feiyangzhang. All rights reserved.
+//  Created by Levi Nunnink on 8/15/11.
+//  Copyright 2011 culturezoo. All rights reserved.
 //
 
 #import "TBCreateGesture.h"
@@ -12,24 +12,34 @@
 #import "TBGesture.h"
 #import "TBDataManager.h"
 #import "TBGEvent.h"
+#import <QuartzCore/QuartzCore.h>
 #import "Point.h"
-@interface TBCreateGesture()<UIAlertViewDelegate>
+
+#define DEFAULT_COLOR [UIColor blueColor]
+#define DEFAULT_WIDTH 10.0f
+#define BEGIN_POINT_RADIUS 10
+#define MIN_POINTS 20
+
+@interface TBCreateGesture ()
+
+#pragma mark Private Helper function
+
+CGPoint midPoint(CGPoint p1, CGPoint p2);
 @property(nonatomic,weak) UILabel* createOperation;
 @property(nonatomic,weak) UILabel* operation;
-@property(nonatomic,strong) NSMutableArray* pointArray;
 @property(nonatomic,weak) UILabel* label;
+@property(nonatomic,strong) NSMutableArray* points;
 
-@property (nonatomic, strong) NSMutableArray *points;
 @end
 
 @implementation TBCreateGesture
 
--(NSMutableArray *)pointArray
+#pragma mark -
+
+-(void)setup
 {
-    if (_pointArray == nil) {
-        _pointArray = [NSMutableArray array];
-    }
-    return _pointArray;
+    self.lineWidth = DEFAULT_WIDTH;
+    self.lineColor = DEFAULT_COLOR;
 }
 
 - (NSMutableArray *)points {
@@ -39,33 +49,29 @@
     return _points;
 }
 
--(instancetype)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
-        
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor grayColor];
+
         //给视图添加两个label，用于说明
         UILabel* label1 = [[UILabel alloc] init];
         label1.text = @"创建新手势";
         label1.textAlignment = NSTextAlignmentCenter;
         self.createOperation = label1;
         [self addSubview:label1];
-        
+
         UILabel* label2 = [[UILabel alloc] init];
         label2.backgroundColor = [UIColor grayColor];
         self.operation = label2;
         [self addSubview:label2];
-        
-        
-        //设置绘图颜色、透明度、线宽
-        self.backgroundColor = [UIColor lightGrayColor];
-//        self.alpha = 0.5;
-        _lineColor = [UIColor blueColor];
-        _lineWidth = 20.0f;
-        
+
         //添加点击事件，如果是点击事件，直接消失画板
         UITapGestureRecognizer* tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [self addGestureRecognizer:tapGr];
-        
+
+        [self setup];
     }
     return self;
 }
@@ -75,13 +81,13 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    
+
     CGFloat x = 0;
     CGFloat y = 0;
     CGFloat w = self.frame.size.width;
     CGFloat h = 20;
     self.createOperation.frame = CGRectMake(x, y, w, h);
-    
+
     self.operation.frame = CGRectMake(x, CGRectGetMaxY(self.createOperation.frame), w, 25);
 }
 
@@ -89,87 +95,106 @@
 {
     [self removeFromSuperview];
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(id)initWithCoder:(NSCoder *)aDecoder
 {
-    if (self.pointArray.count) {
-        [self.pointArray removeAllObjects];
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
     }
+    return self;
+}
+
+#pragma mark Private Helper function
+
+CGPoint midPoint(CGPoint p1, CGPoint p2)
+{
+    return CGPointMake((p1.x + p2.x) * 0.5, (p1.y + p2.y) * 0.5);
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+
+    UITouch *touch = [touches anyObject];
+
     if (self.points.count) {
         [self.points removeAllObjects];
     }
-    UITouch *touch = [touches anyObject];
-    CGPoint location =[touch locationInView:self];
-    
-    
-    _path = CGPathCreateMutable();
-    _isHavePath = YES;
-    CGPathMoveToPoint(_path, NULL, location.x, location.y);
-    [self setNeedsDisplay];
-    
-    
-    
-    [self.pointArray addObject:[NSValue valueWithCGPoint:location]];
-    [self.points addObject:[[RLMPoint alloc] initWithCGPoint:location]];
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
+
     CGPoint location = [touch locationInView:self];
-    CGPathAddLineToPoint(_path, NULL, location.x, location.y);
-    //    NSLog(@"%@",NSStringFromCGPoint(location));
-    
-    [self.pointArray addObject:[NSValue valueWithCGPoint:location]];
     [self.points addObject:[[RLMPoint alloc] initWithCGPoint:location]];
     [self setNeedsDisplay];
+
+    previousPoint1 = [touch previousLocationInView:self];
+    previousPoint2 = [touch previousLocationInView:self];
+    currentPoint = [touch locationInView:self];
+
+    [self touchesMoved:touches withEvent:event];
 }
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+    UITouch *touch  = [touches anyObject];
+    /**
+     *  采集点数
+     */
+    CGPoint location = [touch locationInView:self];
+    [self.points addObject:[[RLMPoint alloc] initWithCGPoint:location]];
+
+    previousPoint2  = previousPoint1;
+    previousPoint1  = [touch previousLocationInView:self];
+    currentPoint    = [touch locationInView:self];
+
+    // calculate mid point
+    CGPoint mid1    = midPoint(previousPoint1, previousPoint2);
+    CGPoint mid2    = midPoint(currentPoint, previousPoint1);
+
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, mid1.x, mid1.y);
+    CGPathAddQuadCurveToPoint(path, NULL, previousPoint1.x, previousPoint1.y, mid2.x, mid2.y);
+    CGRect bounds = CGPathGetBoundingBox(path);
+    CGPathRelease(path);
+
+    CGRect drawBox = bounds;
+
+    //Pad our values so the bounding box respects our line width
+    drawBox.origin.x        -= self.lineWidth * 1;
+    drawBox.origin.y        -= self.lineWidth * 1;
+    drawBox.size.width      += self.lineWidth * 2;
+    drawBox.size.height     += self.lineWidth * 2;
+
+    UIGraphicsBeginImageContext(drawBox.size);
+	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
+	curImage = UIGraphicsGetImageFromCurrentImageContext();
+    [[UIColor blueColor] set];
+	UIGraphicsEndImageContext();
+
+    [self setNeedsDisplayInRect:drawBox];
+
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self];
-    CGPathAddLineToPoint(_path, NULL, location.x, location.y);
-    
-//    NSLog(@"%@",self.pointArray);
-    //处理path
-    /**
-     *
-     */
+    if (self.points.count<MIN_POINTS) {
+        [self.points removeAllObjects];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"您画的点数太少，请多画一些" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }else{
     self.capture = [self clipImageOn:self.frame];
 
     if ([self.delegate respondsToSelector:@selector(gestureDidDrawAtPosition:)]) {
         [self.delegate gestureDidDrawAtPosition:[self.points copy]];
     }
-    
-    [self.pointArray removeAllObjects];
-    
+
     [self removeFromSuperview];
-    CGPathRelease(_path);
-    _isHavePath = NO;
+    }
 }
-
-//截图
--(void)clipImage:(NSString*)guestureId
-{
-    UIGraphicsBeginImageContext(self.frame.size);
-    CGRect r = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-30);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    UIRectClip(r);
-    [self.layer renderInContext:context];
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    //保存
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",guestureId]];   // 保存文件的名称
-    [UIImagePNGRepresentation(theImage) writeToFile:filePath atomically:YES]; // 保存成功会返回YES
-    
-}
-
 
 - (UIImage *)clipImageOn:(CGRect)frame {
     UIGraphicsBeginImageContext(self.frame.size);
-    CGRect r ;//= CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-30);
-    r = frame;
+
+    CGRect r = CGRectMake(0, 45, self.bounds.size.width, self.bounds.size.height-30);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     UIRectClip(r);
@@ -179,56 +204,44 @@
     return theImage;
 }
 
--(void)alertFail
-{
-    UILabel* label = [[UILabel alloc] init];
-    label.backgroundColor = [UIColor clearColor];
-    label.text = @"您输入的手势已被占用，请重新输入";
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    label.frame = self.bounds;
-    self.label = label;
-    [self addSubview:label];
-    label.alpha = 0.0;
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        label.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 animations:^{
-            label.alpha = 0.0;
-        }];
-    }];
-    self.label = nil;
-}
-
-/**
- *  画图
- *
- *  @param rect 绘图区域
- */
--(void)drawRect:(CGRect)rect
+- (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     //起点画圆
-    if (self.pointArray.count) {
+    if (self.points.count) {
         CGContextSaveGState(context);
-        NSValue* p = [self.pointArray firstObject];
-        CGPoint location = [p CGPointValue];
+        RLMPoint* p = [self.points firstObject];
         [[UIColor redColor] set];
-        CGContextAddArc(context, location.x, location.y, 30, 0, 2*M_PI, 0); //添加一个圆
+        CGContextAddArc(context, p.x, p.y, BEGIN_POINT_RADIUS, 0, 2*M_PI, 0); //添加一个圆
         CGContextDrawPath(context, kCGPathFill);//绘制填充
         CGContextRestoreGState(context);
     }
-    [self drawView:context];
+
+    [curImage drawAtPoint:CGPointMake(0, 0)];
+    CGPoint mid1 = midPoint(previousPoint1, previousPoint2);
+    CGPoint mid2 = midPoint(currentPoint, previousPoint1);
+
+
+    [self.layer renderInContext:context];
+
+    CGContextMoveToPoint(context, mid1.x, mid1.y);
+    CGContextAddQuadCurveToPoint(context, previousPoint1.x, previousPoint1.y, mid2.x, mid2.y);
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextSetLineWidth(context, self.lineWidth);
+    CGContextSetStrokeColorWithColor(context, self.lineColor.CGColor);
+
+    CGContextStrokePath(context);
+
+    [super drawRect:rect];
+
+    curImage = nil;
+
 }
--(void)drawView:(CGContextRef)context
+
+- (void)dealloc
 {
-    if (_isHavePath) {
-        CGContextAddPath(context, _path);
-        [_lineColor set];
-        CGContextSetLineWidth(context, _lineWidth);
-        CGContextSetLineCap(context, kCGLineCapRound);
-        CGContextDrawPath(context, kCGPathStroke);
-    }
+    self.lineColor = nil;
 }
+
+@synthesize lineColor,lineWidth;
 @end
