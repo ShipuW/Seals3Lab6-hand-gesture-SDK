@@ -31,15 +31,18 @@
 }
 
 - (void)updateWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength {
-    
+        _emptyView = 0;
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
         for (RLMEvent *tintDetail in array) {
             switch (tintDetail.gestureId) {
                 case 1: {//UP
+                    _emptyView = _emptyView | (1 << 0) | (1 << 1);
                     //UIView *v_one = [[UIView alloc]initWithFrame:CGone];
                     UILabel *tintViewUP=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, 0, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
                     tintViewUP.textColor = [UIColor whiteColor];
+                    //tintViewUP.
+                    //tintViewUP.layer.borderWidth = 0;
                     tintViewUP.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
                     tintViewUP.text = tintDetail.name;
                     tintViewUP.textAlignment = NSTextAlignmentCenter;
@@ -47,6 +50,7 @@
                     break;
                 }
                 case 2:{//DOWN
+                    _emptyView = _emptyView | (1 << 2) | (1 << 3);
                     UILabel *tintViewDOWN=[[UILabel alloc] initWithFrame:CGRectMake(emptySideLength, baseViewFrame.size.height - emptySideLength, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
                     tintViewDOWN.textColor = [UIColor whiteColor];
                     tintViewDOWN.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
@@ -56,6 +60,7 @@
                     break;
                 }
                 case 4:{//LEFT
+                    _emptyView = _emptyView | (1 << 0) | (1 << 2);
                     UILabel *tintViewLEFT=[[UILabel alloc]initWithFrame:CGRectMake(0, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
                     tintViewLEFT.textColor = [UIColor whiteColor];
                     tintViewLEFT.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
@@ -65,6 +70,7 @@
                     break;
                 }
                 case 8:{//RIGHT
+                    _emptyView = _emptyView | (1 << 1) | (1 << 3);
                     UILabel *tintViewRIGHT=[[UILabel alloc]initWithFrame:CGRectMake(baseViewFrame.size.width - emptySideLength, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
                     tintViewRIGHT.textColor = [UIColor whiteColor];
                     tintViewRIGHT.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
@@ -72,11 +78,32 @@
                     tintViewRIGHT.textAlignment = NSTextAlignmentCenter;
 
                     [self addSubview:tintViewRIGHT];
-                    break;}
+                    break;
+                }
                 default:
                     continue;
             }
         }
+    if (_emptyView & (1 << 0)) {
+        UIView *tintViewEmpty=[[UIView alloc]initWithFrame:CGRectMake(0, 0, emptySideLength, emptySideLength)];
+        tintViewEmpty.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+        [self addSubview:tintViewEmpty];
+    }
+    if (_emptyView & (1 << 1)) {
+        UIView *tintViewEmpty=[[UIView alloc]initWithFrame:CGRectMake(baseViewFrame.size.width - emptySideLength, 0, emptySideLength, emptySideLength)];
+        tintViewEmpty.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+        [self addSubview:tintViewEmpty];
+    }
+    if (_emptyView & (1 << 2)) {
+        UIView *tintViewEmpty=[[UIView alloc]initWithFrame:CGRectMake(0, baseViewFrame.size.height - emptySideLength, emptySideLength, emptySideLength)];
+        tintViewEmpty.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+        [self addSubview:tintViewEmpty];
+    }
+    if (_emptyView & (1 << 3)) {
+        UIView *tintViewEmpty=[[UIView alloc]initWithFrame:CGRectMake(baseViewFrame.size.width - emptySideLength, baseViewFrame.size.height - emptySideLength, emptySideLength, emptySideLength)];
+        tintViewEmpty.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+        [self addSubview:tintViewEmpty];
+    }
 }
 
 
