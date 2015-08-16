@@ -15,7 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Point.h"
 
-#define DEFAULT_COLOR [UIColor blueColor]
+#define DEFAULT_COLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 #define DEFAULT_WIDTH 10.0f
 #define BEGIN_POINT_RADIUS 10
 #define MIN_POINTS 20
@@ -39,7 +39,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
 -(void)setup
 {
     self.lineWidth = DEFAULT_WIDTH;
-    self.lineColor = DEFAULT_COLOR;
+    self.lineColor = DEFAULT_COLOR(255, 68, 0);
 }
 
 - (NSMutableArray *)points {
@@ -211,9 +211,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     if (self.points.count) {
         CGContextSaveGState(context);
         RLMPoint* p = [self.points firstObject];
-        [[UIColor redColor] set];
+        [DEFAULT_COLOR(255, 68, 0) set];
         CGContextAddArc(context, p.x, p.y, BEGIN_POINT_RADIUS, 0, 2*M_PI, 0); //添加一个圆
         CGContextDrawPath(context, kCGPathFill);//绘制填充
+        CGContextAddArc(context, p.x, p.y, BEGIN_POINT_RADIUS+2, 0, 2*M_PI, 0);
+        CGContextDrawPath(context, kCGPathStroke);
         CGContextRestoreGState(context);
     }
 
