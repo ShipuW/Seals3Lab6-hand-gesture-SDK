@@ -19,6 +19,7 @@
 #define DEFAULT_WIDTH 10.0f
 #define BEGIN_POINT_RADIUS 10
 #define MIN_POINTS 20
+#define MAX_POINTS 300
 
 @interface TBCreateGesture ()
 
@@ -141,6 +142,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
      */
     CGPoint location = [touch locationInView:self];
     [self.points addObject:[[RLMPoint alloc] initWithCGPoint:location]];
+    if (self.points.count>MAX_POINTS) {
+        [self.points removeAllObjects];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"您画的点数太多啦！，请少画一些" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
 
     previousPoint2  = previousPoint1;
     previousPoint1  = [touch previousLocationInView:self];
