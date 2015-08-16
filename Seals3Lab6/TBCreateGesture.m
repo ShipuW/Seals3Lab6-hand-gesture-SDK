@@ -12,7 +12,8 @@
 
 #define DEFAULT_COLOR [UIColor blueColor]
 #define DEFAULT_WIDTH 10.0f
-#define BEGIN_POINT_RADIUS 20
+#define BEGIN_POINT_RADIUS 10
+#define MIN_POINTS 20
 
 @interface TBCreateGesture ()
 
@@ -170,7 +171,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    if (self.points.count<MIN_POINTS) {
+        [self.points removeAllObjects];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"您画的点数太少，请多画一些" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }else{
     self.capture = [self clipImageOn:self.frame];
     
     if ([self.delegate respondsToSelector:@selector(gestureDidDrawAtPosition:)]) {
@@ -178,7 +183,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     }
 
     [self removeFromSuperview];
+    }
 }
+
 - (UIImage *)clipImageOn:(CGRect)frame {
     UIGraphicsBeginImageContext(self.frame.size);
     CGRect r = CGRectMake(0, 45, self.bounds.size.width, self.bounds.size.height-30);
