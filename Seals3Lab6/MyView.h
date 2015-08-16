@@ -20,6 +20,7 @@
 @property (strong, nonatomic) LineView *lineView;
 
 
++ (instancetype)sharedView;
 - (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;
 - (LineView*) baseViewFrame:(CGRect)baseViewFrame;
 

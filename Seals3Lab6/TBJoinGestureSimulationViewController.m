@@ -7,7 +7,7 @@
 //
 
 #import "TBJoinGestureSimulationViewController.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "TBGesture.h"
 
 @interface TBJoinGestureSimulationViewController () <TBGestureDelegate>
@@ -27,7 +27,7 @@
     self.testView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.testView];
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGEvent *event = [[TBGEvent alloc] initWithEventType:TBEventTypeCollect];
     TBGesture *gesture = [TBGesture gestureForEvent:event];
     [gesture addToView:self.testView completion:^(NSError *error) {
         
@@ -35,7 +35,7 @@
     
     gesture.delegate = self;
     
-    TBEvent *e2 = [[TBEvent alloc] initWithEventType:TBEventTypeShare];
+    TBGEvent *e2 = [[TBGEvent alloc] initWithEventType:TBEventTypeShare];
     TBGesture *g2 = [TBGesture gestureForEvent:e2];
     [g2 addToView:self.testView completion:^(NSError *error) {
         

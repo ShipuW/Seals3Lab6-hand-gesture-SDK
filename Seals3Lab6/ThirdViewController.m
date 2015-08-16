@@ -8,7 +8,7 @@
 
 #import "ThirdViewController.h"
 #import "TBGesture.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 @interface ThirdViewController () <TBGestureDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
@@ -37,7 +37,7 @@
     
     
     
-//    TBEvent *event = [[TBEvent alloc] initWithEvent
+//    TBGEvent *event = [[TBGEvent alloc] initWithEvent
     TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
 //    gesture.type = TBGestureTypeSimpleUP;
     gesture.delegate = self;
@@ -86,7 +86,7 @@
 */
 
 
-- (void)recogizedEvent:(TBEvent *)event {
+- (void)recogizedEvent:(TBGEvent *)event {
 //   NSLog(@"end%f",[[NSDate date]timeIntervalSince1970]);
 //    NSLog(@"%@", event.name);
     NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];

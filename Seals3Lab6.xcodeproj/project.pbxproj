@@ -48,7 +48,7 @@
 		A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B431B720A5400E222B0 /* ThirdViewController.m */; };
 		A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B461B720A6100E222B0 /* ForthViewController.m */; };
 		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
-		A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBEvent.m */; };
+		A6744B591B7217FB00E222B0 /* TBGEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBGEvent.m */; };
 		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
 		A68489B21B7C513F00983751 /* RLMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68489B11B7C513F00983751 /* RLMImage.m */; };
 		A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */; };
@@ -176,8 +176,8 @@
 		A6744B461B720A6100E222B0 /* ForthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthViewController.m; sourceTree = "<group>"; };
 		A6744B541B7217EE00E222B0 /* TBGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGesture.h; sourceTree = "<group>"; };
 		A6744B551B7217EE00E222B0 /* TBGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGesture.m; sourceTree = "<group>"; };
-		A6744B571B7217FB00E222B0 /* TBEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEvent.h; sourceTree = "<group>"; };
-		A6744B581B7217FB00E222B0 /* TBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEvent.m; sourceTree = "<group>"; };
+		A6744B571B7217FB00E222B0 /* TBGEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGEvent.h; sourceTree = "<group>"; };
+		A6744B581B7217FB00E222B0 /* TBGEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGEvent.m; sourceTree = "<group>"; };
 		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
 		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
 		A68489B01B7C513F00983751 /* RLMImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMImage.h; sourceTree = "<group>"; };
@@ -376,8 +376,8 @@
 			children = (
 				A6744B541B7217EE00E222B0 /* TBGesture.h */,
 				A6744B551B7217EE00E222B0 /* TBGesture.m */,
-				A6744B571B7217FB00E222B0 /* TBEvent.h */,
-				A6744B581B7217FB00E222B0 /* TBEvent.m */,
+				A6744B571B7217FB00E222B0 /* TBGEvent.h */,
+				A6744B581B7217FB00E222B0 /* TBGEvent.m */,
 				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
 				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
 				A63EA54A1B7A38060048F67F /* RLMTestObject.h */,
@@ -773,7 +773,7 @@
 				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
 				A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */,
 				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
-				A6744B591B7217FB00E222B0 /* TBEvent.m in Sources */,
+				A6744B591B7217FB00E222B0 /* TBGEvent.m in Sources */,
 				A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */,
 				A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */,
 				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,

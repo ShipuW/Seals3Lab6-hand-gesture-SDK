@@ -17,11 +17,18 @@
 
 @implementation MyView
 
-static MyView * sharedView = nil;
+static MyView *sharedView = nil;
 
-- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength
-{
-    
++ (instancetype)sharedView {
+    static MyView *sharedInstance = nil;
+    if (!sharedInstance) {
+//        sharedInstance = [MyView alloc] initWithFrame:[UIScreen mainScreen].bounds tint:nil baseViewFrame:[UIScreen mainScreen].bounds emptySideLength:<#(CGFloat)#>
+        sharedInstance = [[MyView alloc] init];
+    }
+    return sharedInstance;
+}
+
+- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength {
     if (sharedView == nil) {
         sharedView = [super initWithFrame:frame];
         self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
@@ -37,7 +44,7 @@ static MyView * sharedView = nil;
                     break;
                 }
                 case 2:{//DOWN
-                    UILabel *tintViewDOWN=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, baseViewFrame.size.height - emptySideLength, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
+                    UILabel *tintViewDOWN=[[UILabel alloc] initWithFrame:CGRectMake(emptySideLength, baseViewFrame.size.height - emptySideLength, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
                     tintViewDOWN.text = tintDetail.name;
                     tintViewDOWN.textAlignment = NSTextAlignmentCenter;
                     tintViewDOWN.backgroundColor = [UIColor yellowColor];
@@ -80,6 +87,7 @@ static MyView * sharedView = nil;
 //    }else
 
     _lineView = [[LineView alloc] initWithFrame:CGRectMake(0, 0, baseViewFrame.size.width, baseViewFrame.size.height) ];
+
     [self addSubview:_lineView];
     return _lineView;
     

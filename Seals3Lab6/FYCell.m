@@ -9,7 +9,7 @@
 #import "FYEventData.h"
 #import "FYCreateGesture.h"
 #import "FYCell.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 @interface FYCell()
 @property(nonatomic,weak) UIImageView* icon;
 @property(nonatomic,weak) UILabel* eventName;

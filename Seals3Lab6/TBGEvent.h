@@ -1,5 +1,5 @@
 //
-//  TBEvent.h
+//  TBGEvent.h
 //  Seals3Lab6
 //
 //  Created by Veight Zhou on 8/5/15.
@@ -17,7 +17,7 @@ typedef NS_OPTIONS(NSInteger, TBEventType) {
 };
 
 
-@interface TBEvent : NSObject
+@interface TBGEvent : NSObject
 
 @property (nonatomic, copy) NSString *objectId;
 @property (nonatomic, assign, getter=isEnabled) BOOL enabled;
@@ -29,8 +29,8 @@ typedef NS_OPTIONS(NSInteger, TBEventType) {
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
 
-- (void)removeEvent:(TBEvent *)event completion:(void (^)(NSError *error))completion;;
-- (void)removeEventWithId:(NSString *)eventId completion:(void (^)(NSError *error))completion;;
+- (void)removeEvent:(TBGEvent *)event completion:(void (^)(NSError *error))completion;
+- (void)removeEventWithId:(NSString *)eventId completion:(void (^)(NSError *error))completion;
 
 + (NSArray *)allEvents;
 

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TBEvent.h"
+#import "TBGEvent.h"
 
-@class TBEvent;
+@class TBGEvent;
 @class TBGesture;
 @class UICustomGestureRecognizer;
 @class UICustomPinchGestureRecognizer;
@@ -29,11 +29,11 @@ typedef NS_ENUM(NSUInteger , TBGestureType) {
 @protocol TBGestureDelegate <NSObject>
 
 // 测试打通
-- (void)recogizedEvent:(TBEvent *)event;
+- (void)recogizedEvent:(TBGEvent *)event;
 
 @optional
-- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;
-- (void)collectionView:(UICollectionView *)collectionView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBGEvent *)event atIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(UICollectionView *)collectionView gesture:(TBGesture *)gesture forEvent:(TBGEvent *)event atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -60,9 +60,9 @@ typedef NS_ENUM(NSUInteger , TBGestureType) {
 
 - (void)addToView:(UIView *)view completion:(void (^)(NSError *error))completion;
 
-+ (instancetype)gestureForEvent:(TBEvent *)event;
++ (instancetype)gestureForEvent:(TBGEvent *)event;
 + (instancetype)gestureForEventId:(NSString *)eventId;
-//+ (NSArray *)gesturesForEvent:(TBEvent *)event;
+//+ (NSArray *)gesturesForEvent:(TBGEvent *)event;
 //+ (NSArray *)gesturesForEventId:(NSString *)eventId;
 
 //- (instancetype)initWithEventsType:(TBEventType)types;

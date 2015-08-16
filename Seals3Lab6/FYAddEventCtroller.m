@@ -9,7 +9,7 @@
 #import "FYAddEventCtroller.h"
 #import "FYCreateGesture.h"
 #import "UISwitch+tag.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "TBGesture.h"
 #import "TBDataManager.h"
 #import "FYEventData.h"
@@ -52,7 +52,7 @@
     if (self.guestArray.count>0) {
         [self.guestArray removeAllObjects];
     }
-    NSArray* array = [[[TBEvent alloc] init] canSelectedGestures];
+    NSArray* array = [[[TBGEvent alloc] init] canSelectedGestures];
     for (TBGesture*gesture in array) {
         [self.guestArray addObject:gesture];
     }
