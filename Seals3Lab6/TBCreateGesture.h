@@ -1,9 +1,9 @@
 //
-//  FYTestView.h
-//  TouchTracker
+//  SmoothLineView.h
+//  Smooth Line View
 //
-//  Created by feiyangzhang on 15/8/7.
-//  Copyright (c) 2015年 feiyangzhang. All rights reserved.
+//  Created by Levi Nunnink on 8/15/11.
+//  Copyright 2011 culturezoo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,17 +14,18 @@
 
 @end
 
-@interface TBCreateGesture : UIView
-
-@property (assign, nonatomic) CGFloat lineWidth;
-@property (strong, nonatomic) UIColor *lineColor;
-@property (assign, nonatomic) CGMutablePathRef path;
-@property (assign, nonatomic) BOOL isHavePath;
-
-@property (nonatomic, strong) UIImage *capture;
-
-@property (nonatomic, weak) id<TBGestureDrawDelegate> delegate;
-
-- (UIImage *)clipImageOn:(CGRect)frame;
+@interface TBCreateGesture : UIView {
+    @private
+    CGPoint currentPoint;
+    CGPoint previousPoint1;
+    CGPoint previousPoint2;
+    CGFloat lineWidth;
+    UIColor *lineColor;
+    UIImage *curImage;
+}
+@property (nonatomic, retain) UIColor *lineColor;
+@property (readwrite) CGFloat lineWidth;
+@property(nonatomic,strong) UIImage* capture;
+@property(nonatomic,weak) id<TBGestureDrawDelegate> delegate;
 
 @end
