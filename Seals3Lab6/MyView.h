@@ -17,13 +17,13 @@
 //@property (assign, nonatomic) CGMutablePathRef path;
 //@property (strong, nonatomic) NSMutableArray *pathArray;
 //@property (assign, nonatomic) BOOL isHavePath;
-@property (strong, nonatomic) LineView *lineView;
+//@property (strong, nonatomic) LineView *lineView;
 
 
 + (instancetype)sharedView;
-- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;
-- (LineView*) baseViewFrame:(CGRect)baseViewFrame;
-
+- (void)updateWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength;
+- (LineView*) addLineViewWithFrame:(CGRect)baseViewFrame;
+- (void) removeAllLineView;
 
 
 @end

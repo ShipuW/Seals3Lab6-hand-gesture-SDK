@@ -19,7 +19,7 @@
 #import "RLMEvent.h"
 #import "MyViewModel.h"
 
-#define Duration 0.5 //长按响应时间
+#define Duration 0.3 //长按响应时间
 
 @interface UICustomGestureRecognizer ()
 
@@ -268,10 +268,10 @@
             [self.rlmPoints addObject:[[RLMPoint alloc] initWithValue:@[@(_startPoint.x), @(_startPoint.y)]]];
             _originPoint = view.center;
             //_myView = [[MyView alloc] initWithTint:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
-            
-            _myView = [[MyView alloc]initWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+            _myView = [MyView sharedView];
+            [_myView updateWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
              
-            _lineView = [_myView baseViewFrame:_baseView.frame];
+            _lineView = [_myView addLineViewWithFrame:_baseView.frame];
             
             [UIView animateWithDuration:Duration animations:^{
                 
@@ -372,6 +372,8 @@
         {//Failed、Cancelled区别？
             //debugLog(@"%@",_rlmPoints);
             //_lineView.isHavePath=nil;//---------------------------------------
+            CGPathRelease(_lineView.path);
+            [_myView removeAllLineView];
             _lineView.path = nil;
             _DynamicWidth = 1.0f;
             _touchPoint = [sender locationInView:_baseView];

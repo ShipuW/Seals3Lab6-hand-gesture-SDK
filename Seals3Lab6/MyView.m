@@ -17,21 +17,22 @@
 
 @implementation MyView
 
-static MyView *sharedView = nil;
+//static MyView *sharedView = nil;
 
 + (instancetype)sharedView {
     static MyView *sharedInstance = nil;
     if (!sharedInstance) {
 //        sharedInstance = [MyView alloc] initWithFrame:[UIScreen mainScreen].bounds tint:nil baseViewFrame:[UIScreen mainScreen].bounds emptySideLength:<#(CGFloat)#>
         sharedInstance = [[MyView alloc] init];
+        sharedInstance.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];////////////-------颜色没变？
+        
     }
     return sharedInstance;
 }
 
-- (id)initWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength {
-    if (sharedView == nil) {
-        sharedView = [super initWithFrame:frame];
-        self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+- (void)updateWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength {
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
         for (RLMEvent *tintDetail in array) {
             switch (tintDetail.gestureId) {
                 case 1: {//UP
@@ -70,29 +71,39 @@ static MyView *sharedView = nil;
                     continue;
             }
         }
-    
-    }
-    return sharedView;
-    
 }
 
 
 
 
-- (LineView*) baseViewFrame:(CGRect)baseViewFrame
+- (LineView*) addLineViewWithFrame:(CGRect)baseViewFrame
 {
     //NSLog(@"%@",array);
 //    if ([self viewWithTag:(13579)] != nil) {
 //        
 //    }else
 
-    _lineView = [[LineView alloc] initWithFrame:CGRectMake(0, 0, baseViewFrame.size.width, baseViewFrame.size.height) ];
+    LineView *lineView = [[LineView alloc] initWithFrame:CGRectMake(0, 0, baseViewFrame.size.width, baseViewFrame.size.height) ];
 
-    [self addSubview:_lineView];
-    return _lineView;
+    [self addSubview:lineView];
+    return lineView;
     
 }
 
+
+- (void) removeAllLineView{
+    NSArray *subviews = [self subviews];
+    for(UIView *tmpView in subviews)
+    {
+        if([tmpView isKindOfClass:([LineView class])])
+        {
+            
+            [tmpView removeFromSuperview];
+            
+        }
+    }
+
+}
 
 @end
 
