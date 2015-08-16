@@ -40,6 +40,7 @@
     _action = action;
     _targetType = type;
     _DynamicWidth = 1.0f;
+    _index = 10;
     if ((_targetType & TBGestureTypeCustom) == TBGestureTypeCustom) {
         _isSimpleGesture = NO;
         _needSimpleMatch = YES;
@@ -174,22 +175,53 @@
     }
     
 
-    if ((_targetType & _direction) == _direction) {
-//        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
-        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];
-       // _isSimpleGesture = YES;
+
+}
+
+-(BOOL) confirmDirectionRecognizer:(RLMPoint *)midPoint{
+    CGFloat deltaX = midPoint.x - _startPoint.x;
+    CGFloat deltaY = midPoint.y - _startPoint.y;
+    if (deltaY == 0) {
+        deltaY = 1;
     }
-    else {
-        
-        if ((_targetType & TBGestureTypeCustom) != TBGestureTypeCustom) {
-            debugLog(@"内部失败");
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
-                [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
+    if (deltaX == 0) {
+        deltaX = 1;
+    }
+    CGFloat ratioXY = deltaX/deltaY;
+    if (ratioXY > 2 || ratioXY < -2) {
+        if (deltaX > 0) {
+            if(_direction == UICustomGestureRecognizerDirectionRight){
+                return YES;
+            }else{
+                return NO;
             }
+        }else if (deltaX < 0){
+            if(_direction == UICustomGestureRecognizerDirectionLeft){
+                return YES;
+            }else{
+                return NO;
+            }
+        }else{
+            return NO;
         }
-        
- 
-       // _isSimpleGesture = NO;
+    }else if (ratioXY < 0.5 && ratioXY > -0.5){
+        if (deltaY > 0) {
+            if(_direction == UICustomGestureRecognizerDirectionDown){
+                return YES;
+            }else{
+                return NO;
+            }
+        }else if (deltaY < 0){
+            if(_direction == UICustomGestureRecognizerDirectionUp){
+                return YES;
+            }else{
+                return NO;
+            }
+        }else{
+            return NO;
+        }
+    }else {
+        return NO;
     }
 }
 
@@ -277,27 +309,43 @@
             }else{
                 _shouldEnd = YES;
             }
-            //[_lineView.pathArray addObject:[[RLMPoint alloc] initWithValue:@[@(_touchPoint.x), @(_touchPoint.y)]]];
-            //[_lineView.pathArray addObject:[MyViewModel viewModelWithColor:[UIColor redColor] Path:_lineView.path Width:_DynamicWidth]];
-            //[_lineView.pathArray addObjectsFromArray:_trackPoints];
+
+            _lineView.isHavePath = YES;
+//            if ([_rlmPoints count]>10) {
+            if (_lineView.path) {
+                CGPathRelease(_lineView.path);
+            }
             
-            if ([_rlmPoints count]>10) {
                 _lineView.path = CGPathCreateMutable();
-                _lineView.isHavePath = YES;
-                CGPathMoveToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - 10] x], [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - 10] y]);
+               // CGPathMoveToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[[_rlmPoints count]  - 10] x], [(RLMPoint *)_rlmPoints[[_rlmPoints count]  - 10] y]);
                 
-                NSInteger index = 10;
+                _index = 10;
+                int addindex;
+                if ((int)[_rlmPoints count] - 1 - _index > 0) {
+                    addindex = (int)[_rlmPoints count] - 1 - _index;
+                }else{
+                    addindex = 0;
+                }
+            
+                
+                CGPathMoveToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[addindex] x], [(RLMPoint *)_rlmPoints[addindex] y]);
+                //int addindex = ([_rlmPoints count] - 1 - _index) > 0 ? ([_rlmPoints count] - 1 - _index):0;
                 while (YES) {
-                    if (index == 0) {
+//                    if (_index <= 0) {
+//                        break;
+//                    }
+                    //CGFloat addindex = ([_rlmPoints count] - 1 - _index) > 0 ? ([_rlmPoints count] - 1 - _index):0;
+//                    CGPathAddLineToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[([_rlmPoints count] - 1 - _index) > 0 ? ([_rlmPoints count] - 1 - _index):0] x], [(RLMPoint *)_rlmPoints[([_rlmPoints count] - 1 - _index) > 0 ? ([_rlmPoints count] - 1 - _index):0] y]);
+                    CGPathAddLineToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[addindex] x], [(RLMPoint *)_rlmPoints[addindex] y]);
+                    if ((RLMPoint *)_rlmPoints[addindex] == (RLMPoint *)_rlmPoints.lastObject) {
                         break;
                     }
-                    CGPathAddLineToPoint(_lineView.path, NULL, [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - index] x], [(RLMPoint *)_rlmPoints[[_rlmPoints count] - 1 - index] y]);
-                    index--;
+                    addindex++;
                 }
 
-            }else{
-                CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x, _touchPoint.y);
-            }
+//            }else{
+//                CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x, _touchPoint.y);
+//            }
                // CGPathAddLineToPoint(_lineView.path, NULL, _touchPoint.x, _touchPoint.y);
 //            for ((RLMPoint*)point in _rlmPoints)
 //            {
@@ -322,6 +370,8 @@
         else if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateFailed || sender.state == UIGestureRecognizerStateCancelled)
         {//Failed、Cancelled区别？
             //debugLog(@"%@",_rlmPoints);
+            //_lineView.isHavePath=nil;//---------------------------------------
+            _lineView.path = nil;
             _DynamicWidth = 1.0f;
             _touchPoint = [sender locationInView:_baseView];
             _lastPoint = [sender locationInView:_baseView];
@@ -364,7 +414,28 @@
                 
                 if (_needSimpleMatch) {
                     _needSimpleMatch = YES;
-                    [self simpleEndLocationRecognizer];
+                    //[self simpleEndLocationRecognizer];
+                    [self simpleDirectionRecognizer];
+                    if ([self confirmDirectionRecognizer:(RLMPoint *)_rlmPoints[(int)[_rlmPoints count]/2]]) {
+                        if ((_targetType & _direction) == _direction) {
+                            //        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
+                            [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];
+                            // _isSimpleGesture = YES;
+                        }
+                        else {
+                            
+                            if ((_targetType & TBGestureTypeCustom) != TBGestureTypeCustom) {
+                                debugLog(@"内部失败");
+                                if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
+                                    [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
+                                }
+                            }
+                            
+                            
+                            // _isSimpleGesture = NO;
+                        }
+                    }
+                    
                 }
                 
                 if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:trackGenerate:)]) {

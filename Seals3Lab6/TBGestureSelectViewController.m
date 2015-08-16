@@ -195,6 +195,7 @@ static NSInteger kImageViewTag = 1024;
             [realm commitWriteTransaction];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"绑定成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+            alert = nil;
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -279,6 +280,7 @@ static NSInteger kImageViewTag = 1024;
             NSString *warning = [NSString stringWithFormat:@"绑定自定义手势成功"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:warning message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
+            alert = nil;
             self.capture = self.cg.capture;
             self.cg = nil;
             

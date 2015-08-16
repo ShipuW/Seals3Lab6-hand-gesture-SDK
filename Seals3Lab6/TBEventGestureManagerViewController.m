@@ -37,6 +37,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
 - (void)viewWillAppear:(BOOL)animated {
     [self refreshEvents];
+    [super viewWillAppear:nil];
 }
 
 - (void)didReceiveMemoryWarning {

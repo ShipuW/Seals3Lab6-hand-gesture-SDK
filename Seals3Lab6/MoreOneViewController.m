@@ -83,6 +83,7 @@
     NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%ld行", event.name, (long)indexPath.row];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [av show];
+    av = nil;
 }
 
 

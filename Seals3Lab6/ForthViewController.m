@@ -92,6 +92,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
+    [super viewWillAppear:nil];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -36,6 +36,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 };
 
 @class LineView;
+@class RLMPoint;
 @class UICustomGestureRecognizer;
 @protocol TBCustomGestureRecognizerDelegate <NSObject>
 
@@ -52,6 +53,7 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 @interface UICustomGestureRecognizer : UILongPressGestureRecognizer
 {
     @package
+    int                 _index;
     BOOL                _needSimpleMatch;
     BOOL                _displayPoint;
     BOOL                _contain;
@@ -86,5 +88,5 @@ typedef NS_OPTIONS(NSUInteger, UICustomGestureRecognizerDirection) {
 
 - (instancetype)initWithTarget:(id)target action:(SEL)action type:(TBGestureType)type;
 - (void)buttonLongPressed:(UILongPressGestureRecognizer *)sender;
-
+-(BOOL) confirmDirectionRecognizer:(RLMPoint *)midPoint;
 @end

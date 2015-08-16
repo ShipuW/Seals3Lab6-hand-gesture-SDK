@@ -51,6 +51,7 @@
 //        [alert show];
         
     }];
+    [super viewDidAppear:nil];
 }
 
 

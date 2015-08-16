@@ -42,7 +42,9 @@
 
 - (void)recogizedEvent:(TBEvent *)event {
     NSString *eventName = [NSString stringWithFormat:@"%@ 手势被识别", event.name];
-    [[[UIAlertView alloc] initWithTitle:@"回调被触发" message:eventName delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"回调被触发" message:eventName delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [a show];
+    a=nil;
 }
 
 /*

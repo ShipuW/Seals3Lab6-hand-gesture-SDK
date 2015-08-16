@@ -168,8 +168,8 @@
 
 - (UIImage *)clipImageOn:(CGRect)frame {
     UIGraphicsBeginImageContext(self.frame.size);
-    CGRect r = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-30);
-    r =  frame;
+    CGRect r ;//= CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-30);
+    r = frame;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     UIRectClip(r);
