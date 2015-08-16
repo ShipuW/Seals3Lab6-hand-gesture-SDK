@@ -167,7 +167,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     UIGraphicsBeginImageContext(drawBox.size);
 	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
 	curImage = UIGraphicsGetImageFromCurrentImageContext();
-    [[UIColor blueColor] set];
+    [DEFAULT_COLOR(255, 68, 0) set];
 	UIGraphicsEndImageContext();
 
     [self setNeedsDisplayInRect:drawBox];
