@@ -11,7 +11,7 @@
 #import "FYCreateGesture.h"
 #import "FYCell.h"
 #import "FYAddEventCtroller.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "TBDataManager.h"
 #import "TBGesture.h"
 #import "MacroUtils.h"
@@ -83,7 +83,7 @@
     [[TBDataManager sharedManager] loadAllEventsFromDatabase:^(NSArray *results, NSError *error) {
         if (!error) {
             NSLog(@"no error");
-            for (TBEvent*event in results) {
+            for (TBGEvent *event in results) {
                 FYEventData* data = [[FYEventData alloc] init];
                 data.event = event;
                 data.isCustom = NO;
@@ -202,7 +202,7 @@
         //1、修改数据模型
 //        [self.eventArray removeObjectAtIndex:indexPath.row];
         FYEventData* data = self.eventArray[indexPath.row];
-        TBEvent* event = data.event;
+        TBGEvent * event = data.event;
         
 //        [[TBDataManager sharedManager] deleteGestureWithEvent:event completion:^(NSError *error) {
 //            if (error) {

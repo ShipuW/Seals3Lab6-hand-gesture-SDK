@@ -5,7 +5,7 @@
 
 #import <mach-o/loader.h>
 #import "TBGestureSelectViewController.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "RLMGesture.h"
 #import "RLMEvent.h"
 #import "MacroUtils.h"

@@ -8,7 +8,7 @@
 
 #import "TBTableViewSimulationViewController.h"
 #import "TBGesture.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "MacroUtils.h"
 static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
 
@@ -30,7 +30,7 @@ static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
     self.tableView.delegate = self;
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
     
-    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+    TBGEvent *event = [[TBGEvent alloc] initWithEventType:TBEventTypeCollect];
     TBGesture *gesture = [TBGesture gestureForEvent:event];
     
 //    [gesture addToTableView:self.tableView dataSource:self completion:^(NSError *error) {
@@ -70,7 +70,7 @@ static NSString * const kTableViewIdentifier = @"kTableViewIdentifier";
 
 }
 
-- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBGEvent *)event atIndexPath:(NSIndexPath *)indexPath {
     debugLog(@"手势被触发");
 }
 

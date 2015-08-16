@@ -1,12 +1,12 @@
 //
-//  TBEvent.m
+//  TBGEvent.m
 //  Seals3Lab6
 //
 //  Created by Veight Zhou on 8/5/15.
 //  Copyright (c) 2015 Veight Zhou. All rights reserved.
 //
 
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "TBGesture.h"
 #import "FMDB.h"
 #import "TBDataManager.h"
@@ -14,7 +14,7 @@
 
 static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
-@interface TBEvent ()
+@interface TBGEvent ()
 
 @property (nonatomic, strong) FMDatabase *eventDatabase;
 @property (nonatomic, copy, readonly) NSString *dbPath;
@@ -22,7 +22,7 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 @end
 
-@implementation TBEvent
+@implementation TBGEvent
 
 #pragma mark - Basic Methods
 
@@ -31,7 +31,7 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 }
 
-- (void)removeEvent:(TBEvent *)event completion:(void (^)(NSError *error))completion {
+- (void)removeEvent:(TBGEvent *)event completion:(void (^)(NSError *error))completion {
 
 }
 
@@ -68,8 +68,8 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 //        
 //    }];
     
-    TBEvent *evt1 = [self fake_collect];
-    TBEvent *evt2 = [self fake_share];
+    TBGEvent *evt1 = [self fake_collect];
+    TBGEvent *evt2 = [self fake_share];
     return @[evt1, evt2];
 //    return nil;
 }
@@ -118,14 +118,14 @@ static NSString *const kEventDatabasePath = @"/tmp/tbg.db";
 
 
 + (instancetype)fake_collect {
-    TBEvent *event = [[TBEvent alloc] init];
+    TBGEvent *event = [[TBGEvent alloc] init];
     event.objectId = @"1";
     event.name = @"收藏";
     return event;
 }
 
 + (instancetype)fake_share {
-    TBEvent *event = [[TBEvent alloc] init];
+    TBGEvent *event = [[TBGEvent alloc] init];
     event.objectId = @"2";
     event.name = @"分享";
     return event;

@@ -4,7 +4,7 @@
 //
 
 #import "TBGestureEventManagerViewController.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 
 static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
 
@@ -27,7 +27,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
     [self.view addSubview:self.tableView];
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
 
-    self.eventsList = [TBEvent allEvents];
+    self.eventsList = [TBGEvent allEvents];
 
 }
 
@@ -43,7 +43,7 @@ static NSString *const kTableViewCellIdentifier = @"kTableViewCellIdentifier";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-    TBEvent *event = self.eventsList[row];
+    TBGEvent *event = self.eventsList[row];
     cell.textLabel.text = event.name;
     return cell;
 }

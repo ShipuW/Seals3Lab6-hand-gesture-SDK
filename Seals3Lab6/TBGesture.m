@@ -8,7 +8,7 @@
 
 #import <Realm/Realm.h>
 #import "TBGesture.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "UIGestureRecognizer+UICustomGestureRecognizer.h"
 #import "UICustomPinchGestureRecognizer.h"
 #import "MacroUtils.h"
@@ -23,7 +23,7 @@
 
 @implementation TBGesture
 
-- (NSArray *)gesturesForEvent:(TBEvent *)event {
+- (NSArray *)gesturesForEvent:(TBGEvent *)event {
     return [self gesturesForEventId:event.objectId];
 }
 
@@ -38,7 +38,7 @@
 }
 
 
-+ (instancetype)gestureForEvent:(TBEvent *)event {
++ (instancetype)gestureForEvent:(TBGEvent *)event {
     return [self gestureForEventId:event.objectId];
 }
 

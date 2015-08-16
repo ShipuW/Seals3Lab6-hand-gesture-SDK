@@ -8,7 +8,7 @@
 
 #import "OneMoreViewController.h"
 #import "TBGesture.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 @interface OneMoreViewController () <TBGestureDelegate>
 @property (nonatomic, strong) UIView *testView;
 @end
@@ -40,7 +40,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)recogizedEvent:(TBEvent *)event {
+- (void)recogizedEvent:(TBGEvent *)event {
     NSString *eventName = [NSString stringWithFormat:@"%@ 手势被识别", event.name];
     [[[UIAlertView alloc] initWithTitle:@"回调被触发" message:eventName delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
 }

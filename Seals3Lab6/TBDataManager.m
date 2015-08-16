@@ -7,7 +7,7 @@
 #import "MacroUtils.h"
 #import "TBGesture.h"
 #import <FMDB.h>
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "NSNumber+Utils.h"
 #define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
@@ -159,7 +159,7 @@
 //    !completion ?: completion(rsError);
 }
 
-- (void)fetchGestureWithEvent:(TBEvent *)event completion:(void (^)(TBGesture *gesture))completion {
+- (void)fetchGestureWithEvent:(TBGEvent *)event completion:(void (^)(TBGesture *gesture))completion {
     NSString *sql = @"SELECT * FROM Map WHERE eventId = ?";
     FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
     if ([db open]) {
@@ -237,7 +237,7 @@
         NSString *sql = @"SELECT * from Event";
         FMResultSet *s = [db executeQuery:sql];
         while ([s next]) {
-            TBEvent *event = [[TBEvent alloc] init];
+            TBGEvent *event = [[TBGEvent alloc] init];
             event.objectId = [s stringForColumn:@"id"];
             event.name = [s stringForColumn:@"name"];
             event.enabled = [s intForColumn:@"enable"] == 1;
@@ -368,7 +368,7 @@
 }
 
 
-- (void)mapEvent:(TBEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
+- (void)mapEvent:(TBGEvent *)event withGesture:(TBGesture *)gesture completion:(void (^)(NSError *))completion {
     if (!(event.objectId.length > 0 && event.objectId.length > 0)) {
         !completion ?: completion([[NSError alloc] init]);
         return;
@@ -443,7 +443,7 @@
     return [pointsArray copy];
 }
 
-- (void)deleteGestureWithEvent:(TBEvent *)event completion:(void (^)(NSError *))completion {
+- (void)deleteGestureWithEvent:(TBGEvent *)event completion:(void (^)(NSError *))completion {
     [self fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
         if (gesture) {
             [self deleteGesture:gesture completion:^(NSError *error) {

@@ -8,7 +8,7 @@
 
 #import "TBAllEventsViewController.h"
 #import "TBDataManager.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 #import "MacroUtils.h"
 static NSString * const kTableViewIdentifer = @"kTableViewIdentifer";
 
@@ -56,14 +56,14 @@ static NSString * const kTableViewIdentifer = @"kTableViewIdentifer";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewIdentifer];
     }
-    TBEvent *event = self.eventsList[indexPath.row];
+    TBGEvent *event = self.eventsList[indexPath.row];
     cell.textLabel.text = event.name;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TBEvent *event = self.eventsList[indexPath.row];
+    TBGEvent *event = self.eventsList[indexPath.row];
     [SharedDataManager fetchGestureWithEvent:event completion:^(TBGesture *gesture) {
         if (gesture) {
             debugLog(@"map %@", gesture.name);

@@ -11,7 +11,7 @@
 #import "FYEventData.h"
 #import "TBGesture.h"
 #import "TBDataManager.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 @interface FYCreateGesture()<UIAlertViewDelegate>
 @property(nonatomic,weak) UILabel* createOperation;
 @property(nonatomic,weak) UILabel* operation;

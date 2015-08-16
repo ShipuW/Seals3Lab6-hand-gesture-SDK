@@ -14,7 +14,7 @@
 #import "TBIndexPathCellModelArray.h"
 #import "TBHookOperation.h"
 #import "TBGesture.h"
-#import "TBEvent.h"
+#import "TBGEvent.h"
 
 @interface ForthViewController ()<UITableViewDataSource,UITableViewDelegate, TBGestureDelegate>
 
@@ -40,7 +40,7 @@
 }
 
 #pragma TBGestureDelegate方法
-- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBEvent *)event atIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView gesture:(TBGesture *)gesture forEvent:(TBGEvent *)event atIndexPath:(NSIndexPath *)indexPath {
 
     
     NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别,对应第%ld行", event.name, (long)indexPath.row];
@@ -48,7 +48,7 @@
     [av show];
 }
 
-- (void)recogizedEvent:(TBEvent *)event {
+- (void)recogizedEvent:(TBGEvent *)event {
     //    NSLog(@"%@", event.name);
     NSString *s = [NSString stringWithFormat:@"%@事件对应手势被识别", event.name];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:s message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -69,7 +69,7 @@
 
 //    TBTestTableViewCell *cell = [TBTestTableViewCell initWithTableView:tableView];
 
-//    TBEvent *event = [[TBEvent alloc] initWithEventType:TBEventTypeCollect];
+//    TBGEvent *event = [[TBGEvent alloc] initWithEventType:TBEventTypeCollect];
 
     static NSString *ID=@"test";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
