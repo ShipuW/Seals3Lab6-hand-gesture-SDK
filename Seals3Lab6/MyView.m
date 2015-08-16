@@ -31,6 +31,7 @@
 }
 
 - (void)updateWithFrame:(CGRect)frame tint:(NSArray*)array baseViewFrame:(CGRect)baseViewFrame emptySideLength:(CGFloat)emptySideLength {
+    
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
         for (RLMEvent *tintDetail in array) {
@@ -38,33 +39,38 @@
                 case 1: {//UP
                     //UIView *v_one = [[UIView alloc]initWithFrame:CGone];
                     UILabel *tintViewUP=[[UILabel alloc]initWithFrame:CGRectMake(emptySideLength, 0, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
+                    tintViewUP.textColor = [UIColor whiteColor];
+                    tintViewUP.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
                     tintViewUP.text = tintDetail.name;
                     tintViewUP.textAlignment = NSTextAlignmentCenter;
-                    tintViewUP.backgroundColor = [UIColor yellowColor];
                     [self addSubview:tintViewUP];
                     break;
                 }
                 case 2:{//DOWN
                     UILabel *tintViewDOWN=[[UILabel alloc] initWithFrame:CGRectMake(emptySideLength, baseViewFrame.size.height - emptySideLength, baseViewFrame.size.width - 2 * emptySideLength, emptySideLength)];
+                    tintViewDOWN.textColor = [UIColor whiteColor];
+                    tintViewDOWN.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
                     tintViewDOWN.text = tintDetail.name;
                     tintViewDOWN.textAlignment = NSTextAlignmentCenter;
-                    tintViewDOWN.backgroundColor = [UIColor yellowColor];
                     [self addSubview:tintViewDOWN];
                     break;
                 }
                 case 4:{//LEFT
                     UILabel *tintViewLEFT=[[UILabel alloc]initWithFrame:CGRectMake(0, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
+                    tintViewLEFT.textColor = [UIColor whiteColor];
+                    tintViewLEFT.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
                     tintViewLEFT.text = tintDetail.name;
                     tintViewLEFT.textAlignment = NSTextAlignmentCenter;
-                    tintViewLEFT.backgroundColor = [UIColor yellowColor];
                     [self addSubview:tintViewLEFT];
                     break;
                 }
                 case 8:{//RIGHT
                     UILabel *tintViewRIGHT=[[UILabel alloc]initWithFrame:CGRectMake(baseViewFrame.size.width - emptySideLength, emptySideLength, emptySideLength, baseViewFrame.size.height - 2 * emptySideLength)];
+                    tintViewRIGHT.textColor = [UIColor whiteColor];
+                    tintViewRIGHT.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
                     tintViewRIGHT.text = tintDetail.name;
                     tintViewRIGHT.textAlignment = NSTextAlignmentCenter;
-                    tintViewRIGHT.backgroundColor = [UIColor yellowColor];
+
                     [self addSubview:tintViewRIGHT];
                     break;}
                 default:

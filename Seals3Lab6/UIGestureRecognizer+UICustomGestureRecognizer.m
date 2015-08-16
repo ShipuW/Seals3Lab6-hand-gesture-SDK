@@ -68,7 +68,7 @@
 }
 
 
--(void) simpleEndLocationRecognizer{
+-(BOOL) simpleEndLocationRecognizer{
 
     
     if ((_lastPoint.x > _emptySideLenth) && (_lastPoint.x < (_baseView.frame.size.width - _emptySideLenth))){
@@ -76,14 +76,17 @@
         if (_lastPoint.y < _emptySideLenth) {//UP
             _direction = UICustomGestureRecognizerDirectionUp;
             _gestureId = @"simple up";
+            return YES;
             //_isSimpleGesture = YES;
         }else if (_lastPoint.y > (_baseView.frame.size.height - _emptySideLenth)){//DOWN
             _direction = UICustomGestureRecognizerDirectionDown;
             _gestureId = @"simple down";
+            return YES;
             //_isSimpleGesture = YES;
         }else{//no
             _direction = UICustomGestureRecognizerDirectionNot;
             _gestureId = @"gesture failed";
+            return NO;
             //_isSimpleGesture = NO;
         }
         
@@ -92,41 +95,46 @@
         if (_lastPoint.x < _emptySideLenth) {//LEFT
             _direction = UICustomGestureRecognizerDirectionLeft;
             _gestureId = @"simple left";
+            return YES;
             //_isSimpleGesture = YES;
         }else if(_lastPoint.x > (_baseView.frame.size.width - _emptySideLenth)){//RIGHT
             _direction = UICustomGestureRecognizerDirectionRight;
             _gestureId = @"simple right";
+            return YES;
             //_isSimpleGesture = YES;
         }else{//no
             _direction = UICustomGestureRecognizerDirectionNot;
             _gestureId = @"gesture failed";
+            return NO;
             //_isSimpleGesture = NO;
         }
     
     }else{//no
         _direction = UICustomGestureRecognizerDirectionNot;
         _gestureId = @"gesture failed";
+        return NO;
         //_isSimpleGesture = NO;
     }
     
-    if ((_targetType & _direction) == _direction) {
-        //        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
-        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];
-        // _isSimpleGesture = YES;
-    }
-    else {
-        
-        if ((_targetType & TBGestureTypeCustom) != TBGestureTypeCustom) {
-            debugLog(@"内部失败");
-            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
-                [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
-            }
-        }
-        
-        
-        // _isSimpleGesture = NO;
-    }
-    return;
+    
+//    if ((_targetType & _direction) == _direction) {
+//        //        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
+//        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];
+//        // _isSimpleGesture = YES;
+//    }
+//    else {
+//        
+//        if ((_targetType & TBGestureTypeCustom) != TBGestureTypeCustom) {
+//            debugLog(@"内部失败");
+//            if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:recognized:)]) {
+//                [self.recognizeDelegate gestureRecognizer:self gestureType:0 recognized:NO];
+//            }
+//        }
+//        
+//        
+//        // _isSimpleGesture = NO;
+//    }
+//    return;
 
 }
 
@@ -360,7 +368,7 @@
 //            if (_DynamicWidth > 3) {
 //                CGPathMoveToPoint(_lineView.path, NULL, _touchPoint.x,_touchPoint.y);
 //            }
-            _lineView.lineWidth = 10;
+            //_lineView.lineWidth = 10;
             [_lineView setNeedsDisplay];
             //_lineView.path = CGPathCreateMutable();
             //[_lineView.path CGPathRelease];
@@ -421,7 +429,7 @@
                     _needSimpleMatch = YES;
                     //[self simpleEndLocationRecognizer];
                     [self simpleDirectionRecognizer];
-                    if ([self confirmDirectionRecognizer:(RLMPoint *)_rlmPoints[(int)[_rlmPoints count]/2]]) {
+                    if ([self confirmDirectionRecognizer:(RLMPoint *)_rlmPoints[(int)[_rlmPoints count]/2]] || [self simpleEndLocationRecognizer]) {
                         if ((_targetType & _direction) == _direction) {
                             //        [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction recognized:YES];
                             [self.recognizeDelegate gestureRecognizer:self gestureType:(TBGestureType)_direction  gestureId:(int)_direction  recognized:YES];

@@ -23,8 +23,8 @@
         
         self.backgroundColor = [UIColor clearColor];
         //self.alpha = 0.5;
-        _lineWidth = 10.0f;
-        _lineColor = [UIColor redColor];
+        _lineWidth = 3.0f;
+        _lineColor = [UIColor colorWithRed:255.0f/255.0f green:68.0f/255.0f blue:0.0f/255.0f alpha:1.0];
         
     }
     return self;
