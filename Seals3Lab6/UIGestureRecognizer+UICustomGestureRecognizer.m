@@ -259,6 +259,7 @@
         
         if (sender.state == UIGestureRecognizerStateBegan)
         {
+            [_rlmPoints removeAllObjects];
             _isMoved = NO;
             _direction = UICustomGestureRecognizerDirectionNot;
             if (self.trackPoints.count > 0) {
@@ -400,11 +401,11 @@
                         if (matchResultId) {
                             debugLog(@"找到");
                             _needSimpleMatch = NO;
-                            [self.rlmPoints removeAllObjects];
+                            //[self.rlmPoints removeAllObjects];
                         } else {
                             _needSimpleMatch = YES;
                             debugLog(@"找不到");
-                            [self.rlmPoints removeAllObjects];
+                            //[self.rlmPoints removeAllObjects];
                         }
                         
                         if ([self.recognizeDelegate respondsToSelector:@selector(gestureRecognizer:gestureType:gestureId:recognized:)]) {

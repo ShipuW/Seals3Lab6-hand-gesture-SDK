@@ -93,13 +93,12 @@
 
 - (void) removeAllLineView{
     NSArray *subviews = [self subviews];
-    for(UIView *tmpView in subviews)
+    for(__strong UIView *tmpView in subviews)
     {
         if([tmpView isKindOfClass:([LineView class])])
         {
-            
             [tmpView removeFromSuperview];
-            
+            tmpView = nil;
         }
     }
 
