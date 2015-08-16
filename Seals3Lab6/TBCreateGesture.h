@@ -22,6 +22,7 @@
     CGFloat lineWidth;
     UIColor *lineColor;
     UIImage *curImage;
+    CGMutablePathRef _path;
 }
 @property (nonatomic, retain) UIColor *lineColor;
 @property (readwrite) CGFloat lineWidth;

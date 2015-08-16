@@ -128,7 +128,8 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     previousPoint1 = [touch previousLocationInView:self];
     previousPoint2 = [touch previousLocationInView:self];
     currentPoint = [touch locationInView:self];
-
+    _path = CGPathCreateMutable();
+    CGPathMoveToPoint(_path, NULL, currentPoint.x, currentPoint.y);
     [self touchesMoved:touches withEvent:event];
 }
 
@@ -147,30 +148,33 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     currentPoint    = [touch locationInView:self];
 
     // calculate mid point
-    CGPoint mid1    = midPoint(previousPoint1, previousPoint2);
-    CGPoint mid2    = midPoint(currentPoint, previousPoint1);
+//    CGPoint mid1    = midPoint(previousPoint1, previousPoint2);
+//    CGPoint mid2    = midPoint(currentPoint, previousPoint1);
 
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, mid1.x, mid1.y);
-    CGPathAddQuadCurveToPoint(path, NULL, previousPoint1.x, previousPoint1.y, mid2.x, mid2.y);
-    CGRect bounds = CGPathGetBoundingBox(path);
-    CGPathRelease(path);
-
-    CGRect drawBox = bounds;
-
-    //Pad our values so the bounding box respects our line width
-    drawBox.origin.x        -= self.lineWidth * 1;
-    drawBox.origin.y        -= self.lineWidth * 1;
-    drawBox.size.width      += self.lineWidth * 2;
-    drawBox.size.height     += self.lineWidth * 2;
-
-    UIGraphicsBeginImageContext(drawBox.size);
-	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
-	curImage = UIGraphicsGetImageFromCurrentImageContext();
+//    CGMutablePathRef path = CGPathCreateMutable();
+//    CGPathMoveToPoint(path, NULL, mid1.x, mid1.y);
     [DEFAULT_COLOR(255, 68, 0) set];
-	UIGraphicsEndImageContext();
-
-    [self setNeedsDisplayInRect:drawBox];
+    CGPathAddLineToPoint(_path, NULL, currentPoint.x, currentPoint.y);
+    [self setNeedsDisplay];
+//    CGPathAddQuadCurveToPoint(path, NULL, previousPoint1.x, previousPoint1.y, mid2.x, mid2.y);
+//    CGRect bounds = CGPathGetBoundingBox(path);
+//    CGPathRelease(path);
+//
+//    CGRect drawBox = bounds;
+//
+//    //Pad our values so the bounding box respects our line width
+//    drawBox.origin.x        -= self.lineWidth * 1;
+//    drawBox.origin.y        -= self.lineWidth * 1;
+//    drawBox.size.width      += self.lineWidth * 2;
+//    drawBox.size.height     += self.lineWidth * 2;
+//
+//    UIGraphicsBeginImageContext(drawBox.size);
+//	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
+//	curImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//	UIGraphicsEndImageContext();
+//
+//    [self setNeedsDisplayInRect:drawBox];
 
 }
 
@@ -218,21 +222,25 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
         CGContextDrawPath(context, kCGPathStroke);
         CGContextRestoreGState(context);
     }
-
-    [curImage drawAtPoint:CGPointMake(0, 0)];
-    CGPoint mid1 = midPoint(previousPoint1, previousPoint2);
-    CGPoint mid2 = midPoint(currentPoint, previousPoint1);
-
-
-    [self.layer renderInContext:context];
-
-    CGContextMoveToPoint(context, mid1.x, mid1.y);
-    CGContextAddQuadCurveToPoint(context, previousPoint1.x, previousPoint1.y, mid2.x, mid2.y);
-    CGContextSetLineCap(context, kCGLineCapRound);
+    [DEFAULT_COLOR(255, 68, 0) set];
+    CGContextAddPath(context, _path);
     CGContextSetLineWidth(context, self.lineWidth);
-    CGContextSetStrokeColorWithColor(context, self.lineColor.CGColor);
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextDrawPath(context, kCGPathStroke);
+//    [curImage drawAtPoint:CGPointMake(0, 0)];
+//    CGPoint mid1 = midPoint(previousPoint1, previousPoint2);
+//    CGPoint mid2 = midPoint(currentPoint, previousPoint1);
 
-    CGContextStrokePath(context);
+//
+//    [self.layer renderInContext:context];
+//
+//    CGContextMoveToPoint(context, mid1.x, mid1.y);
+//    CGContextAddQuadCurveToPoint(context, previousPoint1.x, previousPoint1.y, mid2.x, mid2.y);
+//    CGContextSetLineCap(context, kCGLineCapRound);
+//    CGContextSetLineWidth(context, self.lineWidth);
+//    CGContextSetStrokeColorWithColor(context, self.lineColor.CGColor);
+//
+//    CGContextStrokePath(context);
 
     [super drawRect:rect];
 
