@@ -31,6 +31,9 @@
     //_index = 0;
     NSMutableArray *array = [NSMutableArray array];
     for (int index = 0; ; index++) {
+        if ([Points count]<3) {
+            break;
+        }
         if ([(RLMPoint*)Points[index] x] * [(RLMPoint*)Points[index + 2] x] + [(RLMPoint*)Points[index] y] * [(RLMPoint*)Points[index + 2] y] < TurnAngle) {
             [array addObject:[NSNumber numberWithInteger:(index+1)]];
         }
