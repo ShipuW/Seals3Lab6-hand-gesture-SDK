@@ -49,10 +49,14 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
     
-    TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
-    gesture.delegate = self;
-    gesture.tableView = tableView;
-    [gesture addToView:cell completion:nil];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        TBGesture *gesture = [[TBGesture alloc] initWithEventNames:@[@"收藏", @"分享"]];
+        gesture.delegate = self;
+        gesture.tableView = tableView;
+        [gesture addToView:cell completion:nil];
+        
+    });
     
     return cell;
 }
