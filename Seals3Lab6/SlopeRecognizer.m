@@ -16,8 +16,133 @@
 
 #define NumResamplingPoints 16
 
+//#define TurnAngle 0.342     //70度
+//#define TurnAngle 0.174     //80度
+//#define TurnAngle 0.087     //85度
+#define TurnAngle 0         //90度
+//#define TurnAngle -0.174    //100度
+//#define TurnAngle -0.342    //110度
+//#define TurnAngle -0.5      //120度
+
 @implementation SlopeRecognizer
 
+
++(NSMutableArray *)retrunTurnLocation:(RLMArray *)Points{
+    //_index = 0;
+    NSMutableArray *array = [NSMutableArray array];
+    for (int index = 0; ; index++) {
+        if ([(RLMPoint*)Points[index] x] * [(RLMPoint*)Points[index + 2] x] + [(RLMPoint*)Points[index] y] * [(RLMPoint*)Points[index + 2] y] < TurnAngle) {
+            [array addObject:[NSNumber numberWithInteger:(index+1)]];
+        }
+        if ((RLMPoint*)Points[index + 2] == Points.lastObject) {
+            break;
+        }
+    }
+
+    return array;
+}
+
++(NSMutableArray*)countTurnLocation:(NSMutableArray*)array{
+    NSMutableArray *rearray = [NSMutableArray array];
+    //int count = 0;
+    int preNumber = -2;
+    for (NSNumber *number in array) {//未考虑多个连续的情况
+        if ([number integerValue]!=preNumber+1) {
+            [rearray addObject:[NSNumber numberWithFloat:([number integerValue])]];
+        }else{
+            [rearray removeObject:rearray.lastObject];
+            [rearray addObject:[NSNumber numberWithFloat:(preNumber+0.5)]];
+        }
+        preNumber = [number integerValue];
+    }
+    return rearray;
+}
+
++(BOOL)turnRecognizer:(RLMArray *)Points1 and:(RLMArray *)Points2{
+    NSArray *p1=[self countTurnLocation:[self retrunTurnLocation:Points1]];
+    NSArray *p2=[self countTurnLocation:[self retrunTurnLocation:Points2]];
+    if ([p1 count]==[p2 count]) {
+        for (int i = 0; i < [p1 count]; i++) {
+            if(fabs([p1[i] floatValue]-[p2[i] floatValue])>2){
+                return NO;
+            }else{
+                continue;
+            }
+        }
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++(void)modifyValue:(RLMArray *)Points1 and:(RLMArray *)Points2{
+    NSArray *p1=[self countTurnLocation:[self retrunTurnLocation:Points1]];
+    NSArray *p2=[self countTurnLocation:[self retrunTurnLocation:Points2]];
+//    int i = 0;
+//    for (NSNumber *pp in p1) {
+//        int j = 0;
+//        for (NSNumber *pq in p2) {
+//            debugLog(@"%f",ceilf([pp floatValue])) ;
+//            if (i!=j) {
+//                j++;
+//                continue;
+//            }else{
+//                CGFloat dif = [pp floatValue]-[pq floatValue];
+//                if (fabs(dif) < 1) {
+//                    continue;
+//                }else if(fabs(dif)<2){
+//                    if (dif>0) {//模板拐点前短//变换有坑-------------------------------
+//                        Points2[(int)ceilf([pq floatValue])]=Points2[(int)ceilf([pq floatValue])-1];
+//                    }else{
+//                        Points1[(int)ceilf([pp floatValue])]=Points1[(int)ceilf([pp floatValue])-1];
+//                    }
+//                }else if(fabs(dif)<3){
+//                    if (dif>0) {
+//                        Points2[(int)ceilf([pq floatValue])]=Points2[(int)ceilf([pq floatValue])-1];
+//                        Points2[(int)ceilf([pq floatValue])+1]=Points2[(int)ceilf([pq floatValue])-1];
+//                    }else{
+//                        Points1[(int)ceilf([pp floatValue])]=Points1[(int)ceilf([pp floatValue])-1];
+//                        Points1[(int)ceilf([pp floatValue])+1]=Points1[(int)ceilf([pp floatValue])-1];
+//                    }
+//                }else{
+//                    break;
+//                }
+//                break;
+//            }
+//        }
+//        i++;
+//    }
+    if ([p1 count]!=[p2 count])
+    {
+    }else{
+        for (int i = 0; i < [p1 count]; i++) {
+            CGFloat dif = [p1[i] floatValue]-[p2[i] floatValue];
+            if (fabs(dif) < 1) {
+                continue;
+            }else if(fabs(dif)<2){
+                if (dif>0) {//模板拐点前短//变换有坑-------------------------------
+                    Points2[(int)ceilf([p2[i] floatValue])]=Points2[(int)ceilf([p2[i] floatValue])-1];
+                }else{
+                    Points1[(int)ceilf([p2[i] floatValue])]=Points1[(int)ceilf([p1[i] floatValue])-1];
+                }
+            }else if(fabs(dif)<3){
+                if (dif>0) {
+                    Points2[(int)ceilf([p2[i] floatValue])]=Points2[(int)ceilf([p2[i] floatValue])-1];
+                    Points2[(int)ceilf([p2[i] floatValue])+1]=Points2[(int)ceilf([p2[i] floatValue])-1];
+                }else{
+                    Points1[(int)ceilf([p1[i] floatValue])]=Points1[(int)ceilf([p1[i] floatValue])-1];
+                    Points1[(int)ceilf([p1[i] floatValue])+1]=Points1[(int)ceilf([p1[i] floatValue])-1];
+                }
+            }else{
+                continue;
+            }
+        }
+//    NSMutableArray *returnArray = [NSMutableArray array];
+//    [returnArray addObject:Points1];
+//    [returnArray addObject:Points2];
+//    return returnArray;
+    }
+}
 
 
 +(CGFloat)recognize:(RLMArray *)points template:(RLMArray *)templatePoints{
@@ -28,7 +153,19 @@
     RLMArray *c = [self resampleBetweenPoints:points];
     RLMArray *t = [self resampleBetweenPoints:templatePoints];
     
-    
+    debugLog(@"画的%@个拐点：%@",[self countTurnLocation:[self retrunTurnLocation:c]] ,[self retrunTurnLocation:c]);
+    debugLog(@"模板%@个拐点：%@",[self countTurnLocation:[self retrunTurnLocation:t]] ,[self retrunTurnLocation:t]);
+    if ([self turnRecognizer:c and:t]) {
+        debugLog(@"匹配");
+    }else{
+        debugLog(@"不匹配");
+    }
+    //debugLog(@"%@哦哦哦%@",c,t);
+//    [self modifyValue:c and:t];
+//    NSArray *resultArray = [self modifyValue:c and:t];
+//    c=resultArray[0];
+//    t=resultArray[1];
+    //debugLog(@"%@哦哦哦%@",c,t);
     if ([c count] == 0 || [t count] == 0) {
         return -1;
     }
@@ -49,6 +186,21 @@
             similarity = d;
         }
     }
+    debugLog(@"未调整拐点相似度：%f",similarity);
+    [self modifyValue:c and:t];
+    similarity = CGFLOAT_MIN;
+    d = 0.0;
+    count = MIN([c count], [t count]);
+    for (int i = 0; i < count; i++) {
+        RLMPoint *tp = t[i];
+        RLMPoint *cp = c[i];
+        
+        d = d + tp.x * cp.x + tp.y * cp.y; //cos(a-b)
+        
+        if (d > similarity) {
+            similarity = d;
+        }
+    }
     
     return similarity;
 }
@@ -58,8 +210,8 @@
     RLMArray *points = [[RLMArray alloc]initWithObjectClassName:@"RLMPoint"];
     [points addObjects:Points];
     CGFloat i = [self pathLenth:points] / (NumResamplingPoints - 1);
-    debugLog(@"总长度%f",[self pathLenth:points]);
-    debugLog(@"规范片段长度%f",i);
+    //debugLog(@"总长度%f",[self pathLenth:points]);
+    //debugLog(@"规范片段长度%f",i);
     CGFloat d = 0;
     RLMArray *v = [[RLMArray alloc]initWithObjectClassName:@"RLMPoint"];
     RLMPoint *prev = points.firstObject;
@@ -85,7 +237,7 @@
             RLMPoint *q = [[RLMPoint alloc]initWithCGPoint:CGPointMake(prevPoint.x + (thisPoint.x - prevPoint.x) * (i - d) / pd, prevPoint.y + (thisPoint.y - prevPoint.y) * (i - d) / pd)];
             RLMPoint *r = [[RLMPoint alloc]initWithCGPoint:CGPointMake(q.x - prev.x, q.y - prev.y)];
             CGFloat rd = [self distanceBetweenPoint:[[RLMPoint alloc]initWithCGPoint:CGPointZero] andPoint:r];
-            debugLog(@"第%ld段实际片段长度%f", (long)ti, d+pd-[self distanceBetweenPoint:q andPoint:points[index]]);
+            //debugLog(@"第%ld段实际片段长度%f", (long)ti, d+pd-[self distanceBetweenPoint:q andPoint:points[index]]);
             ti++;
             d = 0.0;
             d = d + [self distanceBetweenPoint:q andPoint:points[index]];

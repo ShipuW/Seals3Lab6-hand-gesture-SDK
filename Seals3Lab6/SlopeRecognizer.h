@@ -14,11 +14,16 @@
 #import "TBGMath.h"
 #import "Point.h"
 @interface SlopeRecognizer : NSObject
+//{
+//    @package
+//    int                 _index;
+//}
 @property (nonatomic) CGFloat *gestureId;
+//@property (nonatomic) int index;
 
 +(CGFloat)recognize:(RLMArray*)points template:(RLMArray *)templatePoints;
 +(RLMArray *)resampleBetweenPoints:(RLMArray *)points;
 +(CGFloat)pathLenth:(RLMArray *)points;
 +(CGFloat)distanceBetweenPoint:(RLMPoint *)pointA andPoint:(RLMPoint *)pointB;
-
++(NSMutableArray *)retrunTurnLocation:(RLMArray *)Points;
 @end

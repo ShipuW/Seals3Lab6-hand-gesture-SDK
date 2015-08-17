@@ -253,7 +253,9 @@ static NSInteger kImageViewTag = 1024;
 - (void)gestureDidDrawAtPosition:(NSArray *)trackPoints {
     debugLog(@"%@", trackPoints);
     RLMArray *ra = [[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
+   // RLMArray *racopy =[[RLMArray alloc] initWithObjectClassName:@"RLMPoint"];
     [ra addObjects:trackPoints];
+    //[racopy addObjects:trackPoints];
     [[TBGestureRecognizer shareGestureRecognizer] matchGestureFrom:ra GesturesToMatch:nil completion:^(NSString *matchResultId, RLMArray *resampledPoints) {
         if (!matchResultId) {
             if (self.gesture.type == TBGestureTypeCustom) {
