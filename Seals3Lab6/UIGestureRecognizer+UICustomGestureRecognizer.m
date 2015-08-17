@@ -279,7 +279,10 @@
             _originPoint = view.center;
             //_myView = [[MyView alloc] initWithTint:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
             _myView = [MyView sharedView];
-            [_myView updateWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+            if ([self needShowTint]) {
+                [_myView updateWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
+            }
+            //[_myView updateWithFrame:CGRectMake(0, 0, _baseView.bounds.size.width, _baseView.bounds.size.height) tint:[self eventsForTypes:_targetType] baseViewFrame:_baseView.frame emptySideLength:_emptySideLenth];
              
             _lineView = [_myView addLineViewWithFrame:_baseView.frame];
             
@@ -511,6 +514,16 @@
         }
     }
     return [eventsArray copy];
+}
+
+
+- (BOOL)needShowTint {
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    NSInteger value = [def integerForKey:@"needShowTint"];
+    if (value == 0) {
+        return YES;
+    }
+    return NO;
 }
 
 

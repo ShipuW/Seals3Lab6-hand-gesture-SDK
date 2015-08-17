@@ -53,7 +53,7 @@
             [rearray removeObject:rearray.lastObject];
             [rearray addObject:[NSNumber numberWithFloat:(preNumber+0.5)]];
         }
-        preNumber = [number integerValue];
+        preNumber = [number intValue];
     }
     return rearray;
 }
