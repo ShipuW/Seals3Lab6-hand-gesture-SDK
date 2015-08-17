@@ -201,7 +201,7 @@
             similarity = d;
         }
     }
-    
+    debugLog(@"调整后拐点相似度：%f",similarity);
     return similarity;
 }
 
