@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */; };
+		01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */; };
+		01DE24BE1B78A6B200279FA9 /* TBIndexPathCellModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24BD1B78A6B200279FA9 /* TBIndexPathCellModelArray.m */; };
+		01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE24C01B78A9E800279FA9 /* TBHookOperation.m */; };
+		1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D81B6F1A4F320A3FE59B /* FifthViewController.m */; };
+		1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */; };
+		1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D8DD710635E99646D0BC /* Aspects.m */; };
+		1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */; };
+		1470DAFAE4E99A273B5D8384 /* Point.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470DB95A5C5BEA46CD54B20 /* Point.m */; };
+		1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */; };
+		1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */; };
+		1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1470D82D099B2E62DB12EAA4 /* TBDataManager.m */; };
+		2961003F75C878C0D86D661A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB3DC487A8EBB882D3A0D3 /* libPods.a */; };
+		600E051B1B735FA9001ACC90 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05161B735FA9001ACC90 /* MyView.m */; };
+		600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E05181B735FA9001ACC90 /* MyViewModel.m */; };
+		600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */; };
+		607D6AA71B7DB54F0024E643 /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 607D6AA61B7DB54F0024E643 /* LineView.m */; };
+		60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */; };
+		60DE2DEA1B7DE4B8002D17D7 /* SlopeRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */; };
+		60ECA3C01B773712005B27DF /* PostConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECA3BF1B773712005B27DF /* PostConnection.m */; };
+		A628DF911B7E2BC5007069DD /* GestureKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A628DF901B7E2BC5007069DD /* GestureKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A628DFA41B7E2BC5007069DD /* GestureKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5461B7A37910048F67F /* Realm.framework */; };
+		A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63EA5481B7A37E40048F67F /* libc++.dylib */; };
+		A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA54B1B7A38060048F67F /* RLMTestObject.m */; };
+		A63EA54F1B7A39800048F67F /* RLMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA54E1B7A39800048F67F /* RLMEvent.m */; };
+		A63EA5551B7A41950048F67F /* TBEventGestureManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */; };
+		A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A63EA5571B7A5E940048F67F /* RLMGesture.m */; };
+		A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */ = {isa = PBXBuildFile; fileRef = A63F1AFA1B774E250088B299 /* GestureTemplets.json */; };
+		A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */; };
+		A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */; };
 		A6744B1C1B720A2F00E222B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1B1B720A2F00E222B0 /* main.m */; };
 		A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B1E1B720A2F00E222B0 /* AppDelegate.m */; };
 		A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B211B720A2F00E222B0 /* FirstViewController.m */; };
@@ -14,23 +45,118 @@
 		A6744B281B720A2F00E222B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6744B261B720A2F00E222B0 /* Main.storyboard */; };
 		A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6744B291B720A2F00E222B0 /* Images.xcassets */; };
 		A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */; };
-		A6744B391B720A2F00E222B0 /* Seals3Lab6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */; };
 		A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B431B720A5400E222B0 /* ThirdViewController.m */; };
 		A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B461B720A6100E222B0 /* ForthViewController.m */; };
-		A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B4C1B720B5A00E222B0 /* FifthViewController.m */; };
+		A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B551B7217EE00E222B0 /* TBGesture.m */; };
+		A6744B591B7217FB00E222B0 /* TBGEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B581B7217FB00E222B0 /* TBGEvent.m */; };
+		A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */; };
+		A68489B21B7C513F00983751 /* RLMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68489B11B7C513F00983751 /* RLMImage.m */; };
+		A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */; };
+		A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */; };
+		A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */; };
+		A68CCB141B7C3545007CBDD2 /* MoreOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68CCB131B7C3545007CBDD2 /* MoreOneViewController.m */; };
+		A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */; };
+		A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */; };
+		A6C3D2631B78F7A600E110C4 /* TBAllEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */; };
+		AA1CA30F1B798EE900A975CE /* FYAddEventCtroller.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */; };
+		AA1CA3101B798EE900A975CE /* FYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA3081B798EE900A975CE /* FYCell.m */; };
+		AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30A1B798EE900A975CE /* FYCreateGesture.m */; };
+		AA1CA3121B798EE900A975CE /* FYEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30C1B798EE900A975CE /* FYEventData.m */; };
+		AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CA30E1B798EE900A975CE /* FYMainController.m */; };
+		AA4E2C311B7853190009739E /* TBGMath.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2C301B7853190009739E /* TBGMath.m */; };
+		AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */; };
+		D91B01851B7B1DF40091524C /* TBCreateGesture1.m in Sources */ = {isa = PBXBuildFile; fileRef = D91B01841B7B1DF40091524C /* TBCreateGesture1.m */; };
+		D95708781B80328B002A0DD1 /* TBCreateGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = D95708771B80328B002A0DD1 /* TBCreateGesture.m */; };
+		D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E164E71B79F94E003FA975 /* UISwitch+tag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A6744B331B720A2F00E222B0 /* PBXContainerItemProxy */ = {
+		A628DFA11B7E2BC5007069DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A6744B0E1B720A2E00E222B0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A6744B151B720A2E00E222B0;
-			remoteInfo = Seals3Lab6;
+			remoteGlobalIDString = A628DF8B1B7E2BC5007069DD;
+			remoteInfo = GestureKit;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A628DFAA1B7E2BC5007069DD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A628DFA41B7E2BC5007069DD /* GestureKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTestTableViewCell.h; sourceTree = "<group>"; };
+		0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTestTableViewCell.m; sourceTree = "<group>"; };
+		01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIndexPathCellModel.h; sourceTree = "<group>"; };
+		01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIndexPathCellModel.m; sourceTree = "<group>"; };
+		01DE24BC1B78A6B200279FA9 /* TBIndexPathCellModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIndexPathCellModelArray.h; sourceTree = "<group>"; };
+		01DE24BD1B78A6B200279FA9 /* TBIndexPathCellModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIndexPathCellModelArray.m; sourceTree = "<group>"; };
+		01DE24BF1B78A9E800279FA9 /* TBHookOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBHookOperation.h; sourceTree = "<group>"; };
+		01DE24C01B78A9E800279FA9 /* TBHookOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBHookOperation.m; sourceTree = "<group>"; };
+		1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventManagerViewController.m; sourceTree = "<group>"; };
+		1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventDisplayModel.m; sourceTree = "<group>"; };
+		1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventManagerViewController.h; sourceTree = "<group>"; };
+		1470D3127A457923FF1958B3 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
+		1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCellViewModel.m; sourceTree = "<group>"; };
+		1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureSelectViewController.m; sourceTree = "<group>"; };
+		1470D6AE6C53ED899435DCBF /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
+		1470D7A353C47CE07842E007 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		1470D7B6817F32E80F322A9A /* TBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBDataManager.h; sourceTree = "<group>"; };
+		1470D81B6F1A4F320A3FE59B /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
+		1470D82D099B2E62DB12EAA4 /* TBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBDataManager.m; sourceTree = "<group>"; };
+		1470D8DD710635E99646D0BC /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventDisplayModel.h; sourceTree = "<group>"; };
+		1470DB95A5C5BEA46CD54B20 /* Point.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Point.m; sourceTree = "<group>"; };
+		1470DF786FD194FC630FF264 /* TBCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCellViewModel.h; sourceTree = "<group>"; };
+		1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureSelectViewController.h; sourceTree = "<group>"; };
+		1470DFA3F7007F00689163F1 /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point.h; sourceTree = "<group>"; };
+		39AB3DC487A8EBB882D3A0D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		600E05151B735FA9001ACC90 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		600E05161B735FA9001ACC90 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		600E05171B735FA9001ACC90 /* MyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewModel.h; sourceTree = "<group>"; };
+		600E05181B735FA9001ACC90 /* MyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewModel.m; sourceTree = "<group>"; };
+		600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+UICustomGestureRecognizer.h"; sourceTree = "<group>"; };
+		600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+UICustomGestureRecognizer.m"; sourceTree = "<group>"; };
+		607D6AA51B7DB54F0024E643 /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
+		607D6AA61B7DB54F0024E643 /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
+		60CBF23F1B79957800B5CC2B /* UICustomPinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomPinchGestureRecognizer.h; sourceTree = "<group>"; };
+		60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomPinchGestureRecognizer.m; sourceTree = "<group>"; };
+		60DE2DE81B7DE4B8002D17D7 /* SlopeRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlopeRecognizer.h; sourceTree = "<group>"; };
+		60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlopeRecognizer.m; sourceTree = "<group>"; };
+		60ECA3BF1B773712005B27DF /* PostConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostConnection.m; sourceTree = "<group>"; };
+		60ECA3C11B773721005B27DF /* PostConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostConnection.h; sourceTree = "<group>"; };
+		A628DF8C1B7E2BC5007069DD /* GestureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GestureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A628DF8F1B7E2BC5007069DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A628DF901B7E2BC5007069DD /* GestureKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureKit.h; sourceTree = "<group>"; };
+		A628DF9E1B7E2BC5007069DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A628DF9F1B7E2BC5007069DD /* GestureKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureKitTests.m; sourceTree = "<group>"; };
+		A63EA5461B7A37910048F67F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		A63EA5481B7A37E40048F67F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A63EA54A1B7A38060048F67F /* RLMTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMTestObject.h; sourceTree = "<group>"; };
+		A63EA54B1B7A38060048F67F /* RLMTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMTestObject.m; sourceTree = "<group>"; };
+		A63EA54D1B7A39800048F67F /* RLMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMEvent.h; sourceTree = "<group>"; };
+		A63EA54E1B7A39800048F67F /* RLMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMEvent.m; sourceTree = "<group>"; };
+		A63EA5531B7A41950048F67F /* TBEventGestureManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEventGestureManagerViewController.h; sourceTree = "<group>"; };
+		A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEventGestureManagerViewController.m; sourceTree = "<group>"; };
+		A63EA5561B7A5E940048F67F /* RLMGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMGesture.h; sourceTree = "<group>"; };
+		A63EA5571B7A5E940048F67F /* RLMGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMGesture.m; sourceTree = "<group>"; };
+		A63F1AFA1B774E250088B299 /* GestureTemplets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GestureTemplets.json; sourceTree = "<group>"; };
+		A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Utils.h"; sourceTree = "<group>"; };
+		A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Utils.m"; sourceTree = "<group>"; };
+		A63F1AFF1B7787800088B299 /* TBAllGesturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAllGesturesViewController.h; sourceTree = "<group>"; };
+		A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAllGesturesViewController.m; sourceTree = "<group>"; };
+		A63F1B071B778B520088B299 /* RACEXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACEXTScope.h; sourceTree = "<group>"; };
+		A63F1B081B778B520088B299 /* RACmetamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACmetamacros.h; sourceTree = "<group>"; };
 		A6744B161B720A2F00E222B0 /* Seals3Lab6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seals3Lab6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B1A1B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B1B1B720A2F00E222B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,41 +169,276 @@
 		A6744B271B720A2F00E222B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6744B291B720A2F00E222B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6744B2C1B720A2F00E222B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Seals3Lab6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744B371B720A2F00E222B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6744B381B720A2F00E222B0 /* Seals3Lab6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seals3Lab6Tests.m; sourceTree = "<group>"; };
 		A6744B421B720A5400E222B0 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		A6744B431B720A5400E222B0 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		A6744B451B720A6100E222B0 /* ForthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForthViewController.h; sourceTree = "<group>"; };
 		A6744B461B720A6100E222B0 /* ForthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthViewController.m; sourceTree = "<group>"; };
-		A6744B4B1B720B5A00E222B0 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
-		A6744B4C1B720B5A00E222B0 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
+		A6744B541B7217EE00E222B0 /* TBGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGesture.h; sourceTree = "<group>"; };
+		A6744B551B7217EE00E222B0 /* TBGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGesture.m; sourceTree = "<group>"; };
+		A6744B571B7217FB00E222B0 /* TBGEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGEvent.h; sourceTree = "<group>"; };
+		A6744B581B7217FB00E222B0 /* TBGEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGEvent.m; sourceTree = "<group>"; };
+		A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureEventMap.h; sourceTree = "<group>"; };
+		A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureEventMap.m; sourceTree = "<group>"; };
+		A68489B01B7C513F00983751 /* RLMImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMImage.h; sourceTree = "<group>"; };
+		A68489B11B7C513F00983751 /* RLMImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMImage.m; sourceTree = "<group>"; };
+		A68CCB091B7C28F8007CBDD2 /* TestShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowViewController.h; sourceTree = "<group>"; };
+		A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowViewController.m; sourceTree = "<group>"; };
+		A68CCB0C1B7C352F007CBDD2 /* OneOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneOneViewController.h; sourceTree = "<group>"; };
+		A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneOneViewController.m; sourceTree = "<group>"; };
+		A68CCB0F1B7C3538007CBDD2 /* OneMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneMoreViewController.h; sourceTree = "<group>"; };
+		A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneMoreViewController.m; sourceTree = "<group>"; };
+		A68CCB121B7C3545007CBDD2 /* MoreOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreOneViewController.h; sourceTree = "<group>"; };
+		A68CCB131B7C3545007CBDD2 /* MoreOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreOneViewController.m; sourceTree = "<group>"; };
+		A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBJoinGestureSimulationViewController.h; sourceTree = "<group>"; };
+		A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBJoinGestureSimulationViewController.m; sourceTree = "<group>"; };
+		A6C3D25D1B787E0400E110C4 /* TBTableViewSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableViewSimulationViewController.h; sourceTree = "<group>"; };
+		A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableViewSimulationViewController.m; sourceTree = "<group>"; };
+		A6C3D2611B78F7A600E110C4 /* TBAllEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAllEventsViewController.h; sourceTree = "<group>"; };
+		A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAllEventsViewController.m; sourceTree = "<group>"; };
+		AA1CA3051B798EE900A975CE /* FYAddEventCtroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYAddEventCtroller.h; sourceTree = "<group>"; };
+		AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYAddEventCtroller.m; sourceTree = "<group>"; };
+		AA1CA3071B798EE900A975CE /* FYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYCell.h; sourceTree = "<group>"; };
+		AA1CA3081B798EE900A975CE /* FYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYCell.m; sourceTree = "<group>"; };
+		AA1CA3091B798EE900A975CE /* FYCreateGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYCreateGesture.h; sourceTree = "<group>"; };
+		AA1CA30A1B798EE900A975CE /* FYCreateGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYCreateGesture.m; sourceTree = "<group>"; };
+		AA1CA30B1B798EE900A975CE /* FYEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYEventData.h; sourceTree = "<group>"; };
+		AA1CA30C1B798EE900A975CE /* FYEventData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYEventData.m; sourceTree = "<group>"; };
+		AA1CA30D1B798EE900A975CE /* FYMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYMainController.h; sourceTree = "<group>"; };
+		AA1CA30E1B798EE900A975CE /* FYMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYMainController.m; sourceTree = "<group>"; };
+		AA4E2C2F1B7853190009739E /* TBGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGMath.h; sourceTree = "<group>"; };
+		AA4E2C301B7853190009739E /* TBGMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGMath.m; sourceTree = "<group>"; };
+		AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGestureRecognizer.h; sourceTree = "<group>"; };
+		AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGestureRecognizer.m; sourceTree = "<group>"; };
+		D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D91B01831B7B1DF40091524C /* TBCreateGesture1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCreateGesture1.h; sourceTree = "<group>"; };
+		D91B01841B7B1DF40091524C /* TBCreateGesture1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCreateGesture1.m; sourceTree = "<group>"; };
+		D95708761B803282002A0DD1 /* TBCreateGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCreateGesture.h; sourceTree = "<group>"; };
+		D95708771B80328B002A0DD1 /* TBCreateGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCreateGesture.m; sourceTree = "<group>"; };
+		D9E164E61B79F94E003FA975 /* UISwitch+tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+tag.h"; sourceTree = "<group>"; };
+		D9E164E71B79F94E003FA975 /* UISwitch+tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+tag.m"; sourceTree = "<group>"; };
+		E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A6744B131B720A2E00E222B0 /* Frameworks */ = {
+		A628DF881B7E2BC5007069DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6744B2F1B720A2F00E222B0 /* Frameworks */ = {
+		A6744B131B720A2E00E222B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63EA5491B7A37E40048F67F /* libc++.dylib in Frameworks */,
+				A63EA5471B7A37910048F67F /* Realm.framework in Frameworks */,
+				2961003F75C878C0D86D661A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01DE24C21B78AA7A00279FA9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				01DE24B91B783ECF00279FA9 /* TBIndexPathCellModel.h */,
+				01DE24BA1B783ECF00279FA9 /* TBIndexPathCellModel.m */,
+				01DE24BC1B78A6B200279FA9 /* TBIndexPathCellModelArray.h */,
+				01DE24BD1B78A6B200279FA9 /* TBIndexPathCellModelArray.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		01DE24C31B78AA8E00279FA9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6744B451B720A6100E222B0 /* ForthViewController.h */,
+				A6744B461B720A6100E222B0 /* ForthViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		01DE24C41B78AA9C00279FA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0139D61A1B74D7C100C5DBA3 /* TBTestTableViewCell.h */,
+				0139D61B1B74D7C100C5DBA3 /* TBTestTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		01DE24C51B78AAAE00279FA9 /* Utlis */ = {
+			isa = PBXGroup;
+			children = (
+				01DE24BF1B78A9E800279FA9 /* TBHookOperation.h */,
+				01DE24C01B78A9E800279FA9 /* TBHookOperation.m */,
+			);
+			name = Utlis;
+			sourceTree = "<group>";
+		};
+		0C79E93D22DA6071C28761CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A63EA5481B7A37E40048F67F /* libc++.dylib */,
+				39AB3DC487A8EBB882D3A0D3 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		600E051F1B735FC5001ACC90 /* CGSDK */ = {
+			isa = PBXGroup;
+			children = (
+				60DE2DE81B7DE4B8002D17D7 /* SlopeRecognizer.h */,
+				60DE2DE91B7DE4B8002D17D7 /* SlopeRecognizer.m */,
+				607D6AA51B7DB54F0024E643 /* LineView.h */,
+				607D6AA61B7DB54F0024E643 /* LineView.m */,
+				600E05151B735FA9001ACC90 /* MyView.h */,
+				600E05161B735FA9001ACC90 /* MyView.m */,
+				600E05171B735FA9001ACC90 /* MyViewModel.h */,
+				600E05181B735FA9001ACC90 /* MyViewModel.m */,
+				600E05191B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.h */,
+				600E051A1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m */,
+				60ECA3BF1B773712005B27DF /* PostConnection.m */,
+				60ECA3C11B773721005B27DF /* PostConnection.h */,
+				60CBF23F1B79957800B5CC2B /* UICustomPinchGestureRecognizer.h */,
+				60CBF2401B79957800B5CC2B /* UICustomPinchGestureRecognizer.m */,
+			);
+			name = CGSDK;
+			sourceTree = "<group>";
+		};
+		8CE9BAED14EA71DB4423A2F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */,
+				D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A628DF8D1B7E2BC5007069DD /* GestureKit */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF901B7E2BC5007069DD /* GestureKit.h */,
+				A628DF8E1B7E2BC5007069DD /* Supporting Files */,
+			);
+			path = GestureKit;
+			sourceTree = "<group>";
+		};
+		A628DF8E1B7E2BC5007069DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF8F1B7E2BC5007069DD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A628DF9C1B7E2BC5007069DD /* GestureKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF9F1B7E2BC5007069DD /* GestureKitTests.m */,
+				A628DF9D1B7E2BC5007069DD /* Supporting Files */,
+			);
+			path = GestureKitTests;
+			sourceTree = "<group>";
+		};
+		A628DF9D1B7E2BC5007069DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A628DF9E1B7E2BC5007069DD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A63F1B021B7787920088B299 /* AOP */ = {
+			isa = PBXGroup;
+			children = (
+				1470D8DD710635E99646D0BC /* Aspects.m */,
+				1470D7A353C47CE07842E007 /* Aspects.h */,
+			);
+			name = AOP;
+			sourceTree = "<group>";
+		};
+		A63F1B031B77879F0088B299 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A63F1B071B778B520088B299 /* RACEXTScope.h */,
+				A63F1B081B778B520088B299 /* RACmetamacros.h */,
+				A63F1AFC1B7754990088B299 /* NSNumber+Utils.h */,
+				A63F1AFD1B7754990088B299 /* NSNumber+Utils.m */,
+				1470D3127A457923FF1958B3 /* MacroUtils.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		A63F1B041B7787B20088B299 /* Base DO */ = {
+			isa = PBXGroup;
+			children = (
+				A6744B541B7217EE00E222B0 /* TBGesture.h */,
+				A6744B551B7217EE00E222B0 /* TBGesture.m */,
+				A6744B571B7217FB00E222B0 /* TBGEvent.h */,
+				A6744B581B7217FB00E222B0 /* TBGEvent.m */,
+				A6744B5A1B72185B00E222B0 /* TBGestureEventMap.h */,
+				A6744B5B1B72185B00E222B0 /* TBGestureEventMap.m */,
+				A63EA54A1B7A38060048F67F /* RLMTestObject.h */,
+				A63EA54B1B7A38060048F67F /* RLMTestObject.m */,
+				A63EA54D1B7A39800048F67F /* RLMEvent.h */,
+				A63EA54E1B7A39800048F67F /* RLMEvent.m */,
+				A63EA5561B7A5E940048F67F /* RLMGesture.h */,
+				A63EA5571B7A5E940048F67F /* RLMGesture.m */,
+				1470DB95A5C5BEA46CD54B20 /* Point.m */,
+				1470DFA3F7007F00689163F1 /* Point.h */,
+				A68489B01B7C513F00983751 /* RLMImage.h */,
+				A68489B11B7C513F00983751 /* RLMImage.m */,
+			);
+			name = "Base DO";
+			sourceTree = "<group>";
+		};
+		A63F1B051B7787CA0088B299 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				1470D7B6817F32E80F322A9A /* TBDataManager.h */,
+				1470D82D099B2E62DB12EAA4 /* TBDataManager.m */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		A63F1B061B7787E20088B299 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1470D141EC0A55430122ECE5 /* TBGestureEventManagerViewController.m */,
+				1470D2D665FF394792471C8E /* TBGestureEventManagerViewController.h */,
+				1470D61F6A46CC78F094ED3A /* TBGestureSelectViewController.m */,
+				1470DF8A18D373906E767817 /* TBGestureSelectViewController.h */,
+				A63F1AFF1B7787800088B299 /* TBAllGesturesViewController.h */,
+				A63F1B001B7787800088B299 /* TBAllGesturesViewController.m */,
+				A6C3D2611B78F7A600E110C4 /* TBAllEventsViewController.h */,
+				A6C3D2621B78F7A600E110C4 /* TBAllEventsViewController.m */,
+				A63EA5531B7A41950048F67F /* TBEventGestureManagerViewController.h */,
+				A63EA5541B7A41950048F67F /* TBEventGestureManagerViewController.m */,
+				A6C3D25C1B785E1100E110C4 /* 模拟接入 */,
+				1470D6AE6C53ED899435DCBF /* FifthViewController.h */,
+				1470D81B6F1A4F320A3FE59B /* FifthViewController.m */,
+				1470D5DCE58321A559AAD6FA /* TBCellViewModel.m */,
+				1470DF786FD194FC630FF264 /* TBCellViewModel.h */,
+				A6C3D2601B787E0800E110C4 /* TableView 模拟接入 */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		A6744B0D1B720A2E00E222B0 = {
 			isa = PBXGroup;
 			children = (
 				A6744B181B720A2F00E222B0 /* Seals3Lab6 */,
 				A6744B351B720A2F00E222B0 /* Seals3Lab6Tests */,
+				A628DF8D1B7E2BC5007069DD /* GestureKit */,
+				A628DF9C1B7E2BC5007069DD /* GestureKitTests */,
 				A6744B171B720A2F00E222B0 /* Products */,
+				8CE9BAED14EA71DB4423A2F5 /* Pods */,
+				0C79E93D22DA6071C28761CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,7 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				A6744B161B720A2F00E222B0 /* Seals3Lab6.app */,
-				A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */,
+				A628DF8C1B7E2BC5007069DD /* GestureKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,9 +454,9 @@
 		A6744B181B720A2F00E222B0 /* Seals3Lab6 */ = {
 			isa = PBXGroup;
 			children = (
+				A63EA5461B7A37910048F67F /* Realm.framework */,
 				A6744B1D1B720A2F00E222B0 /* AppDelegate.h */,
 				A6744B1E1B720A2F00E222B0 /* AppDelegate.m */,
-				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
 				A6744B4E1B720DFC00E222B0 /* Basic */,
 				A6744B291B720A2F00E222B0 /* Images.xcassets */,
 				A6744B2B1B720A2F00E222B0 /* LaunchScreen.xib */,
@@ -133,57 +494,168 @@
 		A6744B4E1B720DFC00E222B0 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				A6744B4F1B7216F500E222B0 /* 蒙箫 */,
+				A6744B501B72170100E222B0 /* 竹阳 */,
+				A6744B511B72171300E222B0 /* 决仕 */,
+				A6744B521B72171900E222B0 /* 言杰 */,
+				A6744B531B72172400E222B0 /* 疯隐 */,
 				A6744B261B720A2F00E222B0 /* Main.storyboard */,
-				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
-				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
-				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
-				A6744B421B720A5400E222B0 /* ThirdViewController.h */,
-				A6744B431B720A5400E222B0 /* ThirdViewController.m */,
-				A6744B451B720A6100E222B0 /* ForthViewController.h */,
-				A6744B461B720A6100E222B0 /* ForthViewController.m */,
-				A6744B4B1B720B5A00E222B0 /* FifthViewController.h */,
-				A6744B4C1B720B5A00E222B0 /* FifthViewController.m */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
 		};
+		A6744B4F1B7216F500E222B0 /* 蒙箫 */ = {
+			isa = PBXGroup;
+			children = (
+				AA680F571B7343AA0003F79B /* TBGestureRecognizer.h */,
+				AA680F581B7343AA0003F79B /* TBGestureRecognizer.m */,
+				A6744B201B720A2F00E222B0 /* FirstViewController.h */,
+				A6744B211B720A2F00E222B0 /* FirstViewController.m */,
+				A68CCB091B7C28F8007CBDD2 /* TestShowViewController.h */,
+				A68CCB0A1B7C28F8007CBDD2 /* TestShowViewController.m */,
+				A68CCB0F1B7C3538007CBDD2 /* OneMoreViewController.h */,
+				A68CCB101B7C3538007CBDD2 /* OneMoreViewController.m */,
+				A68CCB0C1B7C352F007CBDD2 /* OneOneViewController.h */,
+				A68CCB0D1B7C352F007CBDD2 /* OneOneViewController.m */,
+				A68CCB121B7C3545007CBDD2 /* MoreOneViewController.h */,
+				A68CCB131B7C3545007CBDD2 /* MoreOneViewController.m */,
+				AA4E2C2F1B7853190009739E /* TBGMath.h */,
+				AA4E2C301B7853190009739E /* TBGMath.m */,
+			);
+			name = "蒙箫";
+			sourceTree = "<group>";
+		};
+		A6744B501B72170100E222B0 /* 竹阳 */ = {
+			isa = PBXGroup;
+			children = (
+				D95708761B803282002A0DD1 /* TBCreateGesture.h */,
+				D95708771B80328B002A0DD1 /* TBCreateGesture.m */,
+				D9E164E61B79F94E003FA975 /* UISwitch+tag.h */,
+				D9E164E71B79F94E003FA975 /* UISwitch+tag.m */,
+				AA1CA3051B798EE900A975CE /* FYAddEventCtroller.h */,
+				AA1CA3061B798EE900A975CE /* FYAddEventCtroller.m */,
+				AA1CA3071B798EE900A975CE /* FYCell.h */,
+				AA1CA3081B798EE900A975CE /* FYCell.m */,
+				AA1CA3091B798EE900A975CE /* FYCreateGesture.h */,
+				AA1CA30A1B798EE900A975CE /* FYCreateGesture.m */,
+				AA1CA30B1B798EE900A975CE /* FYEventData.h */,
+				AA1CA30C1B798EE900A975CE /* FYEventData.m */,
+				AA1CA30D1B798EE900A975CE /* FYMainController.h */,
+				AA1CA30E1B798EE900A975CE /* FYMainController.m */,
+				A6744B231B720A2F00E222B0 /* SecondViewController.h */,
+				A6744B241B720A2F00E222B0 /* SecondViewController.m */,
+				D91B01831B7B1DF40091524C /* TBCreateGesture1.h */,
+				D91B01841B7B1DF40091524C /* TBCreateGesture1.m */,
+			);
+			name = "竹阳";
+			sourceTree = "<group>";
+		};
+		A6744B511B72171300E222B0 /* 决仕 */ = {
+			isa = PBXGroup;
+			children = (
+				600E051F1B735FC5001ACC90 /* CGSDK */,
+				A6744B421B720A5400E222B0 /* ThirdViewController.h */,
+				A6744B431B720A5400E222B0 /* ThirdViewController.m */,
+			);
+			name = "决仕";
+			sourceTree = "<group>";
+		};
+		A6744B521B72171900E222B0 /* 言杰 */ = {
+			isa = PBXGroup;
+			children = (
+				01DE24C31B78AA8E00279FA9 /* ViewController */,
+				01DE24C51B78AAAE00279FA9 /* Utlis */,
+				01DE24C41B78AA9C00279FA9 /* View */,
+				01DE24C21B78AA7A00279FA9 /* model */,
+			);
+			name = "言杰";
+			sourceTree = "<group>";
+		};
+		A6744B531B72172400E222B0 /* 疯隐 */ = {
+			isa = PBXGroup;
+			children = (
+				A63F1AFA1B774E250088B299 /* GestureTemplets.json */,
+				A63F1B021B7787920088B299 /* AOP */,
+				A63F1B041B7787B20088B299 /* Base DO */,
+				A63F1B051B7787CA0088B299 /* DataManager */,
+				A63F1B031B77879F0088B299 /* Utils */,
+				A63F1B061B7787E20088B299 /* ViewController */,
+				1470D1C21E93FD02E561DDDF /* TBEventDisplayModel.m */,
+				1470DB3F646B89FF70EBFBAF /* TBEventDisplayModel.h */,
+			);
+			name = "疯隐";
+			sourceTree = "<group>";
+		};
+		A6C3D25C1B785E1100E110C4 /* 模拟接入 */ = {
+			isa = PBXGroup;
+			children = (
+				A6C3D2591B78586300E110C4 /* TBJoinGestureSimulationViewController.h */,
+				A6C3D25A1B78586300E110C4 /* TBJoinGestureSimulationViewController.m */,
+			);
+			name = "模拟接入";
+			sourceTree = "<group>";
+		};
+		A6C3D2601B787E0800E110C4 /* TableView 模拟接入 */ = {
+			isa = PBXGroup;
+			children = (
+				A6C3D25D1B787E0400E110C4 /* TBTableViewSimulationViewController.h */,
+				A6C3D25E1B787E0400E110C4 /* TBTableViewSimulationViewController.m */,
+			);
+			name = "TableView 模拟接入";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A628DF891B7E2BC5007069DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A628DF911B7E2BC5007069DD /* GestureKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		A6744B151B720A2E00E222B0 /* Seals3Lab6 */ = {
+		A628DF8B1B7E2BC5007069DD /* GestureKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6744B3C1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6" */;
+			buildConfigurationList = A628DFA91B7E2BC5007069DD /* Build configuration list for PBXNativeTarget "GestureKit" */;
 			buildPhases = (
-				A6744B121B720A2E00E222B0 /* Sources */,
-				A6744B131B720A2E00E222B0 /* Frameworks */,
-				A6744B141B720A2E00E222B0 /* Resources */,
+				A628DF871B7E2BC5007069DD /* Sources */,
+				A628DF881B7E2BC5007069DD /* Frameworks */,
+				A628DF891B7E2BC5007069DD /* Headers */,
+				A628DF8A1B7E2BC5007069DD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			name = GestureKit;
+			productName = GestureKit;
+			productReference = A628DF8C1B7E2BC5007069DD /* GestureKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A6744B151B720A2E00E222B0 /* Seals3Lab6 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6744B3C1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6" */;
+			buildPhases = (
+				A8BDE502FC0DB455F634697D /* Check Pods Manifest.lock */,
+				A6744B121B720A2E00E222B0 /* Sources */,
+				A6744B131B720A2E00E222B0 /* Frameworks */,
+				A6744B141B720A2E00E222B0 /* Resources */,
+				7535C3574BB9150DDA93F8BF /* Copy Pods Resources */,
+				A628DFAA1B7E2BC5007069DD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A628DFA21B7E2BC5007069DD /* PBXTargetDependency */,
 			);
 			name = Seals3Lab6;
 			productName = Seals3Lab6;
 			productReference = A6744B161B720A2F00E222B0 /* Seals3Lab6.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A6744B311B720A2F00E222B0 /* Seals3Lab6Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6744B3F1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6Tests" */;
-			buildPhases = (
-				A6744B2E1B720A2F00E222B0 /* Sources */,
-				A6744B2F1B720A2F00E222B0 /* Frameworks */,
-				A6744B301B720A2F00E222B0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A6744B341B720A2F00E222B0 /* PBXTargetDependency */,
-			);
-			name = Seals3Lab6Tests;
-			productName = Seals3Lab6Tests;
-			productReference = A6744B321B720A2F00E222B0 /* Seals3Lab6Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,12 +666,13 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Veight Zhou";
 				TargetAttributes = {
+					A628DF8B1B7E2BC5007069DD = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 87MLRWWWW6;
+					};
 					A6744B151B720A2E00E222B0 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					A6744B311B720A2F00E222B0 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = A6744B151B720A2E00E222B0;
+						DevelopmentTeam = 87MLRWWWW6;
 					};
 				};
 			};
@@ -217,12 +690,19 @@
 			projectRoot = "";
 			targets = (
 				A6744B151B720A2E00E222B0 /* Seals3Lab6 */,
-				A6744B311B720A2F00E222B0 /* Seals3Lab6Tests */,
+				A628DF8B1B7E2BC5007069DD /* GestureKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A628DF8A1B7E2BC5007069DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6744B141B720A2E00E222B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,48 +710,119 @@
 				A6744B281B720A2F00E222B0 /* Main.storyboard in Resources */,
 				A6744B2D1B720A2F00E222B0 /* LaunchScreen.xib in Resources */,
 				A6744B2A1B720A2F00E222B0 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6744B301B720A2F00E222B0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A63F1AFB1B774E250088B299 /* GestureTemplets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7535C3574BB9150DDA93F8BF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8BDE502FC0DB455F634697D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		A628DF871B7E2BC5007069DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6744B121B720A2E00E222B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D95708781B80328B002A0DD1 /* TBCreateGesture.m in Sources */,
+				01DE24C11B78A9E800279FA9 /* TBHookOperation.m in Sources */,
+				60DE2DEA1B7DE4B8002D17D7 /* SlopeRecognizer.m in Sources */,
+				0139D61C1B74D7C100C5DBA3 /* TBTestTableViewCell.m in Sources */,
+				A68CCB0E1B7C352F007CBDD2 /* OneOneViewController.m in Sources */,
+				AA1CA3101B798EE900A975CE /* FYCell.m in Sources */,
+				607D6AA71B7DB54F0024E643 /* LineView.m in Sources */,
 				A6744B251B720A2F00E222B0 /* SecondViewController.m in Sources */,
 				A6744B441B720A5400E222B0 /* ThirdViewController.m in Sources */,
+				AA1CA3111B798EE900A975CE /* FYCreateGesture.m in Sources */,
 				A6744B471B720A6100E222B0 /* ForthViewController.m in Sources */,
+				60ECA3C01B773712005B27DF /* PostConnection.m in Sources */,
+				A63EA54C1B7A38060048F67F /* RLMTestObject.m in Sources */,
+				A68489B21B7C513F00983751 /* RLMImage.m in Sources */,
+				D9E164E81B79F94E003FA975 /* UISwitch+tag.m in Sources */,
+				A6744B561B7217EE00E222B0 /* TBGesture.m in Sources */,
+				A68CCB111B7C3538007CBDD2 /* OneMoreViewController.m in Sources */,
+				01DE24BB1B783ECF00279FA9 /* TBIndexPathCellModel.m in Sources */,
+				A6744B591B7217FB00E222B0 /* TBGEvent.m in Sources */,
+				A6C3D25B1B78586300E110C4 /* TBJoinGestureSimulationViewController.m in Sources */,
+				A68CCB0B1B7C28F8007CBDD2 /* TestShowViewController.m in Sources */,
+				A63F1AFE1B7754990088B299 /* NSNumber+Utils.m in Sources */,
+				A6744B5C1B72185B00E222B0 /* TBGestureEventMap.m in Sources */,
 				A6744B1F1B720A2F00E222B0 /* AppDelegate.m in Sources */,
+				600E051B1B735FA9001ACC90 /* MyView.m in Sources */,
+				AA1CA3131B798EE900A975CE /* FYMainController.m in Sources */,
+				A68CCB141B7C3545007CBDD2 /* MoreOneViewController.m in Sources */,
+				A6C3D25F1B787E0400E110C4 /* TBTableViewSimulationViewController.m in Sources */,
+				600E051C1B735FA9001ACC90 /* MyViewModel.m in Sources */,
 				A6744B221B720A2F00E222B0 /* FirstViewController.m in Sources */,
-				A6744B4D1B720B5A00E222B0 /* FifthViewController.m in Sources */,
+				A63EA5551B7A41950048F67F /* TBEventGestureManagerViewController.m in Sources */,
+				AA1CA3121B798EE900A975CE /* FYEventData.m in Sources */,
+				AA680F591B7343AA0003F79B /* TBGestureRecognizer.m in Sources */,
 				A6744B1C1B720A2F00E222B0 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6744B2E1B720A2F00E222B0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6744B391B720A2F00E222B0 /* Seals3Lab6Tests.m in Sources */,
+				1470D9670C68B191C0363025 /* TBEventDisplayModel.m in Sources */,
+				1470D2F122E435B03A52D7C0 /* Aspects.m in Sources */,
+				A63F1B011B7787800088B299 /* TBAllGesturesViewController.m in Sources */,
+				600E051D1B735FA9001ACC90 /* UIGestureRecognizer+UICustomGestureRecognizer.m in Sources */,
+				01DE24BE1B78A6B200279FA9 /* TBIndexPathCellModelArray.m in Sources */,
+				A6C3D2631B78F7A600E110C4 /* TBAllEventsViewController.m in Sources */,
+				1470D19A6DBE8740A0D1407C /* TBGestureEventManagerViewController.m in Sources */,
+				60CBF2411B79957800B5CC2B /* UICustomPinchGestureRecognizer.m in Sources */,
+				AA4E2C311B7853190009739E /* TBGMath.m in Sources */,
+				A63EA54F1B7A39800048F67F /* RLMEvent.m in Sources */,
+				1470DD518042EE2E5F44E114 /* TBGestureSelectViewController.m in Sources */,
+				1470DE41768A9E64B817B121 /* TBDataManager.m in Sources */,
+				1470D179F653DA2065AFD326 /* FifthViewController.m in Sources */,
+				A63EA5581B7A5E940048F67F /* RLMGesture.m in Sources */,
+				AA1CA30F1B798EE900A975CE /* FYAddEventCtroller.m in Sources */,
+				D91B01851B7B1DF40091524C /* TBCreateGesture1.m in Sources */,
+				1470DB66D5709D3647860307 /* TBCellViewModel.m in Sources */,
+				1470DAFAE4E99A273B5D8384 /* Point.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A6744B341B720A2F00E222B0 /* PBXTargetDependency */ = {
+		A628DFA21B7E2BC5007069DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A6744B151B720A2E00E222B0 /* Seals3Lab6 */;
-			targetProxy = A6744B331B720A2F00E222B0 /* PBXContainerItemProxy */;
+			target = A628DF8B1B7E2BC5007069DD /* GestureKit */;
+			targetProxy = A628DFA11B7E2BC5007069DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -295,6 +846,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A628DFA51B7E2BC5007069DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GestureKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A628DFA61B7E2BC5007069DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = GestureKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		A6744B3A1B720A2F00E222B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -312,6 +913,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -331,7 +933,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -355,6 +957,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -368,7 +971,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -377,61 +980,58 @@
 		};
 		A6744B3D1B720A2F00E222B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11B0E56EDA10B479657BC11 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Seals3Lab6",
+				);
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
 		A6744B3E1B720A2F00E222B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D827A10AAFE6857D3FD7E216 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Seals3Lab6",
+				);
 				INFOPLIST_FILE = Seals3Lab6/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A6744B401B720A2F00E222B0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Seals3Lab6Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seals3Lab6.app/Seals3Lab6";
-			};
-			name = Debug;
-		};
-		A6744B411B720A2F00E222B0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Seals3Lab6Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seals3Lab6.app/Seals3Lab6";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A628DFA91B7E2BC5007069DD /* Build configuration list for PBXNativeTarget "GestureKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A628DFA51B7E2BC5007069DD /* Debug */,
+				A628DFA61B7E2BC5007069DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A6744B111B720A2E00E222B0 /* Build configuration list for PBXProject "Seals3Lab6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -448,14 +1048,7 @@
 				A6744B3E1B720A2F00E222B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		A6744B3F1B720A2F00E222B0 /* Build configuration list for PBXNativeTarget "Seals3Lab6Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6744B401B720A2F00E222B0 /* Debug */,
-				A6744B411B720A2F00E222B0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -34,6 +34,20 @@
                ReferencedContainer = "container:Seals3Lab6.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A628DF951B7E2BC5007069DD"
+               BuildableName = "GestureKitTests.xctest"
+               BlueprintName = "GestureKitTests"
+               ReferencedContainer = "container:Seals3Lab6.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "A6744B311B720A2F00E222B0"
                BuildableName = "Seals3Lab6Tests.xctest"
                BlueprintName = "Seals3Lab6Tests"
+               ReferencedContainer = "container:Seals3Lab6.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A628DF951B7E2BC5007069DD"
+               BuildableName = "GestureKitTests.xctest"
+               BlueprintName = "GestureKitTests"
                ReferencedContainer = "container:Seals3Lab6.xcodeproj">
             </BuildableReference>
          </TestableReference>
